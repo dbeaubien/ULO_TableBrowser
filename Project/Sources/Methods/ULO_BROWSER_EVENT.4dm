@@ -90,6 +90,10 @@ Case of
 		  //ALERT("VIEW Button Clicked!")
 		BUTTON_VIEW_POP 
 		
+	: ($vt_eventObject="ULO_Button_PRINT") | ($vt_eventObject="ULO_ButtonBG_PRINT")
+		  //ALERT("VIEW Button Clicked!")
+		BUTTON_PRINT_POP 
+		
 	Else 
 		ALERT:C41($vt_eventObject)
 		  //ALERT(OBJECT Get title(*;$vt_eventObject)+" : "+String($vl_event))

@@ -11,13 +11,18 @@ For each ($vo_button;$1)
 			OBJECT MOVE:C664(*;"ULO_DEFAULT_FIND";($vo_button.number*70);14;($vo_button.number*70)+201;43;*)
 			
 		Else 
-			If ($vo_button.action="VIEWS")
-				$vt_button:="ULO_Button_VIEW"
-				$vt_buttonBG:="ULO_ButtonBG_VIEW"
-			Else 
-				$vt_button:="ULO_Button_"+String:C10($vo_button.number;"00")
-				$vt_buttonBG:="ULO_ButtonBG_"+String:C10($vo_button.number;"00")
-			End if 
+			Case of 
+				: ($vo_button.action="VIEWS")
+					$vt_button:="ULO_Button_VIEW"
+					$vt_buttonBG:="ULO_ButtonBG_VIEW"
+					
+				: ($vo_button.action="PRINT")
+					$vt_button:="ULO_Button_PRINT"
+					$vt_buttonBG:="ULO_ButtonBG_PRINT"
+				Else 
+					$vt_button:="ULO_Button_"+String:C10($vo_button.number;"00")
+					$vt_buttonBG:="ULO_ButtonBG_"+String:C10($vo_button.number;"00")
+			End case 
 			If ($vo_button.number>0)
 				  //OBJECT DUPLICATE(*;"ULO_ButtonBG_00";$vt_buttonBG)  //Duplicate the backgroud first
 				OBJECT DUPLICATE:C1111(*;"ULO_Button_00";$vt_button)
@@ -28,7 +33,7 @@ For each ($vo_button;$1)
 			  //OBJECT SET VISIBLE(*;$vt_buttonBG;True)
 			
 			  //Format: title;picture;background;titlePos(4=bottom);titleVisible(1=display);\
-				iconVisible(1=display);style(3=toolbarButton);horMargin;vertMargin;iconOffset;popupMenu;hyperlink;numStates
+								iconVisible(1=display);style(3=toolbarButton);horMargin;vertMargin;iconOffset;popupMenu;hyperlink;numStates
 			If (OB Is defined:C1231($vo_button;"icon"))
 				$vt_format:=$vo_button.title+";"+"#images/buttons/"+Storage:C1525.prefs.theme+"/"+$vo_button.icon+";;4;1;1;4;0;0;0;0;;4"
 			Else 
