@@ -1,0 +1,7 @@
+
+#exclude all user prefs
+/userPreferences*
+/Logs
+/Settings
+*.4DB
+/Project/DerivedData/*

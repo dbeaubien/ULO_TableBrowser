@@ -1,0 +1,274 @@
+﻿{
+	"destination": "detailScreen",
+	"rightMargin": 20,
+	"bottomMargin": 20,
+	"markerHeader": 15,
+	"markerBody": 200,
+	"markerBreak": 220,
+	"markerFooter": 240,
+	"events": [
+		"onLoad",
+		"onValidate",
+		"onClick",
+		"onOutsideCall",
+		"onDoubleClick",
+		"onDrop",
+		"onMenuSelect",
+		"onPluginArea",
+		"onDataChange",
+		"onDragOver",
+		"onTimer",
+		"onAfterKeystroke",
+		"onAfterEdit",
+		"onBeginDragOver",
+		"onBoundVariableChange",
+		"onPageChange"
+	],
+	"method": "method.4dm",
+	"pageFormat": {
+		"paperName": "A4",
+		"paperWidth": "595pt",
+		"paperHeight": "841pt"
+	},
+	"pages": [
+		{
+			"objects": {
+				"BackgroundColour": {
+					"type": "rectangle",
+					"top": -1,
+					"left": -1,
+					"width": 405,
+					"height": 543,
+					"sizingX": "grow",
+					"sizingY": "grow",
+					"fill": "#E8E8E8",
+					"stroke": "transparent"
+				},
+				"VIEW_Accept": {
+					"type": "button",
+					"top": 496,
+					"left": 305,
+					"width": 74,
+					"height": 22,
+					"sizingX": "move",
+					"sizingY": "move",
+					"action": "accept",
+					"shortcutKey": "[Enter]",
+					"text": "OK",
+					"class": "default",
+					"defaultButton": true,
+					"events": [
+						"onClick"
+					]
+				},
+				"VIEW_Cancel": {
+					"type": "button",
+					"top": 496,
+					"left": 219,
+					"width": 74,
+					"height": 22,
+					"sizingX": "move",
+					"sizingY": "move",
+					"action": "cancel",
+					"shortcutKey": ".",
+					"shortcutAccel": true,
+					"text": "Cancel",
+					"class": "default",
+					"events": [
+						"onClick"
+					]
+				}
+			}
+		},
+		{
+			"objects": {
+				"Group Box2": {
+					"type": "groupBox",
+					"top": 365,
+					"left": 33,
+					"width": 345,
+					"height": 110,
+					"text": "Aggregates :"
+				},
+				"Group Box": {
+					"type": "groupBox",
+					"top": 30,
+					"left": 33,
+					"width": 345,
+					"height": 110,
+					"text": "General :"
+				},
+				"Group Box1": {
+					"type": "groupBox",
+					"top": 160,
+					"left": 33,
+					"width": 345,
+					"height": 190,
+					"text": "Styling :"
+				},
+				"Variable": {
+					"type": "input",
+					"top": 63,
+					"left": 159,
+					"width": 179,
+					"height": 16,
+					"dataSource": "Form:C1466.col.header",
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					]
+				},
+				"cb_agg_total": {
+					"type": "checkbox",
+					"top": 399,
+					"left": 100,
+					"width": 100,
+					"height": 17,
+					"sizingY": "move",
+					"dataSource": "Form:C1466.total",
+					"text": "Total",
+					"class": "default",
+					"focusable": false,
+					"events": [
+						"onLoad",
+						"onClick"
+					]
+				},
+				"cb_agg_min": {
+					"type": "checkbox",
+					"top": 436,
+					"left": 100,
+					"width": 100,
+					"height": 17,
+					"sizingY": "move",
+					"dataSource": "Form:C1466.min",
+					"text": "Min",
+					"class": "default",
+					"focusable": false,
+					"events": [
+						"onLoad",
+						"onClick"
+					]
+				},
+				"cb_agg_average": {
+					"type": "checkbox",
+					"top": 399,
+					"left": 227,
+					"width": 100,
+					"height": 17,
+					"sizingY": "move",
+					"dataSource": "Form:C1466.average",
+					"text": "Average",
+					"class": "default",
+					"focusable": false,
+					"events": [
+						"onLoad",
+						"onClick"
+					]
+				},
+				"cb_agg_max": {
+					"type": "checkbox",
+					"top": 436,
+					"left": 227,
+					"width": 100,
+					"height": 17,
+					"sizingY": "move",
+					"dataSource": "Form:C1466.max",
+					"text": "Max",
+					"class": "default",
+					"focusable": false,
+					"events": [
+						"onLoad",
+						"onClick"
+					]
+				},
+				"Text": {
+					"type": "text",
+					"top": 63,
+					"left": 68,
+					"width": 60,
+					"height": 15,
+					"text": "Header :"
+				},
+				"Text1": {
+					"type": "text",
+					"top": 100,
+					"left": 68,
+					"width": 60,
+					"height": 15,
+					"text": "Formula :"
+				},
+				"Variable1": {
+					"type": "input",
+					"top": 99,
+					"left": 159,
+					"width": 179,
+					"height": 16,
+					"dataSource": "Form:C1466.col.formula",
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					]
+				},
+				"Text2": {
+					"type": "text",
+					"top": 192,
+					"left": 68,
+					"width": 60,
+					"height": 15,
+					"text": "Font Style :"
+				},
+				"cb_sty_bold": {
+					"type": "checkbox",
+					"top": 191,
+					"left": 159,
+					"width": 60,
+					"height": 17,
+					"sizingY": "move",
+					"dataSource": "Form:C1466.bold",
+					"text": "Bold",
+					"class": "default",
+					"focusable": false,
+					"events": [
+						"onLoad",
+						"onClick"
+					]
+				},
+				"cb_sty_italic": {
+					"type": "checkbox",
+					"top": 191,
+					"left": 219,
+					"width": 60,
+					"height": 17,
+					"sizingY": "move",
+					"dataSource": "Form:C1466.italic",
+					"text": "Italic",
+					"class": "default",
+					"focusable": false,
+					"events": [
+						"onLoad",
+						"onClick"
+					]
+				},
+				"cb_sty_underline": {
+					"type": "checkbox",
+					"top": 191,
+					"left": 279,
+					"width": 80,
+					"height": 17,
+					"sizingY": "move",
+					"dataSource": "Form:C1466.underline",
+					"text": "Underline",
+					"class": "default",
+					"focusable": false,
+					"events": [
+						"onLoad",
+						"onClick"
+					]
+				}
+			}
+		}
+	]
+}

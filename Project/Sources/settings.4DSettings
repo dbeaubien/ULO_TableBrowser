@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="UTF-8"?><preferences stamp="3">
+	<com.4d>
+		<deployment>
+			<options/>
+		</deployment>
+		<database>
+			<cache flush_buffer_delay="20s"/>
+		</database>
+		<interface>
+			<user formula_editor_with_full_lists="false"/>
+			<developper disable_formula_editor_filtering="true"/>
+		</interface>
+		<general execute_host_database_event="false"/>
+	</com.4d>
+</preferences>

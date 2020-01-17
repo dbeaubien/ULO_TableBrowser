@@ -1,0 +1,20 @@
+.default {
+	font-family: Segoe UI;
+	font-size: 12px;
+}
+
+.Extra_Large {
+	font-family: Arial;
+	font-size: 14px;
+}
+
+.Extra_Small {
+	font-family: Arial;
+	font-size: 9px;
+}
+
+.Very_Small {
+	font-family: Arial;
+	font-size: 10px;
+}
+

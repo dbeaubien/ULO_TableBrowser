@@ -1,0 +1,300 @@
+﻿{
+	"destination": "detailScreen",
+	"rightMargin": 0,
+	"bottomMargin": 0,
+	"markerHeader": 15,
+	"markerBody": 200,
+	"markerBreak": 220,
+	"markerFooter": 240,
+	"events": [
+		"onLoad",
+		"onClick",
+		"onDoubleClick",
+		"onTimer",
+		"onSelectionChange",
+		"onPageChange"
+	],
+	"method": "method.4dm",
+	"pageFormat": {
+		"paperName": "A4",
+		"paperWidth": "594pt",
+		"paperHeight": "841pt"
+	},
+	"pages": [
+		{
+			"objects": {
+				"background": {
+					"type": "picture",
+					"top": 0,
+					"left": 0,
+					"width": 1259,
+					"height": 620,
+					"visibility": "hidden",
+					"sizingX": "grow",
+					"sizingY": "grow",
+					"pictureFormat": "tiled",
+					"picture": "/RESOURCES/images/background.png"
+				},
+				"BackgroundColour": {
+					"type": "rectangle",
+					"top": 0,
+					"left": 0,
+					"width": 1261,
+					"height": 620,
+					"visibility": "hidden",
+					"sizingX": "grow",
+					"sizingY": "grow",
+					"fill": "#F4FFFF"
+				},
+				"ULO_Navbar": {
+					"type": "listbox",
+					"top": 68,
+					"left": 10,
+					"width": 200,
+					"height": 462,
+					"sizingX": "grow",
+					"sizingY": "grow",
+					"resizingMode": "legacy",
+					"listboxType": "collection",
+					"movableRows": false,
+					"rowHeight": "40px",
+					"showHeaders": false,
+					"dataSource": "Form:C1466.navItems",
+					"currentItemSource": "Form:C1466.navItem",
+					"currentItemPositionSource": "Form:C1466.selectedNavItem",
+					"selectionMode": "single",
+					"scrollbarHorizontal": "hidden",
+					"horizontalLineStroke": "transparent",
+					"verticalLineStroke": "transparent",
+					"stroke": "#008080",
+					"fill": "transparent",
+					"verticalAlign": "middle",
+					"fontFamily": "Segoe UI",
+					"fontSize": 14,
+					"borderStyle": "none",
+					"events": [
+						"onClick",
+						"onDoubleClick",
+						"onSelectionChange"
+					],
+					"columns": [
+						{
+							"name": "Column1",
+							"dataSource": "This:C1470.title",
+							"width": 183,
+							"minWidth": 150,
+							"maxWidth": 400,
+							"resizable": false,
+							"enterable": false,
+							"stroke": "#008080",
+							"alternateFill": "automatic",
+							"rowStyleSource": "This:C1470.style",
+							"verticalAlign": "middle",
+							"fontFamily": "Segoe UI",
+							"fontSize": 14,
+							"events": [
+								"onClick",
+								"onDataChange"
+							],
+							"header": {
+								"name": "Header1",
+								"text": "Header1",
+								"stroke": "#008080",
+								"verticalAlign": "middle",
+								"fontFamily": "Segoe UI",
+								"fontSize": 14
+							},
+							"footer": {
+								"name": "Footer1",
+								"timeFormat": "hh_mm_ss",
+								"stroke": "#008080",
+								"verticalAlign": "middle",
+								"fontFamily": "Segoe UI",
+								"fontSize": 14
+							}
+						}
+					]
+				},
+				"Splitter": {
+					"type": "splitter",
+					"top": 67,
+					"left": 211,
+					"width": 2,
+					"height": 532,
+					"sizingX": "move",
+					"sizingY": "grow",
+					"events": [
+						"onClick"
+					]
+				},
+				"ULO_ButtonBG_00": {
+					"type": "rectangle",
+					"top": 2,
+					"left": 10,
+					"width": 60,
+					"height": 60,
+					"visibility": "hidden",
+					"fill": "#00BB00",
+					"stroke": "transparent"
+				},
+				"ULO_Button_00": {
+					"type": "button",
+					"top": 2,
+					"left": 10,
+					"width": 60,
+					"height": 60,
+					"visibility": "hidden",
+					"tooltip": "ULO Buttons",
+					"class": "Extra_Small",
+					"stroke": "#FFFFFF",
+					"focusable": false,
+					"text": "Title",
+					"icon": "/RESOURCES/images/buttons/win8_default/add.png",
+					"iconFrames": 4,
+					"style": "custom",
+					"dropping": "custom",
+					"events": [
+						"onClick",
+						"onLongClick"
+					]
+				},
+				"Picture40": {
+					"type": "picture",
+					"top": 534,
+					"left": 13,
+					"width": 193,
+					"height": 61,
+					"pictureFormat": "scaled"
+				}
+			}
+		},
+		{
+			"objects": {
+				"ULO_LIST": {
+					"type": "listbox",
+					"top": 68,
+					"left": 214,
+					"width": 1035,
+					"height": 511,
+					"sizingX": "grow",
+					"sizingY": "grow",
+					"resizingMode": "legacy",
+					"listboxType": "collection",
+					"movableRows": false,
+					"showFooters": true,
+					"dataSource": "Form:C1466.uloList",
+					"currentItemSource": "Form:C1466.record",
+					"currentItemPositionSource": "Form:C1466.selectedRecord",
+					"selectedItemsSource": "Form:C1466.records",
+					"scrollbarHorizontal": "automatic",
+					"borderStyle": "none",
+					"events": [
+						"onLoad",
+						"onDoubleClick",
+						"onAlternateClick"
+					],
+					"columns": []
+				},
+				"Form.tableMessage": {
+					"type": "input",
+					"top": 66,
+					"left": 214,
+					"width": 1034,
+					"height": 500,
+					"visibility": "hidden",
+					"sizingX": "grow",
+					"sizingY": "grow",
+					"dataSourceTypeHint": "picture",
+					"fontFamily": ".SF NS Text",
+					"fontSize": 18,
+					"focusable": false,
+					"fill": "transparent",
+					"borderStyle": "none",
+					"enterable": false,
+					"contextMenu": "none",
+					"pictureFormat": "truncatedCenter",
+					"dragging": "none"
+				},
+				"ULO_DEFAULT_FIND": {
+					"type": "subform",
+					"top": 14,
+					"left": 558,
+					"width": 201,
+					"height": 29,
+					"dataSourceTypeHint": "text",
+					"detailForm": "SearchPicker",
+					"doubleClickInRowAction": "editSubrecord",
+					"selectionMode": "multiple",
+					"printFrame": "variable",
+					"events": [
+						"onLoad",
+						"onLosingFocus",
+						"onGettingFocus",
+						"onDataChange"
+					]
+				},
+				"SearchPopMac": {
+					"type": "button",
+					"top": 19,
+					"left": 608,
+					"width": 18,
+					"height": 20,
+					"visibility": "hidden",
+					"focusable": false,
+					"icon": "/RESOURCES/Images/library/PopSearchMac.png",
+					"style": "custom",
+					"customBackgroundPicture": "var:100",
+					"events": [
+						"onClick"
+					]
+				},
+				"SearchPopWin": {
+					"type": "button",
+					"top": 19,
+					"left": 705,
+					"width": 18,
+					"height": 20,
+					"visibility": "hidden",
+					"focusable": false,
+					"icon": "/RESOURCES/Images/library/PopSearchWin.png",
+					"style": "custom",
+					"customBackgroundPicture": "var:100",
+					"events": [
+						"onClick"
+					]
+				}
+			}
+		},
+		{
+			"objects": {
+				"BRW_WebArea": {
+					"type": "webArea",
+					"top": 67,
+					"left": 214,
+					"width": 585,
+					"height": 508,
+					"sizingX": "grow",
+					"sizingY": "grow",
+					"urlSource": "vt_BRW_WebArea",
+					"progressSource": "Web Area_progress",
+					"contextMenu": "none",
+					"borderStyle": "none",
+					"method": "ObjectMethods/BRW_WebArea.4dm",
+					"events": [
+						"onLoad",
+						"onLosingFocus",
+						"onGettingFocus",
+						"onUnload",
+						"onBeginURLLoading",
+						"onURLResourceLoading",
+						"onEndURLLoading",
+						"onURLLoadingError",
+						"onURLFiltering",
+						"onOpenExternalLink",
+						"onWindowOpeningDenied"
+					]
+				}
+			}
+		}
+	]
+}

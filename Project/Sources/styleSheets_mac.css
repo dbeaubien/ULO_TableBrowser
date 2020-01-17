@@ -1,0 +1,20 @@
+.default {
+	font-family: Lucida Grande;
+	font-size: 13px;
+}
+
+.Extra_Large {
+	font-family: Helvetica Neue;
+	font-size: 15px;
+}
+
+.Extra_Small {
+	font-family: Helvetica Neue;
+	font-size: 10px;
+}
+
+.Very_Small {
+	font-family: Helvetica Neue;
+	font-size: 11px;
+}
+

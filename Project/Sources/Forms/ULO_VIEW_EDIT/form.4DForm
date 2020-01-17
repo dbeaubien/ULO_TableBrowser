@@ -1,0 +1,603 @@
+﻿{
+	"destination": "detailScreen",
+	"windowMinWidth": 650,
+	"windowMinHeight": 550,
+	"formSizeAnchor": "BackgroundColour",
+	"rightMargin": 20,
+	"bottomMargin": 20,
+	"markerHeader": 15,
+	"markerBody": 200,
+	"markerBreak": 220,
+	"markerFooter": 240,
+	"events": [
+		"onLoad",
+		"onValidate",
+		"onClick",
+		"onOutsideCall",
+		"onDoubleClick",
+		"onDrop",
+		"onMenuSelect",
+		"onPluginArea",
+		"onDataChange",
+		"onDragOver",
+		"onTimer",
+		"onAfterKeystroke",
+		"onAfterEdit",
+		"onBeginDragOver",
+		"onBoundVariableChange",
+		"onPageChange"
+	],
+	"method": "method.4dm",
+	"pageFormat": {
+		"paperName": "A4",
+		"paperWidth": "594pt",
+		"paperHeight": "841pt"
+	},
+	"pages": [
+		{
+			"objects": {
+				"BackgroundColour": {
+					"type": "rectangle",
+					"top": -1,
+					"left": -1,
+					"width": 835,
+					"height": 543,
+					"sizingX": "grow",
+					"sizingY": "grow",
+					"fill": "#E8E8E8",
+					"stroke": "transparent"
+				},
+				"ViewTab": {
+					"type": "tab",
+					"top": 94,
+					"left": 21,
+					"width": 794,
+					"height": 394,
+					"sizingX": "grow",
+					"sizingY": "grow",
+					"dataSourceTypeHint": "arrayText",
+					"labels": [
+						" Displayed columns ",
+						" Options "
+					],
+					"action": "gotoPage",
+					"events": [
+						"onClick"
+					]
+				},
+				"Button3": {
+					"type": "button",
+					"top": 631,
+					"left": 21,
+					"width": 74,
+					"height": 22,
+					"sizingX": "move",
+					"dataSource": "b_VIEW_Cancel2",
+					"action": "cancel",
+					"shortcutKey": "[Esc]",
+					"text": "Cancel",
+					"class": "default",
+					"focusable": false,
+					"events": [
+						"onClick"
+					]
+				},
+				"VIEW_Accept": {
+					"type": "button",
+					"top": 507,
+					"left": 734,
+					"width": 74,
+					"height": 22,
+					"sizingX": "move",
+					"sizingY": "move",
+					"action": "accept",
+					"shortcutKey": "[Enter]",
+					"text": "OK",
+					"class": "default",
+					"defaultButton": true,
+					"events": [
+						"onClick"
+					]
+				},
+				"VIEW_Cancel": {
+					"type": "button",
+					"top": 507,
+					"left": 648,
+					"width": 74,
+					"height": 22,
+					"sizingX": "move",
+					"sizingY": "move",
+					"action": "cancel",
+					"shortcutKey": ".",
+					"shortcutAccel": true,
+					"text": "Cancel",
+					"class": "default",
+					"events": [
+						"onClick"
+					]
+				},
+				"IntroText2": {
+					"type": "text",
+					"top": 20,
+					"left": 20,
+					"width": 590,
+					"height": 32,
+					"class": "default",
+					"textAlign": "left",
+					"text": "Select the fields you wish to see in the view.  You may adjust their order and widths in the Browser window."
+				},
+				"PROMPT_ViewName": {
+					"type": "text",
+					"top": 67,
+					"left": 25,
+					"width": 107,
+					"height": 16,
+					"class": "default",
+					"textAlign": "right",
+					"text": "View name"
+				},
+				"ULO_VIEW_Name": {
+					"type": "input",
+					"top": 67,
+					"left": 141,
+					"width": 252,
+					"height": 16,
+					"dataSource": "Form:C1466.view.name",
+					"class": "default",
+					"contextMenu": "none",
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					]
+				}
+			}
+		},
+		{
+			"objects": {
+				"View_ShowRelatedTables": {
+					"type": "checkbox",
+					"top": 594,
+					"left": 383,
+					"width": 244,
+					"height": 17,
+					"sizingY": "move",
+					"dataSource": "Form:C1466.showRelated",
+					"text": "Show fields from related Tables",
+					"class": "default",
+					"focusable": false,
+					"events": [
+						"onLoad",
+						"onClick"
+					]
+				},
+				"View_UseFooter": {
+					"type": "checkbox",
+					"top": 459,
+					"left": 383,
+					"width": 100,
+					"height": 17,
+					"sizingY": "move",
+					"dataSource": "Form:C1466.useFooters",
+					"text": "Use Footers",
+					"class": "default",
+					"focusable": false,
+					"events": [
+						"onLoad",
+						"onClick"
+					]
+				},
+				"ViewFields": {
+					"type": "listbox",
+					"top": 125,
+					"left": 236,
+					"width": 562,
+					"height": 318,
+					"sizingX": "grow",
+					"sizingY": "grow",
+					"resizingMode": "legacy",
+					"listboxType": "collection",
+					"sortable": false,
+					"movableRows": false,
+					"dragging": "custom",
+					"dropping": "custom",
+					"rowHeight": "20px",
+					"headerHeight": "24px",
+					"dataSource": "Form:C1466.displayCols",
+					"currentItemSource": "Form:C1466.selectedCol",
+					"currentItemPositionSource": "Form:C1466.selectedColIndex",
+					"selectionMode": "single",
+					"scrollbarHorizontal": "hidden",
+					"horizontalLineStroke": "transparent",
+					"verticalLineStroke": "transparent",
+					"stroke": "#000000",
+					"fill": "#FFFFFF",
+					"fontFamily": "Segoe UI",
+					"fontSize": 12,
+					"events": [
+						"onDoubleClick",
+						"onDrop",
+						"onDragOver",
+						"onSelectionChange",
+						"onBeginDragOver"
+					],
+					"columns": [
+						{
+							"name": "BRW_VIEW_FieldName",
+							"dataSource": "This:C1470.fieldName",
+							"width": 140,
+							"minWidth": 10,
+							"maxWidth": 32000,
+							"resizable": false,
+							"enterable": false,
+							"stroke": "#000000",
+							"fill": "#E8F0FE",
+							"alternateFill": "automatic",
+							"fontFamily": "Segoe UI",
+							"fontSize": 12,
+							"events": [
+								"onClick",
+								"onDataChange"
+							],
+							"header": {
+								"name": "BRW_VIEW_FieldNameHdr",
+								"text": "Field Name",
+								"stroke": "#000000",
+								"fontFamily": "Arial",
+								"fontSize": 9
+							},
+							"footer": {
+								"name": "Footer2",
+								"timeFormat": "hh_mm_ss",
+								"stroke": "#000000",
+								"fill": "#FFFFFF",
+								"fontFamily": "Segoe UI",
+								"fontSize": 12
+							}
+						},
+						{
+							"name": "BRW_VIEW_FieldHeaders1",
+							"dataSource": "This:C1470.header",
+							"width": 150,
+							"minWidth": 10,
+							"maxWidth": 32000,
+							"resizable": false,
+							"enterable": false,
+							"stroke": "#000000",
+							"fill": "#E8F0FE",
+							"alternateFill": "automatic",
+							"fontFamily": "Segoe UI",
+							"fontSize": 12,
+							"events": [
+								"onClick",
+								"onDataChange"
+							],
+							"header": {
+								"name": "BRW_VIEW_FieldHeadersHdr1",
+								"text": "Header",
+								"stroke": "#000000",
+								"fontFamily": "Arial",
+								"fontSize": 9
+							},
+							"footer": {
+								"name": "Footer1",
+								"timeFormat": "hh_mm_ss",
+								"stroke": "#000000",
+								"fill": "#FFFFFF",
+								"fontFamily": "Segoe UI",
+								"fontSize": 12
+							}
+						},
+						{
+							"name": "BRW_VIEW_FieldHeaders",
+							"dataSource": "This:C1470.relation",
+							"width": 140,
+							"minWidth": 10,
+							"maxWidth": 32000,
+							"resizable": false,
+							"enterable": false,
+							"stroke": "#000000",
+							"fill": "#E8F0FE",
+							"alternateFill": "automatic",
+							"fontFamily": "Segoe UI",
+							"fontSize": 12,
+							"events": [
+								"onClick",
+								"onDataChange"
+							],
+							"header": {
+								"name": "BRW_VIEW_FieldHeadersHdr",
+								"text": "Relation",
+								"stroke": "#000000",
+								"fontFamily": "Arial",
+								"fontSize": 9
+							},
+							"footer": {
+								"name": "Footer3",
+								"timeFormat": "hh_mm_ss",
+								"stroke": "#000000",
+								"fill": "#FFFFFF",
+								"fontFamily": "Segoe UI",
+								"fontSize": 12
+							}
+						},
+						{
+							"name": "BRW_VIEW_Field_Total",
+							"dataSource": "This:C1470.footerProperties",
+							"dataSourceTypeHint": "boolean",
+							"width": 115,
+							"minWidth": 10,
+							"maxWidth": 32000,
+							"resizable": false,
+							"enterable": false,
+							"pictureFormat": "truncatedCenter",
+							"controlType": "checkbox",
+							"stroke": "#000000",
+							"fill": "#E8F0FE",
+							"alternateFill": "automatic",
+							"fontFamily": "Segoe UI",
+							"fontSize": 12,
+							"events": [
+								"onClick"
+							],
+							"header": {
+								"name": "BRW_VIEW_Footer_PropertiesHdr",
+								"text": "Footer properties",
+								"stroke": "#000000",
+								"fontFamily": "Segoe UI",
+								"fontSize": 12
+							},
+							"footer": {
+								"name": "Footer10",
+								"timeFormat": "hh_mm_ss",
+								"stroke": "#000000",
+								"fill": "#FFFFFF",
+								"fontFamily": "Segoe UI",
+								"fontSize": 12
+							}
+						}
+					]
+				},
+				"ViewFieldsSource": {
+					"type": "listbox",
+					"top": 155,
+					"left": 36,
+					"width": 157,
+					"height": 288,
+					"sizingX": "grow",
+					"sizingY": "grow",
+					"resizingMode": "legacy",
+					"listboxType": "collection",
+					"sortable": false,
+					"movableRows": false,
+					"rowHeight": "20px",
+					"headerHeight": "24px",
+					"dataSource": "Form:C1466.displayFields",
+					"currentItemSource": "Form:C1466.selectedField",
+					"currentItemPositionSource": "Form:C1466.selectedFieldIndex",
+					"selectionMode": "single",
+					"scrollbarHorizontal": "hidden",
+					"horizontalLineStroke": "transparent",
+					"verticalLineStroke": "transparent",
+					"stroke": "#000000",
+					"fill": "#FFFFFF",
+					"fontFamily": "Segoe UI",
+					"fontSize": 12,
+					"events": [
+						"onClick",
+						"onDoubleClick",
+						"onSelectionChange"
+					],
+					"columns": [
+						{
+							"name": "BRW_VIEW_Column_Selected1",
+							"dataSource": "This:C1470.fieldName",
+							"width": 140,
+							"minWidth": 10,
+							"maxWidth": 32000,
+							"resizable": false,
+							"enterable": false,
+							"stroke": "#000000",
+							"fill": "#E8F0FE",
+							"alternateFill": "automatic",
+							"fontFamily": "Segoe UI",
+							"fontSize": 12,
+							"events": [
+								"onClick",
+								"onDataChange"
+							],
+							"header": {
+								"name": "BRW_VIEW_FieldSelectedHdr1",
+								"text": "Field Name",
+								"stroke": "#000000",
+								"fontFamily": "Arial",
+								"fontSize": 9
+							},
+							"footer": {
+								"name": "Footer4",
+								"timeFormat": "hh_mm_ss",
+								"stroke": "#000000",
+								"fill": "#FFFFFF",
+								"fontFamily": "Segoe UI",
+								"fontSize": 12
+							}
+						}
+					]
+				},
+				"dropdown_table": {
+					"type": "dropdown",
+					"top": 125,
+					"left": 36,
+					"width": 157,
+					"height": 21,
+					"sizingX": "grow",
+					"dataSource": "at_tableName",
+					"focusable": false,
+					"events": [
+						"onClick",
+						"onDataChange"
+					]
+				},
+				"bt_moveField": {
+					"type": "button",
+					"top": 255,
+					"left": 200,
+					"width": 29,
+					"height": 29,
+					"focusable": false,
+					"text": ">",
+					"style": "roundedBevel",
+					"events": [
+						"onClick"
+					]
+				},
+				"bt_deleteField": {
+					"type": "button",
+					"top": 454,
+					"left": 261,
+					"width": 22,
+					"height": 22,
+					"sizingY": "move",
+					"focusable": false,
+					"text": "-",
+					"style": "roundedBevel",
+					"events": [
+						"onClick"
+					]
+				},
+				"bt_addField": {
+					"type": "button",
+					"top": 454,
+					"left": 235,
+					"width": 22,
+					"height": 22,
+					"sizingY": "move",
+					"focusable": false,
+					"text": "+",
+					"style": "roundedBevel",
+					"events": [
+						"onClick"
+					]
+				}
+			}
+		},
+		{
+			"objects": {
+				"isPublic": {
+					"type": "checkbox",
+					"top": 145,
+					"left": 199,
+					"width": 120,
+					"height": 17,
+					"dataSource": "Form:C1466.viewIsPublic",
+					"text": "View is public",
+					"class": "default",
+					"focusable": false,
+					"events": [
+						"onClick"
+					]
+				},
+				"PROMPT_Locked": {
+					"type": "text",
+					"top": 171,
+					"left": 86,
+					"width": 107,
+					"height": 16,
+					"class": "default",
+					"textAlign": "right",
+					"text": "Locked Columns"
+				},
+				"BRW_VIEW_LockedCols": {
+					"type": "input",
+					"top": 171,
+					"left": 202,
+					"width": 32,
+					"height": 16,
+					"dataSource": "Form:C1466.view.detail.lockedColumns",
+					"dataSourceTypeHint": "number",
+					"class": "default",
+					"contextMenu": "none",
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					]
+				},
+				"PROMPT_Locked1": {
+					"type": "text",
+					"top": 199,
+					"left": 86,
+					"width": 107,
+					"height": 16,
+					"class": "default",
+					"textAlign": "right",
+					"text": "Header Height"
+				},
+				"BRW_VIEW_HeadHeight": {
+					"type": "input",
+					"top": 199,
+					"left": 202,
+					"width": 32,
+					"height": 16,
+					"dataSource": "Form:C1466.view.detail.headerHeight",
+					"dataSourceTypeHint": "number",
+					"class": "default",
+					"contextMenu": "none",
+					"min": 1,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					]
+				},
+				"PROMPT_Locked2": {
+					"type": "text",
+					"top": 201,
+					"left": 242,
+					"width": 187,
+					"height": 12,
+					"class": "Extra_Small",
+					"textAlign": "left",
+					"text": "(Number of text rows)"
+				},
+				"PROMPT_Locked3": {
+					"type": "text",
+					"top": 225,
+					"left": 86,
+					"width": 107,
+					"height": 16,
+					"class": "default",
+					"textAlign": "right",
+					"text": "Row Height"
+				},
+				"BRW_VIEW_RowHeight": {
+					"type": "input",
+					"top": 225,
+					"left": 202,
+					"width": 32,
+					"height": 16,
+					"dataSource": "Form:C1466.view.detail.rowHeight",
+					"dataSourceTypeHint": "number",
+					"class": "default",
+					"contextMenu": "none",
+					"min": 1,
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					]
+				},
+				"PROMPT_Locked4": {
+					"type": "text",
+					"top": 227,
+					"left": 242,
+					"width": 187,
+					"height": 12,
+					"class": "Extra_Small",
+					"textAlign": "left",
+					"text": "(Number of text rows)"
+				}
+			}
+		}
+	]
+}
