@@ -11,3 +11,4 @@
 *.journal
 *.Match
 
+/Project/*.lnk
