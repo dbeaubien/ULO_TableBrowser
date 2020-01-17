@@ -101,7 +101,7 @@
 				"Group Box1": {
 					"type": "groupBox",
 					"top": 160,
-					"left": 33,
+					"left": 34,
 					"width": 345,
 					"height": 190,
 					"text": "Styling :"
@@ -187,7 +187,7 @@
 					"type": "text",
 					"top": 63,
 					"left": 68,
-					"width": 60,
+					"width": 80,
 					"height": 15,
 					"text": "Header :"
 				},
@@ -195,7 +195,7 @@
 					"type": "text",
 					"top": 100,
 					"left": 68,
-					"width": 60,
+					"width": 80,
 					"height": 15,
 					"text": "Formula :"
 				},
@@ -216,7 +216,7 @@
 					"type": "text",
 					"top": 192,
 					"left": 68,
-					"width": 60,
+					"width": 80,
 					"height": 15,
 					"text": "Font Style :"
 				},
@@ -267,8 +267,64 @@
 						"onLoad",
 						"onClick"
 					]
+				},
+				"Text3": {
+					"type": "text",
+					"top": 227,
+					"left": 68,
+					"width": 80,
+					"height": 15,
+					"text": "Font Colour :"
+				},
+				"Variable2": {
+					"type": "input",
+					"top": 226,
+					"left": 159,
+					"width": 119,
+					"height": 16,
+					"dataSource": "Form:C1466.col.fontColourHex",
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"entryFilter": "~\"ABCDEF0-9\"######"
+				},
+				"Picture Button": {
+					"type": "pictureButton",
+					"left": 330,
+					"top": 225,
+					"width": 29,
+					"height": 17,
+					"events": [
+						"onClick"
+					]
+				},
+				"rect_fontColour": {
+					"type": "rectangle",
+					"top": 225,
+					"left": 286,
+					"width": 24,
+					"height": 17
+				},
+				"bt_fontColourPick": {
+					"type": "button",
+					"text": "",
+					"top": 224,
+					"left": 286,
+					"width": 28,
+					"height": 18,
+					"events": [
+						"onClick"
+					],
+					"style": "custom",
+					"visibility": "visible"
 				}
 			}
 		}
-	]
+	],
+	"$4d": {
+		"version": "1",
+		"kind": "form"
+	}
 }

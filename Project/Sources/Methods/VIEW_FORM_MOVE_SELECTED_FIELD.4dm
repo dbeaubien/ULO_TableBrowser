@@ -41,11 +41,11 @@ Else
 		
 		$vo_col.width:=100
 		$vo_col.fieldType:=""
-		
 		$vo_col.format:=""
-		$vo_col.fontStyle:=""
-		$vo_col.fontColour:=""
-		$vo_col.alignment:=""
+		$vo_col.fontStyle:=0
+		$vo_col.fontColour:=0x0000  //Black
+		$vo_col.fontColourHex:="000000"
+		$vo_col.alignment:="Left"
 		$vo_col.total:=False:C215
 		$vo_col.min:=False:C215
 		$vo_col.max:=False:C215

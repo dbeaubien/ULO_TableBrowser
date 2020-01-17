@@ -58,6 +58,18 @@ Case of
 				OBJECT SET ENTERABLE:C238(*;"input_formula";(Form:C1466.col.table<=0))  //Non enterable if table is positive
 		End case 
 		
+	: ($vt_objectName="bt_fontColourPick")
+		Case of 
+			: ($vo_formEvent.code=On Clicked:K2:4)
+				C_LONGINT:C283($vl_fontColour)
+				
+				EXECUTE FORMULA:C63("$vl_fontColour:=0x00"+Form:C1466.col.fontColourHex)
+				$vl_newColour:=Select RGB color:C956($vl_fontColour)
+				Form:C1466.col.fontColourHex:=UTIL_Get_Hex ($vl_newColour)
+				OBJECT SET RGB COLORS:C628(*;"rect_fontColour";$vl_newColour;$vl_newColour)
+				
+				
+		End case 
 		
 	: ($vt_objectName="cb_agg_@")
 		
