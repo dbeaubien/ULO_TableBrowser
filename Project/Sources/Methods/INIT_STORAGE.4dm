@@ -7,5 +7,8 @@ Use (Storage:C1525)
 		Storage:C1525.prefs.theme:="ios"
 	End use 
 	Storage:C1525.user:=New shared object:C1526
-	
+	Storage:C1525.hostMethods:=New shared object:C1526
+	Use (Storage:C1525.hostMethods)
+		Storage:C1525.hostMethods.filter:="HOST_ULO_FILTER"
+	End use 
 End use 

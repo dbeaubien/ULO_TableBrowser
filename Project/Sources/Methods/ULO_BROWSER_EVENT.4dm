@@ -1,7 +1,7 @@
 //%attributes = {"shared":true}
-C_OBJECT:C1216($1;$vo_sub)
+C_OBJECT:C1216($1;$vo_sub;$es;$es_return)
 C_TEXT:C284($vt_eventObject)
-C_LONGINT:C283($vl_event;$cp;$row)
+C_LONGINT:C283($vl_event;$cp;$row;$vl_table)
 C_POINTER:C301($vp_nil)
 $vl_event:=$1.code
 If (OB Is defined:C1231($1;"objectName"))
@@ -87,12 +87,25 @@ Case of
 		ULO_DEFAULT_FIND ($1)
 		
 	: ($vt_eventObject="ULO_Button_VIEW") | ($vt_eventObject="ULO_ButtonBG_VIEW")
-		  //ALERT("VIEW Button Clicked!")
-		BUTTON_VIEW_POP 
+		
+		BUTTON_VIEW_POP   //ALERT("VIEW Button Clicked!")
 		
 	: ($vt_eventObject="ULO_Button_PRINT") | ($vt_eventObject="ULO_ButtonBG_PRINT")
-		  //ALERT("VIEW Button Clicked!")
-		BUTTON_PRINT_POP 
+		BUTTON_PRINT_POP   //ALERT("PRINT Button Clicked!")
+		
+	: ($vt_eventObject="ULO_Button_SHOWALL")
+		  //Need to make callback to host for filter
+		$vl_table:=Form:C1466.tableNumber
+		$es:=ds:C1482[Table name:C256(Form:C1466.tableNumber)].all()
+		EXECUTE METHOD:C1007(Storage:C1525.hostMethods.filter;$es_return;$vl_table;$es)
+		Form:C1466.uloList:=$es_return
+		
+	: ($vt_eventObject="ULO_Button_SHOWSUBSET")
+		Form:C1466.uloList:=Form:C1466.records
+		
+	: ($vt_eventObject="ULO_Button_OMITSUBSET")
+		Form:C1466.uloList:=Form:C1466.uloList.minus(Form:C1466.records)
+		
 		
 	Else 
 		ALERT:C41($vt_eventObject)
