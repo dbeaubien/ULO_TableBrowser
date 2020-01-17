@@ -5,3 +5,9 @@
 /Settings
 *.4DB
 /Project/DerivedData/*
+*.4DD
+*.4DIndx
+*.4DIndy
+*.journal
+*.Match
+
