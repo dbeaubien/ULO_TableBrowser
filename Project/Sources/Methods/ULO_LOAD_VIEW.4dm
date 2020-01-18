@@ -1,7 +1,8 @@
 //%attributes = {"invisible":true}
 C_OBJECT:C1216($vo_col;$vo_view)
 C_POINTER:C301($vp_nil;$vp_table)
-C_LONGINT:C283($i)
+C_LONGINT:C283($i;$vl_columns;$vl_type;$vl_numFields)
+C_TEXT:C284($vt_colName;$vt_hObject;$vt_formula;$vt_header)
 
 Form:C1466.tableNumber:=Form:C1466.navItem.table
 If (Form:C1466.tableNumber>0)

@@ -1,9 +1,9 @@
 //%attributes = {}
   //Manages all fo the popup actions for theview button
 C_TEXT:C284($1)
-C_TEXT:C284($vt_MyViews;$vt_Option;$vt_ViewMenu;$vt_defaultViewId)
+C_TEXT:C284($vt_id;$vt_MyViews;$vt_Option;$vt_ViewMenu;$vt_defaultViewId;$vt_selected)
 C_LONGINT:C283($vl_CurrentUser;$vl_Default;$vl_DefaultViewID;$vl_NumParameters)
-C_OBJECT:C1216($vo_view)
+C_OBJECT:C1216($vo_view;$e_view;$es_views;$vo_coord)
 C_COLLECTION:C1488($vc_views)
 
 $vl_NumParameters:=Count parameters:C259

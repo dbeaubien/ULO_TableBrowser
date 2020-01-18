@@ -12,6 +12,7 @@
   // ----------------------------------------------------
 
 C_OBJECT:C1216($vo_formData)
+C_LONGINT:C283($vl_left;$vl_top;$vl_right;$vl_bottom;$vl_win)
 
 $vo_formData:=New object:C1471
 $vo_formData.col:=OB Copy:C1225(Form:C1466.selectedCol)

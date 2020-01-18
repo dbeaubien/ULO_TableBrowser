@@ -23,6 +23,7 @@
 C_OBJECT:C1216($1)
 C_VARIANT:C1683(${2})
 C_BOOLEAN:C305($vb_result)
+C_LONGINT:C283($i)
 $vb_result:=True:C214
 For ($i;3;Count parameters:C259;2)
 	$vb_result:=$vb_result & ($1.value[${$i-1}]=${$i})

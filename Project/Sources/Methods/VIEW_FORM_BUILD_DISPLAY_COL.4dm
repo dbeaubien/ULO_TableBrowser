@@ -11,6 +11,7 @@
   // Parameters
   // ----------------------------------------------------
 
+C_OBJECT:C1216($vo_field)
 Form:C1466.displayCols:=New collection:C1472
 For each ($vo_field;Form:C1466.view.detail.cols)
 	If ($vo_field.selected)

@@ -11,8 +11,7 @@
 		"onClick",
 		"onDoubleClick",
 		"onTimer",
-		"onSelectionChange",
-		"onPageChange"
+		"onSelectionChange"
 	],
 	"method": "method.4dm",
 	"pageFormat": {
@@ -296,5 +295,9 @@
 				}
 			}
 		}
-	]
+	],
+	"$4d": {
+		"version": "1",
+		"kind": "form"
+	}
 }

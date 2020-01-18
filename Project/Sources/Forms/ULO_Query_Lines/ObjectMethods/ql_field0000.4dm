@@ -1,4 +1,4 @@
-C_LONGINT:C283($index)
+C_LONGINT:C283($index;$row)
 $index:=(OBJECT Get pointer:C1124(Object current:K67:2)->-1)
 $row:=Num:C11(OBJECT Get name:C1087(Object current:K67:2))
 OBJECT SET VISIBLE:C603(*;"ql_value@"+String:C10($row;"0000");False:C215)

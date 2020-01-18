@@ -21,6 +21,7 @@
   // ----------------------------------------------------
 
 C_COLLECTION:C1488($vc_buttons)
+C_OBJECT:C1216($vo_button)
 C_TEXT:C284($1;$2;$3;$4;$6;$10)
 C_BOOLEAN:C305($5)
 C_LONGINT:C283($7;$8;$9;$cp)

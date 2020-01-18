@@ -11,6 +11,8 @@
   // Parameters
   // ----------------------------------------------------
 
+C_LONGINT:C283($vl_idx)
+C_OBJECT:C1216($vo_col)
 $vl_idx:=Form:C1466.view.detail.cols.findIndex("UTIL_Find_Collection";"table";al_tableNum{at_tableName};"field";Form:C1466.selectedField.fieldNumber)
 If ($vl_idx>=0)
 	Form:C1466.view.detail.cols[$vl_idx].selected:=True:C214

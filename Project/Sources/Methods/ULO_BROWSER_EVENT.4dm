@@ -1,15 +1,16 @@
 //%attributes = {"shared":true}
 C_OBJECT:C1216($1;$vo_sub;$es;$es_return)
-C_TEXT:C284($vt_eventObject)
-C_LONGINT:C283($vl_event;$cp;$row;$vl_table)
+C_TEXT:C284($vt_eventObject;$vt_value;$vt_method)
+C_LONGINT:C283($vl_event;$cp;$row;$vl_table;$vl_selected;$index;$vl_buttonNumber)
 C_POINTER:C301($vp_nil)
+C_BOOLEAN:C305($vb_buttonUpdate)
 $vl_event:=$1.code
 If (OB Is defined:C1231($1;"objectName"))
 	$vt_eventObject:=$1.objectName
 Else 
 	$vt_eventObject:="form"
 End if 
-
+$vb_buttonUpdate:=True:C214
 Case of 
 	: ($vt_eventObject="form")
 		Case of 
@@ -21,6 +22,11 @@ Case of
 				End if 
 				LISTBOX SELECT ROW:C912(*;"ULO_Navbar";$index+1;lk replace selection:K53:1)
 				ULO_LOAD_VIEW 
+				$vb_buttonUpdate:=False:C215
+				SET TIMER:C645(1)
+				
+			: ($vl_event=On Timer:K2:25)
+				SET TIMER:C645(0)
 				
 		End case 
 		
@@ -60,18 +66,11 @@ Case of
 					ULO_LOAD_VIEW 
 					  //$vo_uloData.lastNavItemIndex
 				End if 
+				
 		End case 
 		
 	: ($vt_eventObject="ULO_LIST")
 		Case of 
-			: ($vl_event=On Clicked:K2:4) & (Right click:C712)
-				If (OB Is defined:C1231(Form:C1466.navItem;"rowContext"))
-					$vt_method:=Form:C1466.navItem.rowContext
-					If (Form:C1466.record#Null:C1517)
-						EXECUTE METHOD:C1007($vt_method;*;"context test: "+JSON Stringify:C1217(Form:C1466.record.toObject()))
-					End if 
-				End if 
-				
 			: ($vl_event=On Double Clicked:K2:5)
 				If (OB Is defined:C1231(Form:C1466.navItem;"rowDoubleClick"))
 					$vt_method:=Form:C1466.navItem.rowDoubleClick
@@ -80,40 +79,90 @@ Case of
 					End if 
 				End if 
 				
+			: ($vl_event=On Clicked:K2:4) & (Right click:C712)
+				If (OB Is defined:C1231(Form:C1466.navItem;"rowContext"))
+					$vt_method:=Form:C1466.navItem.rowContext
+					If (Form:C1466.record#Null:C1517)
+						EXECUTE METHOD:C1007($vt_method;*;"context test: "+JSON Stringify:C1217(Form:C1466.record.toObject()))
+					End if 
+				End if 
+				
 		End case 
+		
 	: ($vt_eventObject="SearchPop@")
 		
-	: ($vt_eventObject="ULO_DEFAULT_FIND")
-		ULO_DEFAULT_FIND ($1)
+	: ($vt_eventObject="SearchText_@")  //Text field from the find widget
+		Case of 
+			: ($vl_event=On Selection Change:K2:29)
+				$vt_value:=OBJECT Get pointer:C1124(Object named:K67:5;"ULO_DEFAULT_FIND")->  //Get the value from the find object
+				EXECUTE METHOD:C1007(Storage:C1525.hostMethods.find;$es_return;Form:C1466.tableNumber;$vt_value)
+				Form:C1466.uloList:=$es_return
+				
+		End case 
+		
+		
 		
 	: ($vt_eventObject="ULO_Button_VIEW") | ($vt_eventObject="ULO_ButtonBG_VIEW")
 		
-		BUTTON_VIEW_POP   //ALERT("VIEW Button Clicked!")
+		Case of 
+			: ($vl_event=On Clicked:K2:4)
+				BUTTON_VIEW_POP   //ALERT("VIEW Button Clicked!")
+		End case 
 		
 	: ($vt_eventObject="ULO_Button_PRINT") | ($vt_eventObject="ULO_ButtonBG_PRINT")
-		BUTTON_PRINT_POP   //ALERT("PRINT Button Clicked!")
-		
+		Case of 
+			: ($vl_event=On Clicked:K2:4)
+				BUTTON_PRINT_POP   //ALERT("PRINT Button Clicked!")
+		End case 
 	: ($vt_eventObject="ULO_Button_SHOWALL")
 		  //Need to make callback to host for filter
-		$vl_table:=Form:C1466.tableNumber
-		$es:=ds:C1482[Table name:C256(Form:C1466.tableNumber)].all()
-		EXECUTE METHOD:C1007(Storage:C1525.hostMethods.filter;$es_return;$vl_table;$es)
-		Form:C1466.uloList:=$es_return
+		Case of 
+			: ($vl_event=On Clicked:K2:4)
+				$vl_table:=Form:C1466.tableNumber
+				$es:=ds:C1482[Table name:C256(Form:C1466.tableNumber)].all()
+				If (Storage:C1525.hostMethods.filter#"")
+					EXECUTE METHOD:C1007(Storage:C1525.hostMethods.filter;$es;Form:C1466.tableNumber;$es)
+				End if 
+				Form:C1466.uloList:=$es
+		End case 
 		
 	: ($vt_eventObject="ULO_Button_SHOWSUBSET")
-		Form:C1466.uloList:=Form:C1466.records
+		Case of 
+			: ($vl_event=On Clicked:K2:4)
+				Form:C1466.uloList:=Form:C1466.records
+				SET TIMER:C645(1)
+		End case 
 		
 	: ($vt_eventObject="ULO_Button_OMITSUBSET")
-		Form:C1466.uloList:=Form:C1466.uloList.minus(Form:C1466.records)
+		Case of 
+			: ($vl_event=On Clicked:K2:4)
+				Form:C1466.uloList:=Form:C1466.uloList.minus(Form:C1466.records)
+				SET TIMER:C645(1)
+		End case 
 		
+	: ($vt_eventObject="ULO_Button_SEARCH")
+		Case of 
+			: ($vl_event=On Clicked:K2:4)
+				BUTTON_SEARCH_POP 
+				SET TIMER:C645(1)
+		End case 
 		
 	Else 
-		ALERT:C41($vt_eventObject)
-		  //ALERT(OBJECT Get title(*;$vt_eventObject)+" : "+String($vl_event))
-		$vl_buttonNumber:=Num:C11($vt_eventObject)
-		$vt_method:=Form:C1466.buttons[$vl_buttonNumber].method
-		  //pass
-		  //tableNumber
-		  //entitySelection
-		EXECUTE METHOD:C1007($vt_method;*;$1;Form:C1466.navItem;JSON Stringify:C1217(Form:C1466.buttons[$vl_buttonNumber]))
+		Case of 
+			: ($vl_event=On Clicked:K2:4)
+				ALERT:C41($vt_eventObject)
+				  //ALERT(OBJECT Get title(*;$vt_eventObject)+" : "+String($vl_event))
+				$vl_buttonNumber:=Num:C11($vt_eventObject)
+				$vt_method:=Form:C1466.buttons[$vl_buttonNumber].method
+				  //pass
+				  //tableNumber
+				  //entitySelection
+				EXECUTE METHOD:C1007($vt_method;*;$1;Form:C1466.navItem;JSON Stringify:C1217(Form:C1466.buttons[$vl_buttonNumber]))
+		End case 
+		
 End case 
+If ($vb_buttonUpdate)
+	$vl_selected:=Form:C1466.records.length
+	OBJECT SET ENABLED:C1123(*;"ULO_Button_SHOWSUBSET";($vl_selected>0))
+	OBJECT SET ENABLED:C1123(*;"ULO_Button_OMITSUBSET";($vl_selected>0))
+End if 

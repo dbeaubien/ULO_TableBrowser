@@ -1,6 +1,6 @@
 ﻿{
 	"destination": "detailScreen",
-	"windowMinWidth": 860,
+	"windowMinWidth": 750,
 	"windowMinHeight": 300,
 	"rightMargin": 20,
 	"bottomMargin": 20,
@@ -56,7 +56,7 @@
 				"Button": {
 					"type": "button",
 					"top": 316,
-					"left": 713,
+					"left": 613,
 					"width": 130,
 					"height": 30,
 					"sizingX": "move",
@@ -97,7 +97,7 @@
 				"Button2": {
 					"type": "button",
 					"top": 16,
-					"left": 713,
+					"left": 613,
 					"width": 130,
 					"height": 30,
 					"sizingX": "move",
@@ -111,5 +111,9 @@
 				}
 			}
 		}
-	]
+	],
+	"$4d": {
+		"version": "1",
+		"kind": "form"
+	}
 }

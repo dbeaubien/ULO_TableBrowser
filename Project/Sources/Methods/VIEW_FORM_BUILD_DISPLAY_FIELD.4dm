@@ -11,6 +11,8 @@
   // Parameters
   // ----------------------------------------------------
 C_BOOLEAN:C305($vb_add)
+C_LONGINT:C283($vl_idx;$vl_idx2)
+C_OBJECT:C1216($vo_field)
 
 $vl_idx:=Form:C1466.fields.findIndex("UTIL_Find_Collection";"table";al_tableNum{at_tableName})
 If ($vl_idx>=0)

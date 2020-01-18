@@ -1,6 +1,7 @@
 //%attributes = {}
 C_OBJECT:C1216($1;$vo_formEvent)
-C_TEXT:C284($vt_objectName)
+C_TEXT:C284($vt_objectName;$vt_prop)
+C_LONGINT:C283($vl_newColour)
 $vo_formEvent:=$1
 If (OB Is defined:C1231($vo_formEvent;"objectName"))
 	$vt_objectName:=$vo_formEvent.objectName

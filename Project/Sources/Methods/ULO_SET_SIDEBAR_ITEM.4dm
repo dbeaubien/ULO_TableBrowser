@@ -19,10 +19,10 @@
   // $9 = actionMethods
   // ----------------------------------------------------
 
-C_COLLECTION:C1488($vc_navItems)
-C_TEXT:C284($1;$2;$3;$4;$7)
-C_COLLECTION:C1488($8;$9)
+C_TEXT:C284($1;$2;$3;$4;$7;$vt_field)
 C_LONGINT:C283($5;$6;$cp;$index)
+C_COLLECTION:C1488($8;$9;$vc_navItems)
+C_OBJECT:C1216($vo_act)
 $cp:=Count parameters:C259
 If ($cp>10) | ($cp=0)
 	  //return an error for incorrect number of parameters

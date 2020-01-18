@@ -17,11 +17,11 @@
   // $4 - Text       - Attribute name of children for recursive search
   // ----------------------------------------------------
 
-C_OBJECT:C1216($0)
+C_OBJECT:C1216($0;$vo_response;$vo_element)
 C_COLLECTION:C1488($1)
 C_TEXT:C284($2;$4)
 C_VARIANT:C1683($3)
-C_OBJECT:C1216($vo_response;$vo_element)
+C_LONGINT:C283($vl_index)
 
 $vl_index:=$1.findIndex("UTIL_Find_Collection";$2;$3)
 If ($vl_index=-1)
