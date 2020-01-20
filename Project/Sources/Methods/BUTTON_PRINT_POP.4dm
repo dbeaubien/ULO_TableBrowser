@@ -1,7 +1,7 @@
 //%attributes = {}
   //Manages all fo the popup actions for theview button
 C_TEXT:C284($vt_menu;$vt_selected)
-C_LONGINT:C283($cp;$vl_menuNum)
+C_LONGINT:C283($cp;$vl_menuNum;$index)
 C_POINTER:C301($vp_table)
 C_OBJECT:C1216($vo_option;$vo_coord)
 C_COLLECTION:C1488($vc_hostOptions)
@@ -14,9 +14,11 @@ Case of
 		$vt_menu:=Create menu:C408
 		
 		  //first make call to host to get any options.
-		If (Storage:C1525.hostMethods.print#"")  //If there is a host print method specified
-			EXECUTE METHOD:C1007(Storage:C1525.hostMethods.print;$vc_hostOptions;Form:C1466.tableNumber;Form:C1466.navItem.handle)
-			  //Return a collection
+		$index:=Storage:C1525.buttons.findIndex("UTIL_Find_Collection";"action";"PRINT")
+		If ($index>=0)
+			If (Storage:C1525.buttons[$index].method#"")  //If there is a host search method specified
+				EXECUTE METHOD:C1007(Storage:C1525.buttons[$index].method;$vc_hostOptions;Form:C1466.tableNumber;Form:C1466.navItem.handle)  //Return a collection
+			End if 
 		End if 
 		
 		For each ($vo_option;$vc_hostOptions)
@@ -64,9 +66,12 @@ Case of
 		
 	Else 
 		  //Must be a host option so call the host method
-		  //May beed to pass $vc_hostOptions instead of * ???  - TEST
-		EXECUTE METHOD:C1007(Storage:C1525.hostMethods.print;*;Form:C1466.tableNumber;Form:C1466.navItem.handle;$1)
-		  //Collection not used here but passed anyway for 
+		$index:=Storage:C1525.buttons.findIndex("UTIL_Find_Collection";"action";"PRINT")
+		If ($index>=0)
+			If (Storage:C1525.buttons[$index].method#"")  //If there is a host search method specified
+				EXECUTE METHOD:C1007(Storage:C1525.buttons[$index].method;$vc_hostOptions;Form:C1466.tableNumber;Form:C1466.navItem.handle;$1)  //Return a collection
+			End if 
+		End if 
 		
 		
 		

@@ -11,7 +11,5 @@ Use (Storage:C1525)
 	Use (Storage:C1525.hostMethods)
 		Storage:C1525.hostMethods.filter:="HOST_ULO_FILTER"
 		Storage:C1525.hostMethods.find:="HOST_ULO_FIND"
-		Storage:C1525.hostMethods.print:="HOST_ULO_PRINT"
-		Storage:C1525.hostMethods.search:=""  //"HOST_ULO_SEARCH"
 	End use 
 End use 

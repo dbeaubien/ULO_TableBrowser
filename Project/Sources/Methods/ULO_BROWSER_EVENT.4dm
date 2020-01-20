@@ -95,7 +95,13 @@ Case of
 		Case of 
 			: ($vl_event=On Selection Change:K2:29)
 				$vt_value:=OBJECT Get pointer:C1124(Object named:K67:5;"ULO_DEFAULT_FIND")->  //Get the value from the find object
-				EXECUTE METHOD:C1007(Storage:C1525.hostMethods.find;$es_return;Form:C1466.tableNumber;$vt_value)
+				$es_return:=Form:C1466.uloList
+				$index:=Storage:C1525.buttons.findIndex("UTIL_Find_Collection";"action";"FIND")
+				If ($index>=0)
+					If (Storage:C1525.buttons[$index].method#"")  //If there is a host search method specified
+						EXECUTE METHOD:C1007(Storage:C1525.buttons[$index].method;$es_return;Form:C1466.tableNumber;$vt_value)  //Return an entity selection
+					End if 
+				End if 
 				Form:C1466.uloList:=$es_return
 				
 		End case 

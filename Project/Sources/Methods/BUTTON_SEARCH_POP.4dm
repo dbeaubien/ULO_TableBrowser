@@ -9,7 +9,7 @@
 
   //Manages all fo the popup actions for the search button
 C_TEXT:C284($1;$vt_menu;$vt_selected)
-C_LONGINT:C283($vl_CurrentUser;$cp;$vl_menuNum)
+C_LONGINT:C283($vl_CurrentUser;$cp;$vl_menuNum;$index)
 C_OBJECT:C1216($vo_view;$vo_option;$vo_coord)
 C_COLLECTION:C1488($vc_hostOptions)
 C_POINTER:C301($vp_table)
@@ -20,10 +20,13 @@ Case of
 	: ($cp=0)
 		$vt_menu:=Create menu:C408
 		
+		$vc_hostOptions:=New collection:C1472
 		  //first make call to host to get any options.
-		If (Storage:C1525.hostMethods.search#"")  //If there is a host search method specified
-			EXECUTE METHOD:C1007(Storage:C1525.hostMethods.search;$vc_hostOptions;Form:C1466.tableNumber;Form:C1466.navItem.handle)
-			  //Return a collection
+		$index:=Storage:C1525.buttons.findIndex("UTIL_Find_Collection";"action";"SEARCH")
+		If ($index>=0)
+			If (Storage:C1525.buttons[$index].method#"")  //If there is a host search method specified
+				EXECUTE METHOD:C1007(Storage:C1525.buttons[$index].method;$vc_hostOptions;Form:C1466.tableNumber;Form:C1466.navItem.handle)  //Return a collection
+			End if 
 		End if 
 		
 		For each ($vo_option;$vc_hostOptions)
@@ -46,7 +49,7 @@ Case of
 		SET MENU ITEM PARAMETER:C1004($vt_menu;-1;"-")
 		  //End if 
 		  //Now get the default options
-		APPEND MENU ITEM:C411($vt_menu;"Quick Report")
+		APPEND MENU ITEM:C411($vt_menu;"Search Editor")
 		SET MENU ITEM PARAMETER:C1004($vt_menu;-1;"SEARCHEDITOR")
 		
 		  //Now build the saved searches for run and delete
@@ -71,7 +74,12 @@ Case of
 		
 	Else   //Otherwise call the host search option
 		
-		EXECUTE METHOD:C1007(Storage:C1525.hostMethods.search;*;Form:C1466.tableNumber;Form:C1466.navItem.handle;$1)
+		$index:=Storage:C1525.buttons.findIndex("UTIL_Find_Collection";"action";"SEARCH")
+		If ($index>=0)
+			If (Storage:C1525.buttons[$index].method#"")  //If there is a host search method specified
+				EXECUTE METHOD:C1007(Storage:C1525.buttons[$index].method;$vc_hostOptions;Form:C1466.tableNumber;Form:C1466.navItem.handle;$1)  //Return a collection
+			End if 
+		End if 
 		
 End case 
 
