@@ -396,7 +396,25 @@
 					],
 					"dataSource": "at_dataType"
 				}
-			}
+			},
+			"entryOrder": [
+				"Variable",
+				"Variable3",
+				"input_formula",
+				"dropdown_datatype",
+				"cb_sty_bold",
+				"cb_sty_italic",
+				"cb_sty_underline",
+				"input_fontColourHex",
+				"bt_fontColourPick",
+				"rb_left",
+				"rb_center",
+				"rb_right",
+				"cb_agg_total",
+				"cb_agg_average",
+				"cb_agg_min",
+				"cb_agg_max"
+			]
 		}
 	],
 	"$4d": {
