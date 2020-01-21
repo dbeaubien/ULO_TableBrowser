@@ -106,8 +106,6 @@ Case of
 				
 		End case 
 		
-		
-		
 	: ($vt_eventObject="ULO_Button_VIEW") | ($vt_eventObject="ULO_ButtonBG_VIEW")
 		
 		Case of 

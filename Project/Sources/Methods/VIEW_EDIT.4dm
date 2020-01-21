@@ -83,7 +83,7 @@ DIALOG:C40("ULO_VIEW_EDIT";$vo_formData)
 CLOSE WINDOW:C154($vl_win)
 If (OK=1)
 	$e_uloData.name:=$vo_formData.view.name
-	$e_uloData.handle:=$vo_formData.view.name
+	$e_uloData.handle:=$vo_formData.view.handle
 	$e_uloData.type:=2
 	$e_uloData.favourite:=$vo_formData.view.favourite
 	
