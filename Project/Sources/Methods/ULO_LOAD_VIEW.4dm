@@ -2,7 +2,7 @@
 C_OBJECT:C1216($vo_col;$vo_view)
 C_POINTER:C301($vp_nil;$vp_table)
 C_LONGINT:C283($i;$vl_columns;$vl_type;$vl_numFields)
-C_TEXT:C284($vt_colName;$vt_hObject;$vt_formula;$vt_header)
+C_TEXT:C284($vt_colName;$vt_hObject;$vt_formula;$vt_header;$vt_fObject)
 
 Form:C1466.tableNumber:=Form:C1466.navItem.table
 If (Form:C1466.tableNumber>0)
@@ -40,7 +40,9 @@ If (Form:C1466.tableNumber>0)
 					Else 
 						$vt_colName:="h_"+$vo_col.colName
 					End if 
-					$vt_hObject:=$vt_colName
+					$vt_hObject:="head_"+$vt_colName
+					$vt_fObject:="foot_"+$vt_colName
+					
 					If (Undefined:C82($vo_col.formula))
 						$vt_formula:=Field name:C257(Table:C252($vp_table);$vo_col.field)
 					Else 
@@ -56,12 +58,61 @@ If (Form:C1466.tableNumber>0)
 					Else 
 						$vt_header:=$vo_col.header
 					End if 
+					If (Undefined:C82($vo_col.fontStyle))
+						$vl_fontStyle:=0
+					Else 
+						$vl_fontStyle:=$vo_col.fontStyle
+					End if 
+					If (Undefined:C82($vo_col.alignment))
+						$vl_alignment:=Align default:K42:1
+					Else 
+						Case of 
+							: ($vo_col.alignment="left")
+								$vl_alignment:=Align left:K42:2
+							: ($vo_col.alignment="right")
+								$vl_alignment:=Align right:K42:4
+							: ($vo_col.alignment="center")
+								$vl_alignment:=Align center:K42:3
+							Else 
+								$vl_alignment:=Align default:K42:1
+						End case 
+					End if 
+					If (Undefined:C82($vo_col.fontColour))
+						$vl_fontColour:=0
+					Else 
+						$vl_fontColour:=$vo_col.fontColour
+					End if 
+					If (Undefined:C82($vo_col.format))
+						$vt_format:=""
+					Else 
+						$vt_format:=$vo_col.format
+					End if 
+					
 					
 					LISTBOX INSERT COLUMN FORMULA:C970(*;"ULO_LIST";$i;$vt_colName;\
 						"This."+$vt_formula;\
-						$vl_type;$vt_hObject;$vp_nil)
+						$vl_type;$vt_hObject;$vp_nil;$vt_fObject;$vp_nil)
+					
+					OBJECT SET FORMAT:C236(*;$vt_colName;$vt_format)
+					OBJECT SET FONT STYLE:C166(*;$vt_colName;$vl_fontStyle)
+					OBJECT SET HORIZONTAL ALIGNMENT:C706(*;$vt_colName;$vl_alignment)
+					OBJECT SET RGB COLORS:C628(*;$vt_colName;$vl_fontColour;Background color:K23:2)
+					
 					OBJECT SET TITLE:C194(*;$vt_hObject;$vt_header)  //Sets the header text.
 					OBJECT SET FONT:C164(*;$vt_hObject;"Label")  //Sets the header text.
+					
+					If ($vo_col.average) | ($vo_col.max) | ($vo_col.total) | ($vo_col.min)
+						LISTBOX SET FOOTER CALCULATION:C1140(*;$vt_colName;lk footer custom:K70:1)
+						
+						OBJECT SET HORIZONTAL ALIGNMENT:C706(*;$vt_fObject;$vl_alignment)
+						OBJECT SET FORMAT:C236(*;$vt_fObject;$vt_format)
+						If ($vl_fontStyle=0) | ($vl_fontStyle=2) | ($vl_fontStyle=4) | ($vl_fontStyle=6)
+							$vl_fontStyle:=$vl_fontStyle+1  //Add bold if missing
+						End if 
+						OBJECT SET FONT STYLE:C166(*;$vt_fObject;$vl_fontStyle)
+						OBJECT SET RGB COLORS:C628(*;$vt_fObject;$vl_fontColour;Background color:K23:2)
+					End if 
+					
 					If (Not:C34(Undefined:C82($vo_col.width)))
 						LISTBOX SET COLUMN WIDTH:C833(*;$vt_hObject;$vo_col.width)
 					End if 
@@ -69,6 +120,9 @@ If (Form:C1466.tableNumber>0)
 			End if 
 			
 		End for each 
+		
+		ULO_LIST_UPDATE_FOOTER 
+		
 	Else 
 		Form:C1466.navItem.selectedView:=New object:C1471
 		Form:C1466.navItem.selectedView.id:=""

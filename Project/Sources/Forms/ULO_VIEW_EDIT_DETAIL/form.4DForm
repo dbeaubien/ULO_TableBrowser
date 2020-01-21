@@ -35,10 +35,10 @@
 			"objects": {
 				"BackgroundColour": {
 					"type": "rectangle",
-					"top": -1,
-					"left": -1,
+					"top": 0,
+					"left": 0,
 					"width": 405,
-					"height": 543,
+					"height": 478,
 					"sizingX": "grow",
 					"sizingY": "grow",
 					"fill": "#E8E8E8",
@@ -46,12 +46,12 @@
 				},
 				"VIEW_Accept": {
 					"type": "button",
-					"top": 496,
+					"top": 436,
 					"left": 305,
 					"width": 74,
 					"height": 22,
-					"sizingX": "move",
-					"sizingY": "move",
+					"sizingX": "fixed",
+					"sizingY": "fixed",
 					"action": "accept",
 					"shortcutKey": "[Enter]",
 					"text": "OK",
@@ -63,12 +63,12 @@
 				},
 				"VIEW_Cancel": {
 					"type": "button",
-					"top": 496,
+					"top": 436,
 					"left": 219,
 					"width": 74,
 					"height": 22,
-					"sizingX": "move",
-					"sizingY": "move",
+					"sizingX": "fixed",
+					"sizingY": "fixed",
 					"action": "cancel",
 					"shortcutKey": ".",
 					"shortcutAccel": true,
@@ -84,10 +84,10 @@
 			"objects": {
 				"Group Box2": {
 					"type": "groupBox",
-					"top": 365,
+					"top": 330,
 					"left": 33,
 					"width": 345,
-					"height": 110,
+					"height": 87,
 					"text": "Aggregates :"
 				},
 				"Group Box": {
@@ -95,20 +95,20 @@
 					"top": 30,
 					"left": 33,
 					"width": 345,
-					"height": 110,
+					"height": 130,
 					"text": "General :"
 				},
 				"Group Box1": {
 					"type": "groupBox",
-					"top": 160,
+					"top": 173,
 					"left": 34,
 					"width": 345,
-					"height": 190,
+					"height": 142,
 					"text": "Styling :"
 				},
 				"Variable": {
 					"type": "input",
-					"top": 63,
+					"top": 55,
 					"left": 159,
 					"width": 179,
 					"height": 16,
@@ -121,11 +121,11 @@
 				},
 				"cb_agg_total": {
 					"type": "checkbox",
-					"top": 399,
+					"top": 354,
 					"left": 100,
 					"width": 100,
 					"height": 17,
-					"sizingY": "move",
+					"sizingY": "fixed",
 					"dataSource": "Form:C1466.total",
 					"text": "Total",
 					"class": "default",
@@ -137,11 +137,11 @@
 				},
 				"cb_agg_min": {
 					"type": "checkbox",
-					"top": 436,
+					"top": 384,
 					"left": 100,
 					"width": 100,
 					"height": 17,
-					"sizingY": "move",
+					"sizingY": "fixed",
 					"dataSource": "Form:C1466.min",
 					"text": "Min",
 					"class": "default",
@@ -153,11 +153,11 @@
 				},
 				"cb_agg_average": {
 					"type": "checkbox",
-					"top": 399,
+					"top": 354,
 					"left": 227,
 					"width": 100,
 					"height": 17,
-					"sizingY": "move",
+					"sizingY": "fixed",
 					"dataSource": "Form:C1466.average",
 					"text": "Average",
 					"class": "default",
@@ -169,11 +169,11 @@
 				},
 				"cb_agg_max": {
 					"type": "checkbox",
-					"top": 436,
+					"top": 384,
 					"left": 227,
 					"width": 100,
 					"height": 17,
-					"sizingY": "move",
+					"sizingY": "fixed",
 					"dataSource": "Form:C1466.max",
 					"text": "Max",
 					"class": "default",
@@ -185,23 +185,23 @@
 				},
 				"Text": {
 					"type": "text",
-					"top": 63,
-					"left": 68,
-					"width": 80,
+					"top": 55,
+					"left": 56,
+					"width": 100,
 					"height": 15,
 					"text": "Header :"
 				},
 				"Text1": {
 					"type": "text",
-					"top": 100,
-					"left": 68,
-					"width": 80,
+					"top": 87,
+					"left": 56,
+					"width": 100,
 					"height": 15,
 					"text": "Formula :"
 				},
-				"Variable1": {
+				"input_formula": {
 					"type": "input",
-					"top": 99,
+					"top": 86,
 					"left": 159,
 					"width": 179,
 					"height": 16,
@@ -214,19 +214,19 @@
 				},
 				"Text2": {
 					"type": "text",
-					"top": 192,
-					"left": 68,
-					"width": 80,
+					"top": 205,
+					"left": 56,
+					"width": 100,
 					"height": 15,
 					"text": "Font Style :"
 				},
 				"cb_sty_bold": {
 					"type": "checkbox",
-					"top": 191,
+					"top": 204,
 					"left": 159,
 					"width": 60,
 					"height": 17,
-					"sizingY": "move",
+					"sizingY": "fixed",
 					"dataSource": "Form:C1466.bold",
 					"text": "Bold",
 					"class": "default",
@@ -238,11 +238,11 @@
 				},
 				"cb_sty_italic": {
 					"type": "checkbox",
-					"top": 191,
+					"top": 204,
 					"left": 219,
 					"width": 60,
 					"height": 17,
-					"sizingY": "move",
+					"sizingY": "fixed",
 					"dataSource": "Form:C1466.italic",
 					"text": "Italic",
 					"class": "default",
@@ -254,11 +254,11 @@
 				},
 				"cb_sty_underline": {
 					"type": "checkbox",
-					"top": 191,
+					"top": 204,
 					"left": 279,
 					"width": 80,
 					"height": 17,
-					"sizingY": "move",
+					"sizingY": "fixed",
 					"dataSource": "Form:C1466.underline",
 					"text": "Underline",
 					"class": "default",
@@ -270,17 +270,17 @@
 				},
 				"Text3": {
 					"type": "text",
-					"top": 227,
-					"left": 68,
-					"width": 80,
+					"top": 240,
+					"left": 56,
+					"width": 100,
 					"height": 15,
 					"text": "Font Colour :"
 				},
-				"Variable2": {
+				"input_fontColourHex": {
 					"type": "input",
-					"top": 226,
+					"top": 239,
 					"left": 159,
-					"width": 119,
+					"width": 147,
 					"height": 16,
 					"dataSource": "Form:C1466.col.fontColourHex",
 					"dragging": "none",
@@ -290,28 +290,18 @@
 					],
 					"entryFilter": "~\"ABCDEF0-9\"######"
 				},
-				"Picture Button": {
-					"type": "pictureButton",
-					"left": 330,
-					"top": 225,
-					"width": 29,
-					"height": 17,
-					"events": [
-						"onClick"
-					]
-				},
 				"rect_fontColour": {
 					"type": "rectangle",
-					"top": 225,
-					"left": 286,
+					"top": 238,
+					"left": 314,
 					"width": 24,
 					"height": 17
 				},
 				"bt_fontColourPick": {
 					"type": "button",
 					"text": "",
-					"top": 224,
-					"left": 286,
+					"top": 238,
+					"left": 314,
 					"width": 28,
 					"height": 18,
 					"events": [
@@ -319,6 +309,73 @@
 					],
 					"style": "custom",
 					"visibility": "visible"
+				},
+				"Text4": {
+					"type": "text",
+					"top": 119,
+					"left": 56,
+					"width": 100,
+					"height": 15,
+					"text": "Display Format :"
+				},
+				"Variable3": {
+					"type": "input",
+					"top": 118,
+					"left": 159,
+					"width": 179,
+					"height": 16,
+					"dataSource": "Form:C1466.col.format",
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					]
+				},
+				"Text5": {
+					"type": "text",
+					"top": 273,
+					"left": 56,
+					"width": 100,
+					"height": 15,
+					"text": "Alignment :"
+				},
+				"rb_left": {
+					"type": "radio",
+					"text": "Left",
+					"top": 271,
+					"left": 159,
+					"width": 43,
+					"height": 20,
+					"events": [
+						"onClick"
+					],
+					"radioGroup": "align",
+					"dataSource": "Form:C1466.alignLeft"
+				},
+				"rb_center": {
+					"type": "radio",
+					"text": "Center",
+					"top": 271,
+					"left": 216,
+					"width": 63,
+					"height": 20,
+					"events": [
+						"onClick"
+					],
+					"radioGroup": "align",
+					"dataSource": "Form:C1466.alignCenter"
+				},
+				"rb_right": {
+					"type": "radio",
+					"text": "Right",
+					"top": 270,
+					"left": 286,
+					"width": 52,
+					"height": 20,
+					"events": [
+						"onClick"
+					],
+					"radioGroup": "align"
 				}
 			}
 		}
