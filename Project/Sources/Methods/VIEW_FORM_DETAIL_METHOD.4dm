@@ -2,6 +2,7 @@
 C_OBJECT:C1216($1;$vo_formEvent)
 C_TEXT:C284($vt_objectName;$vt_prop)
 C_LONGINT:C283($vl_newColour;$vl_fontColour)
+C_BOOLEAN:C305($vb_formula)
 
 $vo_formEvent:=$1
 If (OB Is defined:C1231($vo_formEvent;"objectName"))
@@ -16,6 +17,36 @@ Case of
 		Case of 
 			: ($vo_formEvent.code=On Load:K2:1)
 				  //TRACE
+				
+				ARRAY TEXT:C222(at_dataType;0)
+				ARRAY LONGINT:C221(al_dataType;0)
+				
+				APPEND TO ARRAY:C911(at_dataType;"Alpha")
+				APPEND TO ARRAY:C911(at_dataType;"Text")
+				APPEND TO ARRAY:C911(at_dataType;"Integer")
+				APPEND TO ARRAY:C911(at_dataType;"Real")
+				APPEND TO ARRAY:C911(at_dataType;"Date")
+				APPEND TO ARRAY:C911(at_dataType;"Boolean")
+				APPEND TO ARRAY:C911(at_dataType;"Picture")
+				APPEND TO ARRAY:C911(at_dataType;"Time")
+				APPEND TO ARRAY:C911(at_dataType;"Object")
+				APPEND TO ARRAY:C911(at_dataType;"Blob")
+				
+				APPEND TO ARRAY:C911(al_dataType;Is alpha field:K8:1)
+				APPEND TO ARRAY:C911(al_dataType;Is text:K8:3)
+				APPEND TO ARRAY:C911(al_dataType;Is longint:K8:6)
+				APPEND TO ARRAY:C911(al_dataType;Is real:K8:4)
+				APPEND TO ARRAY:C911(al_dataType;Is date:K8:7)
+				APPEND TO ARRAY:C911(al_dataType;Is boolean:K8:9)
+				APPEND TO ARRAY:C911(al_dataType;Is picture:K8:10)
+				APPEND TO ARRAY:C911(al_dataType;Is time:K8:8)
+				APPEND TO ARRAY:C911(al_dataType;Is object:K8:27)
+				APPEND TO ARRAY:C911(al_dataType;Is BLOB:K8:12)
+				
+				SORT ARRAY:C229(at_dataType;al_dataType;>)
+				
+				at_dataType:=Find in array:C230(al_dataType;Form:C1466.col.fieldType)
+				$vb_formula:=(Form:C1466.col.table<=0)  //Column is a custom formula is table is < 1
 				
 				Form:C1466.total:=Num:C11(Form:C1466.col.total)
 				Form:C1466.average:=Num:C11(Form:C1466.col.average)
@@ -66,11 +97,26 @@ Case of
 						Form:C1466.alignCenter:=1
 				End case 
 				
-				OBJECT SET ENTERABLE:C238(*;"input_formula";(Form:C1466.col.table<=0))  //Non enterable if table is positive
-				
 				EXECUTE FORMULA:C63("$vl_fontColour:=0x00"+Form:C1466.col.fontColourHex)
 				
+				OBJECT SET ENTERABLE:C238(*;"input_formula";$vb_formula)
+				OBJECT SET ENABLED:C1123(*;"dropdown_datatype";$vb_formula)
 				OBJECT SET RGB COLORS:C628(*;"rect_fontColour";$vl_fontColour;$vl_fontColour)
+				OBJECT SET ENABLED:C1123(*;"cb_agg_@";False:C215)
+				
+				Case of 
+					: (Form:C1466.col.table=-1)  //All disabled when custom formula
+					: (Form:C1466.col.fieldType=Is integer:K8:5) | (Form:C1466.col.fieldType=Is real:K8:4) | (Form:C1466.col.fieldType=Is longint:K8:6)
+						OBJECT SET ENABLED:C1123(*;"cb_agg_@";True:C214)
+						
+					: (Form:C1466.col.fieldType=Is date:K8:7) | (Form:C1466.col.fieldType=Is time:K8:8)
+						OBJECT SET ENABLED:C1123(*;"cb_agg_max";True:C214)
+						OBJECT SET ENABLED:C1123(*;"cb_agg_min";True:C214)
+						
+					: (Form:C1466.col.fieldType=Is boolean:K8:9)
+						OBJECT SET ENABLED:C1123(*;"cb_agg_total";True:C214)
+				End case 
+				
 				
 				
 		End case 
@@ -120,5 +166,43 @@ Case of
 				
 		End case 
 		
+	: ($vt_objectName="dropdown_datatype")
+		Case of 
+			: ($vo_formEvent.code=On Data Change:K2:15) | ($vo_formEvent.code=On Clicked:K2:4)
+				Form:C1466.col.fieldType:=al_dataType{at_dataType}
+				
+				  //Update aggregate check boxes according to selected type.
+				  //Clear selected aggregates where it no longer applies
+				
+				OBJECT SET ENABLED:C1123(*;"cb_agg_@";False:C215)
+				Case of 
+					: (Form:C1466.col.table=-1)
+					: (Form:C1466.col.fieldType=Is integer:K8:5) | (Form:C1466.col.fieldType=Is real:K8:4)
+						OBJECT SET ENABLED:C1123(*;"cb_agg_@";True:C214)
+						
+					: (Form:C1466.col.fieldType=Is date:K8:7) | (Form:C1466.col.fieldType=Is time:K8:8)
+						OBJECT SET ENABLED:C1123(*;"cb_agg_max";True:C214)
+						OBJECT SET ENABLED:C1123(*;"cb_agg_min";True:C214)
+						Form:C1466.col.total:=False:C215
+						Form:C1466.col.average:=False:C215
+						
+					: (Form:C1466.col.fieldType=Is boolean:K8:9)
+						OBJECT SET ENABLED:C1123(*;"cb_agg_total";True:C214)
+						Form:C1466.col.min:=False:C215
+						Form:C1466.col.max:=False:C215
+						Form:C1466.col.average:=False:C215
+						
+					Else 
+						Form:C1466.col.min:=False:C215
+						Form:C1466.col.max:=False:C215
+						Form:C1466.col.average:=False:C215
+						Form:C1466.col.total:=False:C215
+				End case 
+				Form:C1466.total:=Num:C11(Form:C1466.col.total)
+				Form:C1466.average:=Num:C11(Form:C1466.col.average)
+				Form:C1466.min:=Num:C11(Form:C1466.col.min)
+				Form:C1466.max:=Num:C11(Form:C1466.col.max)
+				
+		End case 
 		
 End case 

@@ -17,6 +17,7 @@ C_TEXT:C284($vt_prop)
 
 $vo_formData:=New object:C1471
 $vo_formData.col:=OB Copy:C1225(Form:C1466.selectedCol)
+$vo_formData.table:=Form:C1466.view.table
 
 $vl_left:=(Screen width:C187/2)-(405/2)
 $vl_top:=(Screen height:C188/2)-(475/2)

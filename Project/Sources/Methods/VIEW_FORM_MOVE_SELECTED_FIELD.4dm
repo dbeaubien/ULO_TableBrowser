@@ -42,7 +42,7 @@ Else
 		
 		
 		$vo_col.width:=100
-		$vo_col.fieldType:=""
+		$vo_col.fieldType:=Type:C295(Field:C253(al_tableNum{at_tableName};Form:C1466.selectedField.fieldNumber)->)
 		$vo_col.format:=""
 		$vo_col.fontStyle:=0
 		$vo_col.fontColour:=0x0000  //Black

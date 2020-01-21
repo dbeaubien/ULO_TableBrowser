@@ -88,9 +88,10 @@ If (Form:C1466.tableNumber>0)
 						$vt_format:=$vo_col.format
 					End if 
 					
-					
-					LISTBOX INSERT COLUMN FORMULA:C970(*;"ULO_LIST";$i;$vt_colName;\
-						"This."+$vt_formula;\
+					If ($vo_col.table>0)
+						$vt_formula:="This."+$vt_formula
+					End if 
+					LISTBOX INSERT COLUMN FORMULA:C970(*;"ULO_LIST";$i;$vt_colName;$vt_formula;\
 						$vl_type;$vt_hObject;$vp_nil;$vt_fObject;$vp_nil)
 					
 					OBJECT SET FORMAT:C236(*;$vt_colName;$vt_format)
