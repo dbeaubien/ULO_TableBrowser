@@ -2,25 +2,6 @@
 <!DOCTYPE base SYSTEM "http://www.4d.com/dtd/2007/base.dtd" >
 <base name="" uuid="D0B77C368E1B1C45ADA2C1AC2FDEB404" collation_locale="en-gb">
 	<schema name="DEFAULT_SCHEMA"/>
-	<table name="test" uuid="EA1DBD14F76662479AB7A3279792A0DF" id="1">
-		<field name="id" uuid="CF1987D2279C12418E454364860DDD75" type="10" unique="true" autogenerate="true" store_as_UUID="true" not_null="true" id="1"/>
-		<field name="name" uuid="7A5F5D995CE6874886FE0F4B9695C621" type="10" limiting_length="255" never_null="true" id="2"/>
-		<field name="date" uuid="6A13CD3345183D4DB5CF0E36C9C83BAA" type="8" never_null="true" id="3"/>
-		<field name="number" uuid="3D84273098A2D14CAAC8FE52CD37C885" type="4" never_null="true" id="4"/>
-		<field name="detail" uuid="8A2D559CCA188645949C7594ACE29C72" type="21" blob_switch_size="2147483647" never_null="true" id="5"/>
-		<primary_key field_name="id" field_uuid="CF1987D2279C12418E454364860DDD75"/>
-		<table_extra input_form="Input" output_form="Output">
-			<editor_table_info displayable_fields_count="6">
-				<color red="255" green="255" blue="255" alpha="0"/>
-				<coordinates left="373" top="74" width="120" height="167.33203125"/>
-			</editor_table_info>
-		</table_extra>
-	</table>
-	<index kind="regular" unique_keys="true" uuid="EDDBF016C8672A44951E63C105AE5814" type="7">
-		<field_ref uuid="CF1987D2279C12418E454364860DDD75" name="id">
-			<table_ref uuid="EA1DBD14F76662479AB7A3279792A0DF" name="test"/>
-		</field_ref>
-	</index>
 	<base_extra __stringCompHash="icu:63.1.0" __keywordBuildingHash="icu:63.1.0" data_file_path="\ULO_TableBrowser.4DD">
 		<journal_file journal_file_enabled="true"/>
 	</base_extra>

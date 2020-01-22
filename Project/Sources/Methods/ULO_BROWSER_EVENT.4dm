@@ -11,7 +11,6 @@ Else
 	$vt_eventObject:="form"
 End if 
 
-$vb_buttonUpdate:=True:C214
 Case of 
 	: ($vt_eventObject="form")
 		Case of 
@@ -27,7 +26,6 @@ Case of
 				End if 
 				LISTBOX SELECT ROW:C912(*;"ULO_Navbar";$index+1;lk replace selection:K53:1)
 				ULO_LOAD_VIEW 
-				$vb_buttonUpdate:=False:C215
 				SET TIMER:C645(1)
 				
 			: ($vl_event=On Timer:K2:25)
@@ -35,6 +33,10 @@ Case of
 					: (Form:C1466.refresh)
 						Form:C1466.refresh:=False:C215
 						SET TIMER:C645(0)
+						$vl_selected:=Form:C1466.records.length
+						OBJECT SET ENABLED:C1123(*;"ULO_Button_SHOWSUBSET";($vl_selected>0))
+						OBJECT SET ENABLED:C1123(*;"ULO_Button_OMITSUBSET";($vl_selected>0))
+						ULO_LIST_UPDATE_FOOTER 
 					: (Form:C1466.resizing)
 						Form:C1466.resizing:=False:C215
 						Form:C1466.pendingResize:=True:C214
@@ -97,6 +99,8 @@ Case of
 						EXECUTE METHOD:C1007($vt_method;*;"Double click test: "+JSON Stringify:C1217(Form:C1466.record.toObject()))
 					End if 
 				End if 
+				Form:C1466.refresh:=True:C214
+				SET TIMER:C645(1)
 				
 			: ($vl_event=On Clicked:K2:4) & (Right click:C712)
 				If (OB Is defined:C1231(Form:C1466.navItem;"rowContext"))
@@ -105,6 +109,12 @@ Case of
 						EXECUTE METHOD:C1007($vt_method;*;"context test: "+JSON Stringify:C1217(Form:C1466.record.toObject()))
 					End if 
 				End if 
+				Form:C1466.refresh:=True:C214
+				SET TIMER:C645(1)
+				
+			: ($vl_event=On Clicked:K2:4)
+				Form:C1466.refresh:=True:C214
+				SET TIMER:C645(1)
 				
 			: ($vl_event=On Column Resize:K2:31)
 				  //Resize event is fired for every pixel that the column is changed by
@@ -194,11 +204,3 @@ Case of
 		End case 
 		
 End case 
-
-
-  //Does this need to update on every event?
-If ($vb_buttonUpdate)
-	$vl_selected:=Form:C1466.records.length
-	OBJECT SET ENABLED:C1123(*;"ULO_Button_SHOWSUBSET";($vl_selected>0))
-	OBJECT SET ENABLED:C1123(*;"ULO_Button_OMITSUBSET";($vl_selected>0))
-End if 
