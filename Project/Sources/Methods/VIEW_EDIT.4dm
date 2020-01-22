@@ -10,6 +10,7 @@ ARRAY LONGINT:C221(al_tableNum;0)
 
 $vo_formData:=New object:C1471
 $vo_formData.view:=New object:C1471
+$vo_formData.delete:=False:C215
 
 If ($2#"")
 	  //$es_views:=ds["uloData"].query("id == :1";$2)
@@ -23,7 +24,7 @@ Else
 	$e_uloData:=ds:C1482["uloData"].new()
 	$e_uloData.detail:=New object:C1471
 	$e_uloData.table:=$1
-	$vo_formData.view.id:=-1
+	$vo_formData.view.id:=""
 	$vo_formData.view.table:=$1
 	$vo_formData.view.name:="New View"
 	$vo_formData.view.handle:=Form:C1466.navItem.handle
@@ -109,6 +110,11 @@ If (OK=1)
 		  //alert?
 		ALERT:C41("Failed to save "+Char:C90(13)+JSON Stringify:C1217($vo_res;*))
 	End if 
-	
+Else 
+	If ($vo_formData.delete)
+		$e_uloData.drop()
+		Form:C1466.navItem.selectedView:=Null:C1517
+		ULO_LOAD_VIEW 
+	End if 
 End if 
 

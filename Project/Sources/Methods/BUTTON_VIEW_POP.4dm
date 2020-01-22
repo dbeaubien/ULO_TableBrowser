@@ -135,7 +135,7 @@ Case of
 		
 	: ($1="Options")  //General view options - Style and font size.
 		
-		ULO_VIEW_OPTIONS 
+		ULO_VIEW_OPTIONS
 		  //For ($i;1;Size of array(<>at_PROC_Name))
 		  //If (<>at_PROC_Name{$i}="BRW LISTING_@") & (<>al_PROC_ID{$i}#Current process)
 		  //SET PROCESS VARIABLE(<>al_PROC_ID{$i};vt_BRW_ACTION;BRWUPDATE Update View Format)

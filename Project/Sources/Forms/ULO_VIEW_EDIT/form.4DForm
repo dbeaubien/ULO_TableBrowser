@@ -171,23 +171,6 @@
 						"onClick"
 					]
 				},
-				"View_UseFooter": {
-					"type": "checkbox",
-					"top": 459,
-					"left": 383,
-					"width": 100,
-					"height": 17,
-					"sizingY": "move",
-					"dataSource": "Form:C1466.view.detail.useFooter",
-					"text": "Use Footers",
-					"class": "default",
-					"focusable": false,
-					"events": [
-						"onLoad",
-						"onClick"
-					],
-					"dataSourceTypeHint": "boolean"
-				},
 				"lb_viewCols": {
 					"type": "listbox",
 					"top": 125,
@@ -226,7 +209,7 @@
 						{
 							"name": "BRW_VIEW_FieldName",
 							"dataSource": "This:C1470.fieldName",
-							"width": 140,
+							"width": 150,
 							"minWidth": 10,
 							"maxWidth": 32000,
 							"resizable": false,
@@ -259,7 +242,7 @@
 						{
 							"name": "BRW_VIEW_FieldHeaders1",
 							"dataSource": "This:C1470.header",
-							"width": 150,
+							"width": 175,
 							"minWidth": 10,
 							"maxWidth": 32000,
 							"resizable": false,
@@ -322,41 +305,6 @@
 								"fontSize": 12
 							},
 							"dataSourceTypeHint": "text"
-						},
-						{
-							"name": "BRW_VIEW_Field_Total",
-							"dataSource": "This:C1470.footerProperties",
-							"dataSourceTypeHint": "boolean",
-							"width": 115,
-							"minWidth": 10,
-							"maxWidth": 32000,
-							"resizable": false,
-							"enterable": false,
-							"pictureFormat": "truncatedCenter",
-							"controlType": "checkbox",
-							"stroke": "#000000",
-							"fill": "#E8F0FE",
-							"alternateFill": "automatic",
-							"fontFamily": "Segoe UI",
-							"fontSize": 12,
-							"events": [
-								"onClick"
-							],
-							"header": {
-								"name": "BRW_VIEW_Footer_PropertiesHdr",
-								"text": "Footer properties",
-								"stroke": "#000000",
-								"fontFamily": "Segoe UI",
-								"fontSize": 12
-							},
-							"footer": {
-								"name": "Footer10",
-								"timeFormat": "hh_mm_ss",
-								"stroke": "#000000",
-								"fill": "#FFFFFF",
-								"fontFamily": "Segoe UI",
-								"fontSize": 12
-							}
 						}
 					]
 				},
@@ -487,8 +435,8 @@
 			"objects": {
 				"isPublic": {
 					"type": "checkbox",
-					"top": 145,
-					"left": 199,
+					"top": 185,
+					"left": 209,
 					"width": 120,
 					"height": 17,
 					"dataSource": "Form:C1466.view.detail.public",
@@ -502,8 +450,8 @@
 				},
 				"PROMPT_Locked": {
 					"type": "text",
-					"top": 171,
-					"left": 86,
+					"top": 215,
+					"left": 93,
 					"width": 107,
 					"height": 16,
 					"class": "default",
@@ -512,9 +460,9 @@
 				},
 				"BRW_VIEW_LockedCols": {
 					"type": "input",
-					"top": 171,
-					"left": 202,
-					"width": 32,
+					"top": 215,
+					"left": 209,
+					"width": 52,
 					"height": 16,
 					"dataSource": "Form:C1466.view.detail.lockedColumns",
 					"dataSourceTypeHint": "number",
@@ -528,8 +476,8 @@
 				},
 				"PROMPT_Locked1": {
 					"type": "text",
-					"top": 199,
-					"left": 86,
+					"top": 243,
+					"left": 93,
 					"width": 107,
 					"height": 16,
 					"class": "default",
@@ -538,9 +486,9 @@
 				},
 				"BRW_VIEW_HeadHeight": {
 					"type": "input",
-					"top": 199,
-					"left": 202,
-					"width": 32,
+					"top": 243,
+					"left": 209,
+					"width": 52,
 					"height": 16,
 					"dataSource": "Form:C1466.view.detail.headerHeight",
 					"dataSourceTypeHint": "number",
@@ -555,8 +503,8 @@
 				},
 				"PROMPT_Locked2": {
 					"type": "text",
-					"top": 201,
-					"left": 242,
+					"top": 245,
+					"left": 269,
 					"width": 187,
 					"height": 12,
 					"class": "Extra_Small",
@@ -565,8 +513,8 @@
 				},
 				"PROMPT_Locked3": {
 					"type": "text",
-					"top": 225,
-					"left": 86,
+					"top": 269,
+					"left": 93,
 					"width": 107,
 					"height": 16,
 					"class": "default",
@@ -575,9 +523,9 @@
 				},
 				"BRW_VIEW_RowHeight": {
 					"type": "input",
-					"top": 225,
-					"left": 202,
-					"width": 32,
+					"top": 269,
+					"left": 209,
+					"width": 52,
 					"height": 16,
 					"dataSource": "Form:C1466.view.detail.rowHeight",
 					"dataSourceTypeHint": "number",
@@ -592,13 +540,42 @@
 				},
 				"PROMPT_Locked4": {
 					"type": "text",
-					"top": 227,
-					"left": 242,
+					"top": 271,
+					"left": 269,
 					"width": 187,
 					"height": 12,
 					"class": "Extra_Small",
 					"textAlign": "left",
 					"text": "(Number of text rows)"
+				},
+				"View_UseFooter": {
+					"type": "checkbox",
+					"top": 158,
+					"left": 209,
+					"width": 100,
+					"height": 17,
+					"sizingY": "move",
+					"dataSource": "Form:C1466.view.detail.useFooter",
+					"text": "Use Footers",
+					"class": "default",
+					"focusable": false,
+					"events": [
+						"onLoad",
+						"onClick"
+					],
+					"dataSourceTypeHint": "boolean"
+				},
+				"bt_deleteView": {
+					"type": "button",
+					"text": "Delete this View",
+					"top": 330,
+					"left": 204,
+					"width": 177,
+					"height": 26,
+					"events": [
+						"onClick"
+					],
+					"stroke": "#ff0000"
 				}
 			}
 		}

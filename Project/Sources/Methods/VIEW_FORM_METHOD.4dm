@@ -15,6 +15,8 @@ Case of
 		
 		Case of 
 			: ($vo_formEvent.code=On Load:K2:1)
+				
+				OBJECT SET ENABLED:C1123(*;"bt_deleteView";(Form:C1466.view.id#""))
 				VIEW_FORM_BUILD_DISPLAY_FIELD 
 				VIEW_FORM_BUILD_DISPLAY_COL 
 			: ($vo_formEvent.code=On Timer:K2:25)
@@ -83,6 +85,17 @@ Case of
 		Case of 
 			: ($vo_formEvent.code=On Clicked:K2:4)
 				VIEW_FORM_MOVE_SELECTED_FIELD 
+				
+		End case 
+		
+	: ($vt_objectName="bt_deleteView")
+		Case of 
+			: ($vo_formEvent.code=On Clicked:K2:4)
+				CONFIRM:C162("Are you sure you wish to delete the View "+Form:C1466.view.name+"?")
+				If (OK=1)
+					Form:C1466.delete:=True:C214
+					CANCEL:C270
+				End if 
 				
 		End case 
 		
