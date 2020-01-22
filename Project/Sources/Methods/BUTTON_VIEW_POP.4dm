@@ -21,13 +21,6 @@ Case of
 			
 		End if 
 		
-		  //$vl_DefaultViewID:=BRW_VIEW_Get_Default_Quick(vl_BRW_Table;vt_BRW_Handle)
-		  //If ($vl_DefaultViewID=0)
-		  //$vl_DefaultViewID:=BRW_View_Create(vl_BRW_Table;vt_BRW_Handle)
-		  //End if 
-		
-		  //$vl_Default:=BRW_VIEW_Get_Default(vl_BRW_Table;vt_BRW_Handle)
-		
 		APPEND MENU ITEM:C411($vt_ViewMenu;"Default View")
 		SET MENU ITEM PARAMETER:C1004($vt_ViewMenu;-1;"DEFAULT VIEW:LOAD:"+$vt_defaultViewId)
 		If ($vt_defaultViewId=Form:C1466.navItem.selectedView.id)
@@ -35,8 +28,6 @@ Case of
 		Else 
 			SET MENU ITEM MARK:C208($vt_ViewMenu;-1;"")
 		End if 
-		
-		  //vl_BRW_View_Loaded:=$vl_DefaultViewID
 		
 		  //Now add a submenu of my personal Views
 		$vl_CurrentUser:=Storage:C1525.user.id
@@ -63,15 +54,16 @@ Case of
 			APPEND MENU ITEM:C411($vt_ViewMenu;"My Views")
 			DISABLE MENU ITEM:C150($vt_ViewMenu;-1)
 		End if 
-		
+		  //TRACE
 		  //Now get other views I can use.
 		$vc_views:=ds:C1482["uloData"].query("group # -1 & user # :1 & table = :2 & default = :3";\
 			$vl_CurrentUser;Form:C1466.tableNumber;False:C215).orderBy("name").toCollection("id,name,user,detail")
 		If ($vc_views.length>0)
+			$vt_MyViews:=Create menu:C408
 			For each ($vo_view;$vc_views)
 				APPEND MENU ITEM:C411($vt_MyViews;$vo_view.name)
 				SET MENU ITEM PARAMETER:C1004($vt_MyViews;-1;"VIEW:LOAD:"+$vo_view.id)
-				If ($vo_view.id=Form:C1466.navItem.selectedView)
+				If ($vo_view.id=Form:C1466.navItem.selectedView.id)
 					SET MENU ITEM MARK:C208($vt_MyViews;-1;Char:C90(18))
 				End if 
 			End for each 
@@ -96,6 +88,10 @@ Case of
 		If ($vl_CurrentUser#Form:C1466.navItem.selectedView.user) & ($vl_CurrentUser#-1)  //can only amend views that belong to you unless designer
 			DISABLE MENU ITEM:C150($vt_ViewMenu;-1)
 		End if 
+		
+		  //Dupe current view
+		APPEND MENU ITEM:C411($vt_ViewMenu;"Duplicate Current View")
+		SET MENU ITEM PARAMETER:C1004($vt_ViewMenu;-1;"DUPE")
 		
 		  //Break
 		APPEND MENU ITEM:C411($vt_ViewMenu;"-")
@@ -122,46 +118,23 @@ Case of
 		  //vb_View_Loaded_Is_Default:=($1="DEFAULT VIEW:@")
 		
 	: ($1="New")  //New view
-		VIEW_EDIT (Form:C1466.tableNumber;"")
-		
-		  //BRW_View_New
+		VIEW_EDIT ("New")
 		
 	: ($1="Amend")  //Amend current view
-		VIEW_EDIT (Form:C1466.tableNumber;Form:C1466.navItem.selectedView.id)
-		  //BRW_View_Edit
-		
-	: ($1="Delete")  //Delete current view
-		  //BRW_VIEW_DELETE
+		VIEW_EDIT ("Edit")
 		
 	: ($1="Options")  //General view options - Style and font size.
-		
-		ULO_VIEW_OPTIONS
-		  //For ($i;1;Size of array(<>at_PROC_Name))
-		  //If (<>at_PROC_Name{$i}="BRW LISTING_@") & (<>al_PROC_ID{$i}#Current process)
-		  //SET PROCESS VARIABLE(<>al_PROC_ID{$i};vt_BRW_ACTION;BRWUPDATE Update View Format)
-		  //CALL PROCESS(<>al_PROC_ID{$i})
-		  //End if 
-		  //End for 
+		ULO_VIEW_OPTIONS 
 		
 	: ($1="LOAD@")  //load a passed view
 		$vt_id:=Replace string:C233($1;"LOAD:";"")
 		$e_view:=ds:C1482["uloData"].get($vt_id)
-		  //Form.navItem.view:=$e_view.detail
 		Form:C1466.navItem.selectedView:=$e_view.toObject()
 		ULO_LOAD_VIEW 
 		
-		  //ALERT("Load - "+$1)
-		  //vl_BRW_View_Loaded:=Num($1)
-		  //BRW_VIEW_Load(Num($1))
-		  //BRW_VIEW_DRAW
-		  //BRW_UPDATE_FOOTERS
+	: ($1="DUPE")
 		
-		  //BRW_VIEW (Num($1))
-		
-		  //Load a selected view
-		
-		
-		
+		VIEW_EDIT ("Dupe")
 		
 		
 End case 

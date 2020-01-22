@@ -16,7 +16,7 @@ Case of
 		Case of 
 			: ($vo_formEvent.code=On Load:K2:1)
 				
-				OBJECT SET ENABLED:C1123(*;"bt_deleteView";(Form:C1466.view.id#""))
+				OBJECT SET ENABLED:C1123(*;"bt_deleteView";Form:C1466.allowDelete)
 				VIEW_FORM_BUILD_DISPLAY_FIELD 
 				VIEW_FORM_BUILD_DISPLAY_COL 
 			: ($vo_formEvent.code=On Timer:K2:25)

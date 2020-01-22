@@ -1,9 +1,20 @@
 //%attributes = {}
-C_LONGINT:C283($1;$vl_idx;$vl_idx2)  //table, viewNum
-C_LONGINT:C283($vl_left;$vl_top;$vl_right;$vl_bottom;$vl_win)
-C_TEXT:C284($2)
-C_OBJECT:C1216($vo_formData;$e_uloData;$vo_field;$vo_res)
 
+  // ----------------------------------------------------
+  // User name (OS): Tom
+  // Date and time: 22/01/20, 19:33:38
+  // ----------------------------------------------------
+  // Method: VIEW_EDIT
+  // Description
+  //
+  // Parameters
+  // $1 - String - Case : "New" ; "Dupe" ; "Edit"
+  // ----------------------------------------------------
+
+C_LONGINT:C283($vl_idx;$vl_idx2)  //table, viewNum
+C_LONGINT:C283($vl_left;$vl_top;$vl_right;$vl_bottom;$vl_win)
+C_TEXT:C284($1)
+C_OBJECT:C1216($vo_formData;$e_uloData;$vo_field;$vo_res;$vo_currentView)
 
 ARRAY TEXT:C222(at_tableName;0)
 ARRAY LONGINT:C221(al_tableNum;0)
@@ -12,42 +23,75 @@ $vo_formData:=New object:C1471
 $vo_formData.view:=New object:C1471
 $vo_formData.delete:=False:C215
 
-If ($2#"")
-	  //$es_views:=ds["uloData"].query("id == :1";$2)
-	  //If ($es_views.length>0)
-	  //$vo_formData.view:=$es_views.first().toObject()
-	  //End if 
-	$e_uloData:=ds:C1482["uloData"].get($2)
-	$vo_formData.view:=$e_uloData.toObject()
-Else 
-	  //Is a new view, create default $vo_formData
-	$e_uloData:=ds:C1482["uloData"].new()
-	$e_uloData.detail:=New object:C1471
-	$e_uloData.table:=$1
-	$vo_formData.view.id:=""
-	$vo_formData.view.table:=$1
-	$vo_formData.view.name:="New View"
-	$vo_formData.view.handle:=Form:C1466.navItem.handle
-	$vo_formData.view.type:=2
-	$vo_formData.view.user:=1
-	$vo_formData.view.group:=1
-	$vo_formData.view.favourite:=False:C215
-	$vo_formData.view.default:=False:C215
-	$vo_formData.view.detail:=New object:C1471
-	$vo_formData.view.detail.cols:=New collection:C1472
-	$vo_formData.view.detail.public:=False:C215
-	$vo_formData.view.detail.useFooter:=False:C215
-	$vo_formData.view.detail.lockedColumns:=0
-	$vo_formData.view.detail.rowHeight:=1
-	$vo_formData.view.detail.headerHeight:=1
-	
-End if 
+
+Case of 
+	: ($1="New")
+		$vo_formData.allowDelete:=False:C215
+		  //Is a new view, create default $vo_formData
+		$e_uloData:=ds:C1482["uloData"].new()
+		$e_uloData.detail:=New object:C1471
+		$e_uloData.table:=Form:C1466.tableNumber
+		$vo_formData.view.id:=""
+		$vo_formData.view.table:=Form:C1466.tableNumber
+		$vo_formData.view.name:="New View"
+		$vo_formData.view.handle:=Form:C1466.navItem.handle
+		$vo_formData.view.type:=2
+		$vo_formData.view.user:=Storage:C1525.user.id
+		$vo_formData.view.group:=1
+		$vo_formData.view.favourite:=False:C215
+		$vo_formData.view.default:=False:C215
+		$vo_formData.view.detail:=New object:C1471
+		$vo_formData.view.detail.cols:=New collection:C1472
+		$vo_formData.view.detail.public:=False:C215
+		$vo_formData.view.detail.useFooter:=False:C215
+		$vo_formData.view.detail.lockedColumns:=0
+		$vo_formData.view.detail.rowHeight:=1
+		$vo_formData.view.detail.headerHeight:=1
+		
+	: ($1="Dupe")
+		$vo_formData.allowDelete:=False:C215
+		TRACE:C157
+		$vo_currentView:=OB Copy:C1225(Form:C1466.navItem.selectedView)
+		
+		If (Form:C1466.navItem.selectedView.id#"")
+			$e_view:=ds:C1482["uloData"].get(Form:C1466.navItem.selectedView.id)
+			$e_uloData:=UTIL_Duplicate_Entity ($e_view;"uloData")
+			$e_uloData.id:=""  //Sets new UUID
+			$e_uloData.name:=Form:C1466.navItem.selectedView.name+" - Copy"
+			$e_uloData.user:=Storage:C1525.user.id
+			$e_uloData.favourite:=False:C215
+			$e_uloData.default:=False:C215
+			$e_uloData.detail.public:=False:C215
+			
+		Else 
+			  //Is a new view, create default $vo_formData
+			$e_uloData:=ds:C1482["uloData"].new()
+			$e_uloData.table:=Form:C1466.tableNumber
+			$e_uloData.name:=Choose:C955($e_uloData.name="";"New View";$e_uloData.name+" - Copy")
+			$e_uloData.handle:=Form:C1466.navItem.selectedView.handle
+			$e_uloData.type:=2
+			$e_uloData.user:=Storage:C1525.user.id
+			$e_uloData.group:=1
+			$e_uloData.favourite:=False:C215
+			$e_uloData.default:=False:C215
+			$e_uloData.detail:=OB Copy:C1225(Form:C1466.navItem.selectedView.detail)
+			$e_uloData.detail.public:=False:C215
+			
+		End if 
+		
+		$vo_formData.view:=$e_uloData.toObject()
+		Form:C1466.navItem.selectedView:=$e_uloData.toObject()
+		
+	: ($1="Edit")
+		$vo_formData.view:=OB Copy:C1225(Form:C1466.navItem.selectedView)
+		
+End case 
 
 $vo_formData.fields:=New collection:C1472  //Fields from defined table and its N - 1 related tables
-$vo_formData.fields.push(New object:C1471("table";$1;"fields";ULO_Get_Table_Fields (Table name:C256($1);"relation";"")))
+$vo_formData.fields.push(New object:C1471("table";Form:C1466.tableNumber;"fields";ULO_Get_Table_Fields (Table name:C256(Form:C1466.tableNumber);"relation";"")))
 
-APPEND TO ARRAY:C911(at_tableName;Table name:C256($1))
-APPEND TO ARRAY:C911(al_tableNum;$1)
+APPEND TO ARRAY:C911(at_tableName;Table name:C256(Form:C1466.tableNumber))
+APPEND TO ARRAY:C911(al_tableNum;Form:C1466.tableNumber)
 at_tableName:=1
 
 For each ($vo_field;$vo_formData.fields[0].fields)
@@ -75,7 +119,6 @@ For each ($vo_field;$vo_formData.view.detail.cols)
 	End if 
 End for each 
 
-
 $vl_left:=(Screen width:C187/2)-(650/2)
 $vl_top:=(Screen height:C188/2)-(550/2)
 $vl_right:=$vl_left+650
@@ -84,37 +127,34 @@ $vl_bottom:=$vl_top+550
 $vl_win:=Open window:C153($vl_left;$vl_top;$vl_right;$vl_bottom)
 DIALOG:C40("ULO_VIEW_EDIT";$vo_formData)
 CLOSE WINDOW:C154($vl_win)
+
 If (OK=1)
 	$e_uloData.name:=$vo_formData.view.name
 	$e_uloData.handle:=$vo_formData.view.handle
 	$e_uloData.type:=2
 	$e_uloData.favourite:=$vo_formData.view.favourite
-	
-	
-	$e_uloData.user:=1
 	$e_uloData.group:=1
-	
-	$e_uloData.detail.cols:=$vo_formData.view.detail.cols
-	$e_uloData.detail.useFooter:=$vo_formData.view.detail.useFooter
-	$e_uloData.detail.public:=$vo_formData.view.detail.public
-	$e_uloData.detail.lockedColumns:=$vo_formData.view.detail.lockedColumns
-	$e_uloData.detail.rowHeight:=$vo_formData.view.detail.rowHeight
-	$e_uloData.detail.headerHeight:=$vo_formData.view.detail.headerHeight
+	$e_uloData.detail:=$vo_formData.view.detail
 	
 	$vo_res:=$e_uloData.save()
 	If ($vo_res.success)
-		  //Form.navItem.view:=$e_uloData.detail
 		Form:C1466.navItem.selectedView:=$e_uloData.toObject()
 		ULO_LOAD_VIEW 
 	Else 
-		  //alert?
 		ALERT:C41("Failed to save "+Char:C90(13)+JSON Stringify:C1217($vo_res;*))
 	End if 
 Else 
-	If ($vo_formData.delete)
-		$e_uloData.drop()
-		Form:C1466.navItem.selectedView:=Null:C1517
-		ULO_LOAD_VIEW 
-	End if 
+	Case of 
+		: ($1="Edit")
+			If ($vo_formData.delete)
+				$e_uloData.drop()
+				Form:C1466.navItem.selectedView:=Null:C1517
+				ULO_LOAD_VIEW 
+			End if 
+			
+		: ($1="Dupe")
+			Form:C1466.navItem.selectedView:=OB Copy:C1225($vo_currentView)
+			
+	End case 
+	
 End if 
-
