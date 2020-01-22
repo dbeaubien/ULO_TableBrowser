@@ -10,11 +10,16 @@ If (OB Is defined:C1231($1;"objectName"))
 Else 
 	$vt_eventObject:="form"
 End if 
+
 $vb_buttonUpdate:=True:C214
 Case of 
 	: ($vt_eventObject="form")
 		Case of 
 			: ($vl_event=On Load:K2:1)
+				Form:C1466.resize:=False:C215
+				Form:C1466.pendingResize:=False:C215
+				Form:C1466.refresh:=True:C214
+				
 				ULO_LOAD_BUTTONS (Form:C1466.buttons)
 				$index:=Form:C1466.navItems.findIndex("UTIL_Find_Collection";"handle";Form:C1466.sidebarStart)
 				If ($index=-1)
@@ -26,7 +31,19 @@ Case of
 				SET TIMER:C645(1)
 				
 			: ($vl_event=On Timer:K2:25)
-				SET TIMER:C645(0)
+				Case of 
+					: (Form:C1466.refresh)
+						Form:C1466.refresh:=False:C215
+						SET TIMER:C645(0)
+					: (Form:C1466.resizing)
+						Form:C1466.resizing:=False:C215
+						Form:C1466.pendingResize:=True:C214
+					Else 
+						If (Form:C1466.pendingResize)
+							ULO_COLUMN_RESIZE 
+						End if 
+						SET TIMER:C645(0)
+				End case 
 				
 		End case 
 		
@@ -58,13 +75,15 @@ Case of
 					LISTBOX SELECT ROW:C912(*;"ULO_Navbar";Form:C1466.lastNavItemIndex;lk replace selection:K53:1)
 				End if 
 				
-			: ($vl_event=On Clicked:K2:4) | ($vl_event=On Selection Change:K2:29)
-				If (Form:C1466.navItem.type="header")
-					LISTBOX SELECT ROW:C912(*;"ULO_Navbar";Form:C1466.lastNavItemIndex;lk replace selection:K53:1)
-					
+			: ($vl_event=On Selection Change:K2:29)  // | ($vl_event=On Clicked)
+				If (Form:C1466.navItem#Null:C1517)
+					If (Form:C1466.navItem.type="header")
+						LISTBOX SELECT ROW:C912(*;"ULO_Navbar";Form:C1466.lastNavItemIndex;lk replace selection:K53:1)
+					Else 
+						ULO_LOAD_VIEW 
+					End if 
 				Else 
-					ULO_LOAD_VIEW 
-					  //$vo_uloData.lastNavItemIndex
+					LISTBOX SELECT ROW:C912(*;"ULO_Navbar";Form:C1466.lastNavItemIndex;lk replace selection:K53:1)
 				End if 
 				
 		End case 
@@ -86,6 +105,13 @@ Case of
 						EXECUTE METHOD:C1007($vt_method;*;"context test: "+JSON Stringify:C1217(Form:C1466.record.toObject()))
 					End if 
 				End if 
+				
+			: ($vl_event=On Column Resize:K2:31)
+				  //Resize event is fired for every pixel that the column is changed by
+				  //Therefore Case in On Timer event handles the saving of new widths
+				  //after the user has finished resizing
+				Form:C1466.resizing:=True:C214
+				SET TIMER:C645(1)
 				
 		End case 
 		
@@ -134,6 +160,7 @@ Case of
 		Case of 
 			: ($vl_event=On Clicked:K2:4)
 				Form:C1466.uloList:=Form:C1466.records
+				Form:C1466.refresh:=True:C214
 				SET TIMER:C645(1)
 		End case 
 		
@@ -141,6 +168,7 @@ Case of
 		Case of 
 			: ($vl_event=On Clicked:K2:4)
 				Form:C1466.uloList:=Form:C1466.uloList.minus(Form:C1466.records)
+				Form:C1466.refresh:=True:C214
 				SET TIMER:C645(1)
 		End case 
 		
@@ -148,6 +176,7 @@ Case of
 		Case of 
 			: ($vl_event=On Clicked:K2:4)
 				BUTTON_SEARCH_POP 
+				Form:C1466.refresh:=True:C214
 				SET TIMER:C645(1)
 		End case 
 		
@@ -165,6 +194,9 @@ Case of
 		End case 
 		
 End case 
+
+
+  //Does this need to update on every event?
 If ($vb_buttonUpdate)
 	$vl_selected:=Form:C1466.records.length
 	OBJECT SET ENABLED:C1123(*;"ULO_Button_SHOWSUBSET";($vl_selected>0))

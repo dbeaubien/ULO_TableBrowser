@@ -13,6 +13,10 @@
   //When creating a view the view handle needs to pick up the nav bar handle.
   //It was doing this but then it was being overwritten by the name.
 
+  //Tom - 22/01/2020 - All above is complete, pending test.
+
+
+
   //At some point we need to set the users default view...
 
 

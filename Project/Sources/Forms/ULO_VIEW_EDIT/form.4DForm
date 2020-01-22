@@ -178,14 +178,15 @@
 					"width": 100,
 					"height": 17,
 					"sizingY": "move",
-					"dataSource": "Form:C1466.useFooters",
+					"dataSource": "Form:C1466.view.detail.useFooter",
 					"text": "Use Footers",
 					"class": "default",
 					"focusable": false,
 					"events": [
 						"onLoad",
 						"onClick"
-					]
+					],
+					"dataSourceTypeHint": "boolean"
 				},
 				"lb_viewCols": {
 					"type": "listbox",
@@ -490,13 +491,14 @@
 					"left": 199,
 					"width": 120,
 					"height": 17,
-					"dataSource": "Form:C1466.viewIsPublic",
+					"dataSource": "Form:C1466.view.detail.public",
 					"text": "View is public",
 					"class": "default",
 					"focusable": false,
 					"events": [
 						"onClick"
-					]
+					],
+					"dataSourceTypeHint": "boolean"
 				},
 				"PROMPT_Locked": {
 					"type": "text",

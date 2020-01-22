@@ -21,7 +21,6 @@ If (Form:C1466.tableNumber>0)
 		Form:C1466.uloList:=Form:C1466.navItem.selection
 		  //Push the loaded selection to the sore of current selections???
 	End if 
-	
 	If (Form:C1466.navItem.selectedView=Null:C1517)
 		$vo_view:=ULO_GET_VIEW (Storage:C1525.user.id;Form:C1466.tableNumber;Form:C1466.navItem.handle)  //EXECUTE METHOD("HOST_ULO_SET_VIEW";$vo_view;Form.tableNumber)
 		  //Form.navItem.view:=$vo_view.detail
@@ -30,16 +29,14 @@ If (Form:C1466.tableNumber>0)
 	
 	If (Form:C1466.navItem.selectedView#Null:C1517)
 		$i:=0
+		
 		For each ($vo_col;Form:C1466.navItem.selectedView.detail.cols)
 			If ($vo_col.selected)
 				If (Is field number valid:C1000($vp_table;$vo_col.field))  //& (Type(Field(Table($vp_table);$i)->)#38)
 					$i:=$i+1
-					If (Undefined:C82($vo_col.colName))
-						  //$vt_colName:="h_"+Field name(Table($vp_table);$vo_col.field) //Tom - Field name is not always unique, changed to Table + Field num
-						$vt_colName:="h_"+String:C10($vo_col.table)+"_"+String:C10($vo_col.field)
-					Else 
-						$vt_colName:="h_"+$vo_col.colName
-					End if 
+					  //$vt_colName:="h_"+Field name(Table($vp_table);$vo_col.field) //Tom - Field name is not always unique, changed to Table + Field num
+					$vt_colName:="h_"+String:C10($vo_col.table)+"_"+String:C10($vo_col.field)
+					
 					$vt_hObject:="head_"+$vt_colName
 					$vt_fObject:="foot_"+$vt_colName
 					
@@ -102,16 +99,18 @@ If (Form:C1466.tableNumber>0)
 					OBJECT SET TITLE:C194(*;$vt_hObject;$vt_header)  //Sets the header text.
 					OBJECT SET FONT:C164(*;$vt_hObject;"Label")  //Sets the header text.
 					
-					If ($vo_col.average) | ($vo_col.max) | ($vo_col.total) | ($vo_col.min)
-						LISTBOX SET FOOTER CALCULATION:C1140(*;$vt_colName;lk footer custom:K70:1)
-						
-						OBJECT SET HORIZONTAL ALIGNMENT:C706(*;$vt_fObject;$vl_alignment)
-						OBJECT SET FORMAT:C236(*;$vt_fObject;$vt_format)
-						If ($vl_fontStyle=0) | ($vl_fontStyle=2) | ($vl_fontStyle=4) | ($vl_fontStyle=6)
-							$vl_fontStyle:=$vl_fontStyle+1  //Add bold if missing
+					If (Form:C1466.navItem.selectedView.detail.useFooter)
+						If ($vo_col.average) | ($vo_col.max) | ($vo_col.total) | ($vo_col.min)
+							LISTBOX SET FOOTER CALCULATION:C1140(*;$vt_colName;lk footer custom:K70:1)
+							
+							OBJECT SET HORIZONTAL ALIGNMENT:C706(*;$vt_fObject;$vl_alignment)
+							OBJECT SET FORMAT:C236(*;$vt_fObject;$vt_format)
+							If ($vl_fontStyle=0) | ($vl_fontStyle=2) | ($vl_fontStyle=4) | ($vl_fontStyle=6)
+								$vl_fontStyle:=$vl_fontStyle+1  //Add bold if missing
+							End if 
+							OBJECT SET FONT STYLE:C166(*;$vt_fObject;$vl_fontStyle)
+							OBJECT SET RGB COLORS:C628(*;$vt_fObject;$vl_fontColour;Background color:K23:2)
 						End if 
-						OBJECT SET FONT STYLE:C166(*;$vt_fObject;$vl_fontStyle)
-						OBJECT SET RGB COLORS:C628(*;$vt_fObject;$vl_fontColour;Background color:K23:2)
 					End if 
 					
 					If (Not:C34(Undefined:C82($vo_col.width)))
@@ -121,6 +120,22 @@ If (Form:C1466.tableNumber>0)
 			End if 
 			
 		End for each 
+		
+		If (OB Is defined:C1231(Form:C1466.navItem.selectedView.detail;"headerHeight"))
+			LISTBOX SET HEADERS HEIGHT:C1143(*;"ULO_LIST";Form:C1466.navItem.selectedView.detail.headerHeight;lk lines:K53:23)
+		Else 
+			LISTBOX SET HEADERS HEIGHT:C1143(*;"ULO_LIST";1;lk lines:K53:23)
+		End if 
+		If (OB Is defined:C1231(Form:C1466.navItem.selectedView.detail;"rowHeight"))
+			LISTBOX SET ROWS HEIGHT:C835(*;"ULO_LIST";Form:C1466.navItem.selectedView.detail.rowHeight;lk lines:K53:23)
+		Else 
+			LISTBOX SET ROWS HEIGHT:C835(*;"ULO_LIST";1;lk lines:K53:23)
+		End if 
+		If (OB Is defined:C1231(Form:C1466.navItem.selectedView.detail;"lockedColumns"))
+			LISTBOX SET LOCKED COLUMNS:C1151(*;"ULO_LIST";Form:C1466.navItem.selectedView.detail.lockedColumns)
+		Else 
+			LISTBOX SET LOCKED COLUMNS:C1151(*;"ULO_LIST";0)
+		End if 
 		
 		ULO_LIST_UPDATE_FOOTER 
 		
@@ -132,6 +147,7 @@ If (Form:C1466.tableNumber>0)
 		Form:C1466.navItem.selectedView.detail.cols:=New collection:C1472
 		$vl_numFields:=Get last field number:C255($vp_table)
 		For ($i;1;$vl_numFields)
+			
 			If (Is field number valid:C1000($vp_table;$i))  //& (Type(Field(Table($vp_table);$i)->)#38)
 				$vt_hObject:="h_"+Field name:C257(Table:C252($vp_table);$i)
 				LISTBOX INSERT COLUMN FORMULA:C970(*;"ULO_LIST";$i;Field name:C257(Table:C252($vp_table);$i);\

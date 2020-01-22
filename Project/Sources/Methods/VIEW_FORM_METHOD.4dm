@@ -69,17 +69,10 @@ Case of
 				
 		End case 
 		
-	: ($vt_objectName="View_UseFooter")
-		Case of 
-			: ($vo_formEvent.code=On Load:K2:1)
-				Form:C1466.useFooters:=Num:C11(Form:C1466.view.detail.useFooter)
-			: ($vo_formEvent.code=On Clicked:K2:4)
-				Form:C1466.view.detail.useFooter:=(Form:C1466.useFooters=1)
-		End case 
+		
 		
 		
 	: ($vt_objectName="dropdown_table")
-		
 		Case of 
 			: ($vo_formEvent.code=On Clicked:K2:4) | ($vo_formEvent.code=On Data Change:K2:15)
 				VIEW_FORM_BUILD_DISPLAY_FIELD 

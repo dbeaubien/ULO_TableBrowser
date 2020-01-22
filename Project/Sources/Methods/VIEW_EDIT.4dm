@@ -34,6 +34,7 @@ Else
 	$vo_formData.view.default:=False:C215
 	$vo_formData.view.detail:=New object:C1471
 	$vo_formData.view.detail.cols:=New collection:C1472
+	$vo_formData.view.detail.public:=False:C215
 	$vo_formData.view.detail.useFooter:=False:C215
 	$vo_formData.view.detail.lockedColumns:=0
 	$vo_formData.view.detail.rowHeight:=1
@@ -43,6 +44,7 @@ End if
 
 $vo_formData.fields:=New collection:C1472  //Fields from defined table and its N - 1 related tables
 $vo_formData.fields.push(New object:C1471("table";$1;"fields";ULO_Get_Table_Fields (Table name:C256($1);"relation";"")))
+
 APPEND TO ARRAY:C911(at_tableName;Table name:C256($1))
 APPEND TO ARRAY:C911(al_tableNum;$1)
 at_tableName:=1
@@ -93,6 +95,7 @@ If (OK=1)
 	
 	$e_uloData.detail.cols:=$vo_formData.view.detail.cols
 	$e_uloData.detail.useFooter:=$vo_formData.view.detail.useFooter
+	$e_uloData.detail.public:=$vo_formData.view.detail.public
 	$e_uloData.detail.lockedColumns:=$vo_formData.view.detail.lockedColumns
 	$e_uloData.detail.rowHeight:=$vo_formData.view.detail.rowHeight
 	$e_uloData.detail.headerHeight:=$vo_formData.view.detail.headerHeight
@@ -104,6 +107,7 @@ If (OK=1)
 		ULO_LOAD_VIEW 
 	Else 
 		  //alert?
+		ALERT:C41("Failed to save "+Char:C90(13)+JSON Stringify:C1217($vo_res;*))
 	End if 
 	
 End if 
