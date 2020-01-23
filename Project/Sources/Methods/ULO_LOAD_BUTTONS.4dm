@@ -37,6 +37,10 @@ For each ($vo_button;$1)
 					$vt_button:="ULO_Button_SEARCH"
 					$vt_buttonBG:="ULO_ButtonBG_SEARCH"
 					
+				: ($vo_button.action="RELATE")
+					$vt_button:="ULO_Button_RELATE"
+					$vt_buttonBG:="ULO_ButtonBG_RELATE"
+					
 				Else 
 					$vt_button:="ULO_Button_"+String:C10($vo_button.number;"00")
 					$vt_buttonBG:="ULO_ButtonBG_"+String:C10($vo_button.number;"00")
@@ -51,7 +55,7 @@ For each ($vo_button;$1)
 			  //OBJECT SET VISIBLE(*;$vt_buttonBG;True)
 			
 			  //Format: title;picture;background;titlePos(4=bottom);titleVisible(1=display);\
-																				iconVisible(1=display);style(3=toolbarButton);horMargin;vertMargin;iconOffset;popupMenu;hyperlink;numStates
+																								iconVisible(1=display);style(3=toolbarButton);horMargin;vertMargin;iconOffset;popupMenu;hyperlink;numStates
 			If (OB Is defined:C1231($vo_button;"icon"))
 				$vt_format:=$vo_button.title+";"+"#images/buttons/"+Storage:C1525.prefs.theme+"/"+$vo_button.icon+";;4;1;1;4;0;0;0;0;;4"
 			Else 

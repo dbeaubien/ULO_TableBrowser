@@ -153,14 +153,22 @@ Case of
 		
 		Case of 
 			: ($vl_event=On Clicked:K2:4)
-				BUTTON_VIEW_POP   //ALERT("VIEW Button Clicked!")
+				BUTTON_VIEW_POP 
 		End case 
 		
 	: ($vt_eventObject="ULO_Button_PRINT") | ($vt_eventObject="ULO_ButtonBG_PRINT")
 		Case of 
 			: ($vl_event=On Clicked:K2:4)
-				BUTTON_PRINT_POP   //ALERT("PRINT Button Clicked!")
+				BUTTON_PRINT_POP 
 		End case 
+		
+	: ($vt_eventObject="ULO_Button_RELATE") | ($vt_eventObject="ULO_ButtonBG_RELATE")
+		Case of 
+			: ($vl_event=On Clicked:K2:4)
+				BUTTON_RELATE_POP 
+		End case 
+		
+		
 	: ($vt_eventObject="ULO_Button_SHOWALL")
 		  //Need to make callback to host for filter
 		Case of 

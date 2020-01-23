@@ -88,7 +88,7 @@ Case of
 End case 
 
 $vo_formData.fields:=New collection:C1472  //Fields from defined table and its N - 1 related tables
-$vo_formData.fields.push(New object:C1471("table";Form:C1466.tableNumber;"fields";ULO_Get_Table_Fields (Table name:C256(Form:C1466.tableNumber);"relation";"")))
+$vo_formData.fields.push(New object:C1471("table";Form:C1466.tableNumber;"fields";ULO_Get_Table_Fields (Table name:C256(Form:C1466.tableNumber));"relation";""))
 
 APPEND TO ARRAY:C911(at_tableName;Table name:C256(Form:C1466.tableNumber))
 APPEND TO ARRAY:C911(al_tableNum;Form:C1466.tableNumber)
