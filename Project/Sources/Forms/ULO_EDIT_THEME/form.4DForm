@@ -1,0 +1,555 @@
+﻿{
+	"$4d": {
+		"version": "1",
+		"kind": "form"
+	},
+	"windowSizingX": "variable",
+	"windowSizingY": "variable",
+	"windowMinWidth": 0,
+	"windowMinHeight": 0,
+	"windowMaxWidth": 32767,
+	"windowMaxHeight": 32767,
+	"rightMargin": 20,
+	"bottomMargin": 20,
+	"events": [
+		"onLoad",
+		"onClick",
+		"onDataChange"
+	],
+	"windowTitle": "window title",
+	"destination": "detailScreen",
+	"pages": [
+		{
+			"objects": {
+				"BackgroundColour": {
+					"type": "rectangle",
+					"top": 0,
+					"left": 0,
+					"width": 805,
+					"height": 558,
+					"sizingX": "grow",
+					"sizingY": "grow",
+					"fill": "#E8E8E8",
+					"stroke": "transparent"
+				},
+				"VIEW_Accept": {
+					"type": "button",
+					"top": 516,
+					"left": 705,
+					"width": 74,
+					"height": 22,
+					"sizingX": "fixed",
+					"sizingY": "fixed",
+					"action": "accept",
+					"shortcutKey": "[Enter]",
+					"text": "OK",
+					"class": "default",
+					"defaultButton": true,
+					"events": [
+						"onClick"
+					]
+				},
+				"VIEW_Cancel": {
+					"type": "button",
+					"top": 516,
+					"left": 619,
+					"width": 74,
+					"height": 22,
+					"sizingX": "fixed",
+					"sizingY": "fixed",
+					"action": "cancel",
+					"shortcutKey": ".",
+					"shortcutAccel": true,
+					"text": "Cancel",
+					"class": "default",
+					"events": [
+						"onClick"
+					]
+				}
+			}
+		},
+		{
+			"objects": {
+				"Group Box": {
+					"type": "groupBox",
+					"text": "Grid :",
+					"top": 30,
+					"left": 31,
+					"width": 345,
+					"height": 129
+				},
+				"Group Box1": {
+					"type": "groupBox",
+					"text": "Header :",
+					"top": 177,
+					"left": 31,
+					"width": 345,
+					"height": 160
+				},
+				"Group Box2": {
+					"type": "groupBox",
+					"text": "Row :",
+					"top": 357,
+					"left": 31,
+					"width": 345,
+					"height": 159
+				},
+				"Text3": {
+					"type": "text",
+					"top": 90,
+					"left": 52,
+					"width": 100,
+					"height": 15,
+					"text": "Hori Line Colour :"
+				},
+				"input_colour_hLineColour": {
+					"type": "input",
+					"top": 90,
+					"left": 155,
+					"width": 147,
+					"height": 16,
+					"dataSource": "Form:C1466.theme.hLineColourHex",
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"entryFilter": "~\"ABCDEF0-9\"######"
+				},
+				"rect_hLineColour": {
+					"type": "rectangle",
+					"top": 89,
+					"left": 310,
+					"width": 24,
+					"height": 17
+				},
+				"bt_colour_hLineColour": {
+					"type": "button",
+					"text": "",
+					"top": 89,
+					"left": 310,
+					"width": 28,
+					"height": 18,
+					"events": [
+						"onClick"
+					],
+					"style": "custom",
+					"visibility": "visible"
+				},
+				"cb_sty_bold": {
+					"type": "checkbox",
+					"top": 60,
+					"left": 52,
+					"width": 140,
+					"height": 17,
+					"sizingY": "fixed",
+					"dataSource": "Form:C1466.theme.showHLine",
+					"text": "Show Horizontal Lines",
+					"class": "default",
+					"focusable": false,
+					"events": [],
+					"dataSourceTypeHint": "boolean"
+				},
+				"cb_sty_bold1": {
+					"type": "checkbox",
+					"top": 60,
+					"left": 198,
+					"width": 140,
+					"height": 17,
+					"sizingY": "fixed",
+					"dataSource": "Form:C1466.theme.showVLine",
+					"text": "Show Vertical Lines",
+					"class": "default",
+					"focusable": false,
+					"events": [],
+					"dataSourceTypeHint": "boolean"
+				},
+				"Text1": {
+					"type": "text",
+					"top": 120,
+					"left": 52,
+					"width": 100,
+					"height": 15,
+					"text": "Vert Line Colour :"
+				},
+				"input_colour_vLineColour": {
+					"type": "input",
+					"top": 120,
+					"left": 155,
+					"width": 147,
+					"height": 16,
+					"dataSource": "Form:C1466.theme.vLineColourHex",
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"entryFilter": "~\"ABCDEF0-9\"######"
+				},
+				"rect_vLineColour": {
+					"type": "rectangle",
+					"top": 119,
+					"left": 310,
+					"width": 24,
+					"height": 17
+				},
+				"bt_colour_vLineColour": {
+					"type": "button",
+					"text": "",
+					"top": 119,
+					"left": 310,
+					"width": 28,
+					"height": 18,
+					"events": [
+						"onClick"
+					],
+					"style": "custom",
+					"visibility": "visible"
+				},
+				"Text2": {
+					"type": "text",
+					"top": 298,
+					"left": 52,
+					"width": 100,
+					"height": 15,
+					"text": "BG Colour :"
+				},
+				"input_colour_headerBgColour": {
+					"type": "input",
+					"top": 298,
+					"left": 155,
+					"width": 147,
+					"height": 16,
+					"dataSource": "Form:C1466.theme.headerBgColourHex",
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"entryFilter": "~\"ABCDEF0-9\"######"
+				},
+				"rect_headerBgColour": {
+					"type": "rectangle",
+					"top": 297,
+					"left": 310,
+					"width": 24,
+					"height": 17
+				},
+				"bt_colour_headerBgColour": {
+					"type": "button",
+					"text": "",
+					"top": 297,
+					"left": 310,
+					"width": 28,
+					"height": 18,
+					"events": [
+						"onClick"
+					],
+					"style": "custom",
+					"visibility": "visible"
+				},
+				"Text4": {
+					"type": "text",
+					"top": 268,
+					"left": 52,
+					"width": 100,
+					"height": 15,
+					"text": "Font Colour :"
+				},
+				"input_colour_headerFontColour": {
+					"type": "input",
+					"top": 268,
+					"left": 155,
+					"width": 147,
+					"height": 16,
+					"dataSource": "Form:C1466.theme.headerFontColourHex",
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"entryFilter": "~\"ABCDEF0-9\"######"
+				},
+				"rect_headerFontColour": {
+					"type": "rectangle",
+					"top": 267,
+					"left": 310,
+					"width": 24,
+					"height": 17
+				},
+				"bt_colour_headerFontColour": {
+					"type": "button",
+					"text": "",
+					"top": 267,
+					"left": 310,
+					"width": 28,
+					"height": 18,
+					"events": [
+						"onClick"
+					],
+					"style": "custom",
+					"visibility": "visible"
+				},
+				"Text5": {
+					"type": "text",
+					"top": 208,
+					"left": 52,
+					"width": 100,
+					"height": 15,
+					"text": "Font :"
+				},
+				"input_fontColourHex4": {
+					"type": "input",
+					"top": 207,
+					"left": 155,
+					"width": 147,
+					"height": 16,
+					"dataSource": "Form:C1466.theme.headerFont",
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [],
+					"entryFilter": ""
+				},
+				"Text6": {
+					"type": "text",
+					"top": 238,
+					"left": 52,
+					"width": 100,
+					"height": 15,
+					"text": "Font Size (pt) :"
+				},
+				"input_fontColourHex5": {
+					"type": "input",
+					"top": 238,
+					"left": 155,
+					"width": 147,
+					"height": 16,
+					"dataSource": "Form:C1466.theme.headerFontSize",
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [],
+					"entryFilter": "",
+					"dataSourceTypeHint": "integer"
+				},
+				"Text7": {
+					"type": "text",
+					"top": 478,
+					"left": 52,
+					"width": 100,
+					"height": 15,
+					"text": "Alt Row Colour :"
+				},
+				"input_colour_rowAltColour": {
+					"type": "input",
+					"top": 478,
+					"left": 155,
+					"width": 147,
+					"height": 16,
+					"dataSource": "Form:C1466.theme.rowAltColourHex",
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"entryFilter": "~\"ABCDEF0-9\"######"
+				},
+				"rect_rowAltColour": {
+					"type": "rectangle",
+					"top": 477,
+					"left": 310,
+					"width": 24,
+					"height": 17
+				},
+				"bt_colour_rowAltColour": {
+					"type": "button",
+					"text": "",
+					"top": 477,
+					"left": 310,
+					"width": 28,
+					"height": 18,
+					"events": [
+						"onClick"
+					],
+					"style": "custom",
+					"visibility": "visible"
+				},
+				"Text8": {
+					"type": "text",
+					"top": 448,
+					"left": 52,
+					"width": 100,
+					"height": 15,
+					"text": "Row Colour :"
+				},
+				"input_colour_rowColour": {
+					"type": "input",
+					"top": 448,
+					"left": 155,
+					"width": 147,
+					"height": 16,
+					"dataSource": "Form:C1466.theme.rowColourHex",
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"entryFilter": "~\"ABCDEF0-9\"######"
+				},
+				"rect_rowColour": {
+					"type": "rectangle",
+					"top": 447,
+					"left": 310,
+					"width": 24,
+					"height": 17
+				},
+				"bt_colour_rowColour": {
+					"type": "button",
+					"text": "",
+					"top": 447,
+					"left": 310,
+					"width": 28,
+					"height": 18,
+					"events": [
+						"onClick"
+					],
+					"style": "custom",
+					"visibility": "visible"
+				},
+				"Text9": {
+					"type": "text",
+					"top": 388,
+					"left": 52,
+					"width": 100,
+					"height": 15,
+					"text": "Font :"
+				},
+				"input_fontColourHex8": {
+					"type": "input",
+					"top": 387,
+					"left": 155,
+					"width": 147,
+					"height": 16,
+					"dataSource": "Form:C1466.theme.rowFont",
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [],
+					"entryFilter": ""
+				},
+				"Text10": {
+					"type": "text",
+					"top": 418,
+					"left": 52,
+					"width": 100,
+					"height": 15,
+					"text": "Font Size (pt) :"
+				},
+				"input_fontColourHex9": {
+					"type": "input",
+					"top": 418,
+					"left": 155,
+					"width": 147,
+					"height": 16,
+					"dataSource": "Form:C1466.theme.rowFontSize",
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [],
+					"entryFilter": "",
+					"dataSourceTypeHint": "integer"
+				},
+				"lb_preview": {
+					"type": "listbox",
+					"left": 394,
+					"top": 37,
+					"width": 389,
+					"height": 440,
+					"events": [
+						"onClick",
+						"onHeaderClick",
+						"onDataChange",
+						"onSelectionChange"
+					],
+					"dataSource": "Form:C1466.data",
+					"listboxType": "collection",
+					"selectionMode": "none",
+					"resizingMode": "legacy",
+					"columns": [
+						{
+							"header": {
+								"text": "Text",
+								"name": "Header1"
+							},
+							"name": "Column1",
+							"dataSource": "This:C1470.text",
+							"footer": {
+								"name": "Footer1"
+							}
+						},
+						{
+							"header": {
+								"name": "Header2",
+								"text": "Number"
+							},
+							"name": "Column2",
+							"dataSourceTypeHint": "number",
+							"dataSource": "This:C1470.number",
+							"width": 109,
+							"footer": {
+								"name": "Footer2"
+							}
+						},
+						{
+							"header": {
+								"name": "Header3",
+								"text": "Date"
+							},
+							"name": "Column3",
+							"dataSource": "This:C1470.date",
+							"dataSourceTypeHint": "date",
+							"width": 5,
+							"resizable": true,
+							"footer": {
+								"name": "Footer3"
+							}
+						}
+					]
+				},
+				"bt_preview": {
+					"type": "button",
+					"text": "Preview Changes",
+					"top": 491,
+					"left": 394,
+					"width": 146,
+					"height": 25,
+					"events": [
+						"onClick"
+					],
+					"style": "roundedBevel",
+					"stroke": "#008000"
+				}
+			},
+			"entryOrder": [
+				"cb_sty_bold",
+				"cb_sty_bold1",
+				"input_colour_hLineColour",
+				"bt_colour_hLineColour",
+				"input_colour_vLineColour",
+				"bt_colour_vLineColour",
+				"input_fontColourHex4",
+				"input_fontColourHex5",
+				"input_colour_headerFontColour",
+				"bt_colour_headerFontColour",
+				"input_colour_headerBgColour",
+				"bt_colour_headerBgColour",
+				"input_fontColourHex8",
+				"input_fontColourHex9",
+				"input_colour_rowColour",
+				"bt_colour_rowColour",
+				"input_colour_rowAltColour",
+				"bt_colour_rowAltColour",
+				"lb_preview",
+				"bt_preview"
+			]
+		}
+	],
+	"method": "method.4dm"
+}

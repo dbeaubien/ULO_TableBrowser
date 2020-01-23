@@ -15,15 +15,13 @@ Case of
 		
 		Case of 
 			: ($vo_formEvent.code=On Load:K2:1)
-				
 				OBJECT SET ENABLED:C1123(*;"bt_deleteView";Form:C1466.allowDelete)
 				VIEW_FORM_BUILD_DISPLAY_FIELD 
 				VIEW_FORM_BUILD_DISPLAY_COL 
+				
 			: ($vo_formEvent.code=On Timer:K2:25)
-				TRACE:C157
 				SET TIMER:C645(0)
 				VIEW_FORM_EDIT_COL_DETAIL 
-				
 				
 		End case 
 		
@@ -151,7 +149,6 @@ Case of
 				$vo_col.min:=False:C215
 				$vo_col.max:=False:C215
 				$vo_col.average:=False:C215
-				TRACE:C157
 				Form:C1466.view.detail.cols.push(OB Copy:C1225($vo_col))
 				Form:C1466.displayCols.push(OB Copy:C1225($vo_col))
 				LISTBOX SELECT ROW:C912(*;"lb_viewCols";Form:C1466.displayCols.length;lk replace selection:K53:1)

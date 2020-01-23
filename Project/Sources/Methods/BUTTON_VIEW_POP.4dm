@@ -98,7 +98,7 @@ Case of
 		DISABLE MENU ITEM:C150($vt_ViewMenu;-1)
 		
 		  //General view options - Style and font size.
-		APPEND MENU ITEM:C411($vt_ViewMenu;"General View Options")
+		APPEND MENU ITEM:C411($vt_ViewMenu;"Amend Theme")
 		SET MENU ITEM PARAMETER:C1004($vt_ViewMenu;-1;"VIEW:Options")
 		
 		
@@ -124,7 +124,7 @@ Case of
 		VIEW_EDIT ("Edit")
 		
 	: ($1="Options")  //General view options - Style and font size.
-		ULO_VIEW_OPTIONS 
+		ULO_EDIT_THEME 
 		
 	: ($1="LOAD@")  //load a passed view
 		$vt_id:=Replace string:C233($1;"LOAD:";"")

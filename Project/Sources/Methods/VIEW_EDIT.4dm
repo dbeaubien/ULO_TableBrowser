@@ -50,7 +50,6 @@ Case of
 		
 	: ($1="Dupe")
 		$vo_formData.allowDelete:=False:C215
-		TRACE:C157
 		$vo_currentView:=OB Copy:C1225(Form:C1466.navItem.selectedView)
 		
 		If (Form:C1466.navItem.selectedView.id#"")
@@ -83,8 +82,9 @@ Case of
 		Form:C1466.navItem.selectedView:=$e_uloData.toObject()
 		
 	: ($1="Edit")
+		$vo_formData.allowDelete:=True:C214
 		$vo_formData.view:=OB Copy:C1225(Form:C1466.navItem.selectedView)
-		
+		$e_uloData:=ds:C1482["uloData"].get($vo_formData.view.id)
 End case 
 
 $vo_formData.fields:=New collection:C1472  //Fields from defined table and its N - 1 related tables

@@ -19,7 +19,9 @@ Case of
 				Form:C1466.pendingResize:=False:C215
 				Form:C1466.refresh:=True:C214
 				
+				ULO_LOAD_THEME 
 				ULO_LOAD_BUTTONS (Form:C1466.buttons)
+				
 				$index:=Form:C1466.navItems.findIndex("UTIL_Find_Collection";"handle";Form:C1466.sidebarStart)
 				If ($index=-1)
 					$index:=1

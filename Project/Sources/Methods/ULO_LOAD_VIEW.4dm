@@ -159,12 +159,31 @@ If (Form:C1466.tableNumber>0)
 				  //LISTBOX SET COLUMN WIDTH(*;as_AL_FieldHeader{$vl_Find};al_AL_FieldWidth{$vl_Find})
 				  //End if 
 			End if 
-			  //$vo_col:=New object("field";$i)
-			  //;"colName";Field name(Table($vp_table);$i)
-			  //;"formula";Field name(Table($vp_table);$vo_col.field)
 			
-			Form:C1466.navItem.selectedView.detail.cols.push(New object:C1471("field";$i))
+			  //Define default column properties
+			$vo_col:=New object:C1471
+			$vo_col.field:=$i
+			$vo_col.table:=Form:C1466.tableNumber
+			$vo_col.fieldName:=Field name:C257(Table:C252($vp_table);$i)
+			$vo_col.fieldType:=Type:C295(Field:C253(Table:C252($vp_table);$i)->)
+			$vo_col.header:=$vo_col.fieldName
+			$vo_col.formula:=$vo_col.fieldName
+			$vo_col.relation:=""
+			$vo_col.width:=100
+			$vo_col.format:=""
+			$vo_col.fontColour:=0x0000
+			$vo_col.fontColourHex:="000000"
+			$vo_col.fontStyle:=0
+			$vo_col.alignment:="Left"
+			$vo_col.total:=False:C215
+			$vo_col.min:=False:C215
+			$vo_col.max:=False:C215
+			$vo_col.average:=False:C215
+			$vo_col.selected:=True:C214
+			
+			Form:C1466.navItem.selectedView.detail.cols.push(OB Copy:C1225($vo_col))
 		End for 
 	End if 
 	Form:C1466.uloList:=Form:C1466.uloList
+	ULO_APPLY_THEME ("ULO_LIST";Form:C1466.theme)
 End if 

@@ -35,43 +35,43 @@ If (Form:C1466.navItem.selectedView.detail.useFooter)
 	
 	For ($i;1;Size of array:C274($at_colName))
 		$idx:=$i-1  //Collection index
-		$vt_footer:=""
-		$vl_items:=0
-		
-		$vl_items:=Choose:C955($vc_cols[$idx].average;$vl_items+1;$vl_items)
-		$vl_items:=Choose:C955($vc_cols[$idx].total;$vl_items+1;$vl_items)
-		$vl_items:=Choose:C955($vc_cols[$idx].max;$vl_items+1;$vl_items)
-		$vl_items:=Choose:C955($vc_cols[$idx].min;$vl_items+1;$vl_items)
-		
-		If ($vc_cols[$idx].total)
-			$vr_result:=Form:C1466.uloList.sum($vc_cols[$idx].fieldName)
-			$vt_footer:=Choose:C955(($vl_items>1);"Sum: ";"")+String:C10($vr_result)
-		End if 
-		
-		If ($vc_cols[$idx].max)
-			$vt_footer:=Choose:C955($vt_footer#"";$vt_footer+$CR;"")
-			$vr_result:=Form:C1466.uloList.max($vc_cols[$idx].fieldName)
-			$vt_footer:=$vt_footer+Choose:C955(($vl_items>1);"Max: ";"")+String:C10($vr_result)
-		End if 
-		
-		If ($vc_cols[$idx].min)
-			$vt_footer:=Choose:C955($vt_footer#"";$vt_footer+$CR;"")
-			$vr_result:=Form:C1466.uloList.min($vc_cols[$idx].fieldName)
-			$vt_footer:=$vt_footer+Choose:C955(($vl_items>1);"Min: ";"")+String:C10($vr_result)
-		End if 
-		
-		If ($vc_cols[$idx].average)
-			$vt_footer:=Choose:C955($vt_footer#"";$vt_footer+$CR;"")
-			$vr_result:=Form:C1466.uloList.average($vc_cols[$idx].fieldName)
-			$vt_footer:=$vt_footer+Choose:C955(($vl_items>1);"Avg: ";"")+String:C10($vr_result)
-		End if 
-		
-		If ($vt_footer#"")
+		If ($vc_cols[$idx].selected)
+			$vt_footer:=""
+			$vl_items:=0
+			
+			$vl_items:=Choose:C955($vc_cols[$idx].average;$vl_items+1;$vl_items)
+			$vl_items:=Choose:C955($vc_cols[$idx].total;$vl_items+1;$vl_items)
+			$vl_items:=Choose:C955($vc_cols[$idx].max;$vl_items+1;$vl_items)
+			$vl_items:=Choose:C955($vc_cols[$idx].min;$vl_items+1;$vl_items)
+			
+			If ($vc_cols[$idx].total)
+				$vr_result:=Form:C1466.uloList.sum($vc_cols[$idx].fieldName)
+				$vt_footer:=Choose:C955(($vl_items>1);"Sum: ";"")+String:C10($vr_result)
+			End if 
+			
+			If ($vc_cols[$idx].max)
+				$vt_footer:=Choose:C955($vt_footer#"";$vt_footer+$CR;"")
+				$vr_result:=Form:C1466.uloList.max($vc_cols[$idx].fieldName)
+				$vt_footer:=$vt_footer+Choose:C955(($vl_items>1);"Max: ";"")+String:C10($vr_result)
+			End if 
+			
+			If ($vc_cols[$idx].min)
+				$vt_footer:=Choose:C955($vt_footer#"";$vt_footer+$CR;"")
+				$vr_result:=Form:C1466.uloList.min($vc_cols[$idx].fieldName)
+				$vt_footer:=$vt_footer+Choose:C955(($vl_items>1);"Min: ";"")+String:C10($vr_result)
+			End if 
+			
+			If ($vc_cols[$idx].average)
+				$vt_footer:=Choose:C955($vt_footer#"";$vt_footer+$CR;"")
+				$vr_result:=Form:C1466.uloList.average($vc_cols[$idx].fieldName)
+				$vt_footer:=$vt_footer+Choose:C955(($vl_items>1);"Avg: ";"")+String:C10($vr_result)
+			End if 
+			
 			$ap_footerVar{$i}->:=$vt_footer
-		End if 
-		
-		If ($vl_maxItems<$vl_items)
-			$vl_maxItems:=$vl_items
+			
+			If ($vl_maxItems<$vl_items)
+				$vl_maxItems:=$vl_items
+			End if 
 		End if 
 	End for 
 	

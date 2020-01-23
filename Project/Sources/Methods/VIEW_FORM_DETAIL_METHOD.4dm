@@ -125,6 +125,7 @@ Case of
 		Case of 
 			: ($vo_formEvent.code=On Data Change:K2:15)
 				EXECUTE FORMULA:C63("$vl_fontColour:=0x00"+Form:C1466.col.fontColourHex)
+				Form:C1466.col.fontColour:=$vl_fontColour
 				OBJECT SET RGB COLORS:C628(*;"rect_fontColour";$vl_fontColour;$vl_fontColour)
 		End case 
 		

@@ -263,15 +263,6 @@
 					"events": [
 						"onClick"
 					]
-				},
-				"Input": {
-					"type": "input",
-					"left": 41,
-					"top": 555,
-					"width": 75,
-					"height": 16,
-					"dataSource": "Form:C1466.counter",
-					"dataSourceTypeHint": "number"
 				}
 			}
 		},
