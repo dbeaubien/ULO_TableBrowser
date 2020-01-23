@@ -26,7 +26,7 @@
 					"top": 0,
 					"left": 0,
 					"width": 805,
-					"height": 558,
+					"height": 578,
 					"sizingX": "grow",
 					"sizingY": "grow",
 					"fill": "#E8E8E8",
@@ -34,7 +34,7 @@
 				},
 				"VIEW_Accept": {
 					"type": "button",
-					"top": 516,
+					"top": 536,
 					"left": 705,
 					"width": 74,
 					"height": 22,
@@ -51,7 +51,7 @@
 				},
 				"VIEW_Cancel": {
 					"type": "button",
-					"top": 516,
+					"top": 536,
 					"left": 619,
 					"width": 74,
 					"height": 22,
@@ -92,7 +92,7 @@
 					"top": 357,
 					"left": 31,
 					"width": 345,
-					"height": 159
+					"height": 179
 				},
 				"Text3": {
 					"type": "text",
@@ -333,7 +333,7 @@
 				},
 				"Text7": {
 					"type": "text",
-					"top": 478,
+					"top": 508,
 					"left": 52,
 					"width": 100,
 					"height": 15,
@@ -341,7 +341,7 @@
 				},
 				"input_colour_rowAltColour": {
 					"type": "input",
-					"top": 478,
+					"top": 508,
 					"left": 155,
 					"width": 147,
 					"height": 16,
@@ -355,7 +355,7 @@
 				},
 				"rect_rowAltColour": {
 					"type": "rectangle",
-					"top": 477,
+					"top": 507,
 					"left": 310,
 					"width": 24,
 					"height": 17
@@ -363,7 +363,7 @@
 				"bt_colour_rowAltColour": {
 					"type": "button",
 					"text": "",
-					"top": 477,
+					"top": 507,
 					"left": 310,
 					"width": 28,
 					"height": 18,
@@ -375,7 +375,7 @@
 				},
 				"Text8": {
 					"type": "text",
-					"top": 448,
+					"top": 478,
 					"left": 52,
 					"width": 100,
 					"height": 15,
@@ -383,7 +383,7 @@
 				},
 				"input_colour_rowColour": {
 					"type": "input",
-					"top": 448,
+					"top": 478,
 					"left": 155,
 					"width": 147,
 					"height": 16,
@@ -397,7 +397,7 @@
 				},
 				"rect_rowColour": {
 					"type": "rectangle",
-					"top": 447,
+					"top": 477,
 					"left": 310,
 					"width": 24,
 					"height": 17
@@ -405,7 +405,7 @@
 				"bt_colour_rowColour": {
 					"type": "button",
 					"text": "",
-					"top": 447,
+					"top": 477,
 					"left": 310,
 					"width": 28,
 					"height": 18,
@@ -516,7 +516,7 @@
 				"bt_preview": {
 					"type": "button",
 					"text": "Preview Changes",
-					"top": 491,
+					"top": 511,
 					"left": 394,
 					"width": 146,
 					"height": 25,
@@ -525,6 +525,48 @@
 					],
 					"style": "roundedBevel",
 					"stroke": "#008000"
+				},
+				"Text11": {
+					"type": "text",
+					"top": 448,
+					"left": 52,
+					"width": 100,
+					"height": 15,
+					"text": "Font Colour :"
+				},
+				"input_colour_rowFontColour": {
+					"type": "input",
+					"top": 448,
+					"left": 155,
+					"width": 147,
+					"height": 16,
+					"dataSource": "Form:C1466.theme.rowFontColourHex",
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"entryFilter": "~\"ABCDEF0-9\"######"
+				},
+				"rect_rowFontColour": {
+					"type": "rectangle",
+					"top": 447,
+					"left": 310,
+					"width": 24,
+					"height": 17
+				},
+				"bt_colour_rowFontColour": {
+					"type": "button",
+					"text": "",
+					"top": 447,
+					"left": 310,
+					"width": 28,
+					"height": 18,
+					"events": [
+						"onClick"
+					],
+					"style": "custom",
+					"visibility": "visible"
 				}
 			},
 			"entryOrder": [
@@ -547,7 +589,9 @@
 				"input_colour_rowAltColour",
 				"bt_colour_rowAltColour",
 				"lb_preview",
-				"bt_preview"
+				"bt_preview",
+				"input_colour_rowFontColour",
+				"bt_colour_rowFontColour"
 			]
 		}
 	],

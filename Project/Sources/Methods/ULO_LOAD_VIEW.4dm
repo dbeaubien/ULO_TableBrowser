@@ -79,6 +79,11 @@ If (Form:C1466.tableNumber>0)
 					Else 
 						$vl_fontColour:=$vo_col.fontColour
 					End if 
+					If (Undefined:C82($vo_col.fontColourOverride))
+						$vl_fontColour:=Form:C1466.theme.rowFontColour
+					Else 
+						$vl_fontColour:=Choose:C955($vo_col.fontColourOverride;$vl_fontColour;Form:C1466.theme.rowFontColour)
+					End if 
 					If (Undefined:C82($vo_col.format))
 						$vt_format:=""
 					Else 
@@ -94,7 +99,7 @@ If (Form:C1466.tableNumber>0)
 					OBJECT SET FORMAT:C236(*;$vt_colName;$vt_format)
 					OBJECT SET FONT STYLE:C166(*;$vt_colName;$vl_fontStyle)
 					OBJECT SET HORIZONTAL ALIGNMENT:C706(*;$vt_colName;$vl_alignment)
-					OBJECT SET RGB COLORS:C628(*;$vt_colName;$vl_fontColour;Background color:K23:2)
+					OBJECT SET RGB COLORS:C628(*;$vt_colName;$vl_fontColour)
 					
 					OBJECT SET TITLE:C194(*;$vt_hObject;$vt_header)  //Sets the header text.
 					OBJECT SET FONT:C164(*;$vt_hObject;"Label")  //Sets the header text.
@@ -109,7 +114,7 @@ If (Form:C1466.tableNumber>0)
 								$vl_fontStyle:=$vl_fontStyle+1  //Add bold if missing
 							End if 
 							OBJECT SET FONT STYLE:C166(*;$vt_fObject;$vl_fontStyle)
-							OBJECT SET RGB COLORS:C628(*;$vt_fObject;$vl_fontColour;Background color:K23:2)
+							OBJECT SET RGB COLORS:C628(*;$vt_fObject;$vl_fontColour)
 						End if 
 					End if 
 					
@@ -171,6 +176,7 @@ If (Form:C1466.tableNumber>0)
 			$vo_col.relation:=""
 			$vo_col.width:=100
 			$vo_col.format:=""
+			$vo_col.fontColourOverride:=False:C215
 			$vo_col.fontColour:=0x0000
 			$vo_col.fontColourHex:="000000"
 			$vo_col.fontStyle:=0

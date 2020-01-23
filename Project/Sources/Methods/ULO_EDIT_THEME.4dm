@@ -42,5 +42,6 @@ If (OK=1)
 	End if 
 	
 	Form:C1466.theme:=OB Copy:C1225($vo_formData.theme)
-	ULO_APPLY_THEME ("ULO_LIST";Form:C1466.theme)
+	  //ULO_APPLY_THEME ("ULO_LIST";Form.theme)
+	ULO_LOAD_VIEW 
 End if 

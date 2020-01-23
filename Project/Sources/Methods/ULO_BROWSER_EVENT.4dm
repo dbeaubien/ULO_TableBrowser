@@ -56,6 +56,11 @@ Case of
 		Case of 
 			: ($vl_event=On Double Clicked:K2:5)
 				
+				
+				
+				
+				
+				
 				  //NEEDS RE_WRITING
 				If (Form:C1466.navItem.sub#Null:C1517)
 					If (Form:C1466.navItem.sub.length>0)

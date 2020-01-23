@@ -23,6 +23,8 @@ $vo_theme.vLineColourHex:="000000"
 $vo_theme.showHLine:=True:C214
 $vo_theme.showVLine:=True:C214
 
+$vo_theme.rowFontColour:=0x0000
+$vo_theme.rowFontColourHex:="000000"
 $vo_theme.rowColour:=0x00FFFFFF
 $vo_theme.rowColourHex:="FFFFFF"
 $vo_theme.rowAltColour:=0x00AAAAAA
@@ -78,6 +80,9 @@ If ($es_uloData.length>0)
 	If (OB Is defined:C1231($e_uloData.detail.theme;"headerFont"))
 		$vo_theme.headerFont:=$e_uloData.detail.theme.headerFont
 	End if 
+	If (OB Is defined:C1231($e_uloData.detail.theme;"rowFontColour"))
+		$vo_theme.rowFontColour:=$e_uloData.detail.theme.rowFontColour
+	End if 
 	
 	If (OB Is defined:C1231($e_uloData.detail.theme;"hLineColourHex"))
 		$vo_theme.hLineColourHex:=$e_uloData.detail.theme.hLineColourHex
@@ -97,6 +102,10 @@ If ($es_uloData.length>0)
 	If (OB Is defined:C1231($e_uloData.detail.theme;"headerFontColourHex"))
 		$vo_theme.headerFontColourHex:=$e_uloData.detail.theme.headerFontColourHex
 	End if 
+	If (OB Is defined:C1231($e_uloData.detail.theme;"rowFontColourHex"))
+		$vo_theme.rowFontColourHex:=$e_uloData.detail.theme.rowFontColourHex
+	End if 
+	
 End if 
 
 Form:C1466.theme:=OB Copy:C1225($vo_theme)

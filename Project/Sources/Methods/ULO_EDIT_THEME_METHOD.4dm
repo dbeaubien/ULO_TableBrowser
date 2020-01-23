@@ -40,7 +40,7 @@ Case of
 					$vo_data.date:=Date:C102(String:C10((Random:C100%(28-1+1))+1)+"/"+String:C10((Random:C100%(12-1+1))+1)+"/"+String:C10((Random:C100%(10000-1+1))))
 					Form:C1466.data.push(OB Copy:C1225($vo_data))
 				End for 
-				ULO_APPLY_THEME ("lb_preview";Form:C1466.theme)
+				ULO_APPLY_THEME ("lb_preview";Form:C1466.theme;True:C214)
 				
 				
 				EXECUTE FORMULA:C63("$vl_fontColour:=0x00"+Form:C1466.theme.hLineColourHex)
@@ -61,12 +61,15 @@ Case of
 				EXECUTE FORMULA:C63("$vl_fontColour:=0x00"+Form:C1466.theme.rowAltColourHex)
 				OBJECT SET RGB COLORS:C628(*;"rect_rowAltColour";$vl_fontColour;$vl_fontColour)
 				
+				EXECUTE FORMULA:C63("$vl_fontColour:=0x00"+Form:C1466.theme.rowFontColourHex)
+				OBJECT SET RGB COLORS:C628(*;"rect_rowFontColour";$vl_fontColour;$vl_fontColour)
+				
 		End case 
 		
 	: ($vt_objectName="bt_preview")
 		Case of 
 			: ($vo_formEvent.code=On Clicked:K2:4)
-				ULO_APPLY_THEME ("lb_preview";Form:C1466.theme)
+				ULO_APPLY_THEME ("lb_preview";Form:C1466.theme;True:C214)
 				
 		End case 
 		

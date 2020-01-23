@@ -38,7 +38,7 @@
 					"top": 0,
 					"left": 0,
 					"width": 405,
-					"height": 498,
+					"height": 505,
 					"sizingX": "grow",
 					"sizingY": "grow",
 					"fill": "#E8E8E8",
@@ -46,7 +46,7 @@
 				},
 				"VIEW_Accept": {
 					"type": "button",
-					"top": 456,
+					"top": 463,
 					"left": 305,
 					"width": 74,
 					"height": 22,
@@ -63,7 +63,7 @@
 				},
 				"VIEW_Cancel": {
 					"type": "button",
-					"top": 456,
+					"top": 463,
 					"left": 219,
 					"width": 74,
 					"height": 22,
@@ -84,7 +84,7 @@
 			"objects": {
 				"Group Box2": {
 					"type": "groupBox",
-					"top": 350,
+					"top": 361,
 					"left": 33,
 					"width": 345,
 					"height": 87,
@@ -103,7 +103,7 @@
 					"top": 193,
 					"left": 34,
 					"width": 345,
-					"height": 142,
+					"height": 158,
 					"text": "Styling :"
 				},
 				"Variable": {
@@ -121,7 +121,7 @@
 				},
 				"cb_agg_total": {
 					"type": "checkbox",
-					"top": 374,
+					"top": 385,
 					"left": 100,
 					"width": 100,
 					"height": 17,
@@ -137,7 +137,7 @@
 				},
 				"cb_agg_min": {
 					"type": "checkbox",
-					"top": 404,
+					"top": 415,
 					"left": 100,
 					"width": 100,
 					"height": 17,
@@ -153,7 +153,7 @@
 				},
 				"cb_agg_average": {
 					"type": "checkbox",
-					"top": 374,
+					"top": 385,
 					"left": 227,
 					"width": 100,
 					"height": 17,
@@ -169,7 +169,7 @@
 				},
 				"cb_agg_max": {
 					"type": "checkbox",
-					"top": 404,
+					"top": 415,
 					"left": 227,
 					"width": 100,
 					"height": 17,
@@ -215,7 +215,7 @@
 				},
 				"Text2": {
 					"type": "text",
-					"top": 217,
+					"top": 215,
 					"left": 56,
 					"width": 100,
 					"height": 15,
@@ -223,7 +223,7 @@
 				},
 				"cb_sty_bold": {
 					"type": "checkbox",
-					"top": 216,
+					"top": 214,
 					"left": 159,
 					"width": 60,
 					"height": 17,
@@ -239,7 +239,7 @@
 				},
 				"cb_sty_italic": {
 					"type": "checkbox",
-					"top": 216,
+					"top": 214,
 					"left": 219,
 					"width": 60,
 					"height": 17,
@@ -255,7 +255,7 @@
 				},
 				"cb_sty_underline": {
 					"type": "checkbox",
-					"top": 216,
+					"top": 214,
 					"left": 279,
 					"width": 80,
 					"height": 17,
@@ -271,7 +271,7 @@
 				},
 				"Text3": {
 					"type": "text",
-					"top": 247,
+					"top": 245,
 					"left": 56,
 					"width": 100,
 					"height": 15,
@@ -279,7 +279,7 @@
 				},
 				"input_fontColourHex": {
 					"type": "input",
-					"top": 246,
+					"top": 244,
 					"left": 159,
 					"width": 147,
 					"height": 16,
@@ -293,7 +293,7 @@
 				},
 				"rect_fontColour": {
 					"type": "rectangle",
-					"top": 245,
+					"top": 243,
 					"left": 314,
 					"width": 24,
 					"height": 17
@@ -301,7 +301,7 @@
 				"bt_fontColourPick": {
 					"type": "button",
 					"text": "",
-					"top": 245,
+					"top": 243,
 					"left": 314,
 					"width": 28,
 					"height": 18,
@@ -334,7 +334,7 @@
 				},
 				"Text5": {
 					"type": "text",
-					"top": 274,
+					"top": 292,
 					"left": 56,
 					"width": 100,
 					"height": 15,
@@ -343,7 +343,7 @@
 				"rb_left": {
 					"type": "radio",
 					"text": "Left",
-					"top": 272,
+					"top": 290,
 					"left": 159,
 					"width": 43,
 					"height": 20,
@@ -356,7 +356,7 @@
 				"rb_center": {
 					"type": "radio",
 					"text": "Center",
-					"top": 272,
+					"top": 290,
 					"left": 216,
 					"width": 63,
 					"height": 20,
@@ -369,7 +369,7 @@
 				"rb_right": {
 					"type": "radio",
 					"text": "Right",
-					"top": 271,
+					"top": 289,
 					"left": 286,
 					"width": 52,
 					"height": 20,
@@ -399,7 +399,7 @@
 				},
 				"Text7": {
 					"type": "text",
-					"top": 304,
+					"top": 322,
 					"left": 56,
 					"width": 100,
 					"height": 15,
@@ -407,7 +407,7 @@
 				},
 				"input_fontColourHex1": {
 					"type": "input",
-					"top": 303,
+					"top": 321,
 					"left": 159,
 					"width": 147,
 					"height": 16,
@@ -419,6 +419,22 @@
 					],
 					"entryFilter": "",
 					"dataSourceTypeHint": "integer"
+				},
+				"cb_override": {
+					"type": "checkbox",
+					"top": 267,
+					"left": 159,
+					"width": 140,
+					"height": 17,
+					"sizingY": "fixed",
+					"dataSource": "Form:C1466.col.fontColourOverride",
+					"text": "Override Theme",
+					"class": "default",
+					"focusable": false,
+					"events": [
+						"onClick"
+					],
+					"dataSourceTypeHint": "boolean"
 				}
 			},
 			"entryOrder": [
@@ -438,7 +454,8 @@
 				"cb_agg_average",
 				"cb_agg_min",
 				"cb_agg_max",
-				"input_fontColourHex1"
+				"input_fontColourHex1",
+				"cb_override"
 			]
 		}
 	],

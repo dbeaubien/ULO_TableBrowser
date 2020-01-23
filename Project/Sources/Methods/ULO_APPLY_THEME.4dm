@@ -10,12 +10,14 @@
   // Applied theme from Form.theme to ULO_LIST
   //
   // Parameters
-  // $1 - String - ListBox Name
-  // $2 - Object - Theme Data
+  // $1 - String  - ListBox Name
+  // $2 - Object  - Theme Data
+  // $3 - Boolean - Optional - Is Preview
   // ----------------------------------------------------
 
 C_TEXT:C284($1;$vt_lbName)
 C_OBJECT:C1216($2;$vo_theme)
+C_BOOLEAN:C305($3;$vb_isPreview)
 
 C_LONGINT:C283($vl_fontColour)
 
@@ -32,6 +34,9 @@ ARRAY BOOLEAN:C223($ab_colVisible;0)
 
 $vt_lbName:=$1
 $vo_theme:=OB Copy:C1225($2)
+If (Count parameters:C259>2)
+	$vb_isPreview:=$3
+End if 
 
 LISTBOX SET GRID COLOR:C842(*;$vt_lbName;$vo_theme.hLineColour;True:C214;False:C215)
 LISTBOX SET GRID COLOR:C842(*;$vt_lbName;$vo_theme.vLineColour;False:C215;True:C214)
@@ -44,7 +49,11 @@ For ($i;1;Size of array:C274($at_colName))
 	  //Column
 	OBJECT SET FONT:C164(*;$at_colName{$i};$vo_theme.rowFont)
 	OBJECT SET FONT SIZE:C165(*;$at_colName{$i};$vo_theme.rowFontSize)
-	OBJECT GET RGB COLORS:C1074(*;$at_colName{$i};$vl_fontColour)
+	If ($vb_isPreview)
+		$vl_fontColour:=$vo_theme.rowFontColour
+	Else 
+		OBJECT GET RGB COLORS:C1074(*;$at_colName{$i};$vl_fontColour)
+	End if 
 	OBJECT SET RGB COLORS:C628(*;$at_colName{$i};$vl_fontColour;$vo_theme.rowColour;$vo_theme.rowAltColour)
 	
 	  //Header
