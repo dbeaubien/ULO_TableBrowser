@@ -18,6 +18,7 @@ Case of
 				Form:C1466.resize:=False:C215
 				Form:C1466.pendingResize:=False:C215
 				Form:C1466.refresh:=True:C214
+				Form:C1466.fullRefresh:=False:C215
 				
 				ULO_LOAD_THEME 
 				ULO_LOAD_BUTTONS (Form:C1466.buttons)
@@ -27,18 +28,27 @@ Case of
 					$index:=1
 				End if 
 				LISTBOX SELECT ROW:C912(*;"ULO_Navbar";$index+1;lk replace selection:K53:1)
-				ULO_LOAD_VIEW 
+				ULO_LOAD_VIEW   //This is also calling ULO_LIST_UPDATE_FOOTER if a default view exists
 				SET TIMER:C645(1)
 				
 			: ($vl_event=On Timer:K2:25)
 				Case of 
+					: (Form:C1466.fullRefresh)
+						Form:C1466.fullRefresh:=False:C215
+						Form:C1466.navItem.selection:=OB Copy:C1225(Form:C1466.uloList)
+						ULO_LOAD_VIEW 
+						SET TIMER:C645(0)
+						$vl_selected:=Form:C1466.records.length
+						OBJECT SET ENABLED:C1123(*;"ULO_Button_SHOWSUBSET";($vl_selected>0))
+						OBJECT SET ENABLED:C1123(*;"ULO_Button_OMITSUBSET";($vl_selected>0))
+						
 					: (Form:C1466.refresh)
 						Form:C1466.refresh:=False:C215
 						SET TIMER:C645(0)
 						$vl_selected:=Form:C1466.records.length
 						OBJECT SET ENABLED:C1123(*;"ULO_Button_SHOWSUBSET";($vl_selected>0))
 						OBJECT SET ENABLED:C1123(*;"ULO_Button_OMITSUBSET";($vl_selected>0))
-						ULO_LIST_UPDATE_FOOTER 
+						ULO_LIST_UPDATE_FOOTER   //We're calling this twice on startup if a default view exists, but it needs to be called here
 					: (Form:C1466.resizing)
 						Form:C1466.resizing:=False:C215
 						Form:C1466.pendingResize:=True:C214
