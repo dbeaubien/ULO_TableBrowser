@@ -12,7 +12,7 @@
 
 C_OBJECT:C1216($0;$vo_queryLine;$vo_params)
 C_COLLECTION:C1488($2)
-C_TEXT:C284($vt_queryString;$vt_conjunction;property)
+C_TEXT:C284($vt_queryString;$vt_conjunction)
 C_LONGINT:C283($1;$vl_queryIndex;$vl_type)
 $vo_params:=New object:C1471
 $vo_params.parameters:=New collection:C1472

@@ -11,7 +11,7 @@
   // Parameters
   // ----------------------------------------------------
 
-C_OBJECT:C1216($vo_formData)
+C_OBJECT:C1216($vo_formData;$e_uloData)
 C_LONGINT:C283($vl_left;$vl_top;$vl_right;$vl_bottom;$vl_win)
 
 $vo_formData:=New object:C1471

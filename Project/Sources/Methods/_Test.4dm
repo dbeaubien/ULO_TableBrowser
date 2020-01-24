@@ -1,4 +1,7 @@
 //%attributes = {}
+
+ALERT:C41(String:C10("test"))
+
   //Waggler test method - Commented
 
   //C_LONGINT($vl_elem)

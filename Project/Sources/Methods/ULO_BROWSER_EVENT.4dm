@@ -1,9 +1,7 @@
 //%attributes = {"shared":true}
 C_OBJECT:C1216($1;$vo_sub;$es;$es_return)
 C_TEXT:C284($vt_eventObject;$vt_value;$vt_method)
-C_LONGINT:C283($vl_event;$cp;$row;$vl_table;$vl_selected;$index;$vl_buttonNumber)
-C_POINTER:C301($vp_nil)
-C_BOOLEAN:C305($vb_buttonUpdate)
+C_LONGINT:C283($vl_event;$vl_table;$vl_selected;$index;$vl_buttonNumber)
 $vl_event:=$1.code
 If (OB Is defined:C1231($1;"objectName"))
 	$vt_eventObject:=$1.objectName

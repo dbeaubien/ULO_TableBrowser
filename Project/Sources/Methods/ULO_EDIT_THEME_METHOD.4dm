@@ -13,10 +13,10 @@
   // ----------------------------------------------------
 
 
-C_OBJECT:C1216($1;$vo_formEvent;$vo_data;$vo_field)
-C_COLLECTION:C1488($vc_cols)
+C_OBJECT:C1216($1;$vo_formEvent;$vo_data)
+C_COLLECTION:C1488($vc_text)
 C_TEXT:C284($vt_objectName;$vt_prop)
-C_LONGINT:C283($vl_dropPos;$vl_startPos;$vl_idx;$vl_fontColour)
+C_LONGINT:C283($i;$vl_fontColour;$vl_newColour)
 
 $vo_formEvent:=$1
 If (OB Is defined:C1231($vo_formEvent;"objectName"))

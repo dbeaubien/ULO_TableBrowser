@@ -11,10 +11,10 @@
   // $1 - String - Case : "New" ; "Dupe" ; "Edit"
   // ----------------------------------------------------
 
+C_TEXT:C284($1)
 C_LONGINT:C283($vl_idx;$vl_idx2)  //table, viewNum
 C_LONGINT:C283($vl_left;$vl_top;$vl_right;$vl_bottom;$vl_win)
-C_TEXT:C284($1)
-C_OBJECT:C1216($vo_formData;$e_uloData;$vo_field;$vo_res;$vo_currentView)
+C_OBJECT:C1216($vo_formData;$e_uloData;$vo_field;$vo_res;$vo_currentView;$e_view)
 
 ARRAY TEXT:C222(at_tableName;0)
 ARRAY LONGINT:C221(al_tableNum;0)

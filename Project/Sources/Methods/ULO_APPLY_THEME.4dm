@@ -19,7 +19,7 @@ C_TEXT:C284($1;$vt_lbName)
 C_OBJECT:C1216($2;$vo_theme)
 C_BOOLEAN:C305($3;$vb_isPreview)
 
-C_LONGINT:C283($vl_fontColour)
+C_LONGINT:C283($i;$vl_fontColour)
 
 ARRAY TEXT:C222($at_colName;0)
 ARRAY TEXT:C222($at_footerName;0)

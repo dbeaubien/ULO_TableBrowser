@@ -12,7 +12,7 @@
   // ----------------------------------------------------
 
 C_OBJECT:C1216($vo_formData)
-C_LONGINT:C283($vl_left;$vl_top;$vl_right;$vl_bottom;$vl_win)
+C_LONGINT:C283($vl_left;$vl_top;$vl_right;$vl_bottom;$vl_win;$vl_idx)
 C_TEXT:C284($vt_prop)
 
 $vo_formData:=New object:C1471

@@ -1,5 +1,5 @@
 //%attributes = {}
-C_OBJECT:C1216($1;$vo_formEvent;$vo_data;$vo_field)
+C_OBJECT:C1216($1;$vo_formEvent;$vo_data;$vo_field;$vo_col)
 C_COLLECTION:C1488($vc_cols)
 C_TEXT:C284($vt_objectName)
 C_LONGINT:C283($vl_dropPos;$vl_startPos;$vl_idx)

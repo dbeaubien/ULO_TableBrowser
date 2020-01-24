@@ -26,8 +26,8 @@ C_BOOLEAN:C305($vb_result)
 C_LONGINT:C283($i)
 $vb_result:=True:C214
 For ($i;3;Count parameters:C259;2)
-	If (OB Is defined:C1231($1.value;${$i-1}))
-		$vb_result:=$vb_result & ($1.value[${$i-1}]=${$i})
+	If (OB Is defined:C1231($1.value;String:C10(${$i-1})))
+		$vb_result:=$vb_result & ($1.value[String:C10(${$i-1})]=${$i})
 	End if 
 End for 
 $1.result:=$vb_result

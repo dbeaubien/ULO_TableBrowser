@@ -2,14 +2,12 @@
 C_LONGINT:C283($1;$cp;$tableNumber;$vl_window)
 C_LONGINT:C283($vl_wLeft;$vl_wRight;$vl_wTop;$vl_wBottom;$vl_wType)
 C_TEXT:C284($vt_wTitle)
-C_OBJECT:C1216($2;$vo_uloData;$es_data)
-ARRAY LONGINT:C221($al_tableID;0)
-ARRAY TEXT:C222($at_tableName;0)
+C_OBJECT:C1216($2;$vo_uloData)
 $cp:=Count parameters:C259
 If ($cp>0)
 	$tableNumber:=$1
 Else 
-	$tableNumber:=Storage:C1525.tableTitles[0].id  //$al_tableID{1}
+	$tableNumber:=Storage:C1525.tableTitles[0].id
 End if 
 
   //Set window defaults
@@ -29,7 +27,7 @@ $vo_uloData.navItems:=Storage:C1525.sidebar.copy()  //SIDEBAR_Flatten (Storage.s
 $vo_uloData.lastNavItemIndex:=1
 $vo_uloData.record:=New object:C1471  //Selected record object
 $vo_uloData.selectedRecord:=1  //Currently selected record
-$vo_uloData.records:=Null:C1517  //Selected /highlighed records
+$vo_uloData.records:=ds:C1482[Table name:C256($tableNumber)].newSelection()  //Selected /highlighed records
 $vo_uloData.uloList:=ds:C1482[Table name:C256($tableNumber)].all()  //Current selection
 If ($cp>1)
 	  //Use the properties passed in object to determine the position of the window
