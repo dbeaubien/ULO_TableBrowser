@@ -27,13 +27,13 @@ If ($cp=0)
 	For each ($vo_field;$vc_fields)
 		If ($vo_field.kind="relatedEntit@")
 			$vl_count:=Form:C1466.uloList[$vo_field.fieldName].length
-			APPEND MENU ITEM:C411($vt_menu;$vo_field.relatedDataClass+" ["+String:C10($vl_count)+"]")
 			$vl_idx:=Form:C1466.navItems.findIndex("UTIL_Find_Collection";"handle";$vo_field.relatedDataClass)  //This needs changing
 			If ($vl_idx>=0)
+				APPEND MENU ITEM:C411($vt_menu;$vo_field.relatedDataClass+" ["+String:C10($vl_count)+"]")
 				SET MENU ITEM PARAMETER:C1004($vt_menu;-1;JSON Stringify:C1217(New object:C1471("relation";$vo_field.fieldName;"table";Form:C1466.navItems[$vl_idx].table)))
 			Else 
-				  //Can't find nav item for this table number
-				TRACE:C157
+				  //If the table is not in the navbar then we should not display the option as we cannot switch to it.
+				  //TRACE
 			End if 
 		End if 
 	End for each 
