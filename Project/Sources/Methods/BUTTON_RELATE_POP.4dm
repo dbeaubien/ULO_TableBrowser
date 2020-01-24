@@ -25,7 +25,7 @@ If ($cp=0)
 	
 	$vc_fields:=ULO_Get_Table_Fields (Table name:C256(Form:C1466.tableNumber))  //TODO: Validate the view is accessible by navBar / user permissions
 	For each ($vo_field;$vc_fields)
-		If ($vo_field.kind="relatedEntities")
+		If ($vo_field.kind="relatedEntit@")
 			$vl_count:=Form:C1466.uloList[$vo_field.fieldName].length
 			APPEND MENU ITEM:C411($vt_menu;$vo_field.relatedDataClass+" ["+String:C10($vl_count)+"]")
 			$vl_idx:=Form:C1466.navItems.findIndex("UTIL_Find_Collection";"handle";$vo_field.relatedDataClass)  //This needs changing

@@ -35,7 +35,7 @@ Case of
 				Case of 
 					: (Form:C1466.fullRefresh)
 						Form:C1466.fullRefresh:=False:C215
-						Form:C1466.navItem.selection:=OB Copy:C1225(Form:C1466.uloList)
+						Form:C1466.navItem.selection:=Form:C1466.uloList  //OB Copy(Form.uloList)//This was returning a null
 						ULO_LOAD_VIEW 
 						SET TIMER:C645(0)
 						$vl_selected:=Form:C1466.records.length
