@@ -189,6 +189,8 @@ Case of
 					EXECUTE METHOD:C1007(Storage:C1525.hostMethods.filter;$es;Form:C1466.tableNumber;$es)
 				End if 
 				Form:C1466.uloList:=$es
+				Form:C1466.refresh:=True:C214
+				SET TIMER:C645(1)
 		End case 
 		
 	: ($vt_eventObject="ULO_Button_SHOWSUBSET")
