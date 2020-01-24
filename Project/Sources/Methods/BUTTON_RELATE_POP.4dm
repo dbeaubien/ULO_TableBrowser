@@ -53,10 +53,11 @@ Else
 	$vl_idx:=Form:C1466.navItems.findIndex("UTIL_Find_Collection";"table";$vo_param.table;"type";"DATA")
 	If ($vl_idx>=0)
 		Form:C1466.fullRefresh:=True:C214
-		LISTBOX SELECT ROW:C912(*;"ULO_Navbar";$vl_idx+1;lk replace selection:K53:1)
+		Form:C1466.lastNavItemIndex:=($vl_idx+1)
+		LISTBOX SELECT ROW:C912(*;"ULO_Navbar";Form:C1466.lastNavItemIndex;lk replace selection:K53:1)
 		SET TIMER:C645(-1)
 	Else 
-		TRACE:C157
+		  //TRACE
 		  //Can't find nav item with selected relation table number
 	End if 
 End if 

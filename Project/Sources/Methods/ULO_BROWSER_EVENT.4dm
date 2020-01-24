@@ -1,7 +1,7 @@
 //%attributes = {"shared":true}
 C_OBJECT:C1216($1;$vo_sub;$es;$es_return)
 C_TEXT:C284($vt_eventObject;$vt_value;$vt_method)
-C_LONGINT:C283($vl_event;$vl_table;$vl_selected;$index;$vl_buttonNumber)
+C_LONGINT:C283($vl_event;$vl_table;$vl_selected;$index;$vl_buttonNumber;$vl_idx)
 $vl_event:=$1.code
 If (OB Is defined:C1231($1;"objectName"))
 	$vt_eventObject:=$1.objectName
@@ -40,6 +40,7 @@ Case of
 						OBJECT SET ENABLED:C1123(*;"ULO_Button_SHOWSUBSET";($vl_selected>0))
 						OBJECT SET ENABLED:C1123(*;"ULO_Button_OMITSUBSET";($vl_selected>0))
 						
+						
 					: (Form:C1466.refresh)
 						Form:C1466.refresh:=False:C215
 						SET TIMER:C645(0)
@@ -63,8 +64,6 @@ Case of
 	: ($vt_eventObject="ULO_Navbar")
 		Case of 
 			: ($vl_event=On Double Clicked:K2:5)
-				
-				
 				
 				
 				
