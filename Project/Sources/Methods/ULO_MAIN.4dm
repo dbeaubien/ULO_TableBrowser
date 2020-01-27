@@ -80,6 +80,6 @@ Else
 	
 End if 
 
-$vl_window:=Open window:C153($vl_wLeft;$vl_wTop;$vl_wRight;$vl_wBottom;$vl_wType;$vt_wTitle)
+$vl_window:=Open form window:C675("ULO_Browser";$vl_wType)
 DIALOG:C40("ULO_Browser";$vo_uloData)
 CLOSE WINDOW:C154($vl_window)
