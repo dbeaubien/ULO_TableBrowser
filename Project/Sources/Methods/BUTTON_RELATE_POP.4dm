@@ -22,12 +22,12 @@ $cp:=Count parameters:C259
 If ($cp=0)
 	
 	$vt_menu:=Create menu:C408
-	
 	$vc_fields:=ULO_Get_Table_Fields (Table name:C256(Form:C1466.tableNumber))  //TODO: Validate the view is accessible by navBar / user permissions
 	For each ($vo_field;$vc_fields)
 		If ($vo_field.kind="relatedEntit@")
 			$vl_count:=Form:C1466.uloList[$vo_field.fieldName].length
-			$vl_idx:=Form:C1466.navItems.findIndex("UTIL_Find_Collection";"handle";$vo_field.relatedDataClass)  //This needs changing
+			
+			$vl_idx:=UTIL_Col_Find_Index (Form:C1466.navItems;"handle";$vo_field.relatedDataClass)  //TODO: Needs changing
 			If ($vl_idx>=0)
 				APPEND MENU ITEM:C411($vt_menu;$vo_field.relatedDataClass+" ["+String:C10($vl_count)+"]")
 				SET MENU ITEM PARAMETER:C1004($vt_menu;-1;JSON Stringify:C1217(New object:C1471("relation";$vo_field.fieldName;"table";Form:C1466.navItems[$vl_idx].table)))
