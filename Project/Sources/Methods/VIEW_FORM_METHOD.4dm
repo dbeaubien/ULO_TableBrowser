@@ -43,7 +43,7 @@ Case of
 			: ($vo_formEvent.code=On Drop:K2:12)
 				$vl_dropPos:=Drop position:C608-1
 				$vo_data:=JSON Parse:C1218(Get text from pasteboard:C524)
-				$vl_startPos:=Form:C1466.displayCols.findIndex("UTIL_Find_Collection";"table";$vo_data.table;"field";$vo_data.field)
+				$vl_startPos:=UTIL_Col_Find_Index (Form:C1466.displayCols;"table";$vo_data.table;"field";$vo_data.field)
 				
 				If ($vl_startPos#$vl_dropPos)
 					Form:C1466.displayCols.remove($vl_startPos)
@@ -58,7 +58,7 @@ Case of
 					
 					  //Add unselected cols 
 					For each ($vo_field;Form:C1466.view.detail.cols)
-						If ($vc_cols.findIndex("UTIL_Find_Collection";"table";$vo_field.table;"field";$vo_field.field)=-1)
+						If (UTIL_Col_Find_Index ($vc_cols;"table";$vo_field.table;"field";$vo_field.field)=-1)
 							$vc_cols.push(OB Copy:C1225($vo_field))
 						End if 
 					End for each 
@@ -101,7 +101,7 @@ Case of
 		Case of 
 			: ($vo_formEvent.code=On Clicked:K2:4)
 				  //deselect the highlighted col
-				$vl_idx:=Form:C1466.view.detail.cols.findIndex("UTIL_Find_Collection";"table";Form:C1466.selectedCol.table;"field";Form:C1466.selectedCol.field)
+				$vl_idx:=UTIL_Col_Find_Index (Form:C1466.view.detail.cols;"table";Form:C1466.selectedCol.table;"field";Form:C1466.selectedCol.field)
 				If ($vl_idx>=0)
 					If (Form:C1466.selectedCol.table>0)
 						Form:C1466.view.detail.cols[$vl_idx].selected:=False:C215

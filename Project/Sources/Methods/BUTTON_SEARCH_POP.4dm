@@ -22,7 +22,7 @@ Case of
 		
 		$vc_hostOptions:=New collection:C1472
 		  //first make call to host to get any options.
-		$index:=Storage:C1525.buttons.findIndex("UTIL_Find_Collection";"action";"SEARCH")
+		$index:=UTIL_Col_Find_Index (Storage:C1525.buttons;"action";"SEARCH")
 		If ($index>=0)
 			If (Storage:C1525.buttons[$index].method#"")  //If there is a host search method specified
 				EXECUTE METHOD:C1007(Storage:C1525.buttons[$index].method;$vc_hostOptions;Form:C1466.tableNumber;Form:C1466.navItem.handle)  //Return a collection
@@ -74,7 +74,7 @@ Case of
 		
 	Else   //Otherwise call the host search option
 		
-		$index:=Storage:C1525.buttons.findIndex("UTIL_Find_Collection";"action";"SEARCH")
+		$index:=UTIL_Col_Find_Index (Storage:C1525.buttons;"action";"SEARCH")
 		If ($index>=0)
 			If (Storage:C1525.buttons[$index].method#"")  //If there is a host search method specified
 				EXECUTE METHOD:C1007(Storage:C1525.buttons[$index].method;$vc_hostOptions;Form:C1466.tableNumber;Form:C1466.navItem.handle;$1)  //Return a collection

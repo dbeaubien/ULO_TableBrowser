@@ -96,7 +96,7 @@ at_tableName:=1
 
 For each ($vo_field;$vo_formData.fields[0].fields)
 	If ($vo_field.kind="relatedEntity")
-		$vl_idx:=Storage:C1525.tableTitles.findIndex("UTIL_Find_Collection";"name";$vo_field.relatedDataClass)
+		$vl_idx:=UTIL_Col_Find_Index (Storage:C1525.tableTitles;"name";$vo_field.relatedDataClass)
 		If ($vl_idx>=0)
 			$vo_formData.fields.push(New object:C1471("table";Storage:C1525.tableTitles[$vl_idx].id;"fields";ULO_Get_Table_Fields ($vo_field.relatedDataClass);"relation";$vo_field.name))
 			APPEND TO ARRAY:C911(at_tableName;$vo_field.relatedDataClass)
@@ -108,9 +108,9 @@ End for each
   //Cross reference saved fields with actual,
   //Update field names 
 For each ($vo_field;$vo_formData.view.detail.cols)
-	$vl_idx:=$vo_formData.fields.findIndex("UTIL_Find_Collection";"table";$vo_field.table)
+	$vl_idx:=UTIL_Col_Find_Index ($vo_formData.fields;"table";$vo_field.table)
 	If ($vl_idx>=0)
-		$vl_idx2:=$vo_formData.fields[$vl_idx].fields.findIndex("UTIL_Find_Collection";"fieldNumber";$vo_field.field)
+		$vl_idx2:=UTIL_Col_Find_Index ($vo_formData.fields[$vl_idx].fields;"fieldNumber";$vo_field.field)
 		If ($vl_idx2>=0)
 			$vo_field.fieldName:=$vo_formData.fields[$vl_idx].fields[$vl_idx2].fieldName
 		Else 

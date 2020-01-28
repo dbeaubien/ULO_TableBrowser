@@ -13,12 +13,12 @@
 
 C_LONGINT:C283($vl_idx)
 C_OBJECT:C1216($vo_col)
-$vl_idx:=Form:C1466.view.detail.cols.findIndex("UTIL_Find_Collection";"table";al_tableNum{at_tableName};"field";Form:C1466.selectedField.fieldNumber)
+$vl_idx:=UTIL_Col_Find_Index (Form:C1466.view.detail.cols;"table";al_tableNum{at_tableName};"field";Form:C1466.selectedField.fieldNumber)
 If ($vl_idx>=0)
 	Form:C1466.view.detail.cols[$vl_idx].selected:=True:C214
 Else 
 	  //Build and add col obj
-	$vl_idx:=Form:C1466.fields.findIndex("UTIL_Find_Collection";"table";al_tableNum{at_tableName})
+	$vl_idx:=UTIL_Col_Find_Index (Form:C1466.fields;"table";al_tableNum{at_tableName})
 	If ($vl_idx>=0)
 		$vo_col:=New object:C1471
 		$vo_col.selected:=True:C214

@@ -11,7 +11,7 @@ End if
 For each ($vt_prop;ds:C1482[$vt_tableName])
 	If (ds:C1482[$vt_tableName][$vt_prop].kind="relatedEntit@")  //Handles Entity & Entities
 		$vc_relations.push(ds:C1482[$vt_tableName][$vt_prop])  //Adding here reduces the depth of the chain.
-		$vl_index:=$vc_relations.findIndex("UTIL_Find_Collection_String";"relatedDataClass";ds:C1482[$vt_tableName][$vt_prop].relatedDataClass)
+		$vl_index:=UTIL_Col_Find_Index ($vc_relations;"relatedDataClass";ds:C1482[$vt_tableName][$vt_prop].relatedDataClass)
 		If (Not:C34((ds:C1482[$vt_tableName][$vt_prop].relatedDataClass=$vt_tableName))) & ($vl_index=-1)
 			  //$vc_relations.push(ds[$vt_tableName][$vt_prop])//Adding here increases the depth of the chain.
 			$vc_relations:=ULO_Get_Related_Tables (ds:C1482[$vt_tableName][$vt_prop].relatedDataClass;$vc_relations)

@@ -40,7 +40,7 @@ If (OK=1)
 		$vo_formData.col.fontStyle:=$vo_formData.col.fontStyle+4
 	End if 
 	
-	$vl_idx:=Form:C1466.view.detail.cols.findIndex("UTIL_Find_Collection";"table";Form:C1466.selectedCol.table;"field";Form:C1466.selectedCol.field)
+	$vl_idx:=UTIL_Col_Find_Index (Form:C1466.view.detail.cols;"table";Form:C1466.selectedCol.table;"field";Form:C1466.selectedCol.field)
 	If ($vl_idx>=0)
 		For each ($vt_prop;$vo_formData.col)
 			Form:C1466.selectedCol[$vt_prop]:=$vo_formData.col[$vt_prop]

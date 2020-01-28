@@ -24,7 +24,7 @@ If (Form:C1466.navItem.selectedView.user=Storage:C1525.user.id)
 		$vt_colName:="h_"+String:C10($vo_col.table)+"_"+String:C10($vo_col.field)
 		$vl_width:=LISTBOX Get column width:C834(*;$vt_colName)
 		$vo_col.width:=$vl_width
-		$vl_idx:=Form:C1466.navItem.selectedView.detail.cols.findIndex("UTIL_Find_Collection";"table";$vo_col.table;"field";$vo_col.field)
+		$vl_idx:=UTIL_Col_Find_Index (Form:C1466.navItem.selectedView.detail.cols;"table";$vo_col.table;"field";$vo_col.field)
 		If ($vl_idx>=0)
 			Form:C1466.navItem.selectedView.detail.cols[$vl_idx].width:=$vl_width
 		End if 

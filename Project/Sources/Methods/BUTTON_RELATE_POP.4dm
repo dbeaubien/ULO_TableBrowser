@@ -96,7 +96,7 @@ Else
 		: ($vo_param.action="same")
 			Form:C1466.uloList:=Form:C1466.uloList[$vo_param.relation]
 			Form:C1466.tableNumber:=$vo_param.table
-			$vl_idx:=Form:C1466.navItems.findIndex("UTIL_Find_Collection";"table";$vo_param.table;"type";"DATA")
+			$vl_idx:=UTIL_Col_Find_Index (Form:C1466.navItems;"table";$vo_param.table;"type";"DATA")
 			If ($vl_idx>=0)
 				Form:C1466.fullRefresh:=True:C214
 				Form:C1466.lastNavItemIndex:=($vl_idx+1)

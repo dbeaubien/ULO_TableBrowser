@@ -23,7 +23,7 @@ C_TEXT:C284($2;$4)
 C_VARIANT:C1683($3)
 C_LONGINT:C283($vl_index)
 
-$vl_index:=$1.findIndex("UTIL_Find_Collection";$2;$3)
+$vl_index:=UTIL_Col_Find_Index ($1;$2;$3)
 If ($vl_index=-1)
 	For each ($vo_element;$1)
 		If (OB Is defined:C1231($vo_element;$4))
