@@ -32,9 +32,9 @@ If ($cp=0)
 		If ($vo_field.kind="relatedEntit@")
 			$vl_count:=Form:C1466.uloList[$vo_field.fieldName].length
 			
-			$vl_idx:=UTIL_Col_Find_Index (Form:C1466.navItems;"handle";$vo_field.relatedDataClass)  //TODO: Needs changing
+			$vl_idx:=UTIL_Col_Find_Index (Form:C1466.sidebarSource;"handle";$vo_field.relatedDataClass)  //TODO: Needs changing
 			If ($vl_idx>=0)
-				$vc_menuItems.push(New object:C1471("relation";$vo_field.fieldName;"table";Form:C1466.navItems[$vl_idx].table;"count";$vl_count;"fieldName";$vo_field.relatedDataClass))
+				$vc_menuItems.push(New object:C1471("relation";$vo_field.fieldName;"table";Form:C1466.sidebarSource[$vl_idx].table;"count";$vl_count;"fieldName";$vo_field.relatedDataClass))
 			Else 
 				  //Can't find nav item for this table number
 				  //TRACE
@@ -96,7 +96,21 @@ Else
 		: ($vo_param.action="same")
 			Form:C1466.uloList:=Form:C1466.uloList[$vo_param.relation]
 			Form:C1466.tableNumber:=$vo_param.table
-			$vl_idx:=UTIL_Col_Find_Index (Form:C1466.navItems;"table";$vo_param.table;"type";"DATA")
+			
+			$index:=UTIL_Col_Find_Index (Form:C1466.sidebarSource;"table";$vo_param.table;"type";"DATA")
+			
+			  //If desired sidebar item is child, ensure parent(s) are expanded
+			If (OB Is defined:C1231(Form:C1466.sidebarSource[$index];"childOfIndex"))
+				Form:C1466.sidebarSource[Form:C1466.sidebarSource[$index].childOfIndex].expanded:=True:C214
+				If (OB Is defined:C1231(Form:C1466.sidebarSource[Form:C1466.sidebarSource[$index].childOfIndex];"childOfIndex"))
+					Form:C1466.sidebarSource[Form:C1466.sidebarSource[Form:C1466.sidebarSource[$index].childOfIndex].childOfIndex].expanded:=True:C214
+				End if 
+				  //Else is top level item and always visible!
+			End if 
+			
+			
+			SIDEBAR_REBUILD 
+			$vl_idx:=UTIL_Col_Find_Index (Form:C1466.navItems;"index";Form:C1466.sidebarSource[$index].index)
 			If ($vl_idx>=0)
 				Form:C1466.fullRefresh:=True:C214
 				Form:C1466.lastNavItemIndex:=($vl_idx+1)
