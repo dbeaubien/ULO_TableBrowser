@@ -40,29 +40,40 @@ Else
 			Use (Storage:C1525.sidebar)
 				Storage:C1525.sidebar.push(New shared object:C1526)
 				  //IF HEADER - There can only be 4 parameters type,title,icon and style
-				$index:=Storage:C1525.sidebar.length
-				Storage:C1525.sidebar[$index-1].index:=$index
-				Storage:C1525.sidebar[$index-1].type:=$1
-				Storage:C1525.sidebar[$index-1].title:=$2
-				Storage:C1525.sidebar[$index-1].handle:=$3
-				Storage:C1525.sidebar[$index-1].icon:=$4
-				Storage:C1525.sidebar[$index-1].style:=$5
+				$index:=Storage:C1525.sidebar.length-1
+				Storage:C1525.sidebar[$index].index:=$index+1
+				Storage:C1525.sidebar[$index].type:=$1
+				Storage:C1525.sidebar[$index].title:=$2
+				Storage:C1525.sidebar[$index].handle:=$3
+				Storage:C1525.sidebar[$index].icon:=$4
+				Storage:C1525.sidebar[$index].style:=$5
+				Storage:C1525.sidebar[$index].sub:=New shared collection:C1527
+				Storage:C1525.sidebar[$index].expanded:=False:C215
 				If ($cp>5)
-					Storage:C1525.sidebar[$index-1].table:=$6
-					Storage:C1525.sidebar[$index-1].childOf:=$7  //Parent handle
-					Storage:C1525.sidebar[$index-1].findFields:=New shared collection:C1527
+					Storage:C1525.sidebar[$index].table:=$6
+					Storage:C1525.sidebar[$index].childOf:=$7  //Parent handle
+					
+					If ($7#"")
+						$vl_idx:=UTIL_Col_Find_Index (Storage:C1525.sidebar;"handle";$7)
+						If ($vl_idx>=0)
+							Storage:C1525.sidebar[$vl_idx].sub.push($index+1)
+							Storage:C1525.sidebar[$index].childOfIndex:=$vl_idx
+						End if 
+					End if 
+					
+					Storage:C1525.sidebar[$index].findFields:=New shared collection:C1527
 					If ($8.length>0)
-						Use (Storage:C1525.sidebar[$index-1].findFields)
+						Use (Storage:C1525.sidebar[$index].findFields)
 							For each ($vt_field;$8)
-								Storage:C1525.sidebar[$index-1].findFields.push($vt_field)
+								Storage:C1525.sidebar[$index].findFields.push($vt_field)
 							End for each 
 						End use   //END use findFields
 					End if   //END findFields length check
-					Storage:C1525.sidebar[$index-1].actionMethods:=New shared collection:C1527
+					Storage:C1525.sidebar[$index].actionMethods:=New shared collection:C1527
 					If ($9.length>0)
-						Use (Storage:C1525.sidebar[$index-1].actionMethods)
+						Use (Storage:C1525.sidebar[$index].actionMethods)
 							For each ($vo_act;$9)
-								Storage:C1525.sidebar[$index-1].actionMethods.push(New shared object:C1526("action";$vo_act.action;"method";$vo_act.method))
+								Storage:C1525.sidebar[$index].actionMethods.push(New shared object:C1526("action";$vo_act.action;"method";$vo_act.method))
 							End for each 
 						End use   //END use actionMethods
 					End if   //END actionMethods length check

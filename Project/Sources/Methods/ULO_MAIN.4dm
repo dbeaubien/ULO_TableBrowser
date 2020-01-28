@@ -2,7 +2,7 @@
 C_LONGINT:C283($1;$cp;$tableNumber;$vl_window)
 C_LONGINT:C283($vl_wLeft;$vl_wRight;$vl_wTop;$vl_wBottom;$vl_wType)
 C_TEXT:C284($vt_wTitle)
-C_OBJECT:C1216($2;$vo_uloData)
+C_OBJECT:C1216($2;$vo_uloData;$3)
 $cp:=Count parameters:C259
 If ($cp>0)
 	$tableNumber:=$1
@@ -23,12 +23,17 @@ $vo_uloData.tableNumber:=$tableNumber
 $vo_uloData.navItem:=New object:C1471
 $vo_uloData.selectedNavItem:=1
 $vo_uloData.navItems:=New collection:C1472
+$vo_uloData.sidebarSource:=Storage:C1525.sidebar.copy()
 $vo_uloData.navItems:=Storage:C1525.sidebar.copy()  //SIDEBAR_Flatten (Storage.sidebar.copy())
 $vo_uloData.lastNavItemIndex:=1
 $vo_uloData.record:=New object:C1471  //Selected record object
 $vo_uloData.selectedRecord:=1  //Currently selected record
 $vo_uloData.records:=ds:C1482[Table name:C256($tableNumber)].newSelection()  //Selected /highlighed records
-$vo_uloData.uloList:=ds:C1482[Table name:C256($tableNumber)].all()  //Current selection
+If ($cp>2)
+	$vo_uloData.uloList:=$3
+Else 
+	$vo_uloData.uloList:=ds:C1482[Table name:C256($tableNumber)].all()  //Current selection
+End if 
 If ($cp>1)
 	  //Use the properties passed in object to determine the position of the window
 	If (OB Is defined:C1231($2;"wLeft"))

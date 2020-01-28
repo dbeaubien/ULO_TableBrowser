@@ -6,7 +6,8 @@ C_TEXT:C284($vt_colName;$vt_hObject;$vt_formula;$vt_header;$vt_fObject;$vt_forma
 
 Form:C1466.tableNumber:=Form:C1466.navItem.table
 If (Form:C1466.tableNumber>0)
-	Form:C1466.lastNavItemIndex:=Form:C1466.navItem.index
+	  //Form.lastNavItemIndex:=Form.navItem.index
+	Form:C1466.lastNavItemIndex:=UTIL_Col_Find_Index (Form:C1466.navItems;"index";Form:C1466.navItem.index)+1
 	$vl_columns:=LISTBOX Get number of columns:C831(*;"ULO_LIST")
 	LISTBOX DELETE COLUMN:C830(*;"ULO_LIST";1;$vl_columns)
 	$vp_table:=Table:C252(Form:C1466.tableNumber)

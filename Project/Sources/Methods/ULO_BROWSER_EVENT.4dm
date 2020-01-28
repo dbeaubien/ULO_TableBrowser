@@ -17,15 +17,33 @@ Case of
 				Form:C1466.pendingResize:=False:C215
 				Form:C1466.refresh:=True:C214
 				Form:C1466.fullRefresh:=False:C215
-				
-				ULO_LOAD_THEME 
-				ULO_LOAD_BUTTONS (Form:C1466.buttons)
-				
-				$index:=Form:C1466.navItems.findIndex("UTIL_Find_Collection";"handle";Form:C1466.sidebarStart)
+				$index:=UTIL_Col_Find_Index (Form:C1466.sidebarSource;"handle";Form:C1466.sidebarStart)
 				If ($index=-1)
 					$index:=1
 				End if 
+				
+				  //If desired sidebar item is child, ensure parent(s) are expanded
+				If (OB Is defined:C1231(Form:C1466.sidebarSource[$index];"childOfIndex"))
+					Form:C1466.sidebarSource[Form:C1466.sidebarSource[$index].childOfIndex].expanded:=True:C214
+					If (OB Is defined:C1231(Form:C1466.sidebarSource[Form:C1466.sidebarSource[$index].childOfIndex];"childOfIndex"))
+						Form:C1466.sidebarSource[Form:C1466.sidebarSource[Form:C1466.sidebarSource[$index].childOfIndex].childOfIndex].expanded:=True:C214
+					End if 
+					  //Else is top level item and always visible!
+				End if 
+				
+				
+				ULO_LOAD_THEME 
+				ULO_LOAD_BUTTONS (Form:C1466.buttons)
+				SIDEBAR_REBUILD 
+				
+				  //Find in Form.navItems
+				$index:=UTIL_Col_Find_Index (Form:C1466.navItems;"handle";Form:C1466.sidebarStart)
+				If ($index=-1)
+					$index:=1
+				End if 
+				
 				LISTBOX SELECT ROW:C912(*;"ULO_Navbar";$index+1;lk replace selection:K53:1)
+				Form:C1466.lastNavItemIndex:=$index+1
 				ULO_LOAD_VIEW   //This is also calling ULO_LIST_UPDATE_FOOTER if a default view exists
 				SET TIMER:C645(1)
 				
@@ -65,31 +83,13 @@ Case of
 		Case of 
 			: ($vl_event=On Double Clicked:K2:5)
 				
+				SIDEBAR_DBL_CLICK 
 				
-				
-				
-				  //NEEDS RE_WRITING
-				If (Form:C1466.navItem.sub#Null:C1517)
-					If (Form:C1466.navItem.sub.length>0)
-						If (Form:C1466.navItem.collapsed)  //Then expand based on type
-							For each ($vo_sub;Form:C1466.navItem.sub)
-								Form:C1466.navItems.insert(Form:C1466.selectedNavItem;$vo_sub)
-							End for each 
-							Form:C1466.navItem.collapsed:=False:C215
-						Else   //Then collapse
-							If (UTIL_Recursive_Find_Col (Form:C1466.navItem.sub;"index";Form:C1466.lastNavItemIndex;"sub")=Null:C1517)
-								For each ($vo_sub;Form:C1466.navItem.sub)
-									Form:C1466.navItems.remove(Form:C1466.selectedNavItem)
-								End for each 
-								Form:C1466.navItem.collapsed:=True:C214
-							End if 
-						End if 
-						Form:C1466.navItems:=Form:C1466.navItems
-					End if   //END Check that the navItem has sub elements
-				End if   //END Check Form.navItem.sub not null
 				If (Form:C1466.navItem.type="header")
 					LISTBOX SELECT ROW:C912(*;"ULO_Navbar";Form:C1466.lastNavItemIndex;lk replace selection:K53:1)
 				End if 
+				
+				
 				
 			: ($vl_event=On Selection Change:K2:29)  // | ($vl_event=On Clicked)
 				If (Form:C1466.navItem#Null:C1517)
