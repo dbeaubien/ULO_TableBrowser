@@ -16,23 +16,7 @@ C_COLLECTION:C1488($vc_navItems)
 C_OBJECT:C1216($vo_item)
 C_LONGINT:C283($vl_lastSelected;$vl_idx)
 
-  //Need to tweak Form.lastSelectedIndex according to amount of item added / removed
-  //after the index
-
 $vl_lastSelected:=Form:C1466.navItems[Form:C1466.lastNavItemIndex-1].index
-
-  //First preserve selection / view data
-  //For each ($vo_item;Form.navItems)
-  //$vl_idx:=UTIL_Col_Find_Index (Form.sidebarSource;"index";$vo_item.index)
-  //If ($vl_idx>=0)
-  //If (OB Is defined($vo_item;"selection"))
-  //Form.sidebarSource[$vl_idx].selection:=$vo_item.selection
-  //End if 
-  //If (OB Is defined($vo_item;"selectedView"))
-  //Form.sidebarSource[$vl_idx].selectedView:=$vo_item.selectedView
-  //End if 
-  //End if 
-  //End for each 
 If (Form:C1466.navItem#Null:C1517)
 	$vl_idx:=UTIL_Col_Find_Index (Form:C1466.sidebarSource;"index";Form:C1466.navItem.index)
 	If ($vl_idx>=0)
@@ -59,10 +43,7 @@ For each ($vo_item;Form:C1466.sidebarSource)
 End for each 
 Form:C1466.navItems:=$vc_navItems
 
-  //TRACE
-
 $vl_idx:=UTIL_Col_Find_Index (Form:C1466.navItems;"index";$vl_lastSelected)
 If ($vl_idx>=0)
 	Form:C1466.lastNavItemIndex:=$vl_idx+1
-	  //ALERT(String($vl_idx+1))
 End if 

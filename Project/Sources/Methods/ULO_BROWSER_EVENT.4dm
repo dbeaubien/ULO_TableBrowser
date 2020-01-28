@@ -13,7 +13,6 @@ Case of
 	: ($vt_eventObject="form")
 		Case of 
 			: ($vl_event=On Load:K2:1)
-				TRACE:C157
 				Form:C1466.resize:=False:C215
 				Form:C1466.pendingResize:=False:C215
 				Form:C1466.refresh:=True:C214

@@ -34,7 +34,6 @@ If (Form:C1466.navItem.selectedView.user=Storage:C1525.user.id)
 	
 Else 
 	  //Not allowed (to save)
-	  //TRACE
 End if 
 
 

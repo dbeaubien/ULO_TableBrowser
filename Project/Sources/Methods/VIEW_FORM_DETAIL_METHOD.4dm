@@ -16,8 +16,6 @@ Case of
 		
 		Case of 
 			: ($vo_formEvent.code=On Load:K2:1)
-				  //TRACE
-				
 				ARRAY TEXT:C222(at_dataType;0)
 				ARRAY LONGINT:C221(al_dataType;0)
 				

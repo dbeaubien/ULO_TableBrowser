@@ -20,7 +20,6 @@ $vp_table:=Table:C252(Form:C1466.tableNumber)
 $cp:=Count parameters:C259
 
 If ($cp=0)
-	TRACE:C157
 	$vt_menu:=Create menu:C408
 	$vt_newWinMenu:=Create menu:C408
 	$vt_sameWinMenu:=Create menu:C408
@@ -37,7 +36,6 @@ If ($cp=0)
 				$vc_menuItems.push(New object:C1471("relation";$vo_field.fieldName;"table";Form:C1466.sidebarSource[$vl_idx].table;"count";$vl_count;"fieldName";$vo_field.relatedDataClass))
 			Else 
 				  //Can't find nav item for this table number
-				  //TRACE
 			End if 
 		End if 
 	End for each 
@@ -108,7 +106,6 @@ Else
 				LISTBOX SELECT ROW:C912(*;"ULO_Navbar";$vl_idx+1;lk replace selection:K53:1)
 				SET TIMER:C645(-1)
 			Else 
-				  //TRACE
 				  //Can't find nav item with selected relation table number
 			End if 
 			

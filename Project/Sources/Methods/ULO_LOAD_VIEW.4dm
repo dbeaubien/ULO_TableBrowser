@@ -3,7 +3,6 @@ C_OBJECT:C1216($vo_col;$vo_view)
 C_POINTER:C301($vp_nil;$vp_table)
 C_LONGINT:C283($i;$vl_columns;$vl_type;$vl_numFields;$vl_fontStyle;$vl_alignment;$vl_fontColour)
 C_TEXT:C284($vt_colName;$vt_hObject;$vt_formula;$vt_header;$vt_fObject;$vt_format)
-  //TRACE
   //Form.tableNumber:=Form.navItem.table
 
 If (Form:C1466.tableNumber>0)

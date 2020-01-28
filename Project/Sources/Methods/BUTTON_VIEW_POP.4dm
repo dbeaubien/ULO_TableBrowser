@@ -52,7 +52,7 @@ Case of
 			APPEND MENU ITEM:C411($vt_ViewMenu;"My Views")
 			DISABLE MENU ITEM:C150($vt_ViewMenu;-1)
 		End if 
-		  //TRACE
+		
 		  //Now get other views I can use.
 		$vc_views:=ds:C1482["uloData"].query("group # -1 & user # :1 & table = :2 & default = :3";\
 			$vl_CurrentUser;Form:C1466.tableNumber;False:C215).orderBy("name").toCollection("id,name,user,detail")
