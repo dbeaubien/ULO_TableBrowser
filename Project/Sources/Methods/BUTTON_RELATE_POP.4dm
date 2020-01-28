@@ -20,7 +20,7 @@ $vp_table:=Table:C252(Form:C1466.tableNumber)
 $cp:=Count parameters:C259
 
 If ($cp=0)
-	
+	TRACE:C157
 	$vt_menu:=Create menu:C408
 	$vt_newWinMenu:=Create menu:C408
 	$vt_sameWinMenu:=Create menu:C408

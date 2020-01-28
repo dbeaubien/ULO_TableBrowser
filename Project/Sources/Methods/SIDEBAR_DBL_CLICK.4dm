@@ -12,7 +12,7 @@
   // ----------------------------------------------------
 
 C_BOOLEAN:C305($vb_okToContinue)
-C_LONGINT:C283($vl_idx;$vl_index)
+C_LONGINT:C283($vl_idx;$vl_index;$i)
 
 $vb_okToContinue:=True:C214
 

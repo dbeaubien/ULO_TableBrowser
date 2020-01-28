@@ -3,8 +3,9 @@ C_OBJECT:C1216($vo_col;$vo_view)
 C_POINTER:C301($vp_nil;$vp_table)
 C_LONGINT:C283($i;$vl_columns;$vl_type;$vl_numFields;$vl_fontStyle;$vl_alignment;$vl_fontColour)
 C_TEXT:C284($vt_colName;$vt_hObject;$vt_formula;$vt_header;$vt_fObject;$vt_format)
+  //TRACE
+  //Form.tableNumber:=Form.navItem.table
 
-Form:C1466.tableNumber:=Form:C1466.navItem.table
 If (Form:C1466.tableNumber>0)
 	  //Form.lastNavItemIndex:=Form.navItem.index
 	Form:C1466.lastNavItemIndex:=UTIL_Col_Find_Index (Form:C1466.navItems;"index";Form:C1466.navItem.index)+1
@@ -22,6 +23,7 @@ If (Form:C1466.tableNumber>0)
 		Form:C1466.uloList:=Form:C1466.navItem.selection
 		  //Push the loaded selection to the sore of current selections???
 	End if 
+	
 	If (Form:C1466.navItem.selectedView=Null:C1517)
 		$vo_view:=ULO_GET_VIEW (Storage:C1525.user.id;Form:C1466.tableNumber;Form:C1466.navItem.handle)  //EXECUTE METHOD("HOST_ULO_SET_VIEW";$vo_view;Form.tableNumber)
 		  //Form.navItem.view:=$vo_view.detail

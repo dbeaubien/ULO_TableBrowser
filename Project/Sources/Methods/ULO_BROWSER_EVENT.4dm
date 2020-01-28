@@ -13,6 +13,7 @@ Case of
 	: ($vt_eventObject="form")
 		Case of 
 			: ($vl_event=On Load:K2:1)
+				TRACE:C157
 				Form:C1466.resize:=False:C215
 				Form:C1466.pendingResize:=False:C215
 				Form:C1466.refresh:=True:C214
@@ -46,6 +47,7 @@ Case of
 				Form:C1466.lastNavItemIndex:=$index+1
 				ULO_LOAD_VIEW   //This is also calling ULO_LIST_UPDATE_FOOTER if a default view exists
 				SET TIMER:C645(1)
+				SIDEBAR_REBUILD 
 				
 			: ($vl_event=On Timer:K2:25)
 				Case of 
@@ -96,6 +98,7 @@ Case of
 					If (Form:C1466.navItem.type="header")
 						LISTBOX SELECT ROW:C912(*;"ULO_Navbar";Form:C1466.lastNavItemIndex;lk replace selection:K53:1)
 					Else 
+						Form:C1466.tableNumber:=Form:C1466.navItem.table
 						ULO_LOAD_VIEW 
 					End if 
 				Else 
