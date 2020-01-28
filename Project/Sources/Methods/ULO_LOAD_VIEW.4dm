@@ -161,9 +161,8 @@ If (Form:C1466.tableNumber>0)
 					Type:C295(Field:C253(Table:C252($vp_table);$i)->);$vt_hObject;$vp_nil)
 				OBJECT SET TITLE:C194(*;$vt_hObject;Field name:C257(Table:C252($vp_table);$i))  //Sets the header text.
 				OBJECT SET FONT:C164(*;$vt_hObject;"Label")  //Sets the header text.
-				  //If (al_AL_FieldWidth{$vl_Find}>0)
-				  //LISTBOX SET COLUMN WIDTH(*;as_AL_FieldHeader{$vl_Find};al_AL_FieldWidth{$vl_Find})
-				  //End if 
+				$vl_fontColour:=Form:C1466.theme.rowFontColour
+				OBJECT SET RGB COLORS:C628(*;Field name:C257(Table:C252($vp_table);$i);$vl_fontColour)  //Set column font colour
 			End if 
 			
 			  //Define default column properties

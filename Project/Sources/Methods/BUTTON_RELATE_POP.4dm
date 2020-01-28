@@ -70,15 +70,6 @@ If ($cp=0)
 Else 
 	  //swap selected table!
 	$vo_param:=JSON Parse:C1218($1)
-	
-	  //ULO_BROWSER_EVENT On load is resulting in the selection being reset
-	  //Because ULO_LOAD_VIEW checks for a selection against Form.navItem
-	  //However, we cannot set Form.navItem until the correct navBar item has 
-	  //been selected (in the onTimer event)
-	
-	  //Not sure what the solution is, possibly need to remove ULO_LOAD_VIEW's 
-	  //affect on the selection. Or have LOAD_VIEW use the existing Form.uloList
-	  //instead of all records?
 	Case of 
 		: ($vo_param.action="new")
 			C_OBJECT:C1216($vo_winData)
