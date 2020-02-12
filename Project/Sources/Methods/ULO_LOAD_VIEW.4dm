@@ -102,6 +102,7 @@ If (Form:C1466.tableNumber>0)
 					OBJECT SET FONT STYLE:C166(*;$vt_colName;$vl_fontStyle)
 					OBJECT SET HORIZONTAL ALIGNMENT:C706(*;$vt_colName;$vl_alignment)
 					OBJECT SET RGB COLORS:C628(*;$vt_colName;$vl_fontColour)
+					OBJECT SET ENTERABLE:C238(*;$vt_colName;False:C215)
 					
 					OBJECT SET TITLE:C194(*;$vt_hObject;$vt_header)  //Sets the header text.
 					OBJECT SET FONT:C164(*;$vt_hObject;"Label")  //Sets the header text.
@@ -157,11 +158,13 @@ If (Form:C1466.tableNumber>0)
 			
 			If (Is field number valid:C1000($vp_table;$i)) & (Type:C295(Field:C253(Table:C252($vp_table);$i)->)#Is BLOB:K8:12)
 				$vt_hObject:="h_"+Field name:C257(Table:C252($vp_table);$i)
-				LISTBOX INSERT COLUMN FORMULA:C970(*;"ULO_LIST";$i;Field name:C257(Table:C252($vp_table);$i);\
+				$vt_colName:=Field name:C257(Table:C252($vp_table);$i)
+				LISTBOX INSERT COLUMN FORMULA:C970(*;"ULO_LIST";$i;$vt_colName;\
 					"This."+Field name:C257(Table:C252($vp_table);$i);\
 					Type:C295(Field:C253(Table:C252($vp_table);$i)->);$vt_hObject;$vp_nil)
 				OBJECT SET TITLE:C194(*;$vt_hObject;Field name:C257(Table:C252($vp_table);$i))  //Sets the header text.
 				OBJECT SET FONT:C164(*;$vt_hObject;"Label")  //Sets the header text.
+				OBJECT SET ENTERABLE:C238(*;$vt_colName;False:C215)
 				$vl_fontColour:=Form:C1466.theme.rowFontColour
 				OBJECT SET RGB COLORS:C628(*;Field name:C257(Table:C252($vp_table);$i);$vl_fontColour)  //Set column font colour
 				

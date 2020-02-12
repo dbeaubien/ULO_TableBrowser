@@ -68,6 +68,7 @@ Case of
 						OBJECT SET ENABLED:C1123(*;"ULO_Button_SHOWSUBSET";($vl_selected>0))
 						OBJECT SET ENABLED:C1123(*;"ULO_Button_OMITSUBSET";($vl_selected>0))
 						ULO_LIST_UPDATE_FOOTER   //We're calling this twice on startup if a default view exists, but it needs to be called here
+						ULO_SELECTION_MESSAGE 
 					: (Form:C1466.resizing)
 						Form:C1466.resizing:=False:C215
 						Form:C1466.pendingResize:=True:C214
@@ -104,7 +105,7 @@ Case of
 				Else 
 					LISTBOX SELECT ROW:C912(*;"ULO_Navbar";Form:C1466.lastNavItemIndex;lk replace selection:K53:1)
 				End if 
-				
+				ULO_SELECTION_MESSAGE 
 		End case 
 		
 	: ($vt_eventObject="ULO_LIST")
