@@ -1,4 +1,16 @@
 //%attributes = {}
+  //At some point we need to set the users default view...
+
+  //if a view is ubset and the system is 
+
+
+
+
+
+
+
+
+  //Tom - 22/01/2020 - All below is complete, pending test.
   //Views
   //Dynamic view update based on column width changes.
   //Use Footers checkbox - Not saving and noty impacting on footer display.
@@ -13,11 +25,9 @@
   //When creating a view the view handle needs to pick up the nav bar handle.
   //It was doing this but then it was being overwritten by the name.
 
-  //Tom - 22/01/2020 - All above is complete, pending test.
 
 
 
-  //At some point we need to set the users default view...
 
 
 

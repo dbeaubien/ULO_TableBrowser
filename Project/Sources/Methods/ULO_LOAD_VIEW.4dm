@@ -155,7 +155,7 @@ If (Form:C1466.tableNumber>0)
 		$vl_numFields:=Get last field number:C255($vp_table)
 		For ($i;1;$vl_numFields)
 			
-			If (Is field number valid:C1000($vp_table;$i))  //& (Type(Field(Table($vp_table);$i)->)#38)
+			If (Is field number valid:C1000($vp_table;$i)) & (Type:C295(Field:C253(Table:C252($vp_table);$i)->)#Is BLOB:K8:12)
 				$vt_hObject:="h_"+Field name:C257(Table:C252($vp_table);$i)
 				LISTBOX INSERT COLUMN FORMULA:C970(*;"ULO_LIST";$i;Field name:C257(Table:C252($vp_table);$i);\
 					"This."+Field name:C257(Table:C252($vp_table);$i);\
@@ -164,31 +164,31 @@ If (Form:C1466.tableNumber>0)
 				OBJECT SET FONT:C164(*;$vt_hObject;"Label")  //Sets the header text.
 				$vl_fontColour:=Form:C1466.theme.rowFontColour
 				OBJECT SET RGB COLORS:C628(*;Field name:C257(Table:C252($vp_table);$i);$vl_fontColour)  //Set column font colour
-			End if 
-			
-			  //Define default column properties
-			$vo_col:=New object:C1471
-			$vo_col.field:=$i
-			$vo_col.table:=Form:C1466.tableNumber
-			$vo_col.fieldName:=Field name:C257(Table:C252($vp_table);$i)
-			$vo_col.fieldType:=Type:C295(Field:C253(Table:C252($vp_table);$i)->)
-			$vo_col.header:=$vo_col.fieldName
-			$vo_col.formula:=$vo_col.fieldName
-			$vo_col.relation:=""
-			$vo_col.width:=100
-			$vo_col.format:=""
-			$vo_col.fontColourOverride:=False:C215
-			$vo_col.fontColour:=0x0000
-			$vo_col.fontColourHex:="000000"
-			$vo_col.fontStyle:=0
-			$vo_col.alignment:="Left"
-			$vo_col.total:=False:C215
-			$vo_col.min:=False:C215
-			$vo_col.max:=False:C215
-			$vo_col.average:=False:C215
-			$vo_col.selected:=True:C214
-			
-			Form:C1466.navItem.selectedView.detail.cols.push(OB Copy:C1225($vo_col))
+				
+				  //Define default column properties
+				$vo_col:=New object:C1471
+				$vo_col.field:=$i
+				$vo_col.table:=Form:C1466.tableNumber
+				$vo_col.fieldName:=Field name:C257(Table:C252($vp_table);$i)
+				$vo_col.fieldType:=Type:C295(Field:C253(Table:C252($vp_table);$i)->)
+				$vo_col.header:=$vo_col.fieldName
+				$vo_col.formula:=$vo_col.fieldName
+				$vo_col.relation:=""
+				$vo_col.width:=100
+				$vo_col.format:=""
+				$vo_col.fontColourOverride:=False:C215
+				$vo_col.fontColour:=0x0000
+				$vo_col.fontColourHex:="000000"
+				$vo_col.fontStyle:=0
+				$vo_col.alignment:="Left"
+				$vo_col.total:=False:C215
+				$vo_col.min:=False:C215
+				$vo_col.max:=False:C215
+				$vo_col.average:=False:C215
+				$vo_col.selected:=True:C214
+				
+				Form:C1466.navItem.selectedView.detail.cols.push(OB Copy:C1225($vo_col))
+			End if   //END field valid and type check
 		End for 
 	End if 
 	Form:C1466.uloList:=Form:C1466.uloList
