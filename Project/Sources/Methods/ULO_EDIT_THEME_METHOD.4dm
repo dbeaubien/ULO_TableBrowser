@@ -41,6 +41,7 @@ Case of
 					Form:C1466.data.push(OB Copy:C1225($vo_data))
 				End for 
 				ULO_APPLY_THEME ("lb_preview";Form:C1466.theme;True:C214)
+				ULO_SET_BACKGROUND 
 				
 				
 				EXECUTE FORMULA:C63("$vl_fontColour:=0x00"+Form:C1466.theme.hLineColourHex)

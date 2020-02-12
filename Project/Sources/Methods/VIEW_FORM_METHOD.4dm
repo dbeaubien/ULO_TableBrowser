@@ -18,6 +18,9 @@ Case of
 				OBJECT SET ENABLED:C1123(*;"bt_deleteView";Form:C1466.allowDelete)
 				VIEW_FORM_BUILD_DISPLAY_FIELD 
 				VIEW_FORM_BUILD_DISPLAY_COL 
+				ULO_SET_BACKGROUND 
+				ULO_SET_LIST_COLOURS ("lb_viewFields")
+				ULO_SET_LIST_COLOURS ("lb_viewCols")
 				
 			: ($vo_formEvent.code=On Timer:K2:25)
 				SET TIMER:C645(0)

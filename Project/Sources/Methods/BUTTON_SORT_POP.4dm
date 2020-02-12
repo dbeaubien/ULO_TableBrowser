@@ -22,9 +22,9 @@ Case of
 		
 		$vc_hostOptions:=New collection:C1472
 		  //first make call to host to get any options.
-		$index:=UTIL_Col_Find_Index (Storage:C1525.buttons;"action";"SEARCH")
+		$index:=UTIL_Col_Find_Index (Storage:C1525.buttons;"action";"SORT")
 		If ($index>=0)
-			If (Storage:C1525.buttons[$index].method#"")  //If there is a host search method specified
+			If (Storage:C1525.buttons[$index].method#"")  //If there is a host sort method specified
 				EXECUTE METHOD:C1007(Storage:C1525.buttons[$index].method;$vc_hostOptions;Form:C1466.tableNumber;Form:C1466.navItem.handle)  //Return a collection
 			End if 
 		End if 
@@ -50,31 +50,31 @@ Case of
 		  //End if 
 		  //Now get the default options
 		APPEND MENU ITEM:C411($vt_menu;"Search Editor")
-		SET MENU ITEM PARAMETER:C1004($vt_menu;-1;"SEARCHEDITOR")
+		SET MENU ITEM PARAMETER:C1004($vt_menu;-1;"SORTEDITOR")
 		
 		  //Now build the saved searches for run and delete
 		
 		
-		$vo_coord:=ULO_Get_Popup_Coord ("ULO_Button_SEARCH")
+		$vo_coord:=ULO_Get_Popup_Coord ("ULO_Button_SORT")
 		
 		$vt_selected:=Dynamic pop up menu:C1006($vt_menu;"";$vo_coord.x;$vo_coord.y)
 		If ($vt_selected#"")
-			BUTTON_SEARCH_POP ($vt_selected)
+			BUTTON_SORT_POP ($vt_selected)
 		End if 
 		
-	: ($1="SEARCHEDITOR")
-		Form:C1466.uloList:=ULO_Query (Form:C1466.tableNumber)
+	: ($1="SORTEDITOR")
+		Form:C1466.uloList:=ULO_Sort (Form:C1466.tableNumber)
 		
 		
 	: ($1="LOAD:@")
-		  //get the name of the search to load and run it.
+		  //get the name of the sort to load and run it.
 		
-	: ($1="LOAD:@")
+	: ($1="DELETE:@")
 		  //get the name of the search selected and delete it.
 		
 	Else   //Otherwise call the host search option
 		
-		$index:=UTIL_Col_Find_Index (Storage:C1525.buttons;"action";"SEARCH")
+		$index:=UTIL_Col_Find_Index (Storage:C1525.buttons;"action";"SORT")
 		If ($index>=0)
 			If (Storage:C1525.buttons[$index].method#"")  //If there is a host search method specified
 				EXECUTE METHOD:C1007(Storage:C1525.buttons[$index].method;$vc_hostOptions;Form:C1466.tableNumber;Form:C1466.navItem.handle;$1)  //Return a collection

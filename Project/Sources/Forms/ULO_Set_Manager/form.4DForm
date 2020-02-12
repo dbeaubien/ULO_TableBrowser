@@ -1,0 +1,595 @@
+﻿{
+	"destination": "detailScreen",
+	"width": 580,
+	"height": 500,
+	"markerHeader": 15,
+	"markerBody": 200,
+	"markerBreak": 220,
+	"markerFooter": 240,
+	"events": [
+		"onLoad",
+		"onClick",
+		"onDataChange",
+		"onAfterKeystroke"
+	],
+	"method": "method.4dm",
+	"pageFormat": {
+		"paperName": "A4",
+		"paperWidth": "595pt",
+		"paperHeight": "842pt"
+	},
+	"pages": [
+		{
+			"objects": {
+				"BackgroundColour": {
+					"type": "rectangle",
+					"top": -1,
+					"left": -1,
+					"width": 733,
+					"height": 603,
+					"sizingX": "grow",
+					"sizingY": "grow",
+					"fill": "#E8E8E8",
+					"stroke": "transparent"
+				},
+				"Sets_Manage": {
+					"type": "tab",
+					"top": 8,
+					"left": 21,
+					"width": 538,
+					"height": 470,
+					"dataSource": "",
+					"dataSourceTypeHint": "arrayText",
+					"labels": [
+						"Set Manipulation",
+						"Favourites"
+					],
+					"class": "default",
+					"action": "gotoPage",
+					"events": [
+						"onClick"
+					]
+				}
+			}
+		},
+		{
+			"objects": {
+				"SET_ShowVenn": {
+					"type": "pictureButton",
+					"top": 154,
+					"left": 45,
+					"width": 265,
+					"height": 180,
+					"dataSource": "",
+					"rowCount": 8,
+					"picture": "/RESOURCES/Images/library/Sets Venn.png",
+					"events": [
+						"onClick",
+						"onHeader",
+						"onPrintingBreak",
+						"onPrintingFooter",
+						"onDisplayDetail",
+						"onPrintingDetail"
+					]
+				},
+				"SETS_ShowVennNoClick": {
+					"type": "button",
+					"top": 154,
+					"left": 42,
+					"width": 271,
+					"height": 183,
+					"display": false,
+					"events": [
+						"onClick"
+					]
+				},
+				"SET_IsPublic": {
+					"type": "checkbox",
+					"top": 381,
+					"left": 140,
+					"width": 170,
+					"height": 17,
+					"dataSource": "",
+					"text": "Set is public",
+					"class": "default",
+					"focusable": false,
+					"events": [
+						"onLoad",
+						"onClick"
+					]
+				},
+				"SET_Is_Favourite": {
+					"type": "checkbox",
+					"top": 403,
+					"left": 140,
+					"width": 274,
+					"height": 17,
+					"dataSource": "",
+					"text": "Is Favourite",
+					"class": "default",
+					"focusable": false,
+					"events": [
+						"onLoad",
+						"onClick"
+					]
+				},
+				"IntroText2": {
+					"type": "text",
+					"top": 44,
+					"left": 32,
+					"width": 509,
+					"height": 32,
+					"class": "default",
+					"textAlign": "left",
+					"text": "Please use the venn diagram to select the records you require and enter a name for the new set that will be created."
+				},
+				"BRW_SET_Name_Prompt": {
+					"type": "text",
+					"top": 356,
+					"left": 32,
+					"width": 152,
+					"height": 16,
+					"class": "default",
+					"textAlign": "right",
+					"text": "Result saved as:"
+				},
+				"SET_Name": {
+					"type": "input",
+					"top": 356,
+					"left": 193,
+					"width": 302,
+					"height": 16,
+					"dataSource": "",
+					"class": "default",
+					"contextMenu": "none",
+					"dragging": "none",
+					"dropping": "custom",
+					"method": "ObjectMethods/SET_Name.4dm",
+					"events": [
+						"onAfterKeystroke"
+					]
+				},
+				"HELP_SET_MANAGE": {
+					"type": "pictureButton",
+					"top": 439,
+					"left": 43,
+					"width": 22,
+					"height": 22,
+					"rowCount": 3,
+					"picture": "/RESOURCES/Images/library/Form Help.png",
+					"switchBackWhenReleased": true,
+					"useLastFrameAsDisabled": true,
+					"events": [
+						"onLoad",
+						"onClick"
+					]
+				},
+				"PROMPT_IDSEDIT_LastUsed1": {
+					"type": "text",
+					"top": 86,
+					"left": 37,
+					"width": 147,
+					"height": 16,
+					"class": "default",
+					"textAlign": "right",
+					"text": "Set One:"
+				},
+				"PROMPT_IDSEDIT_LastUsed2": {
+					"type": "text",
+					"top": 116,
+					"left": 37,
+					"width": 147,
+					"height": 16,
+					"class": "default",
+					"textAlign": "right",
+					"text": "Set Two:"
+				},
+				"SETS_AllAvailableSets1": {
+					"type": "dropdown",
+					"top": 84,
+					"left": 193,
+					"width": 301,
+					"height": 22,
+					"dataSource": "at_SETS_AllAvailableSets",
+					"class": "default",
+					"events": [
+						"onClick",
+						"onDataChange"
+					]
+				},
+				"SETS_AllAvailableSets2": {
+					"type": "dropdown",
+					"top": 114,
+					"left": 193,
+					"width": 301,
+					"height": 22,
+					"dataSource": "at_SETS_AllAvailableSets2",
+					"fontSize": 13,
+					"events": [
+						"onClick",
+						"onDataChange"
+					]
+				},
+				"SET_VennDesc": {
+					"type": "input",
+					"top": 194,
+					"left": 322,
+					"width": 206,
+					"height": 100,
+					"dataSource": "",
+					"class": "default",
+					"focusable": false,
+					"fill": "transparent",
+					"borderStyle": "none",
+					"enterable": false,
+					"contextMenu": "none",
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					]
+				},
+				"SET_Venn_1": {
+					"type": "checkbox",
+					"top": 229,
+					"left": 90,
+					"width": 20,
+					"height": 30,
+					"dataSource": "",
+					"text": " ",
+					"class": "default",
+					"events": [
+						"onClick"
+					]
+				},
+				"SET_Venn_2": {
+					"type": "checkbox",
+					"top": 229,
+					"left": 162,
+					"width": 20,
+					"height": 30,
+					"dataSource": "",
+					"text": " ",
+					"class": "default",
+					"events": [
+						"onClick"
+					]
+				},
+				"SET_Venn_3": {
+					"type": "checkbox",
+					"top": 229,
+					"left": 234,
+					"width": 20,
+					"height": 30,
+					"dataSource": "",
+					"text": " ",
+					"class": "default",
+					"events": [
+						"onClick"
+					]
+				},
+				"b_SETS_AllAvailableSets": {
+					"type": "button",
+					"top": 83,
+					"left": 233,
+					"width": 301,
+					"height": 22,
+					"display": false,
+					"method": "ObjectMethods/b_SETS_AllAvailableSets.4dm",
+					"events": [
+						"onClick"
+					]
+				},
+				"b_SETS_AllAvailableSets2": {
+					"type": "button",
+					"top": 113,
+					"left": 233,
+					"width": 301,
+					"height": 22,
+					"display": false,
+					"method": "ObjectMethods/b_SETS_AllAvailableSets2.4dm",
+					"events": [
+						"onClick"
+					]
+				},
+				"SET_Manage_Cancel1": {
+					"type": "button",
+					"top": 439,
+					"left": 639,
+					"width": 74,
+					"height": 22,
+					"sizingX": "move",
+					"action": "cancel",
+					"shortcutKey": "[Esc]",
+					"text": "Cancel",
+					"class": "default",
+					"events": [
+						"onClick"
+					]
+				},
+				"SET_Manage_Save": {
+					"type": "button",
+					"top": 439,
+					"left": 466,
+					"width": 74,
+					"height": 22,
+					"sizingY": "move",
+					"dataSource": "b_SET_Manage_Save",
+					"action": "accept",
+					"shortcutKey": "[Enter]",
+					"text": "Save",
+					"class": "default",
+					"defaultButton": true,
+					"events": [
+						"onClick"
+					]
+				},
+				"SET_Manage_Cancel": {
+					"type": "button",
+					"top": 439,
+					"left": 212,
+					"width": 74,
+					"height": 22,
+					"sizingY": "move",
+					"dataSource": "b_SET_Manage_Cancel",
+					"action": "cancel",
+					"shortcutKey": ".",
+					"shortcutAccel": true,
+					"text": "Cancel",
+					"class": "default",
+					"events": [
+						"onClick"
+					]
+				},
+				"SET_Manage_LoadSel": {
+					"type": "button",
+					"top": 439,
+					"left": 299,
+					"width": 154,
+					"height": 22,
+					"sizingY": "move",
+					"dataSource": "b_SET_Manage_LoadSel",
+					"action": "accept",
+					"shortcutKey": "[Enter]",
+					"text": "Load Into Selection",
+					"class": "default",
+					"events": [
+						"onClick"
+					]
+				}
+			},
+			"entryOrder": [
+				"SET_IsPublic",
+				"SET_Is_Favourite",
+				"SET_Name",
+				"SETS_AllAvailableSets1",
+				"SETS_AllAvailableSets2",
+				"SET_VennDesc",
+				"SET_Venn_1",
+				"SET_Venn_2",
+				"SET_Venn_3",
+				"SET_Manage_Cancel1",
+				"SET_Manage_Save",
+				"SET_Manage_Cancel",
+				"SET_Manage_LoadSel"
+			]
+		},
+		{
+			"objects": {
+				"MySets": {
+					"type": "listbox",
+					"top": 86,
+					"left": 43,
+					"width": 498,
+					"height": 338,
+					"resizingMode": "legacy",
+					"headerHeight": "24px",
+					"selectionMode": "single",
+					"scrollbarHorizontal": "hidden",
+					"horizontalLineStroke": "transparent",
+					"verticalLineStroke": "transparent",
+					"stroke": "#000000",
+					"fill": "#ECF3FE",
+					"alternateFill": "#FFFFFF",
+					"fontFamily": "Lucida Grande",
+					"fontSize": 12,
+					"events": [
+						"onClick",
+						"onDisplayDetail",
+						"onDoubleClick",
+						"onDataChange"
+					],
+					"listboxType": "collection",
+					"columns": [
+						{
+							"name": "SETS_AllMySetsFavourite",
+							"width": 49,
+							"minWidth": 10,
+							"maxWidth": 32000,
+							"resizable": false,
+							"stroke": "#000000",
+							"fill": "#ECF3FE",
+							"alternateFill": "#FFFFFF",
+							"textAlign": "center",
+							"fontFamily": "Arial",
+							"fontSize": 12,
+							"events": [
+								"onDataChange"
+							],
+							"header": {
+								"name": "SETS_AllMySetsFavouriteHdr",
+								"text": "Fav",
+								"stroke": "#000000",
+								"fontFamily": "Arial",
+								"fontSize": 10
+							},
+							"footer": {
+								"name": "Footer1",
+								"timeFormat": "hh_mm_ss",
+								"stroke": "#000000",
+								"fill": "#ECF3FE",
+								"fontFamily": "Lucida Grande",
+								"fontSize": 12
+							},
+							"dataSource": "This:C1470.favourite"
+						},
+						{
+							"name": "SETS_AllMySetsName",
+							"width": 314,
+							"minWidth": 10,
+							"maxWidth": 32000,
+							"enterable": false,
+							"stroke": "#000000",
+							"fill": "#ECF3FE",
+							"alternateFill": "#FFFFFF",
+							"fontFamily": "Arial",
+							"fontSize": 12,
+							"header": {
+								"name": "SETS_AllMySetsNameHdr",
+								"text": "Set Name",
+								"stroke": "#000000",
+								"fontFamily": "Arial",
+								"fontSize": 10
+							},
+							"footer": {
+								"name": "Footer2",
+								"timeFormat": "hh_mm_ss",
+								"stroke": "#000000",
+								"fill": "#ECF3FE",
+								"fontFamily": "Lucida Grande",
+								"fontSize": 12
+							},
+							"dataSource": "This:C1470.name"
+						},
+						{
+							"name": "SETS_AllMySetsNumRecs",
+							"width": 120,
+							"minWidth": 10,
+							"maxWidth": 32000,
+							"enterable": false,
+							"stroke": "#000000",
+							"fill": "#ECF3FE",
+							"alternateFill": "#FFFFFF",
+							"fontFamily": "Arial",
+							"fontSize": 12,
+							"header": {
+								"name": "SETS_AllMySetsNumRecsHdr",
+								"text": "Nº Of Records",
+								"stroke": "#000000",
+								"fontFamily": "Arial",
+								"fontSize": 10
+							},
+							"footer": {
+								"name": "Footer3",
+								"timeFormat": "hh_mm_ss",
+								"stroke": "#000000",
+								"fill": "#ECF3FE",
+								"fontFamily": "Lucida Grande",
+								"fontSize": 12
+							},
+							"dataSource": "This:C1470.numRecs"
+						}
+					]
+				},
+				"SET_Manage_Done": {
+					"type": "button",
+					"top": 439,
+					"left": 466,
+					"width": 74,
+					"height": 22,
+					"sizingY": "move",
+					"dataSource": "b_SET_Manage_Done",
+					"action": "accept",
+					"shortcutKey": "[Enter]",
+					"text": "Done",
+					"class": "default",
+					"defaultButton": true,
+					"events": [
+						"onClick"
+					]
+				},
+				"SET_Manage_Load": {
+					"type": "button",
+					"top": 439,
+					"left": 336,
+					"width": 114,
+					"height": 22,
+					"sizingY": "move",
+					"dataSource": "",
+					"action": "accept",
+					"shortcutKey": "[Enter]",
+					"text": "Load Set",
+					"class": "default",
+					"events": [
+						"onClick"
+					]
+				},
+				"IntroText1": {
+					"type": "text",
+					"top": 44,
+					"left": 32,
+					"width": 509,
+					"height": 32,
+					"class": "default",
+					"textAlign": "left",
+					"text": "Use the list below to flag a set as a favourite or remove it from your favourites list."
+				},
+				"HELP_SET_FAVE": {
+					"type": "pictureButton",
+					"top": 439,
+					"left": 43,
+					"width": 22,
+					"height": 22,
+					"rowCount": 3,
+					"picture": "/RESOURCES/Images/library/Form Help.png",
+					"switchBackWhenReleased": true,
+					"useLastFrameAsDisabled": true,
+					"events": [
+						"onLoad",
+						"onClick"
+					]
+				},
+				"SET_Manage_Cancel2": {
+					"type": "button",
+					"top": 439,
+					"left": 639,
+					"width": 74,
+					"height": 22,
+					"sizingX": "move",
+					"shortcutKey": "[Esc]",
+					"text": "Cancel",
+					"class": "default",
+					"events": [
+						"onClick"
+					]
+				},
+				"SET_Manage_Cancel3": {
+					"type": "button",
+					"top": 468,
+					"left": 639,
+					"width": 74,
+					"height": 22,
+					"sizingY": "move",
+					"shortcutKey": ".",
+					"shortcutAccel": true,
+					"text": "Cancel",
+					"class": "default",
+					"events": [
+						"onClick"
+					]
+				}
+			},
+			"entryOrder": [
+				"MySets",
+				"SET_Manage_Done",
+				"SET_Manage_Load",
+				"SET_Manage_Cancel2",
+				"SET_Manage_Cancel3"
+			]
+		}
+	],
+	"$4d": {
+		"version": "1",
+		"kind": "form"
+	}
+}

@@ -1,7 +1,7 @@
 ﻿{
 	"destination": "detailScreen",
-	"rightMargin": 20,
-	"bottomMargin": 20,
+	"rightMargin": 0,
+	"bottomMargin": 0,
 	"markerHeader": 15,
 	"markerBody": 200,
 	"markerBreak": 220,

@@ -31,6 +31,7 @@ Case of
 					  //Else is top level item and always visible!
 				End if 
 				
+				ULO_SET_BACKGROUND 
 				
 				ULO_LOAD_THEME 
 				ULO_LOAD_BUTTONS (Form:C1466.buttons)
@@ -212,6 +213,14 @@ Case of
 		Case of 
 			: ($vl_event=On Clicked:K2:4)
 				BUTTON_SEARCH_POP 
+				Form:C1466.refresh:=True:C214
+				SET TIMER:C645(1)
+				
+		End case 
+	: ($vt_eventObject="ULO_Button_SORT")
+		Case of 
+			: ($vl_event=On Clicked:K2:4)
+				BUTTON_SORT_POP 
 				Form:C1466.refresh:=True:C214
 				SET TIMER:C645(1)
 		End case 
