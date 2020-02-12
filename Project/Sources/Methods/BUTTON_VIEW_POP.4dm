@@ -1,4 +1,4 @@
-//%attributes = {}
+//%attributes = {"invisible":true}
   //Manages all fo the popup actions for theview button
 C_TEXT:C284($1)
 C_TEXT:C284($vt_id;$vt_MyViews;$vt_Option;$vt_ViewMenu;$vt_defaultViewId;$vt_selected)

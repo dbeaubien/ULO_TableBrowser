@@ -1,7 +1,11 @@
 //%attributes = {}
   //At some point we need to set the users default view...
 
-  //if a view is ubset and the system is 
+  //Currently no way to delete a view
+  //Dissallow duplicate view names for same table/handle combination
+  //ULO_SET_SIDEBAR_ITEM - Needs review
+  // - Add mechanism for handling WEB type
+  // - Split HEADER and DATA handling
 
 
 

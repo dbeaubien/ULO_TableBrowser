@@ -1,4 +1,4 @@
-//%attributes = {}
+//%attributes = {"invisible":true}
   //Need to show popup for search button:
   //1 - Host search option/s
   //2 - Generic query from ULO

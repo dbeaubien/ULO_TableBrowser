@@ -1,4 +1,4 @@
-//%attributes = {}
+//%attributes = {"invisible":true}
 
   // ----------------------------------------------------
   // User name (OS): Tom
