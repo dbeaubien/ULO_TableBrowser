@@ -1,19 +1,30 @@
 //%attributes = {}
   //At some point we need to set the users default view...
 
-  //Currently no way to delete a view
   //Dissallow duplicate view names for same table/handle combination
   //ULO_SET_SIDEBAR_ITEM - Needs review
   // - Add mechanism for handling WEB type
   // - Split HEADER and DATA handling
 
 
+  //View - Edit Theme
+  //Outline on colour select boxes
+  //resize LB to use more vert space
+  //fix window sizing
+
+  //View - Edit View
+  //Field listbox shrinking?
 
 
 
 
 
 
+
+
+
+
+  //Currently no way to delete a view
   //Tom - 22/01/2020 - All below is complete, pending test.
   //Views
   //Dynamic view update based on column width changes.

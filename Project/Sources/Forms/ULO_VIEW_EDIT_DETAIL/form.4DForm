@@ -293,23 +293,24 @@
 				},
 				"rect_fontColour": {
 					"type": "rectangle",
-					"top": 243,
+					"top": 244,
 					"left": 314,
 					"width": 24,
-					"height": 17
+					"height": 16
 				},
 				"bt_fontColourPick": {
 					"type": "button",
 					"text": "",
-					"top": 243,
+					"top": 244,
 					"left": 314,
-					"width": 28,
-					"height": 18,
+					"width": 24,
+					"height": 16,
 					"events": [
 						"onClick"
 					],
 					"style": "custom",
-					"visibility": "visible"
+					"visibility": "visible",
+					"borderStyle": "solid"
 				},
 				"Text4": {
 					"type": "text",

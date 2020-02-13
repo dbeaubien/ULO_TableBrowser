@@ -79,9 +79,11 @@ Case of
 			: ($vo_formEvent.code=On Clicked:K2:4)
 				$vt_prop:=Replace string:C233($vt_objectName;"bt_colour_";"")
 				$vl_newColour:=Select RGB color:C956(Form:C1466.theme[$vt_prop])
-				Form:C1466.theme[$vt_prop]:=$vl_newColour
-				Form:C1466.theme[$vt_prop+"Hex"]:=UTIL_Get_Hex ($vl_newColour)
-				OBJECT SET RGB COLORS:C628(*;"rect_"+$vt_prop;$vl_newColour;$vl_newColour)
+				If ($vl_newColour#-1)
+					Form:C1466.theme[$vt_prop]:=$vl_newColour
+					Form:C1466.theme[$vt_prop+"Hex"]:=UTIL_Get_Hex ($vl_newColour)
+					OBJECT SET RGB COLORS:C628(*;"rect_"+$vt_prop;$vl_newColour;$vl_newColour)
+				End if 
 		End case 
 		
 	: ($vt_objectName="input_colour_@")

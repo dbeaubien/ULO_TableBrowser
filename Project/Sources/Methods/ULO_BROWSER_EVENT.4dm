@@ -71,6 +71,7 @@ Case of
 					: (Form:C1466.resizing)
 						Form:C1466.resizing:=False:C215
 						Form:C1466.pendingResize:=True:C214
+						
 					Else 
 						If (Form:C1466.pendingResize)
 							ULO_COLUMN_RESIZE 
@@ -95,12 +96,18 @@ Case of
 				
 			: ($vl_event=On Selection Change:K2:29)  // | ($vl_event=On Clicked)
 				If (Form:C1466.navItem#Null:C1517)
-					If (Form:C1466.navItem.type="header")
-						LISTBOX SELECT ROW:C912(*;"ULO_Navbar";Form:C1466.lastNavItemIndex;lk replace selection:K53:1)
-					Else 
-						Form:C1466.tableNumber:=Form:C1466.navItem.table
-						ULO_LOAD_VIEW 
-					End if 
+					Case of 
+						: (Form:C1466.navItem.type="HEADER")
+							LISTBOX SELECT ROW:C912(*;"ULO_Navbar";Form:C1466.lastNavItemIndex;lk replace selection:K53:1)
+							
+						: (Form:C1466.navItem.type="DATA")
+							Form:C1466.tableNumber:=Form:C1466.navItem.table
+							ULO_LOAD_VIEW 
+							
+						: (Form:C1466.navItem.type="WEB")
+							ULO_LOAD_WEB_AREA 
+							
+					End case 
 				Else 
 					LISTBOX SELECT ROW:C912(*;"ULO_Navbar";Form:C1466.lastNavItemIndex;lk replace selection:K53:1)
 				End if 

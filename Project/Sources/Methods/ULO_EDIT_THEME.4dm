@@ -12,17 +12,12 @@
   // ----------------------------------------------------
 
 C_OBJECT:C1216($vo_formData;$e_uloData)
-C_LONGINT:C283($vl_left;$vl_top;$vl_right;$vl_bottom;$vl_win)
+C_LONGINT:C283($vl_left;$vl_top;$vl_right;$vl_bottom;$vl_win;$vl_w;$vl_h)
 
 $vo_formData:=New object:C1471
-$vo_formData.theme:=Form:C1466.theme
+$vo_formData.theme:=OB Copy:C1225(Form:C1466.theme)
 
-$vl_left:=(Screen width:C187/2)-(650/2)
-$vl_top:=(Screen height:C188/2)-(550/2)
-$vl_right:=$vl_left+650
-$vl_bottom:=$vl_top+550
-
-$vl_win:=Open window:C153($vl_left;$vl_top;$vl_right;$vl_bottom)
+$vl_win:=UTIL_Open_Window_Centre ("ULO_EDIT_THEME")
 DIALOG:C40("ULO_EDIT_THEME";$vo_formData)
 CLOSE WINDOW:C154($vl_win)
 

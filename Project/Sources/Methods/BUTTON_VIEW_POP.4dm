@@ -1,7 +1,7 @@
 //%attributes = {"invisible":true}
   //Manages all fo the popup actions for theview button
 C_TEXT:C284($1)
-C_TEXT:C284($vt_id;$vt_MyViews;$vt_Option;$vt_ViewMenu;$vt_defaultViewId;$vt_selected)
+C_TEXT:C284($vt_id;$vt_MyViews;$vt_Option;$vt_ViewMenu;$vt_defaultViewId;$vt_userDefaultId;$vt_selected)
 C_LONGINT:C283($vl_CurrentUser;$vl_NumParameters)
 C_OBJECT:C1216($vo_view;$e_view;$es_views;$vo_coord)
 C_COLLECTION:C1488($vc_views)
@@ -12,22 +12,36 @@ Case of
 	: ($vl_NumParameters=0)
 		$vt_ViewMenu:=Create menu:C408
 		
+		  //separate menu options for user/system default?
 		
-		$es_views:=ds:C1482["uloData"].query("table == :1 & default == :2";Form:C1466.tableNumber;True:C214)
+		
+		  //Look for system default
+		$es_views:=ds:C1482["uloData"].query("table == :1 && default == True && user == 0";Form:C1466.tableNumber)
 		If ($es_views.length>0)
 			$vt_defaultViewId:=$es_views.first().id
-		Else 
-			  //Create default view?
-			
 		End if 
 		
-		APPEND MENU ITEM:C411($vt_ViewMenu;"Default View")
-		SET MENU ITEM PARAMETER:C1004($vt_ViewMenu;-1;"DEFAULT VIEW:LOAD:"+$vt_defaultViewId)
+		APPEND MENU ITEM:C411($vt_ViewMenu;"System Default View")
+		SET MENU ITEM PARAMETER:C1004($vt_ViewMenu;-1;"LOAD:"+$vt_defaultViewId)
 		If ($vt_defaultViewId=Form:C1466.navItem.selectedView.id)
 			SET MENU ITEM MARK:C208($vt_ViewMenu;-1;Char:C90(18))
-		Else 
-			SET MENU ITEM MARK:C208($vt_ViewMenu;-1;"")
 		End if 
+		
+		  //Look for user default
+		$es_views:=ds:C1482["uloData"].query("table == :1 && default == :2 && user == :3";Form:C1466.tableNumber;True:C214;Storage:C1525.user.id)
+		If ($es_views.length>0)
+			$vt_userDefaultId:=$es_views.first().id
+		End if 
+		
+		APPEND MENU ITEM:C411($vt_ViewMenu;"Your Default View")
+		SET MENU ITEM PARAMETER:C1004($vt_ViewMenu;-1;"LOAD:"+$vt_userDefaultId)
+		If ($vt_userDefaultId="")
+			DISABLE MENU ITEM:C150($vt_ViewMenu;-1)
+		End if 
+		If ($vt_userDefaultId=Form:C1466.navItem.selectedView.id)
+			SET MENU ITEM MARK:C208($vt_ViewMenu;-1;Char:C90(18))
+		End if 
+		
 		
 		  //Now add a submenu of my personal Views
 		$vl_CurrentUser:=Storage:C1525.user.id
@@ -127,7 +141,11 @@ Case of
 	: ($1="LOAD@")  //load a passed view
 		$vt_id:=Replace string:C233($1;"LOAD:";"")
 		$e_view:=ds:C1482["uloData"].get($vt_id)
-		Form:C1466.navItem.selectedView:=$e_view.toObject()
+		If ($e_view#Null:C1517)
+			Form:C1466.navItem.selectedView:=$e_view.toObject()
+		Else 
+			Form:C1466.navItem.selectedView:=Null:C1517
+		End if 
 		ULO_LOAD_VIEW 
 		
 	: ($1="DUPE")

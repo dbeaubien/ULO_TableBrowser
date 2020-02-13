@@ -14,7 +14,8 @@
 C_TEXT:C284($1)
 C_LONGINT:C283($vl_idx;$vl_idx2)  //table, viewNum
 C_LONGINT:C283($vl_left;$vl_top;$vl_right;$vl_bottom;$vl_win)
-C_OBJECT:C1216($vo_formData;$e_uloData;$vo_field;$vo_res;$vo_currentView;$e_view)
+C_OBJECT:C1216($vo_formData;$e_uloData;$vo_field;$vo_res;$vo_currentView;\
+$e_view;$es_uloData;$e_uloDataLoop)
 
 ARRAY TEXT:C222(at_tableName;0)
 ARRAY LONGINT:C221(al_tableNum;0)
@@ -119,12 +120,7 @@ For each ($vo_field;$vo_formData.view.detail.cols)
 	End if 
 End for each 
 
-$vl_left:=(Screen width:C187/2)-(650/2)
-$vl_top:=(Screen height:C188/2)-(550/2)
-$vl_right:=$vl_left+650
-$vl_bottom:=$vl_top+550
-
-$vl_win:=Open window:C153($vl_left;$vl_top;$vl_right;$vl_bottom)
+$vl_win:=UTIL_Open_Window_Centre ("ULO_VIEW_EDIT")
 DIALOG:C40("ULO_VIEW_EDIT";$vo_formData)
 CLOSE WINDOW:C154($vl_win)
 
@@ -133,11 +129,22 @@ If (OK=1)
 	$e_uloData.handle:=$vo_formData.view.handle
 	$e_uloData.type:=2
 	$e_uloData.favourite:=$vo_formData.view.favourite
+	$e_uloData.default:=$vo_formData.view.default
 	$e_uloData.group:=1
 	$e_uloData.detail:=$vo_formData.view.detail
 	
 	$vo_res:=$e_uloData.save()
 	If ($vo_res.success)
+		If ($e_uloData.default)
+			  //Ensure there's only one deault for this user / table
+			$es_uloData:=ds:C1482["uloData"].query("user == :1 && handle == :2 && type == 2 && default == True";$e_uloData.user;$e_uloData.handle)
+			For each ($e_uloDataLoop;$es_uloData)
+				If ($e_uloData.id#$e_uloDataLoop.id)
+					$e_uloDataLoop.default:=False:C215
+					$e_uloDataLoop.save()
+				End if 
+			End for each 
+		End if 
 		Form:C1466.navItem.selectedView:=$e_uloData.toObject()
 		ULO_LOAD_VIEW 
 	Else 

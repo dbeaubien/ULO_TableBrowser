@@ -24,7 +24,7 @@ Case of
 				
 			: ($vo_formEvent.code=On Timer:K2:25)
 				SET TIMER:C645(0)
-				VIEW_FORM_EDIT_COL_DETAIL 
+				VIEW_FORM_EDIT_COL_DETAIL (True:C214)
 				
 		End case 
 		
@@ -168,5 +168,7 @@ Case of
 					VIEW_FORM_MOVE_SELECTED_FIELD 
 				End if 
 		End case 
+		
+		
 		
 End case 

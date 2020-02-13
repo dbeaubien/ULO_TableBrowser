@@ -56,7 +56,7 @@
 					"resizingMode": "legacy",
 					"listboxType": "collection",
 					"movableRows": false,
-					"rowHeight": "40px",
+					"rowHeight": "30px",
 					"showHeaders": false,
 					"dataSource": "Form:C1466.navItems",
 					"currentItemSource": "Form:C1466.navItem",
@@ -268,19 +268,19 @@
 		},
 		{
 			"objects": {
-				"BRW_WebArea": {
+				"ULO_WebArea": {
 					"type": "webArea",
-					"top": 67,
+					"top": 68,
 					"left": 214,
-					"width": 585,
-					"height": 508,
+					"width": 1035,
+					"height": 511,
 					"sizingX": "grow",
 					"sizingY": "grow",
-					"urlSource": "vt_BRW_WebArea",
-					"progressSource": "Web Area_progress",
+					"urlSource": "",
+					"progressSource": "",
 					"contextMenu": "none",
 					"borderStyle": "none",
-					"method": "ObjectMethods/BRW_WebArea.4dm",
+					"method": "",
 					"events": [
 						"onLoad",
 						"onLosingFocus",
@@ -293,7 +293,8 @@
 						"onURLFiltering",
 						"onOpenExternalLink",
 						"onWindowOpeningDenied"
-					]
+					],
+					"right": 1249
 				}
 			}
 		}

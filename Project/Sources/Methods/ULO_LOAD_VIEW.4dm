@@ -6,6 +6,12 @@ C_TEXT:C284($vt_colName;$vt_hObject;$vt_formula;$vt_header;$vt_fObject;$vt_forma
   //Form.tableNumber:=Form.navItem.table
 
 If (Form:C1466.tableNumber>0)
+	FORM GOTO PAGE:C247(1)
+	OBJECT SET ENABLED:C1123(*;"ULO_Button@";True:C214)
+	OBJECT SET ENABLED:C1123(*;"ULO_Button_SHOWSUBSET";(Form:C1466.records.length>0))
+	OBJECT SET ENABLED:C1123(*;"ULO_Button_OMITSUBSET";(Form:C1466.records.length>0))
+	
+	
 	  //Form.lastNavItemIndex:=Form.navItem.index
 	Form:C1466.lastNavItemIndex:=UTIL_Col_Find_Index (Form:C1466.navItems;"index";Form:C1466.navItem.index)+1
 	$vl_columns:=LISTBOX Get number of columns:C831(*;"ULO_LIST")

@@ -325,7 +325,7 @@
 					"dataSource": "Form:C1466.displayFields",
 					"currentItemSource": "Form:C1466.selectedField",
 					"currentItemPositionSource": "Form:C1466.selectedFieldIndex",
-					"selectionMode": "single",
+					"selectionMode": "multiple",
 					"scrollbarHorizontal": "hidden",
 					"horizontalLineStroke": "transparent",
 					"verticalLineStroke": "transparent",
@@ -338,6 +338,7 @@
 						"onDoubleClick",
 						"onSelectionChange"
 					],
+					"selectedItemsSource": "Form:C1466.selectedFields",
 					"columns": [
 						{
 							"name": "BRW_VIEW_Column_Selected1",
@@ -435,7 +436,7 @@
 			"objects": {
 				"isPublic": {
 					"type": "checkbox",
-					"top": 185,
+					"top": 188,
 					"left": 209,
 					"width": 120,
 					"height": 17,
@@ -450,7 +451,7 @@
 				},
 				"PROMPT_Locked": {
 					"type": "text",
-					"top": 215,
+					"top": 248,
 					"left": 93,
 					"width": 107,
 					"height": 16,
@@ -460,7 +461,7 @@
 				},
 				"BRW_VIEW_LockedCols": {
 					"type": "input",
-					"top": 215,
+					"top": 248,
 					"left": 209,
 					"width": 52,
 					"height": 16,
@@ -476,7 +477,7 @@
 				},
 				"PROMPT_Locked1": {
 					"type": "text",
-					"top": 243,
+					"top": 276,
 					"left": 93,
 					"width": 107,
 					"height": 16,
@@ -486,7 +487,7 @@
 				},
 				"BRW_VIEW_HeadHeight": {
 					"type": "input",
-					"top": 243,
+					"top": 276,
 					"left": 209,
 					"width": 52,
 					"height": 16,
@@ -503,7 +504,7 @@
 				},
 				"PROMPT_Locked2": {
 					"type": "text",
-					"top": 245,
+					"top": 278,
 					"left": 269,
 					"width": 187,
 					"height": 12,
@@ -513,7 +514,7 @@
 				},
 				"PROMPT_Locked3": {
 					"type": "text",
-					"top": 269,
+					"top": 302,
 					"left": 93,
 					"width": 107,
 					"height": 16,
@@ -523,7 +524,7 @@
 				},
 				"BRW_VIEW_RowHeight": {
 					"type": "input",
-					"top": 269,
+					"top": 302,
 					"left": 209,
 					"width": 52,
 					"height": 16,
@@ -540,7 +541,7 @@
 				},
 				"PROMPT_Locked4": {
 					"type": "text",
-					"top": 271,
+					"top": 304,
 					"left": 269,
 					"width": 187,
 					"height": 12,
@@ -568,14 +569,29 @@
 				"bt_deleteView": {
 					"type": "button",
 					"text": "Delete this View",
-					"top": 330,
-					"left": 204,
+					"top": 376,
+					"left": 209,
 					"width": 177,
 					"height": 26,
 					"events": [
 						"onClick"
 					],
 					"stroke": "#ff0000"
+				},
+				"isPublic1": {
+					"type": "checkbox",
+					"top": 218,
+					"left": 209,
+					"width": 120,
+					"height": 17,
+					"dataSource": "Form:C1466.view.default",
+					"text": "Default View",
+					"class": "default",
+					"focusable": false,
+					"events": [
+						"onClick"
+					],
+					"dataSourceTypeHint": "boolean"
 				}
 			}
 		}

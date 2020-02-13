@@ -71,13 +71,15 @@ For each ($vo_button;$1)
 			  //OBJECT SET VISIBLE(*;$vt_buttonBG;True)
 			
 			  //Format: title;picture;background;titlePos(4=bottom);titleVisible(1=display);\
-																												iconVisible(1=display);style(3=toolbarButton);horMargin;vertMargin;iconOffset;popupMenu;hyperlink;numStates
+				iconVisible(1=display);style(3=toolbarButton);horMargin;vertMargin;iconOffset;popupMenu;hyperlink;numStates
+			
 			If (OB Is defined:C1231($vo_button;"icon"))
 				$vt_format:=$vo_button.title+";"+"#images/buttons/"+Storage:C1525.prefs.theme+"/"+$vo_button.icon+";;4;1;1;4;0;0;0;0;;4"
 			Else 
 				$vt_format:=$vo_button.title+";;;4;1;1;3;0;0;0;0;;0"
 			End if 
 			OBJECT SET FORMAT:C236(*;$vt_button;$vt_format)
+			OBJECT SET HELP TIP:C1181(*;$vt_button;$vo_button.tooltip)
 			  //Else 
 			  //OBJECT SET TITLE(*;$vt_button;$vo_button.title)
 			  //End if 

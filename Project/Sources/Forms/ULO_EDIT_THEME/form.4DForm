@@ -24,9 +24,9 @@
 				"BackgroundColour": {
 					"type": "rectangle",
 					"top": 0,
-					"left": 0,
-					"width": 805,
-					"height": 578,
+					"left": 1,
+					"width": 808,
+					"height": 589,
 					"sizingX": "grow",
 					"sizingY": "grow",
 					"fill": "#E8E8E8",
@@ -34,8 +34,8 @@
 				},
 				"VIEW_Accept": {
 					"type": "button",
-					"top": 536,
-					"left": 705,
+					"top": 549,
+					"left": 710,
 					"width": 74,
 					"height": 22,
 					"sizingX": "fixed",
@@ -51,8 +51,8 @@
 				},
 				"VIEW_Cancel": {
 					"type": "button",
-					"top": 536,
-					"left": 619,
+					"top": 549,
+					"left": 624,
 					"width": 74,
 					"height": 22,
 					"sizingX": "fixed",
@@ -73,7 +73,7 @@
 				"Group Box": {
 					"type": "groupBox",
 					"text": "Grid :",
-					"top": 30,
+					"top": 23,
 					"left": 31,
 					"width": 345,
 					"height": 129
@@ -81,7 +81,7 @@
 				"Group Box1": {
 					"type": "groupBox",
 					"text": "Header :",
-					"top": 177,
+					"top": 170,
 					"left": 31,
 					"width": 345,
 					"height": 160
@@ -89,23 +89,23 @@
 				"Group Box2": {
 					"type": "groupBox",
 					"text": "Row :",
-					"top": 357,
+					"top": 350,
 					"left": 31,
 					"width": 345,
-					"height": 179
+					"height": 184
 				},
 				"Text3": {
 					"type": "text",
-					"top": 90,
-					"left": 52,
+					"top": 83,
+					"left": 62,
 					"width": 100,
 					"height": 15,
 					"text": "Hori Line Colour :"
 				},
 				"input_colour_hLineColour": {
 					"type": "input",
-					"top": 90,
-					"left": 155,
+					"top": 83,
+					"left": 165,
 					"width": 147,
 					"height": 16,
 					"dataSource": "Form:C1466.theme.hLineColourHex",
@@ -118,28 +118,29 @@
 				},
 				"rect_hLineColour": {
 					"type": "rectangle",
-					"top": 89,
-					"left": 310,
+					"top": 83,
+					"left": 320,
 					"width": 24,
-					"height": 17
+					"height": 16
 				},
 				"bt_colour_hLineColour": {
 					"type": "button",
 					"text": "",
-					"top": 89,
-					"left": 310,
-					"width": 28,
-					"height": 18,
+					"top": 83,
+					"left": 320,
+					"width": 24,
+					"height": 16,
 					"events": [
 						"onClick"
 					],
 					"style": "custom",
-					"visibility": "visible"
+					"visibility": "visible",
+					"borderStyle": "solid"
 				},
 				"cb_sty_bold": {
 					"type": "checkbox",
-					"top": 60,
-					"left": 52,
+					"top": 53,
+					"left": 62,
 					"width": 140,
 					"height": 17,
 					"sizingY": "fixed",
@@ -152,8 +153,8 @@
 				},
 				"cb_sty_bold1": {
 					"type": "checkbox",
-					"top": 60,
-					"left": 198,
+					"top": 53,
+					"left": 208,
 					"width": 140,
 					"height": 17,
 					"sizingY": "fixed",
@@ -166,16 +167,16 @@
 				},
 				"Text1": {
 					"type": "text",
-					"top": 120,
-					"left": 52,
+					"top": 113,
+					"left": 62,
 					"width": 100,
 					"height": 15,
 					"text": "Vert Line Colour :"
 				},
 				"input_colour_vLineColour": {
 					"type": "input",
-					"top": 120,
-					"left": 155,
+					"top": 113,
+					"left": 165,
 					"width": 147,
 					"height": 16,
 					"dataSource": "Form:C1466.theme.vLineColourHex",
@@ -188,36 +189,37 @@
 				},
 				"rect_vLineColour": {
 					"type": "rectangle",
-					"top": 119,
-					"left": 310,
+					"top": 113,
+					"left": 320,
 					"width": 24,
-					"height": 17
+					"height": 16
 				},
 				"bt_colour_vLineColour": {
 					"type": "button",
 					"text": "",
-					"top": 119,
-					"left": 310,
-					"width": 28,
-					"height": 18,
+					"top": 113,
+					"left": 320,
+					"width": 24,
+					"height": 16,
 					"events": [
 						"onClick"
 					],
 					"style": "custom",
-					"visibility": "visible"
+					"visibility": "visible",
+					"borderStyle": "solid"
 				},
 				"Text2": {
 					"type": "text",
-					"top": 298,
-					"left": 52,
+					"top": 291,
+					"left": 62,
 					"width": 100,
 					"height": 15,
 					"text": "BG Colour :"
 				},
 				"input_colour_headerBgColour": {
 					"type": "input",
-					"top": 298,
-					"left": 155,
+					"top": 291,
+					"left": 165,
 					"width": 147,
 					"height": 16,
 					"dataSource": "Form:C1466.theme.headerBgColourHex",
@@ -230,36 +232,37 @@
 				},
 				"rect_headerBgColour": {
 					"type": "rectangle",
-					"top": 297,
-					"left": 310,
+					"top": 291,
+					"left": 320,
 					"width": 24,
-					"height": 17
+					"height": 16
 				},
 				"bt_colour_headerBgColour": {
 					"type": "button",
 					"text": "",
-					"top": 297,
-					"left": 310,
-					"width": 28,
-					"height": 18,
+					"top": 291,
+					"left": 320,
+					"width": 24,
+					"height": 16,
 					"events": [
 						"onClick"
 					],
 					"style": "custom",
-					"visibility": "visible"
+					"visibility": "visible",
+					"borderStyle": "solid"
 				},
 				"Text4": {
 					"type": "text",
-					"top": 268,
-					"left": 52,
+					"top": 261,
+					"left": 62,
 					"width": 100,
 					"height": 15,
 					"text": "Font Colour :"
 				},
 				"input_colour_headerFontColour": {
 					"type": "input",
-					"top": 268,
-					"left": 155,
+					"top": 261,
+					"left": 165,
 					"width": 147,
 					"height": 16,
 					"dataSource": "Form:C1466.theme.headerFontColourHex",
@@ -272,36 +275,37 @@
 				},
 				"rect_headerFontColour": {
 					"type": "rectangle",
-					"top": 267,
-					"left": 310,
+					"top": 261,
+					"left": 320,
 					"width": 24,
-					"height": 17
+					"height": 16
 				},
 				"bt_colour_headerFontColour": {
 					"type": "button",
 					"text": "",
-					"top": 267,
-					"left": 310,
-					"width": 28,
-					"height": 18,
+					"top": 261,
+					"left": 320,
+					"width": 24,
+					"height": 16,
 					"events": [
 						"onClick"
 					],
 					"style": "custom",
-					"visibility": "visible"
+					"visibility": "visible",
+					"borderStyle": "solid"
 				},
 				"Text5": {
 					"type": "text",
-					"top": 208,
-					"left": 52,
+					"top": 201,
+					"left": 62,
 					"width": 100,
 					"height": 15,
 					"text": "Font :"
 				},
 				"input_fontColourHex4": {
 					"type": "input",
-					"top": 207,
-					"left": 155,
+					"top": 200,
+					"left": 165,
 					"width": 147,
 					"height": 16,
 					"dataSource": "Form:C1466.theme.headerFont",
@@ -312,16 +316,16 @@
 				},
 				"Text6": {
 					"type": "text",
-					"top": 238,
-					"left": 52,
+					"top": 231,
+					"left": 62,
 					"width": 100,
 					"height": 15,
 					"text": "Font Size (pt) :"
 				},
 				"input_fontColourHex5": {
 					"type": "input",
-					"top": 238,
-					"left": 155,
+					"top": 231,
+					"left": 165,
 					"width": 147,
 					"height": 16,
 					"dataSource": "Form:C1466.theme.headerFontSize",
@@ -333,16 +337,16 @@
 				},
 				"Text7": {
 					"type": "text",
-					"top": 508,
-					"left": 52,
+					"top": 501,
+					"left": 62,
 					"width": 100,
 					"height": 15,
 					"text": "Alt Row Colour :"
 				},
 				"input_colour_rowAltColour": {
 					"type": "input",
-					"top": 508,
-					"left": 155,
+					"top": 501,
+					"left": 165,
 					"width": 147,
 					"height": 16,
 					"dataSource": "Form:C1466.theme.rowAltColourHex",
@@ -355,36 +359,37 @@
 				},
 				"rect_rowAltColour": {
 					"type": "rectangle",
-					"top": 507,
-					"left": 310,
+					"top": 501,
+					"left": 320,
 					"width": 24,
-					"height": 17
+					"height": 16
 				},
 				"bt_colour_rowAltColour": {
 					"type": "button",
 					"text": "",
-					"top": 507,
-					"left": 310,
-					"width": 28,
-					"height": 18,
+					"top": 501,
+					"left": 320,
+					"width": 24,
+					"height": 16,
 					"events": [
 						"onClick"
 					],
 					"style": "custom",
-					"visibility": "visible"
+					"visibility": "visible",
+					"borderStyle": "solid"
 				},
 				"Text8": {
 					"type": "text",
-					"top": 478,
-					"left": 52,
+					"top": 471,
+					"left": 62,
 					"width": 100,
 					"height": 15,
 					"text": "Row Colour :"
 				},
 				"input_colour_rowColour": {
 					"type": "input",
-					"top": 478,
-					"left": 155,
+					"top": 471,
+					"left": 165,
 					"width": 147,
 					"height": 16,
 					"dataSource": "Form:C1466.theme.rowColourHex",
@@ -397,36 +402,37 @@
 				},
 				"rect_rowColour": {
 					"type": "rectangle",
-					"top": 477,
-					"left": 310,
+					"top": 471,
+					"left": 320,
 					"width": 24,
-					"height": 17
+					"height": 16
 				},
 				"bt_colour_rowColour": {
 					"type": "button",
 					"text": "",
-					"top": 477,
-					"left": 310,
-					"width": 28,
-					"height": 18,
+					"top": 471,
+					"left": 320,
+					"width": 24,
+					"height": 16,
 					"events": [
 						"onClick"
 					],
 					"style": "custom",
-					"visibility": "visible"
+					"visibility": "visible",
+					"borderStyle": "solid"
 				},
 				"Text9": {
 					"type": "text",
-					"top": 388,
-					"left": 52,
+					"top": 381,
+					"left": 62,
 					"width": 100,
 					"height": 15,
 					"text": "Font :"
 				},
 				"input_fontColourHex8": {
 					"type": "input",
-					"top": 387,
-					"left": 155,
+					"top": 380,
+					"left": 165,
 					"width": 147,
 					"height": 16,
 					"dataSource": "Form:C1466.theme.rowFont",
@@ -437,16 +443,16 @@
 				},
 				"Text10": {
 					"type": "text",
-					"top": 418,
-					"left": 52,
+					"top": 411,
+					"left": 62,
 					"width": 100,
 					"height": 15,
 					"text": "Font Size (pt) :"
 				},
 				"input_fontColourHex9": {
 					"type": "input",
-					"top": 418,
-					"left": 155,
+					"top": 411,
+					"left": 165,
 					"width": 147,
 					"height": 16,
 					"dataSource": "Form:C1466.theme.rowFontSize",
@@ -459,9 +465,9 @@
 				"lb_preview": {
 					"type": "listbox",
 					"left": 394,
-					"top": 37,
+					"top": 30,
 					"width": 389,
-					"height": 440,
+					"height": 502,
 					"events": [
 						"onClick",
 						"onHeaderClick",
@@ -516,10 +522,10 @@
 				"bt_preview": {
 					"type": "button",
 					"text": "Preview Changes",
-					"top": 511,
+					"top": 549,
 					"left": 394,
 					"width": 146,
-					"height": 25,
+					"height": 22,
 					"events": [
 						"onClick"
 					],
@@ -528,16 +534,16 @@
 				},
 				"Text11": {
 					"type": "text",
-					"top": 448,
-					"left": 52,
+					"top": 441,
+					"left": 62,
 					"width": 100,
 					"height": 15,
 					"text": "Font Colour :"
 				},
 				"input_colour_rowFontColour": {
 					"type": "input",
-					"top": 448,
-					"left": 155,
+					"top": 441,
+					"left": 165,
 					"width": 147,
 					"height": 16,
 					"dataSource": "Form:C1466.theme.rowFontColourHex",
@@ -550,23 +556,24 @@
 				},
 				"rect_rowFontColour": {
 					"type": "rectangle",
-					"top": 447,
-					"left": 310,
+					"top": 441,
+					"left": 320,
 					"width": 24,
-					"height": 17
+					"height": 16
 				},
 				"bt_colour_rowFontColour": {
 					"type": "button",
 					"text": "",
-					"top": 447,
-					"left": 310,
-					"width": 28,
-					"height": 18,
+					"top": 441,
+					"left": 320,
+					"width": 24,
+					"height": 16,
 					"events": [
 						"onClick"
 					],
 					"style": "custom",
-					"visibility": "visible"
+					"visibility": "visible",
+					"borderStyle": "solid"
 				}
 			},
 			"entryOrder": [
