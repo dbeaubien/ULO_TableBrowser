@@ -157,13 +157,14 @@
 						"onLongClick"
 					]
 				},
-				"Picture40": {
+				"Logo": {
 					"type": "picture",
 					"top": 534,
 					"left": 13,
 					"width": 193,
 					"height": 61,
-					"pictureFormat": "scaled"
+					"pictureFormat": "scaled",
+					"picture": "/RESOURCES/images/library/logo.png"
 				}
 			}
 		},
@@ -291,7 +292,7 @@
 					"top": 68,
 					"left": 214,
 					"width": 1035,
-					"height": 511,
+					"height": 531,
 					"sizingX": "grow",
 					"sizingY": "grow",
 					"urlSource": "",
@@ -312,7 +313,8 @@
 						"onOpenExternalLink",
 						"onWindowOpeningDenied"
 					],
-					"right": 1249
+					"right": 1249,
+					"webEngine": "system"
 				}
 			}
 		}
