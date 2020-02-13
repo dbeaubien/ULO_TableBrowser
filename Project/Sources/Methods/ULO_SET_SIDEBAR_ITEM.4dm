@@ -55,7 +55,8 @@ Else
 						If ($vl_idx>=0)
 							Storage:C1525.sidebar[$vl_idx].sub.push($index+1)
 							Storage:C1525.sidebar[$index].childOfIndex:=$vl_idx
-							$vl_levels:=ULO_Sidebar_Count_Level 
+							$vl_levels:=ULO_Sidebar_Count_Level ($index)
+							Storage:C1525.sidebar[$index].title:=("   "*$vl_levels)+Storage:C1525.sidebar[$index].title
 						End if 
 					End if 
 				End if 
@@ -70,6 +71,8 @@ Else
 						If ($vl_idx>=0)
 							Storage:C1525.sidebar[$vl_idx].sub.push($index+1)
 							Storage:C1525.sidebar[$index].childOfIndex:=$vl_idx
+							$vl_levels:=ULO_Sidebar_Count_Level ($index)
+							Storage:C1525.sidebar[$index].title:=("   "*$vl_levels)+Storage:C1525.sidebar[$index].title
 						End if 
 					End if 
 					
