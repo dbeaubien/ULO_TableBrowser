@@ -187,7 +187,7 @@ Case of
 				$vl_table:=Form:C1466.tableNumber
 				$es:=ds:C1482[Table name:C256(Form:C1466.tableNumber)].all()
 				If (Storage:C1525.hostMethods.filter#"")
-					EXECUTE METHOD:C1007(Storage:C1525.hostMethods.filter;$es;Form:C1466.tableNumber;$es)
+					EXECUTE METHOD:C1007(Storage:C1525.hostMethods.filter;$es;Form:C1466.tableNumber;Form:C1466.navItem.handle;$es)
 				End if 
 				Form:C1466.uloList:=$es
 				Form:C1466.refresh:=True:C214
