@@ -21,7 +21,7 @@
 
 C_TEXT:C284($1;$2;$3;$4;$7;$vt_field)
 C_VARIANT:C1683($6)
-C_LONGINT:C283($5;$cp;$index;$vl_idx)
+C_LONGINT:C283($5;$cp;$index;$vl_idx;$vl_levels)
 C_COLLECTION:C1488($8;$9)
 C_OBJECT:C1216($vo_act)
 $cp:=Count parameters:C259
@@ -55,7 +55,8 @@ Else
 						If ($vl_idx>=0)
 							Storage:C1525.sidebar[$vl_idx].sub.push($index+1)
 							Storage:C1525.sidebar[$index].childOfIndex:=$vl_idx
-							$vl_levels:=ULO_Sidebar_Count_Level 
+							$vl_levels:=ULO_Sidebar_Count_Level ($index)
+							Storage:C1525.sidebar[$index].title:=("   "*$vl_levels)+Storage:C1525.sidebar[$index].title
 						End if 
 					End if 
 				End if 
@@ -70,6 +71,8 @@ Else
 						If ($vl_idx>=0)
 							Storage:C1525.sidebar[$vl_idx].sub.push($index+1)
 							Storage:C1525.sidebar[$index].childOfIndex:=$vl_idx
+							$vl_levels:=ULO_Sidebar_Count_Level ($index)
+							Storage:C1525.sidebar[$index].title:=("   "*$vl_levels)+Storage:C1525.sidebar[$index].title
 						End if 
 					End if 
 					

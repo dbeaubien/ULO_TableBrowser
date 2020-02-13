@@ -177,3 +177,15 @@ C_TEXT:C284(ULO_SET_LIST_COLOURS ;$1)
 C_OBJECT:C1216(ULO_Sort ;$0)
 C_LONGINT:C283(ULO_Sort ;$1)
 C_VARIANT:C1683(ULO_SET_APPEARANCE ;${1})
+
+  //ULO_Sidebar_Count_Level
+C_LONGINT:C283(ULO_Sidebar_Count_Level ;$0)
+C_LONGINT:C283(ULO_Sidebar_Count_Level ;$1)
+
+  //UTIL_Open_Window_Centre
+C_LONGINT:C283(UTIL_Open_Window_Centre ;$0)
+C_TEXT:C284(UTIL_Open_Window_Centre ;$1)
+C_LONGINT:C283(UTIL_Open_Window_Centre ;$2)
+
+  //VIEW_FORM_EDIT_COL_DETAIL
+C_BOOLEAN:C305(VIEW_FORM_EDIT_COL_DETAIL ;$1)
