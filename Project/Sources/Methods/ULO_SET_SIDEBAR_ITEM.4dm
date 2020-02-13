@@ -28,11 +28,13 @@ $cp:=Count parameters:C259
 If ($cp>10) | ($cp=0)
 	  //return an error for incorrect number of parameters
 Else 
+	If ($1="INIT")
+		Use (Storage:C1525)
+			Storage:C1525.sidebar:=New shared collection:C1527
+		End use 
+	End if 
 	
 	Use (Storage:C1525.sidebar)
-		If ($1="INIT")
-			Storage:C1525.sidebar:=New shared collection:C1527
-		End if 
 		Storage:C1525.sidebar.push(New shared object:C1526)
 		$index:=Storage:C1525.sidebar.length-1
 		
