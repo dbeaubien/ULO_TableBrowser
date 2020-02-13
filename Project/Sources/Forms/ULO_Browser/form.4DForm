@@ -263,6 +263,24 @@
 					"events": [
 						"onClick"
 					]
+				},
+				"SelectionMessage": {
+					"type": "input",
+					"left": 214,
+					"top": 583,
+					"width": 1034,
+					"height": 16,
+					"enterable": false,
+					"focusable": false,
+					"borderStyle": "none",
+					"fontFamily": "Segoe UI",
+					"fontSize": 12,
+					"contextMenu": "none",
+					"sizingX": "grow",
+					"sizingY": "move",
+					"textAlign": "center",
+					"fill": "transparent",
+					"dataSource": "Form:C1466.selectionMessage"
 				}
 			}
 		},
