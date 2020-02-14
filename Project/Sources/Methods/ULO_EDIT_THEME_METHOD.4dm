@@ -16,7 +16,7 @@
 C_OBJECT:C1216($1;$vo_formEvent;$vo_data)
 C_COLLECTION:C1488($vc_text)
 C_TEXT:C284($vt_objectName;$vt_prop)
-C_LONGINT:C283($i;$vl_fontColour;$vl_newColour)
+C_LONGINT:C283($i;vl_fontColour;$vl_newColour)
 
 $vo_formEvent:=$1
 If (OB Is defined:C1231($vo_formEvent;"objectName"))
@@ -44,26 +44,26 @@ Case of
 				ULO_SET_BACKGROUND 
 				
 				
-				EXECUTE FORMULA:C63("$vl_fontColour:=0x00"+Form:C1466.theme.hLineColourHex)
-				OBJECT SET RGB COLORS:C628(*;"rect_hLineColour";$vl_fontColour;$vl_fontColour)
+				EXECUTE FORMULA:C63("vl_fontColour:=0x00"+Form:C1466.theme.hLineColourHex)
+				OBJECT SET RGB COLORS:C628(*;"rect_hLineColour";vl_fontColour;vl_fontColour)
 				
-				EXECUTE FORMULA:C63("$vl_fontColour:=0x00"+Form:C1466.theme.vLineColourHex)
-				OBJECT SET RGB COLORS:C628(*;"rect_vLineColour";$vl_fontColour;$vl_fontColour)
+				EXECUTE FORMULA:C63("vl_fontColour:=0x00"+Form:C1466.theme.vLineColourHex)
+				OBJECT SET RGB COLORS:C628(*;"rect_vLineColour";vl_fontColour;vl_fontColour)
 				
-				EXECUTE FORMULA:C63("$vl_fontColour:=0x00"+Form:C1466.theme.headerFontColourHex)
-				OBJECT SET RGB COLORS:C628(*;"rect_headerFontColour";$vl_fontColour;$vl_fontColour)
+				EXECUTE FORMULA:C63("vl_fontColour:=0x00"+Form:C1466.theme.headerFontColourHex)
+				OBJECT SET RGB COLORS:C628(*;"rect_headerFontColour";vl_fontColour;vl_fontColour)
 				
-				EXECUTE FORMULA:C63("$vl_fontColour:=0x00"+Form:C1466.theme.headerBgColourHex)
-				OBJECT SET RGB COLORS:C628(*;"rect_headerBgColour";$vl_fontColour;$vl_fontColour)
+				EXECUTE FORMULA:C63("vl_fontColour:=0x00"+Form:C1466.theme.headerBgColourHex)
+				OBJECT SET RGB COLORS:C628(*;"rect_headerBgColour";vl_fontColour;vl_fontColour)
 				
-				EXECUTE FORMULA:C63("$vl_fontColour:=0x00"+Form:C1466.theme.rowColourHex)
-				OBJECT SET RGB COLORS:C628(*;"rect_rowColour";$vl_fontColour;$vl_fontColour)
+				EXECUTE FORMULA:C63("vl_fontColour:=0x00"+Form:C1466.theme.rowColourHex)
+				OBJECT SET RGB COLORS:C628(*;"rect_rowColour";vl_fontColour;vl_fontColour)
 				
-				EXECUTE FORMULA:C63("$vl_fontColour:=0x00"+Form:C1466.theme.rowAltColourHex)
-				OBJECT SET RGB COLORS:C628(*;"rect_rowAltColour";$vl_fontColour;$vl_fontColour)
+				EXECUTE FORMULA:C63("vl_fontColour:=0x00"+Form:C1466.theme.rowAltColourHex)
+				OBJECT SET RGB COLORS:C628(*;"rect_rowAltColour";vl_fontColour;vl_fontColour)
 				
-				EXECUTE FORMULA:C63("$vl_fontColour:=0x00"+Form:C1466.theme.rowFontColourHex)
-				OBJECT SET RGB COLORS:C628(*;"rect_rowFontColour";$vl_fontColour;$vl_fontColour)
+				EXECUTE FORMULA:C63("vl_fontColour:=0x00"+Form:C1466.theme.rowFontColourHex)
+				OBJECT SET RGB COLORS:C628(*;"rect_rowFontColour";vl_fontColour;vl_fontColour)
 				
 		End case 
 		
@@ -90,9 +90,9 @@ Case of
 		Case of 
 			: ($vo_formEvent.code=On Data Change:K2:15)
 				$vt_prop:=Replace string:C233($vt_objectName;"input_colour_";"")
-				EXECUTE FORMULA:C63("$vl_fontColour:=0x00"+Form:C1466.theme[$vt_prop+"Hex"])
-				Form:C1466.theme[$vt_prop]:=$vl_fontColour
-				OBJECT SET RGB COLORS:C628(*;"rect_"+$vt_prop;$vl_fontColour;$vl_fontColour)
+				EXECUTE FORMULA:C63("vl_fontColour:=0x00"+Form:C1466.theme[$vt_prop+"Hex"])
+				Form:C1466.theme[$vt_prop]:=vl_fontColour
+				OBJECT SET RGB COLORS:C628(*;"rect_"+$vt_prop;vl_fontColour;vl_fontColour)
 				
 		End case 
 		
