@@ -16,7 +16,7 @@ Case of
 		Case of 
 			: ($vo_formEvent.code=On Load:K2:1)
 				OBJECT SET ENABLED:C1123(*;"bt_deleteView";Form:C1466.allowDelete)
-				VIEW_FORM_BUILD_DISPLAY_FIELD 
+				VIEW_FORM_BUILD_DISPLAY_FIELD (Form:C1466.view.detail.cols)
 				VIEW_FORM_BUILD_DISPLAY_COL 
 				ULO_SET_BACKGROUND 
 				ULO_SET_LIST_COLOURS ("lb_viewFields")
@@ -78,7 +78,7 @@ Case of
 	: ($vt_objectName="dropdown_table")
 		Case of 
 			: ($vo_formEvent.code=On Clicked:K2:4) | ($vo_formEvent.code=On Data Change:K2:15)
-				VIEW_FORM_BUILD_DISPLAY_FIELD 
+				VIEW_FORM_BUILD_DISPLAY_FIELD (Form:C1466.view.detail.cols)
 				
 		End case 
 		
@@ -110,7 +110,7 @@ Case of
 						Form:C1466.view.detail.cols[$vl_idx].selected:=False:C215
 						VIEW_FORM_BUILD_DISPLAY_COL 
 						If (Form:C1466.selectedCol.table=al_tableNum{at_tableName})
-							VIEW_FORM_BUILD_DISPLAY_FIELD 
+							VIEW_FORM_BUILD_DISPLAY_FIELD (Form:C1466.view.detail.cols)
 						End if 
 					Else 
 						CONFIRM:C162("Are you sure you wish to delete the Column "+Form:C1466.selectedCol.header+"?")

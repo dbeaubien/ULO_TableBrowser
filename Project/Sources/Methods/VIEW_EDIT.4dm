@@ -24,7 +24,6 @@ $vo_formData:=New object:C1471
 $vo_formData.view:=New object:C1471
 $vo_formData.delete:=False:C215
 
-
 Case of 
 	: ($1="New")
 		$vo_formData.allowDelete:=False:C215
@@ -38,7 +37,7 @@ Case of
 		$vo_formData.view.handle:=Form:C1466.navItem.handle
 		$vo_formData.view.type:=2
 		$vo_formData.view.user:=Storage:C1525.user.id
-		$vo_formData.view.group:=1
+		$vo_formData.view.group:=1  //TODO: Group?
 		$vo_formData.view.favourite:=False:C215
 		$vo_formData.view.default:=False:C215
 		$vo_formData.view.detail:=New object:C1471
@@ -71,7 +70,7 @@ Case of
 			$e_uloData.handle:=Form:C1466.navItem.selectedView.handle
 			$e_uloData.type:=2
 			$e_uloData.user:=Storage:C1525.user.id
-			$e_uloData.group:=1
+			$e_uloData.group:=1  //TODO: Group?
 			$e_uloData.favourite:=False:C215
 			$e_uloData.default:=False:C215
 			$e_uloData.detail:=OB Copy:C1225(Form:C1466.navItem.selectedView.detail)
@@ -126,11 +125,9 @@ CLOSE WINDOW:C154($vl_win)
 
 If (OK=1)
 	$e_uloData.name:=$vo_formData.view.name
-	$e_uloData.handle:=$vo_formData.view.handle
-	$e_uloData.type:=2
 	$e_uloData.favourite:=$vo_formData.view.favourite
 	$e_uloData.default:=$vo_formData.view.default
-	$e_uloData.group:=1
+	$e_uloData.group:=1  //TODO: Group?
 	$e_uloData.detail:=$vo_formData.view.detail
 	
 	$vo_res:=$e_uloData.save()

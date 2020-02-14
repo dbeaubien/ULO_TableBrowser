@@ -8,9 +8,10 @@
 
 
   //Manages all fo the popup actions for the search button
-C_TEXT:C284($1;$vt_menu;$vt_selected)
+C_TEXT:C284($1;$vt_menu;$vt_selected;$vt_systemMenu;$vt_userMenu;$vt_id)
 C_LONGINT:C283($cp;$vl_menuNum;$index)
-C_OBJECT:C1216($vo_option;$vo_coord)
+C_OBJECT:C1216($vo_coord;$e_sort;$e_systemSort;$e_userSort;\
+$es_systemSort;$es_userSort)
 C_COLLECTION:C1488($vc_hostOptions)
 C_POINTER:C301($vp_table)
 $vp_table:=Table:C252(Form:C1466.tableNumber)
@@ -20,40 +21,69 @@ Case of
 	: ($cp=0)
 		$vt_menu:=Create menu:C408
 		
-		$vc_hostOptions:=New collection:C1472
-		  //first make call to host to get any options.
-		$index:=UTIL_Col_Find_Index (Storage:C1525.buttons;"action";"SORT")
-		If ($index>=0)
-			If (Storage:C1525.buttons[$index].method#"")  //If there is a host sort method specified
-				EXECUTE METHOD:C1007(Storage:C1525.buttons[$index].method;$vc_hostOptions;Form:C1466.tableNumber;Form:C1466.navItem.handle)  //Return a collection
-			End if 
+		APPEND MENU ITEM:C411($vt_menu;"No Sort")
+		SET MENU ITEM PARAMETER:C1004($vt_menu;-1;"LOAD:")
+		  //If (Form.navItem.selectedSort=Null)
+		  //SET MENU ITEM MARK($vt_systemMenu;-1;Char(18))
+		  //Else 
+		  //If (Form.navItem.selectedSort.id="")
+		  //SET MENU ITEM MARK($vt_systemMenu;-1;Char(18))
+		  //End if 
+		  //End if 
+		
+		$es_systemSort:=ds:C1482["uloData"].query("user == 0 && type == 13 && table == :1";Form:C1466.tableNumber)
+		
+		$vt_systemMenu:=Create menu:C408
+		For each ($e_systemSort;$es_systemSort)
+			APPEND MENU ITEM:C411($vt_systemMenu;$e_systemSort.name)
+			SET MENU ITEM PARAMETER:C1004($vt_systemMenu;-1;"LOAD:"+$e_systemSort.id)
+			  //If (Form.navItem.selectedSort#Null)
+			  //If ($e_systemSort.id=Form.navItem.selectedSort.id)
+			  //SET MENU ITEM MARK($vt_systemMenu;-1;Char(18))
+			  //End if 
+			  //End if 
+		End for each 
+		APPEND MENU ITEM:C411($vt_menu;"System Sorts";$vt_systemMenu)
+		If ($es_systemSort.length=0)
+			DISABLE MENU ITEM:C150($vt_menu;-1)
 		End if 
 		
-		For each ($vo_option;$vc_hostOptions)
-			$vl_menuNum:=-1
-			If (OB Is defined:C1231($vo_option;"number"))
-				$vl_menuNum:=$vo_option.number
-			End if 
-			APPEND MENU ITEM:C411($vt_menu;$vo_option.label)
-			SET MENU ITEM PARAMETER:C1004($vt_menu;$vl_menuNum;$vo_option.function)
-			If ($vo_option.enabled)
-				ENABLE MENU ITEM:C149($vt_menu;$vl_menuNum)
-			Else 
-				DISABLE MENU ITEM:C150($vt_menu;$vl_menuNum)
-			End if 
+		$es_userSort:=ds:C1482["uloData"].query("user == :1 && type == 13 && table == :2";Storage:C1525.user.id;Form:C1466.tableNumber)
+		
+		$vt_userMenu:=Create menu:C408
+		For each ($e_userSort;$es_userSort)
+			APPEND MENU ITEM:C411($vt_userMenu;$e_userSort.name)
+			SET MENU ITEM PARAMETER:C1004($vt_userMenu;-1;"LOAD:"+$e_userSort.id)
+			  //If ($e_userSort.id=Form.navItem.selectedSort.id)
+			  //SET MENU ITEM MARK($vt_userMenu;-1;Char(18))
+			  //End if 
 		End for each 
+		APPEND MENU ITEM:C411($vt_menu;"Your Sorts";$vt_userMenu)
+		If ($es_userSort.length=0)
+			DISABLE MENU ITEM:C150($vt_menu;-1)
+		End if 
 		
-		
-		  //If ($vc_options.length>0)
 		APPEND MENU ITEM:C411($vt_menu;"-")
-		SET MENU ITEM PARAMETER:C1004($vt_menu;-1;"-")
-		  //End if 
-		  //Now get the default options
-		APPEND MENU ITEM:C411($vt_menu;"Search Editor")
-		SET MENU ITEM PARAMETER:C1004($vt_menu;-1;"SORTEDITOR")
+		DISABLE MENU ITEM:C150($vt_menu;-1)
 		
-		  //Now build the saved searches for run and delete
+		APPEND MENU ITEM:C411($vt_menu;"New Sort")
+		SET MENU ITEM PARAMETER:C1004($vt_menu;-1;"NEW")
 		
+		APPEND MENU ITEM:C411($vt_menu;"Amend Current Sort")
+		SET MENU ITEM PARAMETER:C1004($vt_menu;-1;"EDIT")
+		If (Form:C1466.navItem.selectedSort#Null:C1517)
+			If (Storage:C1525.user.id#Form:C1466.navItem.selectedSort.user)
+				DISABLE MENU ITEM:C150($vt_menu;-1)
+			End if 
+		Else 
+			DISABLE MENU ITEM:C150($vt_menu;-1)
+		End if 
+		
+		APPEND MENU ITEM:C411($vt_menu;"Duplicate Current Sort")
+		SET MENU ITEM PARAMETER:C1004($vt_menu;-1;"DUPE")
+		If (Form:C1466.navItem.selectedSort=Null:C1517)
+			DISABLE MENU ITEM:C150($vt_menu;-1)
+		End if 
 		
 		$vo_coord:=ULO_Get_Popup_Coord ("ULO_Button_SORT")
 		
@@ -62,24 +92,19 @@ Case of
 			BUTTON_SORT_POP ($vt_selected)
 		End if 
 		
-	: ($1="SORTEDITOR")
-		Form:C1466.uloList:=ULO_Sort (Form:C1466.tableNumber)
-		
+	: ($1="NEW") | ($1="DUPE") | ($1="EDIT")
+		SORT_EDIT ($1)
 		
 	: ($1="LOAD:@")
 		  //get the name of the sort to load and run it.
-		
-	: ($1="DELETE:@")
-		  //get the name of the search selected and delete it.
-		
-	Else   //Otherwise call the host search option
-		
-		$index:=UTIL_Col_Find_Index (Storage:C1525.buttons;"action";"SORT")
-		If ($index>=0)
-			If (Storage:C1525.buttons[$index].method#"")  //If there is a host search method specified
-				EXECUTE METHOD:C1007(Storage:C1525.buttons[$index].method;$vc_hostOptions;Form:C1466.tableNumber;Form:C1466.navItem.handle;$1)  //Return a collection
-			End if 
+		$vt_id:=Replace string:C233($1;"LOAD:";"")
+		If ($vt_id="")
+			Form:C1466.navItem.selectedSort:=Null:C1517
+		Else 
+			$e_sort:=ds:C1482["uloData"].get($vt_id)
+			Form:C1466.navItem.selectedSort:=$e_sort.toObject()
 		End if 
+		ULO_LOAD_SORT 
 		
 End case 
 

@@ -1,4 +1,22 @@
 //%attributes = {}
+  //ulo data `type` enum
+  //  1 - Set
+  //  2 - View
+  //  3 - Query
+  //  4 - Tab
+
+  // 13 - Sort
+
+
+
+
+
+
+
+
+
+
+
   //At some point we need to set the users default view...
 
   //Dissallow duplicate view names for same table/handle combination

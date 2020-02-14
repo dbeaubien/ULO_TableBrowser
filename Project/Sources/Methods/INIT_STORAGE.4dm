@@ -21,8 +21,9 @@ Use (Storage:C1525)
 	Storage:C1525.user:=New shared object:C1526
 	Storage:C1525.hostMethods:=New shared object:C1526
 	Use (Storage:C1525.hostMethods)
-		Storage:C1525.hostMethods.filter:="HOST_ULO_FILTER"
-		Storage:C1525.hostMethods.find:="HOST_ULO_FIND"
+		Storage:C1525.hostMethods.filter:="ULO_FILTER"
+		Storage:C1525.hostMethods.find:="ULO_FIND"
+		Storage:C1525.hostMethods.sidebarLoad:="ULO_SIDEBAR_LOAD"
 	End use 
 	
 	Storage:C1525.sidebar:=New shared collection:C1527

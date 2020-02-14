@@ -58,4 +58,4 @@ For each ($vo_field;Form:C1466.selectedFields)
 	End if 
 End for each 
 VIEW_FORM_BUILD_DISPLAY_COL 
-VIEW_FORM_BUILD_DISPLAY_FIELD 
+VIEW_FORM_BUILD_DISPLAY_FIELD (Form:C1466.view.detail.cols)
