@@ -80,7 +80,6 @@ Else
 							End if 
 						End if 
 						
-						
 						Storage:C1525.sidebar[$index].findFields:=New shared collection:C1527
 						If ($6.fiendFields.length>0)
 							Use (Storage:C1525.sidebar[$index].findFields)
@@ -90,14 +89,21 @@ Else
 							End use   //END use findFields
 						End if   //END findFields length check
 						
-						Storage:C1525.sidebar[$index].actionMethods:=New shared collection:C1527
-						If ($6.actionMethods.length>0)
-							Use (Storage:C1525.sidebar[$index].actionMethods)
-								For each ($vo_act;$6.actionMethods)
-									Storage:C1525.sidebar[$index].actionMethods.push(New shared object:C1526("action";$vo_act.action;"method";$vo_act.method))
+						Storage:C1525.sidebar[$index].buttonState:=New shared collection:C1527
+						If ($6.buttonState.length>0)
+							Use (Storage:C1525.sidebar[$index].buttonState)
+								For each ($vo_act;$6.buttonState)
+									Storage:C1525.sidebar[$index].buttonState.push(New shared object:C1526("code";$vo_act.code;"disabled";$vo_act.disabled))
 								End for each 
-							End use   //END use actionMethods
-						End if   //END actionMethods length check
+							End use   //END use findFields
+						End if   //END findFields length check
+						
+						If (OB Is defined:C1231($6;"windowTitle"))
+							Storage:C1525.sidebar[$index].windowTitle:=$6.windowTitle
+						Else 
+							Storage:C1525.sidebar[$index].windowTitle:=$2
+						End if 
+						
 					End if 
 					
 				Else 
