@@ -13,6 +13,16 @@
 
 C_COLLECTION:C1488($vc_sort)
 
+ARRAY TEXT:C222($at_colName;0)
+ARRAY TEXT:C222($at_footerName;0)
+ARRAY TEXT:C222($at_headerName;0)
+
+ARRAY POINTER:C280($ap_style;0)
+ARRAY POINTER:C280($ap_colVar;0)
+ARRAY POINTER:C280($ap_footerVar;0)
+ARRAY POINTER:C280($ap_headerVar;0)
+
+ARRAY BOOLEAN:C223($ab_colVisible;0)
 
 If (Form:C1466.navItem.selectedSort#Null:C1517)
 	$vc_sort:=New collection:C1472
@@ -29,25 +39,15 @@ If (Form:C1466.navItem.selectedSort#Null:C1517)
 	LISTBOX GET ARRAYS:C832(*;"ULO_LIST";$at_colName;$at_headerName;$ap_colVar;$ap_headerVar;\
 		$ab_colVisible;$ap_style;$at_footerName;$ap_footerVar)
 	
-	ARRAY TEXT:C222($at_colName;0)
-	ARRAY TEXT:C222($at_footerName;0)
-	ARRAY TEXT:C222($at_headerName;0)
-	
-	ARRAY POINTER:C280($ap_style;0)
-	ARRAY POINTER:C280($ap_colVar;0)
-	ARRAY POINTER:C280($ap_footerVar;0)
-	ARRAY POINTER:C280($ap_headerVar;0)
-	
-	ARRAY BOOLEAN:C223($ab_colVisible;0)
-	
 	For ($i;1;Size of array:C274($at_colName))
-		$vt_temp:=Replace string:C233($at_headerName{$i};"head_h_";"")
-		$vl_pos:=Position:C15($vt_temp;"_")
+		$vt_temp:=Replace string:C233($at_headerName{$i};"head_";"")
+		$vt_temp:=Replace string:C233($vt_temp;"h_";"")
+		$vl_pos:=Position:C15("_";$vt_temp)
 		If ($vl_pos>0)
 			$vl_table:=Num:C11(Substring:C12($vt_temp;1;$vl_pos-1))
 			$vl_field:=Num:C11(Substring:C12($vt_temp;$vl_pos+1))
 			
-			$vl_idx:=UTIL_Col_Find_Index (Form:C1466.navItem.selectedSort.detail.sortData)
+			$vl_idx:=UTIL_Col_Find_Index (Form:C1466.navItem.selectedSort.detail.sortData;"table";$vl_table;"field";$vl_field)
 			If ($vl_idx>=0)
 				$ap_headerVar{$i}->:=Choose:C955(Form:C1466.navItem.selectedSort.detail.sortData[$vl_idx].sortDir="ASC";1;2)
 			End if 

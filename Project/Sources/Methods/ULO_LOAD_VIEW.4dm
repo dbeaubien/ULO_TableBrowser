@@ -163,7 +163,7 @@ If (Form:C1466.tableNumber>0)
 		For ($i;1;$vl_numFields)
 			
 			If (Is field number valid:C1000($vp_table;$i)) & (Type:C295(Field:C253(Table:C252($vp_table);$i)->)#Is BLOB:K8:12)
-				$vt_hObject:="h_"+Field name:C257(Table:C252($vp_table);$i)
+				$vt_hObject:="h_"+String:C10(Table:C252($vp_table))+"_"+String:C10($i)
 				$vt_colName:=Field name:C257(Table:C252($vp_table);$i)
 				LISTBOX INSERT COLUMN FORMULA:C970(*;"ULO_LIST";$i;$vt_colName;\
 					"This."+Field name:C257(Table:C252($vp_table);$i);\
