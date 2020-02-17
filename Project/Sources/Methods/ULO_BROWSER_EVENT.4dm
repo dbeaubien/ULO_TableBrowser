@@ -1,9 +1,9 @@
 //%attributes = {"shared":true}
 C_OBJECT:C1216($1;$vo_sub;$es;$es_return;$vo_sort)
-C_TEXT:C284($vt_eventObject;$vt_value;$vt_method)
+C_TEXT:C284($vt_eventObject;$vt_value;$vt_method;$vt_header;$vt_temp)
 C_LONGINT:C283($vl_event;$vl_table;$vl_selected;$index;\
 $vl_buttonNumber;$vl_idx;$vl_field;$vl_fieldIdx;\
-$vl_sortIdx)
+$vl_sortIdx;$vl_pos)
 C_COLLECTION:C1488($vc_fields)
 
 $vl_event:=$1.code
@@ -117,7 +117,9 @@ Case of
 					LISTBOX SELECT ROW:C912(*;"ULO_Navbar";Form:C1466.lastNavItemIndex;lk replace selection:K53:1)
 				End if 
 				EXECUTE METHOD:C1007(Storage:C1525.hostMethods.sidebarLoad;$es_return;Form:C1466.tableNumber;Form:C1466.navItem.handle;Form:C1466.uloList)
-				Form:C1466.uloList:=$es_return
+				If ($es_return#Null:C1517)
+					Form:C1466.uloList:=$es_return
+				End if 
 				Form:C1466.refresh:=True:C214
 				SET TIMER:C645(1)
 				  //ULO_SELECTION_MESSAGE 
