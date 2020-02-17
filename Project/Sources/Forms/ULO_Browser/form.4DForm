@@ -76,6 +76,7 @@
 						"onDoubleClick",
 						"onSelectionChange"
 					],
+					"scrollbarVertical": "automatic",
 					"columns": [
 						{
 							"name": "Column1",
@@ -119,12 +120,13 @@
 					"top": 67,
 					"left": 211,
 					"width": 2,
-					"height": 532,
+					"height": 552,
 					"sizingX": "move",
 					"sizingY": "grow",
 					"events": [
 						"onClick"
-					]
+					],
+					"borderStyle": "double"
 				},
 				"ULO_ButtonBG_00": {
 					"type": "rectangle",
@@ -175,8 +177,8 @@
 					"type": "listbox",
 					"top": 68,
 					"left": 214,
-					"width": 1035,
-					"height": 511,
+					"width": 1045,
+					"height": 531,
 					"sizingX": "grow",
 					"sizingY": "grow",
 					"resizingMode": "legacy",
@@ -202,8 +204,8 @@
 					"type": "input",
 					"top": 66,
 					"left": 214,
-					"width": 1034,
-					"height": 500,
+					"width": 1044,
+					"height": 520,
 					"visibility": "hidden",
 					"sizingX": "grow",
 					"sizingY": "grow",
@@ -269,7 +271,7 @@
 				"SelectionMessage": {
 					"type": "input",
 					"left": 214,
-					"top": 583,
+					"top": 601,
 					"width": 1034,
 					"height": 16,
 					"enterable": false,
@@ -292,8 +294,8 @@
 					"type": "webArea",
 					"top": 68,
 					"left": 214,
-					"width": 1035,
-					"height": 531,
+					"width": 1044,
+					"height": 550,
 					"sizingX": "grow",
 					"sizingY": "grow",
 					"urlSource": "",
@@ -314,7 +316,7 @@
 						"onOpenExternalLink",
 						"onWindowOpeningDenied"
 					],
-					"right": 1249,
+					"right": 1258,
 					"webEngine": "system"
 				}
 			}

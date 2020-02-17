@@ -112,7 +112,11 @@ Case of
 				Else 
 					LISTBOX SELECT ROW:C912(*;"ULO_Navbar";Form:C1466.lastNavItemIndex;lk replace selection:K53:1)
 				End if 
-				ULO_SELECTION_MESSAGE 
+				EXECUTE METHOD:C1007(Storage:C1525.hostMethods.sidebarLoad;$es_return;Form:C1466.tableNumber;Form:C1466.navItem.handle;Form:C1466.uloList)
+				Form:C1466.uloList:=$es_return
+				Form:C1466.refresh:=True:C214
+				SET TIMER:C645(1)
+				  //ULO_SELECTION_MESSAGE 
 		End case 
 		
 	: ($vt_eventObject="ULO_LIST")
@@ -232,6 +236,9 @@ Case of
 				Form:C1466.refresh:=True:C214
 				SET TIMER:C645(1)
 		End case 
+		
+	: ($vt_eventObject="Splitter")
+		  //Do nothing
 		
 	Else 
 		Case of 
