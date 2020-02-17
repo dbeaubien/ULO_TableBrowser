@@ -1,16 +1,15 @@
 //%attributes = {"shared":true}
 C_OBJECT:C1216($1;$vo_sub;$es;$es_return;$vo_sort)
-<<<<<<< HEAD
+
 C_TEXT:C284($vt_eventObject;$vt_value;$vt_method;$vt_head)
-=======
-C_TEXT:C284($vt_eventObject;$vt_value;$vt_method;$vt_header;$vt_temp)
->>>>>>> 08e0328f992f0017afb7aeb732da8160e02140be
 C_LONGINT:C283($vl_event;$vl_table;$vl_selected;$index;\
 $vl_buttonNumber;$vl_idx;$vl_field;$vl_fieldIdx;\
-$vl_sortIdx;$vl_pos)
+$vl_sortIdx)
+
 C_COLLECTION:C1488($vc_fields)
 
 $vl_event:=$1.code
+
 If (OB Is defined:C1231($1;"objectName"))
 	$vt_eventObject:=$1.objectName
 Else 
@@ -120,13 +119,7 @@ Case of
 				Else 
 					LISTBOX SELECT ROW:C912(*;"ULO_Navbar";Form:C1466.lastNavItemIndex;lk replace selection:K53:1)
 				End if 
-				EXECUTE METHOD:C1007(Storage:C1525.hostMethods.sidebarLoad;$es_return;Form:C1466.tableNumber;Form:C1466.navItem.handle;Form:C1466.uloList)
-				If ($es_return#Null:C1517)
-					Form:C1466.uloList:=$es_return
-				End if 
-				Form:C1466.refresh:=True:C214
-				SET TIMER:C645(1)
-				  //ULO_SELECTION_MESSAGE 
+				ULO_SELECTION_MESSAGE 
 		End case 
 		
 	: ($vt_eventObject="ULO_LIST")
@@ -250,9 +243,6 @@ Case of
 				Form:C1466.refresh:=True:C214
 				SET TIMER:C645(1)
 		End case 
-		
-	: ($vt_eventObject="Splitter")
-		  //Do nothing
 		
 	Else 
 		Case of 
