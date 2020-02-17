@@ -210,11 +210,28 @@ Case of
 		End case 
 		
 	: ($vt_objectName="bt_OK")
+		Case of 
+			: ($vo_formEvent.code=On Clicked:K2:4)
+				If (Form:C1466.sortTab="user")
+					Form:C1466.workingSort.save()
+				End if 
+				
+				ACCEPT:C269
+		End case 
 		
-		If (Form:C1466.sortTab="user")
-			Form:C1466.workingSort.save()
-		End if 
 		
-		ACCEPT:C269
+	: ($vt_objectName="txt_sortName")
+		
+		Case of 
+			: ($vo_formEvent.code=On Getting Focus:K2:7)
+				Form:C1466.backupName:=Form:C1466.workingSort.name
+				
+			: ($vo_formEvent.code=On Data Change:K2:15)
+				If (Form:C1466.workingSort.name="")
+					Form:C1466.workingSort.name:=Form:C1466.backupName
+				End if 
+		End case 
+		
+		
 		
 End case 

@@ -13,20 +13,22 @@
 	"bottomMargin": 0,
 	"events": [
 		"onLoad",
-		"onPageChange",
 		"onValidate",
 		"onClick",
-		"onDoubleClick",
 		"onOutsideCall",
-		"onBeginDragOver",
-		"onDragOver",
+		"onDoubleClick",
+		"onGettingFocus",
 		"onDrop",
-		"onAfterKeystroke",
 		"onMenuSelect",
 		"onPluginArea",
-		"onAfterEdit",
+		"onDataChange",
+		"onDragOver",
 		"onTimer",
-		"onBoundVariableChange"
+		"onAfterKeystroke",
+		"onAfterEdit",
+		"onBeginDragOver",
+		"onBoundVariableChange",
+		"onPageChange"
 	],
 	"windowTitle": "window title",
 	"destination": "detailScreen",
@@ -516,7 +518,12 @@
 					"top": 47,
 					"width": 184,
 					"height": 16,
-					"dataSource": "Form:C1466.workingSort.name"
+					"dataSource": "Form:C1466.workingSort.name",
+					"entryFilter": "&\"A-z;0-9; ;_;-\"",
+					"events": [
+						"onGettingFocus",
+						"onDataChange"
+					]
 				}
 			}
 		}

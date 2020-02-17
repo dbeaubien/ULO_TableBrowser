@@ -15,6 +15,7 @@
 		"onClick",
 		"onOutsideCall",
 		"onDoubleClick",
+		"onGettingFocus",
 		"onDrop",
 		"onMenuSelect",
 		"onPluginArea",
@@ -148,8 +149,10 @@
 					"dragging": "none",
 					"dropping": "custom",
 					"events": [
+						"onGettingFocus",
 						"onDataChange"
-					]
+					],
+					"textFormat": "&\"A-z;0-9; ;_;-\""
 				}
 			}
 		},
