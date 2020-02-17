@@ -66,23 +66,29 @@ Case of
 		APPEND MENU ITEM:C411($vt_menu;"-")
 		DISABLE MENU ITEM:C150($vt_menu;-1)
 		
-		APPEND MENU ITEM:C411($vt_menu;"New Sort")
-		SET MENU ITEM PARAMETER:C1004($vt_menu;-1;"NEW")
-		
-		APPEND MENU ITEM:C411($vt_menu;"Amend Current Sort")
-		SET MENU ITEM PARAMETER:C1004($vt_menu;-1;"EDIT")
-		If (Form:C1466.navItem.selectedSort#Null:C1517)
-			If (Storage:C1525.user.id#Form:C1466.navItem.selectedSort.user)
+		If (Storage:C1525.userPrefs.persistentSorting)
+			
+			APPEND MENU ITEM:C411($vt_menu;"New Sort")
+			SET MENU ITEM PARAMETER:C1004($vt_menu;-1;"NEW")
+			
+			APPEND MENU ITEM:C411($vt_menu;"Amend Current Sort")
+			SET MENU ITEM PARAMETER:C1004($vt_menu;-1;"EDIT")
+			If (Form:C1466.navItem.selectedSort#Null:C1517)
+				If (Storage:C1525.user.id#Form:C1466.navItem.selectedSort.user)
+					DISABLE MENU ITEM:C150($vt_menu;-1)
+				End if 
+			Else 
 				DISABLE MENU ITEM:C150($vt_menu;-1)
 			End if 
+			
+			APPEND MENU ITEM:C411($vt_menu;"Duplicate Current Sort")
+			SET MENU ITEM PARAMETER:C1004($vt_menu;-1;"DUPE")
+			If (Form:C1466.navItem.selectedSort=Null:C1517)
+				DISABLE MENU ITEM:C150($vt_menu;-1)
+			End if 
+			
 		Else 
-			DISABLE MENU ITEM:C150($vt_menu;-1)
-		End if 
-		
-		APPEND MENU ITEM:C411($vt_menu;"Duplicate Current Sort")
-		SET MENU ITEM PARAMETER:C1004($vt_menu;-1;"DUPE")
-		If (Form:C1466.navItem.selectedSort=Null:C1517)
-			DISABLE MENU ITEM:C150($vt_menu;-1)
+			APPEND MENU ITEM:C411($vt_menu;"Manage Sorts")
 		End if 
 		
 		$vo_coord:=ULO_Get_Popup_Coord ("ULO_Button_SORT")

@@ -13,9 +13,8 @@
 
 C_COLLECTION:C1488($vc_sort)
 C_OBJECT:C1216($vo_item;$vo_sort)
-C_LONGINT:C283($i;$vl_pos;$vl_table;$vl_field;$vl_idx)
+C_LONGINT:C283($vl_idx;$vl_field;$vl_pos;$vl_table;$i)
 C_TEXT:C284($vt_temp)
-
 ARRAY TEXT:C222($at_colName;0)
 ARRAY TEXT:C222($at_footerName;0)
 ARRAY TEXT:C222($at_headerName;0)
