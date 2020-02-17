@@ -6,10 +6,16 @@
   //  4 - Tab
 
   // 13 - Sort
+  // 20 - User Preferences
 
 
+  //sorting
+  // - Add 3 state cycling to table headers : asc ; des ; none
+  // - Preference option that makes changes to sorting via header clicks save to current sort?
+  // - Preference option that enabled persistant sorting, aka, saves to navbar, and applies 
+  //   through complex queries, enable 'tick' against selected sort in popup menu 
 
-
+  // - ULO Options Preference menu for i.LEVEL (could instead be in via the browser?) , per user
 
 
 

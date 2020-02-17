@@ -50,8 +50,13 @@ Case of
 		
 	: ($1="Edit")
 		$vo_formData.allowDelete:=True:C214
-		$vo_formData.sort:=OB Copy:C1225($vo_formData.navItem.selectedSort)
-		$e_uloData:=ds:C1482["uloData"].get($vo_formData.navItem.selectedSort.id)
+		$e_uloData:=ds:C1482["uloData"].get(Form:C1466.navItem.selectedSort.id)
+		
+		If (Storage:C1525.userPrefs.saveHeaderSort)
+			$vo_formData.sort:=OB Copy:C1225(Form:C1466.navItem.selectedSort)
+		Else 
+			$vo_formData.sort:=$e_uloData.toObject()
+		End if 
 		
 	: ($1="Dupe")
 		$vo_formData.allowDelete:=False:C215

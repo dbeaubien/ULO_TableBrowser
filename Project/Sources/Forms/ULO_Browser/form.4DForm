@@ -193,7 +193,8 @@
 						"onLoad",
 						"onDoubleClick",
 						"onColumnResize",
-						"onAlternateClick"
+						"onAlternateClick",
+						"onHeaderClick"
 					],
 					"method": "ObjectMethods/ULO_LIST.4dm",
 					"columns": []

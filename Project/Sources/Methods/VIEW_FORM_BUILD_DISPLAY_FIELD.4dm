@@ -25,7 +25,7 @@ If ($vl_idx>=0)
 	For each ($vo_field;Form:C1466.fields[$vl_idx].fields)
 		If ($vo_field.kind="storage")
 			  //Check if field is apart of view
-			$vl_idx2:=UTIL_Col_Find_Index ($vc_data;"table";Form:C1466.fields[$vl_idx].table;"field";$vo_field.fieldNumber)
+			$vl_idx2:=UTIL_Col_Find_Index ($vc_data;"table";Form:C1466.fields[$vl_idx].table;"field";Choose:C955($vo_field.fieldNumber=Null:C1517;$vo_field.field;$vo_field.fieldNumber))
 			  //if not, add to list of possible fields
 			If ($vl_idx2=-1)
 				$vb_add:=True:C214
