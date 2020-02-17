@@ -66,8 +66,10 @@ Case of
 		APPEND MENU ITEM:C411($vt_menu;"-")
 		DISABLE MENU ITEM:C150($vt_menu;-1)
 		
-		If (Storage:C1525.userPrefs.persistentSorting)
-			
+		  //Opportunity to add userPreferences that dictates the behaviour of sorting?
+		
+		  //If (Storage.userPrefs.persistentSorting)
+		If (False:C215)
 			APPEND MENU ITEM:C411($vt_menu;"New Sort")
 			SET MENU ITEM PARAMETER:C1004($vt_menu;-1;"NEW")
 			
@@ -89,6 +91,7 @@ Case of
 			
 		Else 
 			APPEND MENU ITEM:C411($vt_menu;"Manage Sorts")
+			SET MENU ITEM PARAMETER:C1004($vt_menu;-1;"MANAGE")
 		End if 
 		
 		$vo_coord:=ULO_Get_Popup_Coord ("ULO_Button_SORT")
@@ -97,6 +100,9 @@ Case of
 		If ($vt_selected#"")
 			BUTTON_SORT_POP ($vt_selected)
 		End if 
+		
+	: ($1="MANAGE")
+		SORT_MANAGE
 		
 	: ($1="NEW") | ($1="DUPE") | ($1="EDIT")
 		SORT_EDIT ($1)

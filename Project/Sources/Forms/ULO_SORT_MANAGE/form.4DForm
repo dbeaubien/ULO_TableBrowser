@@ -1,0 +1,526 @@
+﻿{
+	"$4d": {
+		"version": "1",
+		"kind": "form"
+	},
+	"windowSizingX": "variable",
+	"windowSizingY": "variable",
+	"windowMinWidth": 0,
+	"windowMinHeight": 0,
+	"windowMaxWidth": 32767,
+	"windowMaxHeight": 32767,
+	"rightMargin": 0,
+	"bottomMargin": 0,
+	"events": [
+		"onLoad",
+		"onPageChange",
+		"onValidate",
+		"onClick",
+		"onDoubleClick",
+		"onOutsideCall",
+		"onBeginDragOver",
+		"onDragOver",
+		"onDrop",
+		"onAfterKeystroke",
+		"onMenuSelect",
+		"onPluginArea",
+		"onAfterEdit",
+		"onTimer",
+		"onBoundVariableChange"
+	],
+	"windowTitle": "window title",
+	"destination": "detailScreen",
+	"pages": [
+		{
+			"objects": {
+				"BackgroundColour": {
+					"type": "rectangle",
+					"top": -1,
+					"left": -1,
+					"width": 895,
+					"height": 471,
+					"sizingX": "grow",
+					"sizingY": "grow",
+					"fill": "#E8E8E8",
+					"stroke": "transparent"
+				},
+				"ViewTab": {
+					"type": "tab",
+					"top": 18,
+					"left": 221,
+					"width": 654,
+					"height": 394,
+					"sizingX": "grow",
+					"sizingY": "grow",
+					"dataSourceTypeHint": "arrayText",
+					"labels": [
+						" Sort Details "
+					],
+					"action": "",
+					"events": [
+						"onClick"
+					]
+				},
+				"Button3": {
+					"type": "button",
+					"top": 555,
+					"left": 21,
+					"width": 74,
+					"height": 22,
+					"sizingX": "move",
+					"dataSource": "b_VIEW_Cancel2",
+					"action": "cancel",
+					"shortcutKey": "[Esc]",
+					"text": "Cancel",
+					"class": "default",
+					"focusable": false,
+					"events": [
+						"onClick"
+					]
+				},
+				"bt_OK": {
+					"type": "button",
+					"top": 431,
+					"left": 754,
+					"width": 114,
+					"height": 22,
+					"sizingX": "move",
+					"sizingY": "move",
+					"action": "",
+					"shortcutKey": "[Enter]",
+					"text": "Apply Changes",
+					"class": "default",
+					"defaultButton": true,
+					"events": [
+						"onClick"
+					]
+				},
+				"VIEW_Cancel": {
+					"type": "button",
+					"top": 431,
+					"left": 668,
+					"width": 74,
+					"height": 22,
+					"sizingX": "move",
+					"sizingY": "move",
+					"action": "cancel",
+					"shortcutKey": ".",
+					"shortcutAccel": true,
+					"text": "Cancel",
+					"class": "default",
+					"events": [
+						"onClick"
+					]
+				},
+				"tab_sortSelect": {
+					"type": "tab",
+					"top": 18,
+					"left": 19,
+					"width": 188,
+					"height": 394,
+					"sizingX": "grow",
+					"sizingY": "grow",
+					"dataSourceTypeHint": "arrayText",
+					"action": "",
+					"events": [
+						"onClick"
+					],
+					"dataSource": "at_sortTab"
+				}
+			}
+		},
+		{
+			"objects": {
+				"View_ShowRelatedTables": {
+					"type": "checkbox",
+					"top": 521,
+					"left": 383,
+					"width": 244,
+					"height": 17,
+					"sizingY": "move",
+					"dataSource": "Form:C1466.showRelated",
+					"text": "Show fields from related Tables",
+					"class": "default",
+					"focusable": false,
+					"events": [
+						"onLoad",
+						"onClick"
+					]
+				},
+				"lb_sortData": {
+					"type": "listbox",
+					"top": 72,
+					"left": 436,
+					"width": 422,
+					"height": 298,
+					"sizingX": "grow",
+					"sizingY": "grow",
+					"resizingMode": "legacy",
+					"listboxType": "collection",
+					"sortable": false,
+					"movableRows": false,
+					"dragging": "custom",
+					"dropping": "custom",
+					"rowHeight": "20px",
+					"headerHeight": "24px",
+					"dataSource": "Form:C1466.workingSort.detail.sortData",
+					"currentItemSource": "Form:C1466.selectedSortCol",
+					"currentItemPositionSource": "Form:C1466.selectedSortColIndex",
+					"selectionMode": "single",
+					"scrollbarHorizontal": "hidden",
+					"horizontalLineStroke": "transparent",
+					"verticalLineStroke": "transparent",
+					"stroke": "#000000",
+					"fill": "#FFFFFF",
+					"fontFamily": "Segoe UI",
+					"fontSize": 12,
+					"events": [
+						"onClick",
+						"onDoubleClick",
+						"onDrop",
+						"onDragOver",
+						"onSelectionChange",
+						"onBeginDragOver"
+					],
+					"columns": [
+						{
+							"name": "BRW_VIEW_FieldName",
+							"dataSource": "This:C1470.fieldName",
+							"width": 175,
+							"minWidth": 10,
+							"maxWidth": 32000,
+							"resizable": false,
+							"enterable": false,
+							"stroke": "#000000",
+							"fill": "#E8F0FE",
+							"alternateFill": "automatic",
+							"fontFamily": "Segoe UI",
+							"fontSize": 12,
+							"events": [
+								"onClick",
+								"onDataChange"
+							],
+							"header": {
+								"name": "BRW_VIEW_FieldNameHdr",
+								"text": "Field Name",
+								"stroke": "#000000",
+								"fontFamily": "Arial",
+								"fontSize": 9
+							},
+							"footer": {
+								"name": "Footer2",
+								"timeFormat": "hh_mm_ss",
+								"stroke": "#000000",
+								"fill": "#FFFFFF",
+								"fontFamily": "Segoe UI",
+								"fontSize": 12
+							}
+						},
+						{
+							"name": "col_sortDir",
+							"dataSource": "This:C1470.sortDir",
+							"width": 100,
+							"minWidth": 10,
+							"maxWidth": 32000,
+							"resizable": false,
+							"enterable": false,
+							"stroke": "#000000",
+							"fill": "#E8F0FE",
+							"alternateFill": "automatic",
+							"fontFamily": "Segoe UI",
+							"fontSize": 12,
+							"events": [
+								"onClick",
+								"onDataChange"
+							],
+							"header": {
+								"name": "BRW_VIEW_FieldHeadersHdr1",
+								"text": "Sort Direction",
+								"stroke": "#000000",
+								"fontFamily": "Arial",
+								"fontSize": 9
+							},
+							"footer": {
+								"name": "Footer1",
+								"timeFormat": "hh_mm_ss",
+								"stroke": "#000000",
+								"fill": "#FFFFFF",
+								"fontFamily": "Segoe UI",
+								"fontSize": 12
+							}
+						},
+						{
+							"name": "BRW_VIEW_FieldHeaders",
+							"dataSource": "This:C1470.relation",
+							"width": 140,
+							"minWidth": 10,
+							"maxWidth": 32000,
+							"resizable": false,
+							"enterable": false,
+							"stroke": "#000000",
+							"fill": "#E8F0FE",
+							"alternateFill": "automatic",
+							"fontFamily": "Segoe UI",
+							"fontSize": 12,
+							"events": [
+								"onClick",
+								"onDataChange"
+							],
+							"header": {
+								"name": "BRW_VIEW_FieldHeadersHdr",
+								"text": "Relation",
+								"stroke": "#000000",
+								"fontFamily": "Arial",
+								"fontSize": 9
+							},
+							"footer": {
+								"name": "Footer3",
+								"timeFormat": "hh_mm_ss",
+								"stroke": "#000000",
+								"fill": "#FFFFFF",
+								"fontFamily": "Segoe UI",
+								"fontSize": 12
+							},
+							"dataSourceTypeHint": "text"
+						}
+					]
+				},
+				"lb_viewFields": {
+					"type": "listbox",
+					"top": 102,
+					"left": 236,
+					"width": 157,
+					"height": 268,
+					"sizingX": "grow",
+					"sizingY": "grow",
+					"resizingMode": "legacy",
+					"listboxType": "collection",
+					"sortable": false,
+					"movableRows": false,
+					"rowHeight": "20px",
+					"headerHeight": "24px",
+					"dataSource": "Form:C1466.displayFields",
+					"currentItemSource": "Form:C1466.selectedField",
+					"currentItemPositionSource": "Form:C1466.selectedFieldIndex",
+					"selectionMode": "multiple",
+					"scrollbarHorizontal": "hidden",
+					"horizontalLineStroke": "transparent",
+					"verticalLineStroke": "transparent",
+					"stroke": "#000000",
+					"fill": "#FFFFFF",
+					"fontFamily": "Segoe UI",
+					"fontSize": 12,
+					"events": [
+						"onClick",
+						"onDoubleClick",
+						"onSelectionChange"
+					],
+					"selectedItemsSource": "Form:C1466.selectedFields",
+					"columns": [
+						{
+							"name": "BRW_VIEW_Column_Selected1",
+							"dataSource": "This:C1470.fieldName",
+							"width": 140,
+							"minWidth": 10,
+							"maxWidth": 32000,
+							"resizable": false,
+							"enterable": false,
+							"stroke": "#000000",
+							"fill": "#E8F0FE",
+							"alternateFill": "automatic",
+							"fontFamily": "Segoe UI",
+							"fontSize": 12,
+							"events": [
+								"onClick",
+								"onDataChange"
+							],
+							"header": {
+								"name": "BRW_VIEW_FieldSelectedHdr1",
+								"text": "Field Name",
+								"stroke": "#000000",
+								"fontFamily": "Arial",
+								"fontSize": 9
+							},
+							"footer": {
+								"name": "Footer4",
+								"timeFormat": "hh_mm_ss",
+								"stroke": "#000000",
+								"fill": "#FFFFFF",
+								"fontFamily": "Segoe UI",
+								"fontSize": 12
+							}
+						}
+					]
+				},
+				"dropdown_table": {
+					"type": "dropdown",
+					"top": 72,
+					"left": 236,
+					"width": 157,
+					"height": 21,
+					"sizingX": "grow",
+					"dataSource": "at_tableName",
+					"focusable": false,
+					"events": [
+						"onClick",
+						"onDataChange"
+					]
+				},
+				"bt_moveField": {
+					"type": "button",
+					"top": 202,
+					"left": 400,
+					"width": 29,
+					"height": 29,
+					"focusable": false,
+					"text": ">",
+					"style": "roundedBevel",
+					"events": [
+						"onClick"
+					]
+				},
+				"bt_deleteField": {
+					"type": "button",
+					"top": 379,
+					"left": 461,
+					"width": 22,
+					"height": 22,
+					"sizingY": "move",
+					"focusable": false,
+					"text": "-",
+					"style": "roundedBevel",
+					"events": [
+						"onClick"
+					]
+				},
+				"bt_addField": {
+					"type": "button",
+					"top": 379,
+					"left": 435,
+					"width": 22,
+					"height": 22,
+					"sizingY": "move",
+					"focusable": false,
+					"text": "+",
+					"style": "roundedBevel",
+					"events": [
+						"onClick"
+					]
+				},
+				"lb_sort": {
+					"type": "listbox",
+					"top": 52,
+					"left": 34,
+					"width": 157,
+					"height": 318,
+					"sizingX": "fixed",
+					"sizingY": "fixed",
+					"resizingMode": "legacy",
+					"listboxType": "collection",
+					"sortable": false,
+					"movableRows": false,
+					"rowHeight": "20px",
+					"headerHeight": "24px",
+					"dataSource": "Form:C1466.displaySort",
+					"currentItemSource": "Form:C1466.selectedSort",
+					"currentItemPositionSource": "Form:C1466.selectedSortIndex",
+					"selectionMode": "single",
+					"scrollbarHorizontal": "hidden",
+					"horizontalLineStroke": "transparent",
+					"verticalLineStroke": "transparent",
+					"stroke": "#000000",
+					"fill": "#FFFFFF",
+					"fontFamily": "Segoe UI",
+					"fontSize": 12,
+					"events": [
+						"onClick",
+						"onDoubleClick",
+						"onSelectionChange"
+					],
+					"selectedItemsSource": "",
+					"columns": [
+						{
+							"name": "BRW_VIEW_Column_Selected2",
+							"dataSource": "This:C1470.name",
+							"width": 140,
+							"minWidth": 10,
+							"maxWidth": 32000,
+							"resizable": false,
+							"enterable": false,
+							"stroke": "#000000",
+							"fill": "#E8F0FE",
+							"alternateFill": "automatic",
+							"fontFamily": "Segoe UI",
+							"fontSize": 12,
+							"events": [
+								"onClick",
+								"onDataChange"
+							],
+							"header": {
+								"name": "BRW_VIEW_FieldSelectedHdr2",
+								"text": "Sort Name",
+								"stroke": "#000000",
+								"fontFamily": "Arial",
+								"fontSize": 9
+							},
+							"footer": {
+								"name": "Footer5",
+								"timeFormat": "hh_mm_ss",
+								"stroke": "#000000",
+								"fill": "#FFFFFF",
+								"fontFamily": "Segoe UI",
+								"fontSize": 12
+							}
+						}
+					]
+				},
+				"bt_deleteSort": {
+					"type": "button",
+					"top": 381,
+					"left": 60,
+					"width": 22,
+					"height": 22,
+					"sizingY": "move",
+					"focusable": false,
+					"text": "-",
+					"style": "roundedBevel",
+					"events": [
+						"onClick"
+					]
+				},
+				"bt_addSort": {
+					"type": "button",
+					"top": 381,
+					"left": 34,
+					"width": 22,
+					"height": 22,
+					"sizingY": "move",
+					"focusable": false,
+					"text": "+",
+					"style": "roundedBevel",
+					"events": [
+						"onClick"
+					]
+				},
+				"Text": {
+					"type": "text",
+					"text": "Sort Name:",
+					"top": 48,
+					"left": 236,
+					"width": 124,
+					"height": 15
+				},
+				"txt_sortName": {
+					"type": "input",
+					"left": 307,
+					"top": 47,
+					"width": 184,
+					"height": 16,
+					"dataSource": "Form:C1466.workingSort.name"
+				}
+			}
+		}
+	],
+	"formSizeAnchor": "BackgroundColour",
+	"method": "method.4dm"
+}

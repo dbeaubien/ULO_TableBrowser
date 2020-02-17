@@ -28,6 +28,7 @@ Case of
 		Case of 
 			: ($vo_formEvent.code=On Load:K2:1)
 				OBJECT SET ENABLED:C1123(*;"bt_deleteSort";Form:C1466.allowDelete)
+				OBJECT SET ENABLED:C1123(*;"bt_addField";False:C215)
 				
 				ULO_SET_BACKGROUND 
 				ULO_SET_LIST_COLOURS ("lb_viewFields")
@@ -67,19 +68,6 @@ Case of
 				End if 
 		End case 
 		
-	: ($vt_objectName="col_sortDir")
-		Case of 
-			: ($vo_formEvent.code=On Clicked:K2:4)
-				If (Form:C1466.selectedSort#Null:C1517)
-					Form:C1466.selectedSort.sortDir:=Choose:C955(Form:C1466.selectedSort.sortDir="ASC";"DES";"ASC")
-					
-				End if 
-		End case 
-		
-	: ($vt_objectName="bt_addField")
-		  //Not sure if this is needed?
-		
-		
 	: ($vt_objectName="bt_deleteSort")
 		Case of 
 			: ($vo_formEvent.code=On Clicked:K2:4)
@@ -108,7 +96,7 @@ Case of
 	: ($vt_objectName="bt_moveField")
 		Case of 
 			: ($vo_formEvent.code=On Clicked:K2:4)
-				SORT_FORM_MOVE_SELECTED_FIELD 
+				SORT_FORM_MOVE_SELECTED_FIELD (Form:C1466.sort.detail.sortData)
 				
 		End case 
 		
@@ -126,7 +114,7 @@ Case of
 				
 			: ($vo_formEvent.code=On Double Clicked:K2:5)
 				If (Form:C1466.selectedField#Null:C1517)
-					SORT_FORM_MOVE_SELECTED_FIELD 
+					SORT_FORM_MOVE_SELECTED_FIELD (Form:C1466.sort.detail.sortData)
 				End if 
 		End case 
 End case 

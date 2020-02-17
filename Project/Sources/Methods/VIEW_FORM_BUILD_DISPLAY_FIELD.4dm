@@ -24,6 +24,7 @@ If ($vl_idx>=0)
 	Form:C1466.displayFields:=New collection:C1472
 	For each ($vo_field;Form:C1466.fields[$vl_idx].fields)
 		If ($vo_field.kind="storage")
+			
 			  //Check if field is apart of view
 			$vl_idx2:=UTIL_Col_Find_Index ($vc_data;"table";Form:C1466.fields[$vl_idx].table;"field";Choose:C955($vo_field.fieldNumber=Null:C1517;$vo_field.field;$vo_field.fieldNumber))
 			  //if not, add to list of possible fields
@@ -33,7 +34,7 @@ If ($vl_idx>=0)
 				If (OB Is defined:C1231($vc_data[$vl_idx2];"selected"))
 					$vb_add:=Not:C34($vc_data[$vl_idx2].selected)
 				Else 
-					$vb_add:=True:C214
+					$vb_add:=False:C215
 				End if 
 			End if 
 			

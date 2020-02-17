@@ -9,13 +9,17 @@
   // Adds selected displayField to view.details.sortData
   //
   // Parameters
+  // $1 - Collection - Target Collection
   // ----------------------------------------------------
 
 C_LONGINT:C283($vl_idx)
 C_OBJECT:C1216($vo_sort;$vo_field)
+C_COLLECTION:C1488($1;$vc_target)
+
+$vc_target:=$1
 
 For each ($vo_field;Form:C1466.selectedFields)
-	$vl_idx:=UTIL_Col_Find_Index (Form:C1466.sort.detail.sortData;"table";al_tableNum{at_tableName};"field";$vo_field.fieldNumber)
+	$vl_idx:=UTIL_Col_Find_Index ($vc_target;"table";al_tableNum{at_tableName};"field";$vo_field.fieldNumber)
 	If ($vl_idx>=0)
 		  //Field is already there!
 		ALERT:C41("Field already added?!")
@@ -43,9 +47,9 @@ For each ($vo_field;Form:C1466.selectedFields)
 			
 			$vo_sort.sortDir:="ASC"
 			
-			Form:C1466.sort.detail.sortData.push(OB Copy:C1225($vo_sort))
+			$vc_target.push(OB Copy:C1225($vo_sort))
 		End if 
 	End if 
 End for each 
-Form:C1466.sort.detail.sortData:=Form:C1466.sort.detail.sortData
-VIEW_FORM_BUILD_DISPLAY_FIELD (Form:C1466.sort.detail.sortData)
+$vc_target:=$vc_target
+VIEW_FORM_BUILD_DISPLAY_FIELD ($vc_target)
