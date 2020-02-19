@@ -293,7 +293,7 @@
 					"contextMenu": "none",
 					"sizingX": "grow",
 					"sizingY": "move",
-					"textAlign": "left",
+					"textAlign": "center",
 					"fill": "transparent",
 					"dataSource": "Form:C1466.sortDefinition"
 				}
