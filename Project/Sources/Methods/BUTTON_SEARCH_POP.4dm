@@ -63,7 +63,6 @@ Case of
 	: ($1="SEARCHEDITOR")
 		Form:C1466.uloList:=ULO_Query (Form:C1466.tableNumber)
 		
-		
 	: ($1="LOAD:@")
 		  //get the name of the search to load and run it.
 		
