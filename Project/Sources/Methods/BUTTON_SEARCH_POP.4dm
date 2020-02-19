@@ -37,6 +37,11 @@ Case of
 				End if 
 				APPEND MENU ITEM:C411($vt_menu;$vo_option.label)
 				SET MENU ITEM PARAMETER:C1004($vt_menu;$vl_menuNum;$vo_option.function)
+				$vt_shortcut:=$vo_option.shortcut
+				$vl_modifier:=$vo_option.modifier
+				If ($vt_shortcut#"") & ($vl_modifier>0)
+					SET MENU ITEM SHORTCUT:C423($vt_menu;-1;$vt_shortcut;$vl_modifier)
+				End if 
 				If ($vo_option.enabled)
 					ENABLE MENU ITEM:C149($vt_menu;$vl_menuNum)
 				Else 
