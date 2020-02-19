@@ -119,8 +119,7 @@ Case of
 			$e_uloData.save()
 			Form:C1466.userSorts.add($e_uloData)
 			
-			Form:C1466.displaySort.add($e_uloData)
-			Form:C1466.displaySort:=Form:C1466.displaySort
+			Form:C1466.displaySort:=Form:C1466.userSorts
 			SET TIMER:C645(-1)
 		End if 
 		
