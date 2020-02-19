@@ -24,8 +24,6 @@
 		"onDataChange",
 		"onDragOver",
 		"onTimer",
-		"onAfterKeystroke",
-		"onAfterEdit",
 		"onBeginDragOver",
 		"onBoundVariableChange",
 		"onPageChange"
@@ -520,10 +518,7 @@
 					"height": 16,
 					"dataSource": "Form:C1466.workingSort.name",
 					"entryFilter": "&\"A-z;0-9; ;_;-\"",
-					"events": [
-						"onGettingFocus",
-						"onDataChange"
-					]
+					"events": []
 				}
 			}
 		}
