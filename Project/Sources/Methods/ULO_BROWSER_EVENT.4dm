@@ -58,24 +58,25 @@ Case of
 				
 			: ($vl_event=On Timer:K2:25)
 				Case of 
-					: (Form:C1466.fullRefresh)
-						Form:C1466.fullRefresh:=False:C215
-						Form:C1466.navItem.selection:=Form:C1466.uloList  //OB Copy(Form.uloList)//This was returning a null
-						ULO_LOAD_VIEW 
+					: (Form:C1466.fullRefresh) | (Form:C1466.refresh)  //compressed both refresh events into the same case as 90% was the same.
 						SET TIMER:C645(0)
+						
+						If (Form:C1466.fullRefresh)
+							Form:C1466.fullRefresh:=False:C215
+							ULO_LOAD_VIEW 
+						Else   //Just plain refresh
+							ULO_LIST_UPDATE_FOOTER   //We're calling this twice on startup if a default view exists, but it needs to be called here
+						End if 
 						$vl_selected:=Form:C1466.records.length
 						OBJECT SET ENABLED:C1123(*;"ULO_Button_SHOWSUBSET";($vl_selected>0))
 						OBJECT SET ENABLED:C1123(*;"ULO_Button_OMITSUBSET";($vl_selected>0))
-						
-						
-					: (Form:C1466.refresh)
-						Form:C1466.refresh:=False:C215
-						SET TIMER:C645(0)
-						$vl_selected:=Form:C1466.records.length
-						OBJECT SET ENABLED:C1123(*;"ULO_Button_SHOWSUBSET";($vl_selected>0))
-						OBJECT SET ENABLED:C1123(*;"ULO_Button_OMITSUBSET";($vl_selected>0))
-						ULO_LIST_UPDATE_FOOTER   //We're calling this twice on startup if a default view exists, but it needs to be called here
 						ULO_SELECTION_MESSAGE 
+						Form:C1466.navItem.selection:=Form:C1466.uloList
+						$index:=UTIL_Col_Find_Index (Form:C1466.sidebarSource;"index";Form:C1466.navItem.index)
+						If ($index>=0)
+							Form:C1466.sidebarSource[$index].selection:=Form:C1466.navItem.selection
+						End if 
+						
 					: (Form:C1466.resizing)
 						Form:C1466.resizing:=False:C215
 						Form:C1466.pendingResize:=True:C214

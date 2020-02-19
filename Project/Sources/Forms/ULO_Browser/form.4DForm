@@ -72,8 +72,6 @@
 					"fontSize": 14,
 					"borderStyle": "none",
 					"events": [
-						"onClick",
-						"onDoubleClick",
 						"onSelectionChange"
 					],
 					"scrollbarVertical": "automatic",
@@ -154,10 +152,7 @@
 					"iconFrames": 4,
 					"style": "custom",
 					"dropping": "custom",
-					"events": [
-						"onClick",
-						"onLongClick"
-					]
+					"events": []
 				},
 				"Logo": {
 					"type": "picture",
@@ -178,7 +173,7 @@
 					"top": 68,
 					"left": 214,
 					"width": 1045,
-					"height": 531,
+					"height": 511,
 					"sizingX": "grow",
 					"sizingY": "grow",
 					"resizingMode": "legacy",
@@ -192,10 +187,7 @@
 					"scrollbarHorizontal": "automatic",
 					"borderStyle": "none",
 					"events": [
-						"onLoad",
-						"onDoubleClick",
 						"onColumnResize",
-						"onAlternateClick",
 						"onHeaderClick"
 					],
 					"method": "ObjectMethods/ULO_LIST.4dm",
@@ -206,7 +198,7 @@
 					"top": 66,
 					"left": 214,
 					"width": 1044,
-					"height": 520,
+					"height": 500,
 					"visibility": "hidden",
 					"sizingX": "grow",
 					"sizingY": "grow",
@@ -272,7 +264,7 @@
 				"SelectionMessage": {
 					"type": "input",
 					"left": 214,
-					"top": 601,
+					"top": 581,
 					"width": 1034,
 					"height": 16,
 					"enterable": false,
@@ -301,7 +293,7 @@
 					"contextMenu": "none",
 					"sizingX": "grow",
 					"sizingY": "move",
-					"textAlign": "left",
+					"textAlign": "center",
 					"fill": "transparent",
 					"dataSource": "Form:C1466.sortDefinition"
 				}
