@@ -169,6 +169,17 @@ Case of
 				End if 
 		End case 
 		
+	: ($vt_objectName="ULO_VIEW_Name")
+		
+		Case of 
+			: ($vo_formEvent.code=On Getting Focus:K2:7)
+				Form:C1466.backupName:=Form:C1466.view.name
+				
+			: ($vo_formEvent.code=On Data Change:K2:15)
+				If (Form:C1466.view.name="")
+					Form:C1466.view.name:=Form:C1466.backupName
+				End if 
+		End case 
 		
 		
 End case 
