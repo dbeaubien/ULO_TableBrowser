@@ -221,7 +221,6 @@ Case of
 		
 		
 	: ($vt_objectName="txt_sortName")
-		
 		Case of 
 			: ($vo_formEvent.code=On Getting Focus:K2:7)
 				Form:C1466.backupName:=Form:C1466.workingSort.name
