@@ -72,8 +72,6 @@
 					"fontSize": 14,
 					"borderStyle": "none",
 					"events": [
-						"onClick",
-						"onDoubleClick",
 						"onSelectionChange"
 					],
 					"scrollbarVertical": "automatic",
@@ -154,10 +152,7 @@
 					"iconFrames": 4,
 					"style": "custom",
 					"dropping": "custom",
-					"events": [
-						"onClick",
-						"onLongClick"
-					]
+					"events": []
 				},
 				"Logo": {
 					"type": "picture",
@@ -192,10 +187,7 @@
 					"scrollbarHorizontal": "automatic",
 					"borderStyle": "none",
 					"events": [
-						"onLoad",
-						"onDoubleClick",
 						"onColumnResize",
-						"onAlternateClick",
 						"onHeaderClick"
 					],
 					"method": "ObjectMethods/ULO_LIST.4dm",

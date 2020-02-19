@@ -15,3 +15,4 @@ Case of
 		
 End case 
 Form:C1466.parent.lastQuery[$row].field:=Form:C1466.parent.queryFields[$index].fieldNum
+Form:C1466.parent.lastQuery[$row].type:=Form:C1466.parent.queryFields[$index].fieldType
