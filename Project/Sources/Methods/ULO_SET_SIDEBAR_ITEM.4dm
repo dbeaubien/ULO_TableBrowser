@@ -48,8 +48,10 @@ Else
 					
 				: ($1="WEB")
 					$vt_parent:=$6.parent
-					Storage:C1525.sidebar[$index].targetUrl:=$6.url
-					If (Count parameters:C259>6)
+					If (OB Is defined:C1231($6;"url"))
+						Storage:C1525.sidebar[$index].targetUrl:=$6.url
+					End if 
+					If (Count parameters:C259>5)
 						Storage:C1525.sidebar[$index].childOf:=$vt_parent
 						
 						If ($vt_parent#"")
@@ -67,7 +69,7 @@ Else
 					$vt_parent:=$6.parent
 					
 					Storage:C1525.sidebar[$index].table:=$6.table
-					If (Count parameters:C259>6)
+					If (Count parameters:C259>5)
 						Storage:C1525.sidebar[$index].childOf:=$vt_parent
 						
 						If ($vt_parent#"")
@@ -81,22 +83,37 @@ Else
 						End if 
 						
 						Storage:C1525.sidebar[$index].findFields:=New shared collection:C1527
-						If ($6.fiendFields.length>0)
-							Use (Storage:C1525.sidebar[$index].findFields)
-								For each ($vt_field;$6.fiendFields)
-									Storage:C1525.sidebar[$index].findFields.push($vt_field)
-								End for each 
-							End use   //END use findFields
-						End if   //END findFields length check
+						If (OB Is defined:C1231($6;"findFields"))
+							If ($6.findFields.length>0)
+								Use (Storage:C1525.sidebar[$index].findFields)
+									For each ($vt_field;$6.findFields)
+										Storage:C1525.sidebar[$index].findFields.push($vt_field)
+									End for each 
+								End use   //END use findFields
+							End if   //END findFields length check
+						End if 
+						
+						Storage:C1525.sidebar[$index].customCols:=New shared collection:C1527
+						If (OB Is defined:C1231($6;"customFields"))
+							If ($6.customCols.length>0)
+								Use (Storage:C1525.sidebar[$index].customCols)
+									For each ($vt_field;$6.customCols)
+										Storage:C1525.sidebar[$index].customCols.push($vt_field)
+									End for each 
+								End use   //END use customCols
+							End if   //END customCols length check
+						End if 
 						
 						Storage:C1525.sidebar[$index].buttonState:=New shared collection:C1527
-						If ($6.buttonState.length>0)
-							Use (Storage:C1525.sidebar[$index].buttonState)
-								For each ($vo_act;$6.buttonState)
-									Storage:C1525.sidebar[$index].buttonState.push(New shared object:C1526("code";$vo_act.code;"disabled";$vo_act.disabled))
-								End for each 
-							End use   //END use findFields
-						End if   //END findFields length check
+						If (OB Is defined:C1231($6;"buttonState"))
+							If ($6.buttonState.length>0)
+								Use (Storage:C1525.sidebar[$index].buttonState)
+									For each ($vo_act;$6.buttonState)
+										Storage:C1525.sidebar[$index].buttonState.push(New shared object:C1526("code";$vo_act.code;"disabled";$vo_act.disabled))
+									End for each 
+								End use   //END use findFields
+							End if   //END findFields length check
+						End if 
 						
 						If (OB Is defined:C1231($6;"windowTitle"))
 							Storage:C1525.sidebar[$index].windowTitle:=$6.windowTitle
