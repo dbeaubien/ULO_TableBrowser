@@ -163,6 +163,33 @@
 					"pictureFormat": "scaled",
 					"picture": "/RESOURCES/images/library/logo.png",
 					"sizingY": "move"
+				},
+				"ULO_Shortcut": {
+					"type": "button",
+					"text": "Shortcut",
+					"top": 638,
+					"left": 5,
+					"width": 60,
+					"height": 26,
+					"events": [
+						"onClick"
+					]
+				},
+				"ULO_SelectAll": {
+					"type": "button",
+					"text": "Select All",
+					"top": 638,
+					"left": 1191,
+					"width": 60,
+					"height": 26,
+					"events": [
+						"onClick"
+					],
+					"shortcutAccel": true,
+					"shortcutControl": false,
+					"shortcutShift": false,
+					"shortcutAlt": false,
+					"shortcutKey": "a"
 				}
 			}
 		},
@@ -336,5 +363,6 @@
 	"$4d": {
 		"version": "1",
 		"kind": "form"
-	}
+	},
+	"formSizeAnchor": "BackgroundColour"
 }

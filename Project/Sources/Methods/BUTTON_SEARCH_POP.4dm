@@ -8,8 +8,8 @@
 
 
   //Manages all fo the popup actions for the search button
-C_TEXT:C284($1;$vt_menu;$vt_selected)
-C_LONGINT:C283($cp;$vl_menuNum;$index)
+C_TEXT:C284($1;$vt_menu;$vt_selected;$vt_shortcut)
+C_LONGINT:C283($cp;$vl_menuNum;$index;$vl_modifier)
 C_OBJECT:C1216($vo_option;$vo_coord)
 C_COLLECTION:C1488($vc_hostOptions)
 C_POINTER:C301($vp_table)

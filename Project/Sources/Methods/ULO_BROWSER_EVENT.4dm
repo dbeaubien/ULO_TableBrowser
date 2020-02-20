@@ -42,6 +42,7 @@ Case of
 				
 				ULO_LOAD_THEME 
 				ULO_LOAD_BUTTONS (Form:C1466.buttons)
+				ULO_LOAD_SHORTCUTS 
 				SIDEBAR_REBUILD 
 				
 				  //Find in Form.navItems
@@ -163,6 +164,12 @@ Case of
 		End case 
 		
 	: ($vt_eventObject="SearchPop@")
+		
+	: ($vt_eventObject="ULO_SelectAll")
+		LISTBOX SELECT ROW:C912(*;"ULO_LIST";0;lk replace selection:K53:1)
+		GOTO OBJECT:C206(*;"ULO_LIST")
+		Form:C1466.refresh:=True:C214
+		SET TIMER:C645(1)
 		
 	: ($vt_eventObject="SearchText_@")  //Text field from the find widget
 		Case of 
