@@ -1,0 +1,151 @@
+﻿{
+	"destination": "detailScreen",
+	"windowMinWidth": 550,
+	"windowMinHeight": 200,
+	"rightMargin": 20,
+	"bottomMargin": 20,
+	"markerHeader": 15,
+	"markerBody": 200,
+	"markerBreak": 220,
+	"markerFooter": 240,
+	"events": [
+		"onLoad",
+		"onValidate",
+		"onClick",
+		"onOutsideCall",
+		"onDoubleClick",
+		"onDrop",
+		"onMenuSelect",
+		"onPluginArea",
+		"onDataChange",
+		"onDragOver",
+		"onTimer",
+		"onAfterKeystroke",
+		"onAfterEdit",
+		"onBeginDragOver",
+		"onBoundVariableChange",
+		"onPageChange"
+	],
+	"method": "method.4dm",
+	"pageFormat": {
+		"paperName": "A4",
+		"paperWidth": "594pt",
+		"paperHeight": "841pt"
+	},
+	"pages": [
+		{
+			"objects": {
+				"BackgroundColour": {
+					"type": "rectangle",
+					"top": 0,
+					"left": 0,
+					"width": 550,
+					"height": 200,
+					"sizingX": "grow",
+					"sizingY": "grow",
+					"fill": "#E8E8E8",
+					"stroke": "transparent"
+				},
+				"Group Box": {
+					"type": "groupBox",
+					"text": "Selection",
+					"top": 23,
+					"left": 20,
+					"width": 510,
+					"height": 58
+				},
+				"DisplayedItems": {
+					"type": "radio",
+					"text": "Displayed Items",
+					"top": 47,
+					"left": 69,
+					"width": 200,
+					"height": 21,
+					"events": [
+						"onClick"
+					],
+					"dataSourceTypeHint": "boolean",
+					"radioGroup": "selectOption",
+					"dataSource": "Form:C1466.displayed"
+				},
+				"HighlightedItems": {
+					"type": "radio",
+					"text": "Highlighted Only",
+					"top": 47,
+					"left": 289,
+					"width": 200,
+					"height": 21,
+					"events": [
+						"onClick"
+					],
+					"dataSourceTypeHint": "boolean",
+					"radioGroup": "selectOption",
+					"dataSource": "Form:C1466.highlighted"
+				},
+				"Message": {
+					"type": "input",
+					"left": 20,
+					"top": 83,
+					"width": 510,
+					"height": 48,
+					"enterable": false,
+					"fill": "transparent",
+					"borderStyle": "none",
+					"dataSource": "Form:C1466.message"
+				},
+				"Cancel": {
+					"type": "button",
+					"text": "Cancel",
+					"top": 161,
+					"left": 20,
+					"width": 100,
+					"height": 20,
+					"events": [
+						"onClick"
+					],
+					"stroke": "#ff0000",
+					"style": "roundedBevel",
+					"action": "cancel"
+				},
+				"ExportExcel": {
+					"type": "button",
+					"text": "Export To Excel",
+					"top": 161,
+					"left": 269,
+					"width": 120,
+					"height": 20,
+					"events": [
+						"onClick"
+					],
+					"stroke": "#008000",
+					"style": "roundedBevel",
+					"action": "accept",
+					"dataSource": "b_exportExcel"
+				},
+				"ExportCSV": {
+					"type": "button",
+					"text": "Export To CSV",
+					"top": 161,
+					"left": 410,
+					"width": 120,
+					"height": 20,
+					"events": [
+						"onClick"
+					],
+					"stroke": "#FF8000",
+					"style": "roundedBevel",
+					"action": "accept",
+					"dataSource": "b_exportCSV"
+				}
+			}
+		},
+		{
+			"objects": {}
+		}
+	],
+	"$4d": {
+		"version": "1",
+		"kind": "form"
+	},
+	"formSizeAnchor": "ExportCSV"
+}

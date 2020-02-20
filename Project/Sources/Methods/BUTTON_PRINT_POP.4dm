@@ -40,6 +40,10 @@ Case of
 		SET MENU ITEM PARAMETER:C1004($vt_menu;-1;"-")
 		  //End if 
 		  //Now get the default options
+		  //Now get the default options
+		APPEND MENU ITEM:C411($vt_menu;"Export View")
+		SET MENU ITEM PARAMETER:C1004($vt_menu;-1;"EXPORTVIEW")
+		
 		APPEND MENU ITEM:C411($vt_menu;"Quick Report")
 		SET MENU ITEM PARAMETER:C1004($vt_menu;-1;"QUICKREPORT")
 		
@@ -55,6 +59,13 @@ Case of
 		If ($vt_selected#"")
 			BUTTON_PRINT_POP ($vt_selected)
 		End if 
+		
+	: ($1="EXPORTVIEW")
+		C_OBJECT:C1216($vo_eventObject)
+		$vo_eventObject:=New object:C1471
+		$vo_eventObject.code:=-999
+		$vo_eventObject.objectName:="ULO_ExportView"
+		ULO_BROWSER_EVENT ($vo_eventObject)
 		
 	: ($1="QUICKREPORT")
 		USE ENTITY SELECTION:C1513(Form:C1466.uloList)

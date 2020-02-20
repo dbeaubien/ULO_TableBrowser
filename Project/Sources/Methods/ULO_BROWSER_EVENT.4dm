@@ -171,6 +171,11 @@ Case of
 		Form:C1466.refresh:=True:C214
 		SET TIMER:C645(1)
 		
+	: ($vt_eventObject="ULO_ExportView")
+		ULO_EXPORT_VIEW 
+		
+		GOTO OBJECT:C206(*;"ULO_LIST")
+		
 	: ($vt_eventObject="SearchText_@")  //Text field from the find widget
 		Case of 
 			: ($vl_event=On Selection Change:K2:29)

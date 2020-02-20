@@ -33,7 +33,21 @@
 		"paperHeight": "841pt"
 	},
 	"pages": [
-		null,
+		{
+			"objects": {
+				"BackgroundColour": {
+					"type": "rectangle",
+					"top": -1,
+					"left": -1,
+					"width": 744,
+					"height": 347,
+					"sizingX": "grow",
+					"sizingY": "grow",
+					"fill": "#E8E8E8",
+					"stroke": "transparent"
+				}
+			}
+		},
 		{
 			"objects": {
 				"queryLines": {

@@ -190,6 +190,22 @@
 					"shortcutShift": false,
 					"shortcutAlt": false,
 					"shortcutKey": "a"
+				},
+				"ULO_ExportView": {
+					"type": "button",
+					"text": "Export View",
+					"top": 638,
+					"left": 1091,
+					"width": 80,
+					"height": 26,
+					"events": [
+						"onClick"
+					],
+					"shortcutAccel": true,
+					"shortcutControl": false,
+					"shortcutShift": false,
+					"shortcutAlt": false,
+					"shortcutKey": "e"
 				}
 			}
 		},
