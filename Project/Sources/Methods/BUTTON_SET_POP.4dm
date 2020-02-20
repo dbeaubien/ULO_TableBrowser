@@ -14,8 +14,8 @@
 C_TEXT:C284($1)
 
 C_TEXT:C284($vt_addMenu;$vt_case;$vt_deleteMenu;$vt_id;$vt_menu;\
-$vt_newMenu;$vt_pk;$vt_removeMenu;$vt_table;$vt_userMenu)
-C_OBJECT:C1216($es_resultRecords;$es_setRecords;$es_sets;$e_set)
+$vt_newMenu;$vt_pk;$vt_removeMenu;$vt_table;$vt_userMenu;$vt_selected;$vt_name)
+C_OBJECT:C1216($es_resultRecords;$es_setRecords;$es_sets;$e_set;$vo_coord)
 C_LONGINT:C283($vl_NumParameters)
 
 $vl_NumParameters:=Count parameters:C259
