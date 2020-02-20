@@ -210,6 +210,12 @@ Case of
 				BUTTON_RELATE_POP 
 		End case 
 		
+	: ($vt_eventObject="ULO_Button_SETS") | ($vt_eventObject="ULO_ButtonBG_SETS")
+		Case of 
+			: ($vl_event=On Clicked:K2:4)
+				BUTTON_SET_POP 
+		End case 
+		
 		
 	: ($vt_eventObject="ULO_Button_SHOWALL")
 		  //Need to make callback to host for filter
