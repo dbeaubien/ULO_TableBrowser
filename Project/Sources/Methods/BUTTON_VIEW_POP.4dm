@@ -16,7 +16,7 @@ Case of
 		
 		
 		  //Look for system default
-		$es_views:=ds:C1482["uloData"].query("table == :1 && default == True && user == 0";Form:C1466.tableNumber)
+		$es_views:=ds:C1482["uloData"].query("table == :1 && default == True && user == 0 && type == 2";Form:C1466.tableNumber)
 		If ($es_views.length>0)
 			$vt_defaultViewId:=$es_views.first().id
 		End if 
@@ -28,7 +28,7 @@ Case of
 		End if 
 		
 		  //Look for user default
-		$es_views:=ds:C1482["uloData"].query("table == :1 && default == :2 && user == :3";Form:C1466.tableNumber;True:C214;Storage:C1525.user.id)
+		$es_views:=ds:C1482["uloData"].query("table == :1 && default == :2 && user == :3 && type == 2";Form:C1466.tableNumber;True:C214;Storage:C1525.user.id)
 		If ($es_views.length>0)
 			$vt_userDefaultId:=$es_views.first().id
 		End if 
@@ -47,7 +47,7 @@ Case of
 		$vl_CurrentUser:=Storage:C1525.user.id
 		If ($vl_CurrentUser>0)
 			
-			$vc_views:=ds:C1482["uloData"].query("user = :1 & table = :2 & default = :3";\
+			$vc_views:=ds:C1482["uloData"].query("user = :1 & table = :2 & default = :3 && type == 2";\
 				$vl_CurrentUser;Form:C1466.tableNumber;False:C215).orderBy("name").toCollection("id,name,user,detail")
 		End if 
 		
@@ -68,7 +68,7 @@ Case of
 		End if 
 		
 		  //Now get other views I can use.
-		$vc_views:=ds:C1482["uloData"].query("group # -1 & user # :1 & table = :2 & default = :3";\
+		$vc_views:=ds:C1482["uloData"].query("group # -1 & user # :1 & table = :2 & default = :3 && type == 2";\
 			$vl_CurrentUser;Form:C1466.tableNumber;False:C215).orderBy("name").toCollection("id,name,user,detail")
 		If ($vc_views.length>0)
 			$vt_MyViews:=Create menu:C408
