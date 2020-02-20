@@ -152,7 +152,8 @@
 						"onGettingFocus",
 						"onDataChange"
 					],
-					"textFormat": "&\"A-z;0-9; ;_;-\""
+					"textFormat": "",
+					"entryFilter": "&\"A-z;0-9; ;_;-\""
 				}
 			}
 		},
