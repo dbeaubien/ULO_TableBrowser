@@ -48,7 +48,7 @@ If (OK=1)  //If user has created a document ....
 	
 	  //Loop through the records
 	$recordIndex:=1
-	For each ($e_record;Form:C1466.uloList)
+	For each ($e_record;Form:C1466.uloRecords)
 		
 		  //Then loop through the columns
 		$fieldIndex:=1  //Used for excel column number
@@ -99,7 +99,7 @@ If (OK=1)  //If user has created a document ....
 			End if   //END selected check
 		End for each   //END field loop
 		
-		Progress SET PROGRESS ($vl_Progress;-1;"Exporting: "+String:C10($recordIndex)+" of  "+String:C10(Form:C1466.uloList.length))
+		Progress SET PROGRESS ($vl_Progress;-1;"Exporting: "+String:C10($recordIndex)+" of  "+String:C10(Form:C1466.uloRecords.length))
 		$recordIndex:=$recordIndex+1
 	End for each   //END record loop
 	Progress QUIT ($vl_Progress)

@@ -20,8 +20,8 @@ C_POINTER:C301(vp_HOST_BRW_Table)
 C_LONGINT:C283(b_exportCSV;b_exportExcel;vl_DisplayedItems;vl_HighlightedItems)
 C_OBJECT:C1216($vo_formData)
 $cp:=Count parameters:C259
-$vl_ris:=Form:C1466.uloList.length
-$vl_sel:=Form:C1466.records.length
+$vl_ris:=Form:C1466.uloRecords.length
+$vl_sel:=Form:C1466.selectedRecords.length
 $vo_formData:=New object:C1471
 $vo_formData.ris:=$vl_ris
 $vo_formData.selectedRecords:=$vl_sel

@@ -1,7 +1,7 @@
 //%attributes = {"invisible":true}
   //Manages all fo the popup actions for theview button
-C_TEXT:C284($vt_menu;$vt_selected)
-C_LONGINT:C283($cp;$vl_menuNum;$index)
+C_TEXT:C284($vt_menu;$vt_selected;$vt_shortcut)
+C_LONGINT:C283($cp;$vl_menuNum;$index;$vl_modifier)
 C_POINTER:C301($vp_table)
 C_OBJECT:C1216($vo_option;$vo_coord)
 C_COLLECTION:C1488($vc_hostOptions)
@@ -28,6 +28,11 @@ Case of
 			End if 
 			APPEND MENU ITEM:C411($vt_menu;$vo_option.label)
 			SET MENU ITEM PARAMETER:C1004($vt_menu;$vl_menuNum;$vo_option.function)
+			$vt_shortcut:=$vo_option.shortcut
+			$vl_modifier:=$vo_option.modifier
+			If ($vt_shortcut#"") & ($vl_modifier>0)
+				SET MENU ITEM SHORTCUT:C423($vt_menu;-1;$vt_shortcut;$vl_modifier)
+			End if 
 			If ($vo_option.enabled)
 				ENABLE MENU ITEM:C149($vt_menu;$vl_menuNum)
 			Else 
@@ -68,11 +73,11 @@ Case of
 		ULO_BROWSER_EVENT ($vo_eventObject)
 		
 	: ($1="QUICKREPORT")
-		USE ENTITY SELECTION:C1513(Form:C1466.uloList)
+		USE ENTITY SELECTION:C1513(Form:C1466.uloRecords)
 		QR REPORT:C197($vp_table->;Char:C90(1))
 		
 	: ($1="PRINTLABEL")
-		USE ENTITY SELECTION:C1513(Form:C1466.uloList)
+		USE ENTITY SELECTION:C1513(Form:C1466.uloRecords)
 		PRINT LABEL:C39($vp_table->;Char:C90(1))
 		
 	Else 

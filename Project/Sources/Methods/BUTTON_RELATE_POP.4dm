@@ -29,7 +29,7 @@ If ($cp=0)
 	$vc_fields:=ULO_Get_Table_Fields (Table name:C256(Form:C1466.tableNumber))  //TODO: Validate the view is accessible by navBar / user permissions
 	For each ($vo_field;$vc_fields)
 		If ($vo_field.kind="relatedEntit@")
-			$vl_count:=Form:C1466.uloList[$vo_field.fieldName].length
+			$vl_count:=Form:C1466.uloRecords[$vo_field.fieldName].length
 			
 			$vl_idx:=UTIL_Col_Find_Index (Form:C1466.sidebarSource;"handle";$vo_field.relatedDataClass)  //TODO: Needs changing
 			If ($vl_idx>=0)
@@ -80,10 +80,10 @@ Else
 			$vo_winData.wTitle:="My Browser"
 			$vo_winData.sidebarStart:=$vo_param.fieldName
 			
-			ULO_MAIN ($vo_param.table;$vo_winData;Form:C1466.uloList[$vo_param.relation])
+			ULO_MAIN ($vo_param.table;$vo_winData;Form:C1466.uloRecords[$vo_param.relation])
 			
 		: ($vo_param.action="same")
-			Form:C1466.uloList:=Form:C1466.uloList[$vo_param.relation]
+			Form:C1466.uloRecords:=Form:C1466.uloRecords[$vo_param.relation]
 			Form:C1466.tableNumber:=$vo_param.table
 			
 			$index:=UTIL_Col_Find_Index (Form:C1466.sidebarSource;"table";$vo_param.table;"type";"DATA")

@@ -26,14 +26,14 @@ $vo_uloData.navItems:=New collection:C1472
 $vo_uloData.sidebarSource:=Storage:C1525.sidebar.copy()
 $vo_uloData.navItems:=Storage:C1525.sidebar.copy()  //SIDEBAR_Flatten (Storage.sidebar.copy())
 $vo_uloData.lastNavItemIndex:=1
-$vo_uloData.record:=New object:C1471  //Selected record object
+$vo_uloData.selectedRecord:=New object:C1471  //Selected record object
 $vo_uloData.selectedRecord:=1  //Currently selected record
 $vo_uloData.selectionMessage:=""  //Currently selected record
-$vo_uloData.records:=ds:C1482[Table name:C256($tableNumber)].newSelection()  //Selected /highlighed records
+$vo_uloData.selectedRecords:=ds:C1482[Table name:C256($tableNumber)].newSelection()  //Selected /highlighed records
 If ($cp>2)
-	$vo_uloData.uloList:=$3
+	$vo_uloData.uloRecords:=$3
 Else 
-	$vo_uloData.uloList:=ds:C1482[Table name:C256($tableNumber)].all()  //Current selection
+	$vo_uloData.uloRecords:=ds:C1482[Table name:C256($tableNumber)].all()  //Current selection
 End if 
 If ($cp>1)
 	  //Use the properties passed in object to determine the position of the window

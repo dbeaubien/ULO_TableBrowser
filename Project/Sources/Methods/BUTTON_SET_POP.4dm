@@ -49,7 +49,7 @@ Case of
 		$vt_newMenu:=Create menu:C408
 		APPEND MENU ITEM:C411($vt_newMenu;"From Current Selection")
 		SET MENU ITEM PARAMETER:C1004($vt_newMenu;-1;"NEW:SELECTION")
-		If (Form:C1466.uloList.length=0)
+		If (Form:C1466.uloRecords.length=0)
 			DISABLE MENU ITEM:C150($vt_newMenu;-1)
 		End if 
 		
@@ -68,7 +68,7 @@ Case of
 		End for each 
 		
 		APPEND MENU ITEM:C411($vt_menu;"Add Current Selection to Set";$vt_addMenu)
-		If ($es_sets.length=0) | (Form:C1466.uloList.length=0)
+		If ($es_sets.length=0) | (Form:C1466.uloRecords.length=0)
 			DISABLE MENU ITEM:C150($vt_menu;-1)
 		End if 
 		RELEASE MENU:C978($vt_addMenu)
@@ -82,7 +82,7 @@ Case of
 		End for each 
 		
 		APPEND MENU ITEM:C411($vt_menu;"Remove Current Selection from Set";$vt_removeMenu)
-		If ($es_sets.length=0) | (Form:C1466.uloList.length=0)
+		If ($es_sets.length=0) | (Form:C1466.uloRecords.length=0)
 			DISABLE MENU ITEM:C150($vt_menu;-1)
 		End if 
 		RELEASE MENU:C978($vt_removeMenu)
@@ -126,7 +126,7 @@ Case of
 		$vt_table:=Table name:C256($e_set.table)
 		$e_set:=ds:C1482["uloData"].get($1)
 		$vt_pk:=ds:C1482[$vt_table].getInfo().primaryKey
-		Form:C1466.uloList:=ds:C1482[$vt_table].query($vt_pk+" in :1";$e_set.detail.recordIds)
+		Form:C1466.uloRecords:=ds:C1482[$vt_table].query($vt_pk+" in :1";$e_set.detail.recordIds)
 		
 	: ($1="NEW:@")
 		$vt_case:=Replace string:C233($1;"NEW:";"")
@@ -151,10 +151,10 @@ Case of
 				If ($vt_case="SELECTION")
 					$vt_table:=Table name:C256($e_set.table)
 					$vt_pk:=ds:C1482[$vt_table].getInfo().primaryKey
-					If (Form:C1466.records.length>0)
-						$e_set.detail.recordIds:=Form:C1466.records[$vt_pk]
+					If (Form:C1466.selectedRecords.length>0)
+						$e_set.detail.recordIds:=Form:C1466.selectedRecords[$vt_pk]
 					Else 
-						$e_set.detail.recordIds:=Form:C1466.uloList[$vt_pk]
+						$e_set.detail.recordIds:=Form:C1466.uloRecords[$vt_pk]
 					End if 
 				End if 
 				
@@ -172,10 +172,10 @@ Case of
 		$vt_pk:=ds:C1482[$vt_table].getInfo().primaryKey
 		
 		$es_setRecords:=ds:C1482[$vt_table].query($vt_pk+" in :1";$e_set.detail.recordIds)
-		If (Form:C1466.records.length>0)
-			$es_resultRecords:=Form:C1466.records.or($es_setRecords)
+		If (Form:C1466.selectedRecords.length>0)
+			$es_resultRecords:=Form:C1466.selectedRecords.or($es_setRecords)
 		Else 
-			$es_resultRecords:=Form:C1466.uloList.or($es_setRecords)
+			$es_resultRecords:=Form:C1466.uloRecords.or($es_setRecords)
 		End if 
 		$e_set.detail.recordIds:=$es_resultRecords[$vt_pk]
 		$e_set.detail:=$e_set.detail
@@ -190,10 +190,10 @@ Case of
 		$vt_pk:=ds:C1482[$vt_table].getInfo().primaryKey
 		
 		$es_setRecords:=ds:C1482[$vt_table].query($vt_pk+" in :1";$e_set.detail.recordIds)
-		If (Form:C1466.records.length>0)
-			$es_resultRecords:=$es_setRecords.minus(Form:C1466.records)
+		If (Form:C1466.selectedRecords.length>0)
+			$es_resultRecords:=$es_setRecords.minus(Form:C1466.selectedRecords)
 		Else 
-			$es_resultRecords:=$es_setRecords.minus(Form:C1466.uloList)
+			$es_resultRecords:=$es_setRecords.minus(Form:C1466.uloRecords)
 		End if 
 		$e_set.detail.recordIds:=$es_resultRecords[$vt_pk]
 		$e_set.detail:=$e_set.detail

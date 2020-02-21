@@ -48,9 +48,9 @@ If (Form:C1466.navItem.selectedSort#Null:C1517)
 		$ap_headerVar{$i}->:=0  //Clear all `sort` arrows
 	End for 
 	
-	Form:C1466.uloList:=Form:C1466.uloList.orderBy($vc_sort)
+	Form:C1466.uloRecords:=Form:C1466.uloRecords.orderBy($vc_sort)
 Else 
-	If (Form:C1466.uloList.isOrdered())
-		Form:C1466.uloList:=Form:C1466.uloList.or(Form:C1466.uloList)
+	If (Form:C1466.uloRecords.isOrdered())
+		Form:C1466.uloRecords:=Form:C1466.uloRecords.or(Form:C1466.uloRecords)
 	End if 
 End if 

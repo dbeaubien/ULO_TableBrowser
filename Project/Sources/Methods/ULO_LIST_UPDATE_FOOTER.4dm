@@ -45,8 +45,8 @@ If (Form:C1466.navItem.selectedView.detail.useFooter)
 			$vl_items:=Choose:C955($vc_cols[$idx].min;$vl_items+1;$vl_items)
 			
 			If ($vc_cols[$idx].total)
-				If (Form:C1466.uloList.length>0)
-					$vr_result:=Form:C1466.uloList.sum($vc_cols[$idx].fieldName)
+				If (Form:C1466.uloRecords.length>0)
+					$vr_result:=Form:C1466.uloRecords.sum($vc_cols[$idx].fieldName)
 				Else 
 					$vr_result:=0
 				End if 
@@ -55,8 +55,8 @@ If (Form:C1466.navItem.selectedView.detail.useFooter)
 			
 			If ($vc_cols[$idx].max)
 				$vt_footer:=Choose:C955($vt_footer#"";$vt_footer+$CR;"")
-				If (Form:C1466.uloList.length>0)
-					$vr_result:=Form:C1466.uloList.max($vc_cols[$idx].fieldName)
+				If (Form:C1466.uloRecords.length>0)
+					$vr_result:=Form:C1466.uloRecords.max($vc_cols[$idx].fieldName)
 				Else 
 					$vr_result:=0
 				End if 
@@ -65,8 +65,8 @@ If (Form:C1466.navItem.selectedView.detail.useFooter)
 			
 			If ($vc_cols[$idx].min)
 				$vt_footer:=Choose:C955($vt_footer#"";$vt_footer+$CR;"")
-				If (Form:C1466.uloList.length>0)
-					$vr_result:=Form:C1466.uloList.min($vc_cols[$idx].fieldName)
+				If (Form:C1466.uloRecords.length>0)
+					$vr_result:=Form:C1466.uloRecords.min($vc_cols[$idx].fieldName)
 				Else 
 					$vr_result:=0
 				End if 
@@ -75,8 +75,8 @@ If (Form:C1466.navItem.selectedView.detail.useFooter)
 			
 			If ($vc_cols[$idx].average)
 				$vt_footer:=Choose:C955($vt_footer#"";$vt_footer+$CR;"")
-				If (Form:C1466.uloList.length>0)
-					$vr_result:=Form:C1466.uloList.average($vc_cols[$idx].fieldName)
+				If (Form:C1466.uloRecords.length>0)
+					$vr_result:=Form:C1466.uloRecords.average($vc_cols[$idx].fieldName)
 				Else 
 					$vr_result:=0
 				End if 

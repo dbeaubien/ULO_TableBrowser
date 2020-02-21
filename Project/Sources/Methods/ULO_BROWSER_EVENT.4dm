@@ -68,11 +68,11 @@ Case of
 						Else   //Just plain refresh
 							ULO_LIST_UPDATE_FOOTER   //We're calling this twice on startup if a default view exists, but it needs to be called here
 						End if 
-						$vl_selected:=Form:C1466.records.length
+						$vl_selected:=Form:C1466.selectedRecords.length
 						OBJECT SET ENABLED:C1123(*;"ULO_Button_SHOWSUBSET";($vl_selected>0))
 						OBJECT SET ENABLED:C1123(*;"ULO_Button_OMITSUBSET";($vl_selected>0))
 						ULO_SELECTION_MESSAGE 
-						Form:C1466.navItem.selection:=Form:C1466.uloList
+						Form:C1466.navItem.selection:=Form:C1466.uloRecords
 						$index:=UTIL_Col_Find_Index (Form:C1466.sidebarSource;"index";Form:C1466.navItem.index)
 						If ($index>=0)
 							Form:C1466.sidebarSource[$index].selection:=Form:C1466.navItem.selection
@@ -129,8 +129,8 @@ Case of
 			: ($vl_event=On Double Clicked:K2:5)
 				If (OB Is defined:C1231(Form:C1466.navItem;"rowDoubleClick"))
 					$vt_method:=Form:C1466.navItem.rowDoubleClick
-					If (Form:C1466.record#Null:C1517)
-						EXECUTE METHOD:C1007($vt_method;*;"Double click test: "+JSON Stringify:C1217(Form:C1466.record.toObject()))
+					If (Form:C1466.selectedRecord#Null:C1517)
+						EXECUTE METHOD:C1007($vt_method;*;"Double click test: "+JSON Stringify:C1217(Form:C1466.selectedRecord.toObject()))
 					End if 
 				End if 
 				Form:C1466.refresh:=True:C214
@@ -139,8 +139,8 @@ Case of
 			: ($vl_event=On Clicked:K2:4) & (Right click:C712)
 				If (OB Is defined:C1231(Form:C1466.navItem;"rowContext"))
 					$vt_method:=Form:C1466.navItem.rowContext
-					If (Form:C1466.record#Null:C1517)
-						EXECUTE METHOD:C1007($vt_method;*;"context test: "+JSON Stringify:C1217(Form:C1466.record.toObject()))
+					If (Form:C1466.selectedRecord#Null:C1517)
+						EXECUTE METHOD:C1007($vt_method;*;"context test: "+JSON Stringify:C1217(Form:C1466.selectedRecord.toObject()))
 					End if 
 				End if 
 				Form:C1466.refresh:=True:C214
@@ -180,14 +180,14 @@ Case of
 		Case of 
 			: ($vl_event=On Selection Change:K2:29)
 				$vt_value:=OBJECT Get pointer:C1124(Object named:K67:5;"ULO_DEFAULT_FIND")->  //Get the value from the find object
-				$es_return:=Form:C1466.uloList
+				$es_return:=Form:C1466.uloRecords
 				$index:=UTIL_Col_Find_Index (Storage:C1525.buttons;"action";"FIND")
 				If ($index>=0)
 					If (Storage:C1525.buttons[$index].method#"")  //If there is a host search method specified
 						EXECUTE METHOD:C1007(Storage:C1525.buttons[$index].method;$es_return;Form:C1466.tableNumber;$vt_value)  //Return an entity selection
 					End if 
 				End if 
-				Form:C1466.uloList:=$es_return
+				Form:C1466.uloRecords:=$es_return
 				
 		End case 
 		
@@ -226,7 +226,7 @@ Case of
 				If (Storage:C1525.hostMethods.filter#"")
 					EXECUTE METHOD:C1007(Storage:C1525.hostMethods.filter;$es;Form:C1466.tableNumber;Form:C1466.navItem.handle;$es)
 				End if 
-				Form:C1466.uloList:=$es
+				Form:C1466.uloRecords:=$es
 				Form:C1466.refresh:=True:C214
 				SET TIMER:C645(1)
 		End case 
@@ -234,7 +234,7 @@ Case of
 	: ($vt_eventObject="ULO_Button_SHOWSUBSET")
 		Case of 
 			: ($vl_event=On Clicked:K2:4)
-				Form:C1466.uloList:=Form:C1466.records
+				Form:C1466.uloRecords:=Form:C1466.selectedRecords
 				Form:C1466.refresh:=True:C214
 				SET TIMER:C645(1)
 		End case 
@@ -242,7 +242,7 @@ Case of
 	: ($vt_eventObject="ULO_Button_OMITSUBSET")
 		Case of 
 			: ($vl_event=On Clicked:K2:4)
-				Form:C1466.uloList:=Form:C1466.uloList.minus(Form:C1466.records)
+				Form:C1466.uloRecords:=Form:C1466.uloRecords.minus(Form:C1466.selectedRecords)
 				Form:C1466.refresh:=True:C214
 				SET TIMER:C645(1)
 		End case 

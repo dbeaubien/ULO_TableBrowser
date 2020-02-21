@@ -8,8 +8,8 @@ C_TEXT:C284($vt_colName;$vt_hObject;$vt_formula;$vt_header;$vt_fObject;$vt_forma
 If (Form:C1466.tableNumber>0)
 	FORM GOTO PAGE:C247(1)
 	OBJECT SET ENABLED:C1123(*;"ULO_Button@";True:C214)
-	OBJECT SET ENABLED:C1123(*;"ULO_Button_SHOWSUBSET";(Form:C1466.records.length>0))
-	OBJECT SET ENABLED:C1123(*;"ULO_Button_OMITSUBSET";(Form:C1466.records.length>0))
+	OBJECT SET ENABLED:C1123(*;"ULO_Button_SHOWSUBSET";(Form:C1466.selectedRecords.length>0))
+	OBJECT SET ENABLED:C1123(*;"ULO_Button_OMITSUBSET";(Form:C1466.selectedRecords.length>0))
 	
 	
 	  //Form.lastNavItemIndex:=Form.navItem.index
@@ -21,11 +21,11 @@ If (Form:C1466.tableNumber>0)
 	  //for the selected data store and load it if we have
 	  //If not then revert to all records...
 	If (Form:C1466.navItem.selection#Null:C1517)
-		Form:C1466.uloList:=Form:C1466.navItem.selection
+		Form:C1466.uloRecords:=Form:C1466.navItem.selection
 	Else 
 		Form:C1466.navItem.selection:=New object:C1471
 		Form:C1466.navItem.selection:=ds:C1482[Table name:C256($vp_table)].all()
-		Form:C1466.uloList:=Form:C1466.navItem.selection
+		Form:C1466.uloRecords:=Form:C1466.navItem.selection
 		  //Push the loaded selection to the sore of current selections???
 	End if 
 	
@@ -200,6 +200,6 @@ If (Form:C1466.tableNumber>0)
 			End if   //END field valid and type check
 		End for 
 	End if 
-	Form:C1466.uloList:=Form:C1466.uloList
+	Form:C1466.uloRecords:=Form:C1466.uloRecords
 	ULO_APPLY_THEME ("ULO_LIST";Form:C1466.theme)
 End if 

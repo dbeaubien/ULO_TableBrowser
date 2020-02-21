@@ -13,8 +13,8 @@
 
 C_LONGINT:C283($vl_selected;$vl_ris)
 C_TEXT:C284($vt_selected)
-$vl_selected:=Form:C1466.records.length
-$vl_ris:=Form:C1466.uloList.length
+$vl_selected:=Form:C1466.selectedRecords.length
+$vl_ris:=Form:C1466.uloRecords.length
 If ($vl_selected>0)
 	$vt_selected:=String:C10($vl_selected)+" record"+Choose:C955($vl_selected#1;"s";"")+" selected of "
 End if 
