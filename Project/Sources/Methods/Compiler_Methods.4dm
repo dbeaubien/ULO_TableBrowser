@@ -220,3 +220,8 @@ C_BOOLEAN:C305(VIEW_FORM_EDIT_COL_DETAIL ;$1)
 
   //VIEW_FORM_METHOD
 C_OBJECT:C1216(VIEW_FORM_METHOD ;$1)
+
+  //UTIL_Parse_Host_Menu_Options
+C_TEXT:C284(UTIL_Parse_Host_Menu_Options ;$0)
+C_TEXT:C284(UTIL_Parse_Host_Menu_Options ;$1)
+C_COLLECTION:C1488(UTIL_Parse_Host_Menu_Options ;$2)

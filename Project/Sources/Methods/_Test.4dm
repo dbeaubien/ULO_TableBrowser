@@ -1,7 +1,7 @@
 //%attributes = {}
 
 C_COLLECTION:C1488($vc_option)
-C_TEXT:C284($vt_menu)
+C_TEXT:C284($vt_menu;$vt_selected)
 
 $vt_menu:=Create menu:C408
 $vc_option:=New collection:C1472
