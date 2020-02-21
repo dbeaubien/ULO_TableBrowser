@@ -21,19 +21,7 @@ Case of
 			End if 
 		End if 
 		
-		For each ($vo_option;$vc_hostOptions)
-			$vl_menuNum:=-1
-			If (OB Is defined:C1231($vo_option;"number"))
-				$vl_menuNum:=$vo_option.number
-			End if 
-			APPEND MENU ITEM:C411($vt_menu;$vo_option.label)
-			SET MENU ITEM PARAMETER:C1004($vt_menu;$vl_menuNum;$vo_option.function)
-			If ($vo_option.enabled)
-				ENABLE MENU ITEM:C149($vt_menu;$vl_menuNum)
-			Else 
-				DISABLE MENU ITEM:C150($vt_menu;$vl_menuNum)
-			End if 
-		End for each 
+		$vt_menu:=UTIL_Parse_Host_Menu_Options ($vt_menu;$vc_hostOptions)
 		
 		  //If ($vc_options.length>0)
 		APPEND MENU ITEM:C411($vt_menu;"-")
