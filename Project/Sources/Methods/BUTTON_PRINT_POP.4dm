@@ -21,12 +21,11 @@ Case of
 			End if 
 		End if 
 		
-		$vt_menu:=UTIL_Parse_Host_Menu_Options ($vt_menu;$vc_hostOptions)
-		
-		  //If ($vc_options.length>0)
-		APPEND MENU ITEM:C411($vt_menu;"-")
-		SET MENU ITEM PARAMETER:C1004($vt_menu;-1;"-")
-		  //End if 
+		If ($vc_hostOptions.length>0)
+			$vt_menu:=UTIL_Parse_Host_Menu_Options ($vt_menu;$vc_hostOptions)
+			APPEND MENU ITEM:C411($vt_menu;"-")
+			SET MENU ITEM PARAMETER:C1004($vt_menu;-1;"-")
+		End if 
 		  //Now get the default options
 		  //Now get the default options
 		APPEND MENU ITEM:C411($vt_menu;"Export View")
