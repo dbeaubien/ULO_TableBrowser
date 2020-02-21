@@ -24,11 +24,11 @@ Case of
 				Form:C1466.pendingResize:=False:C215
 				Form:C1466.refresh:=True:C214
 				Form:C1466.fullRefresh:=False:C215
+				Form:C1466.relate:=False:C215
 				$index:=UTIL_Col_Find_Index (Form:C1466.sidebarSource;"handle";Form:C1466.sidebarStart)
 				If ($index=-1)
 					$index:=1
 				End if 
-				
 				  //If desired sidebar item is child, ensure parent(s) are expanded
 				If (OB Is defined:C1231(Form:C1466.sidebarSource[$index];"childOfIndex"))
 					Form:C1466.sidebarSource[Form:C1466.sidebarSource[$index].childOfIndex].expanded:=True:C214
@@ -53,15 +53,26 @@ Case of
 				
 				LISTBOX SELECT ROW:C912(*;"ULO_Navbar";$index+1;lk replace selection:K53:1)
 				Form:C1466.lastNavItemIndex:=$index+1
-				ULO_LOAD_VIEW   //This is also calling ULO_LIST_UPDATE_FOOTER if a default view exists
-				SET TIMER:C645(1)
-				SIDEBAR_REBUILD 
+				Case of 
+					: (Form:C1466.navItem.type="DATA")
+						Form:C1466.tableNumber:=Form:C1466.navItem.table
+						ULO_LOAD_VIEW   //This is also calling ULO_LIST_UPDATE_FOOTER if a default view exists
+						
+					: (Form:C1466.navItem.type="WEB")
+						ULO_LOAD_WEB_AREA 
+						
+				End case 
+				SET TIMER:C645(-1)
 				
 			: ($vl_event=On Timer:K2:25)
 				Case of 
 					: (Form:C1466.fullRefresh) | (Form:C1466.refresh)  //compressed both refresh events into the same case as 90% was the same.
 						SET TIMER:C645(0)
-						
+						If (Form:C1466.relate)
+							Form:C1466.navItem.selection:=Form:C1466.uloRecords
+							Form:C1466.sidebarSource[$index].selection:=Form:C1466.navItem.selection
+							Form:C1466.relate:=False:C215
+						End if 
 						If (Form:C1466.fullRefresh)
 							Form:C1466.fullRefresh:=False:C215
 							ULO_LOAD_VIEW 
@@ -134,7 +145,7 @@ Case of
 					End if 
 				End if 
 				Form:C1466.refresh:=True:C214
-				SET TIMER:C645(1)
+				SET TIMER:C645(-1)
 				
 			: ($vl_event=On Clicked:K2:4) & (Right click:C712)
 				If (OB Is defined:C1231(Form:C1466.navItem;"rowContext"))
@@ -144,18 +155,18 @@ Case of
 					End if 
 				End if 
 				Form:C1466.refresh:=True:C214
-				SET TIMER:C645(1)
+				SET TIMER:C645(-1)
 				
 			: ($vl_event=On Clicked:K2:4)
 				Form:C1466.refresh:=True:C214
-				SET TIMER:C645(1)
+				SET TIMER:C645(-1)
 				
 			: ($vl_event=On Column Resize:K2:31)
 				  //Resize event is fired for every pixel that the column is changed by
 				  //Therefore Case in On Timer event handles the saving of new widths
 				  //after the user has finished resizing
 				Form:C1466.resizing:=True:C214
-				SET TIMER:C645(1)
+				SET TIMER:C645(-1)
 				
 			: ($vl_event=On Header Click:K2:40)
 				
@@ -169,7 +180,7 @@ Case of
 		LISTBOX SELECT ROW:C912(*;"ULO_LIST";0;lk replace selection:K53:1)
 		GOTO OBJECT:C206(*;"ULO_LIST")
 		Form:C1466.refresh:=True:C214
-		SET TIMER:C645(1)
+		SET TIMER:C645(-1)
 		
 	: ($vt_eventObject="ULO_ExportView")
 		ULO_EXPORT_VIEW 
@@ -228,7 +239,7 @@ Case of
 				End if 
 				Form:C1466.uloRecords:=$es
 				Form:C1466.refresh:=True:C214
-				SET TIMER:C645(1)
+				SET TIMER:C645(-1)
 		End case 
 		
 	: ($vt_eventObject="ULO_Button_SHOWSUBSET")
@@ -236,7 +247,7 @@ Case of
 			: ($vl_event=On Clicked:K2:4)
 				Form:C1466.uloRecords:=Form:C1466.selectedRecords
 				Form:C1466.refresh:=True:C214
-				SET TIMER:C645(1)
+				SET TIMER:C645(-1)
 		End case 
 		
 	: ($vt_eventObject="ULO_Button_OMITSUBSET")
@@ -244,7 +255,7 @@ Case of
 			: ($vl_event=On Clicked:K2:4)
 				Form:C1466.uloRecords:=Form:C1466.uloRecords.minus(Form:C1466.selectedRecords)
 				Form:C1466.refresh:=True:C214
-				SET TIMER:C645(1)
+				SET TIMER:C645(-1)
 		End case 
 		
 	: ($vt_eventObject="ULO_Button_SEARCH")
@@ -252,7 +263,7 @@ Case of
 			: ($vl_event=On Clicked:K2:4)
 				BUTTON_SEARCH_POP 
 				Form:C1466.refresh:=True:C214
-				SET TIMER:C645(1)
+				SET TIMER:C645(-1)
 				
 		End case 
 	: ($vt_eventObject="ULO_Button_SORT")
@@ -260,7 +271,7 @@ Case of
 			: ($vl_event=On Clicked:K2:4)
 				BUTTON_SORT_POP 
 				Form:C1466.refresh:=True:C214
-				SET TIMER:C645(1)
+				SET TIMER:C645(-1)
 		End case 
 		
 	Else 

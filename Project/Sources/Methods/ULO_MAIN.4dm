@@ -21,7 +21,6 @@ $vt_wTitle:="Browser"
 $vo_uloData:=New object:C1471
 $vo_uloData.tableNumber:=$tableNumber
 $vo_uloData.navItem:=New object:C1471
-$vo_uloData.selectedNavItem:=1
 $vo_uloData.navItems:=New collection:C1472
 $vo_uloData.sidebarSource:=Storage:C1525.sidebar.copy()
 $vo_uloData.navItems:=Storage:C1525.sidebar.copy()  //SIDEBAR_Flatten (Storage.sidebar.copy())

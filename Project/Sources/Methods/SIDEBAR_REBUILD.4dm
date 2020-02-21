@@ -35,10 +35,16 @@ For each ($vo_item;Form:C1466.sidebarSource)
 		  //Check if parent header is `expanded`
 		If (Form:C1466.sidebarSource[$vo_item.childOfIndex].expanded)
 			$vc_navItems.push(OB Copy:C1225($vo_item))
+			If (OB Is defined:C1231($vo_item;"selection"))
+				$vc_navItems[$vc_navItems.length-1].selection:=$vo_item.selection
+			End if 
 		End if 
 	Else 
 		  //Has no parent, therefore always display
 		$vc_navItems.push(OB Copy:C1225($vo_item))
+		If (OB Is defined:C1231($vo_item;"selection"))
+			$vc_navItems[$vc_navItems.length-1].selection:=$vo_item.selection
+		End if 
 	End if 
 End for each 
 Form:C1466.navItems:=$vc_navItems
