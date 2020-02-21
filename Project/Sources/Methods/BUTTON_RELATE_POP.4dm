@@ -104,6 +104,8 @@ Else
 				Form:C1466.fullRefresh:=True:C214
 				Form:C1466.lastNavItemIndex:=($vl_idx+1)
 				LISTBOX SELECT ROW:C912(*;"ULO_Navbar";$vl_idx+1;lk replace selection:K53:1)
+				Form:C1466.navItem.selection:=Form:C1466.uloRecords
+				Form:C1466.sidebarSource[$index].selection:=Form:C1466.navItem.selection
 				SET TIMER:C645(-1)
 			Else 
 				  //Can't find nav item with selected relation table number
