@@ -1,0 +1,178 @@
+﻿{
+	"$4d": {
+		"version": "1",
+		"kind": "form"
+	},
+	"windowSizingX": "variable",
+	"windowSizingY": "variable",
+	"windowMinWidth": 0,
+	"windowMinHeight": 0,
+	"windowMaxWidth": 32767,
+	"windowMaxHeight": 32767,
+	"rightMargin": 20,
+	"bottomMargin": 20,
+	"events": [
+		"onLoad",
+		"onPageChange",
+		"onValidate",
+		"onClick",
+		"onDoubleClick",
+		"onOutsideCall",
+		"onBeginDragOver",
+		"onDragOver",
+		"onDrop",
+		"onAfterKeystroke",
+		"onMenuSelect",
+		"onPluginArea",
+		"onAfterEdit",
+		"onTimer",
+		"onBoundVariableChange"
+	],
+	"windowTitle": "window title",
+	"destination": "detailScreen",
+	"pages": [
+		{
+			"objects": {
+				"BackgroundColour": {
+					"type": "rectangle",
+					"top": -1,
+					"left": -1,
+					"width": 706,
+					"height": 401,
+					"sizingX": "grow",
+					"sizingY": "grow",
+					"fill": "#E8E8E8",
+					"stroke": "transparent"
+				},
+				"VIEW_Accept": {
+					"type": "button",
+					"top": 363,
+					"left": 576,
+					"width": 88,
+					"height": 22,
+					"sizingX": "move",
+					"sizingY": "move",
+					"action": "accept",
+					"shortcutKey": "[Enter]",
+					"text": "OK",
+					"class": "default",
+					"defaultButton": true,
+					"events": [
+						"onClick"
+					]
+				}
+			}
+		},
+		{
+			"objects": {
+				"dropdown_setOrig1": {
+					"type": "dropdown",
+					"left": 41,
+					"top": 36,
+					"width": 213,
+					"height": 24,
+					"events": [
+						"onDataChange"
+					]
+				},
+				"dropdown_setOrig2": {
+					"type": "dropdown",
+					"left": 432,
+					"top": 36,
+					"width": 213,
+					"height": 24,
+					"events": [
+						"onDataChange"
+					]
+				},
+				"dropdown_operationOrig": {
+					"type": "dropdown",
+					"left": 268,
+					"top": 36,
+					"width": 150,
+					"height": 24,
+					"events": [
+						"onDataChange"
+					]
+				},
+				"sbfm_manipLines": {
+					"type": "subform",
+					"left": 24,
+					"top": 80,
+					"width": 640,
+					"height": 237,
+					"detailForm": "ULO_SET_MANAGE_LINE",
+					"borderStyle": "system",
+					"scrollbarVertical": "visible",
+					"dataSource": "Form:C1466.subform",
+					"events": [
+						"onLoad"
+					]
+				},
+				"txt_newSetName": {
+					"type": "input",
+					"left": 145,
+					"top": 330,
+					"width": 234,
+					"height": 16,
+					"dataSource": "Form:C1466.newSetName"
+				},
+				"Text": {
+					"type": "text",
+					"text": "Result Set Name :",
+					"top": 331,
+					"left": 24,
+					"width": 145,
+					"height": 15
+				},
+				"bt_runOperation": {
+					"type": "button",
+					"text": "Run Operation",
+					"top": 328,
+					"left": 393,
+					"width": 159,
+					"height": 21,
+					"events": [
+						"onClick"
+					]
+				},
+				"bt_addLine": {
+					"type": "button",
+					"top": 327,
+					"left": 576,
+					"width": 88,
+					"height": 21,
+					"sizingX": "move",
+					"sizingY": "move",
+					"action": "",
+					"shortcutKey": "",
+					"text": "Add Line",
+					"class": "default",
+					"defaultButton": false,
+					"events": [
+						"onClick"
+					],
+					"shortcutAccel": false,
+					"shortcutControl": false,
+					"shortcutShift": false,
+					"shortcutAlt": false
+				},
+				"txt_errormessage": {
+					"type": "input",
+					"left": 24,
+					"top": 357,
+					"width": 528,
+					"height": 32,
+					"dataSource": "Form:C1466.errorMessage",
+					"enterable": false,
+					"focusable": true,
+					"contextMenu": "automatic",
+					"borderStyle": "none",
+					"fill": "transparent",
+					"stroke": "#ff0000"
+				}
+			}
+		}
+	],
+	"method": "method.4dm"
+}

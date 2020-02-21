@@ -94,6 +94,9 @@ Case of
 		
 		APPEND MENU ITEM:C411($vt_menu;"Manage Sets")
 		SET MENU ITEM PARAMETER:C1004($vt_menu;-1;"MANAGE")
+		If ($es_sets.length=0)
+			DISABLE MENU ITEM:C150($vt_menu;-1)
+		End if 
 		
 		APPEND MENU ITEM:C411($vt_menu;"-")
 		DISABLE MENU ITEM:C150($vt_menu;-1)
@@ -123,8 +126,8 @@ Case of
 		
 	: ($1="LOAD:@")
 		$vt_id:=Replace string:C233($1;"LOAD:";"")
+		$e_set:=ds:C1482["uloData"].get($vt_id)
 		$vt_table:=Table name:C256($e_set.table)
-		$e_set:=ds:C1482["uloData"].get($1)
 		$vt_pk:=ds:C1482[$vt_table].getInfo().primaryKey
 		Form:C1466.uloRecords:=ds:C1482[$vt_table].query($vt_pk+" in :1";$e_set.detail.recordIds)
 		
@@ -166,9 +169,9 @@ Case of
 		
 	: ($1="ADD:@")
 		$vt_id:=Replace string:C233($1;"ADD:";"")
+		$e_set:=ds:C1482["uloData"].get($vt_id)
 		$vt_table:=Table name:C256($e_set.table)
 		
-		$e_set:=ds:C1482["uloData"].get($vt_id)
 		$vt_pk:=ds:C1482[$vt_table].getInfo().primaryKey
 		
 		$es_setRecords:=ds:C1482[$vt_table].query($vt_pk+" in :1";$e_set.detail.recordIds)
@@ -183,10 +186,10 @@ Case of
 		
 	: ($1="REMOVE:@")
 		$vt_id:=Replace string:C233($1;"REMOVE:";"")
+		$e_set:=ds:C1482["uloData"].get($vt_id)
 		
 		$vt_table:=Table name:C256($e_set.table)
 		
-		$e_set:=ds:C1482["uloData"].get($vt_id)
 		$vt_pk:=ds:C1482[$vt_table].getInfo().primaryKey
 		
 		$es_setRecords:=ds:C1482[$vt_table].query($vt_pk+" in :1";$e_set.detail.recordIds)
