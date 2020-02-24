@@ -37,16 +37,16 @@ End if
 If ($cp>1)
 	  //Use the properties passed in object to determine the position of the window
 	If (OB Is defined:C1231($2;"wLeft"))
-		$vl_wLeft:=$2.wLeft
+		$vo_uloData.wLeft:=$2.wLeft
 	End if 
 	If (OB Is defined:C1231($2;"wTop"))
-		$vl_wTop:=$2.wTop
+		$vo_uloData.wTop:=$2.wTop
 	End if 
 	If (OB Is defined:C1231($2;"wRight"))
-		$vl_wRight:=$2.wRight
+		$vo_uloData.wRight:=$2.wRight
 	End if 
 	If (OB Is defined:C1231($2;"wBottom"))
-		$vl_wBottom:=$2.wBottom
+		$vo_uloData.wBottom:=$2.wBottom
 	End if 
 	If (OB Is defined:C1231($2;"wType"))
 		$vl_wType:=$2.wType
@@ -85,6 +85,7 @@ Else
 	
 End if 
 
-$vl_window:=Open form window:C675("ULO_Browser";$vl_wType)
+$vl_window:=Open form window:C675("ULO_Browser";$vl_wType;$vo_uloData.wLeft;$vo_uloData.wTop)
+  //$vl_window:=Open window($vl_wLeft;$vl_wTop;$vl_wRight;$vl_wBottom;$vl_wType;"ULO_Browser";"ULO_CLOSE")
 DIALOG:C40("ULO_Browser";$vo_uloData)
 CLOSE WINDOW:C154($vl_window)

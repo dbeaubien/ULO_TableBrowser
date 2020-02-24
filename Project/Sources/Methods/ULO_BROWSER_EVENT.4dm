@@ -62,6 +62,7 @@ Case of
 						ULO_LOAD_WEB_AREA 
 						
 				End case 
+				SET WINDOW RECT:C444(Form:C1466.wLeft;Form:C1466.wTop;Form:C1466.wRight;Form:C1466.wBottom)
 				SET TIMER:C645(-1)
 				
 			: ($vl_event=On Timer:K2:25)
@@ -148,11 +149,11 @@ Case of
 				SET TIMER:C645(-1)
 				
 			: ($vl_event=On Clicked:K2:4) & (Right click:C712)
-				If (OB Is defined:C1231(Form:C1466.navItem;"rowContext"))
-					$vt_method:=Form:C1466.navItem.rowContext
-					If (Form:C1466.selectedRecord#Null:C1517)
-						EXECUTE METHOD:C1007($vt_method;*;"context test: "+JSON Stringify:C1217(Form:C1466.selectedRecord.toObject()))
-					End if 
+				
+				
+				$vt_method:=Storage:C1525.hostMethods.rowContext
+				If (Form:C1466.selectedRecord#Null:C1517) & ($vt_method#"")
+					EXECUTE METHOD:C1007($vt_method;*;"context test: "+JSON Stringify:C1217(Form:C1466.selectedRecord.toObject()))
 				End if 
 				Form:C1466.refresh:=True:C214
 				SET TIMER:C645(-1)

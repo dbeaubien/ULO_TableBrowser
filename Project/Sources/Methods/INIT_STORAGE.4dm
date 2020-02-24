@@ -25,6 +25,7 @@ Use (Storage:C1525)
 		Storage:C1525.hostMethods.filter:="ULO_FILTER"
 		Storage:C1525.hostMethods.find:="ULO_FIND"
 		Storage:C1525.hostMethods.sidebarLoad:="ULO_SIDEBAR_LOAD"
+		Storage:C1525.hostMethods.rowContext:="ULO_ROW_CONTEXT"
 	End use 
 	
 	Storage:C1525.sidebar:=New shared collection:C1527
