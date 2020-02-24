@@ -41,6 +41,9 @@ For each ($vo_option;$vc_hostOptions)
 					DISABLE MENU ITEM:C150($vt_subMenu;-1)
 				End if 
 			End if 
+			If ($vo_child.label="-") & ($vo_child.function="-")  //Disable line breaks sent
+				DISABLE MENU ITEM:C150($vt_subMenu;-1)
+			End if 
 		End for each 
 		
 		APPEND MENU ITEM:C411($vt_menu;$vo_option.label;$vt_subMenu)
@@ -48,6 +51,9 @@ For each ($vo_option;$vc_hostOptions)
 			If (Not:C34($vo_option.enabled))
 				DISABLE MENU ITEM:C150($vt_menu;-1)
 			End if 
+		End if 
+		If ($vo_option.label="-") & ($vo_option.function="-")  //Disable line breaks sent
+			DISABLE MENU ITEM:C150($vt_menu;-1)
 		End if 
 		RELEASE MENU:C978($vt_subMenu)
 	Else 
