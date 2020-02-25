@@ -13,9 +13,10 @@
 
 
 C_OBJECT:C1216($es_runningSet;$vo_line;$e_newSet;$e_ulo;$e_ulo1;\
-$e_ulo2;$es_set1;$es_set2)
+$e_ulo2;$es_set1;$es_set2;$vo_res)
 C_BOOLEAN:C305($vb_continue)
 C_POINTER:C301($vp_oper;$vp_set1;$vp_set2)
+C_TEXT:C284($vt_table;$vt_pk)
 
 Form:C1466.errorMessage:=""
 

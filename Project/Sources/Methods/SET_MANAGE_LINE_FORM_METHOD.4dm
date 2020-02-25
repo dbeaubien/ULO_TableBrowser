@@ -11,10 +11,12 @@
   // Parameters
   // ----------------------------------------------------
 
-C_OBJECT:C1216($1;$vo_formEvent;$vo_data;$vo_field;$vo_col)
+C_OBJECT:C1216($1;$vo_formEvent;$vo_data;$vo_field;$vo_col;$vo_object)
 C_COLLECTION:C1488($vc_cols)
 C_TEXT:C284($vt_objectName;$vt_suffix)
 C_LONGINT:C283($vl_dropPos;$vl_startPos;$vl_idx;$vl_row;$vl_col)
+C_LONGINT:C283($i;$vl_vertAdjust;$vl_targetY)
+C_BOOLEAN:C305($vb_lastLine)
 
 $vo_formEvent:=$1
 If (OB Is defined:C1231($vo_formEvent;"objectName"))
@@ -50,7 +52,6 @@ Case of
 				$vl_idx:=UTIL_Col_Find_Index (Form:C1466.manipLines;"id";$vt_suffix)
 				If ($vl_idx>=0)
 					Form:C1466.manipLines[$vl_idx].set:=at_setId{OBJECT Get pointer:C1124(Object current:K67:2)->}
-					OBJECT Get pointer:C1124(Object current:K67:2)
 				End if 
 		End case 
 		
