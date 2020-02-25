@@ -115,7 +115,8 @@
 					"top": 330,
 					"width": 234,
 					"height": 16,
-					"dataSource": "Form:C1466.newSetName"
+					"dataSource": "Form:C1466.newSetName",
+					"entryFilter": "&\"A-z;0-9; ;_;-\""
 				},
 				"Text": {
 					"type": "text",
