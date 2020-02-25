@@ -150,11 +150,7 @@ Case of
 				
 			: ($vl_event=On Clicked:K2:4) & (Right click:C712)
 				
-				
-				$vt_method:=Storage:C1525.hostMethods.rowContext
-				If (Form:C1466.selectedRecord#Null:C1517) & ($vt_method#"")
-					EXECUTE METHOD:C1007($vt_method;*;"context test: "+JSON Stringify:C1217(Form:C1466.selectedRecord.toObject()))
-				End if 
+				CONTEXT_CLICK_POP 
 				Form:C1466.refresh:=True:C214
 				SET TIMER:C645(-1)
 				
