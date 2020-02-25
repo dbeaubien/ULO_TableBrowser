@@ -9,8 +9,8 @@
 	"windowMinHeight": 0,
 	"windowMaxWidth": 32767,
 	"windowMaxHeight": 32767,
-	"rightMargin": 20,
-	"bottomMargin": 20,
+	"rightMargin": 0,
+	"bottomMargin": 0,
 	"events": [
 		"onLoad",
 		"onPageChange",
@@ -79,7 +79,7 @@
 					"type": "dropdown",
 					"left": 432,
 					"top": 36,
-					"width": 213,
+					"width": 208,
 					"height": 24,
 					"events": [
 						"onDataChange"

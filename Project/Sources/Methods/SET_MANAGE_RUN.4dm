@@ -13,9 +13,10 @@
 
 
 C_OBJECT:C1216($es_runningSet;$vo_line;$e_newSet;$e_ulo;$e_ulo1;\
-$e_ulo2;$es_set1;$es_set2)
+$e_ulo2;$es_set1;$es_set2;$vo_res)
 C_BOOLEAN:C305($vb_continue)
 C_POINTER:C301($vp_oper;$vp_set1;$vp_set2)
+C_TEXT:C284($vt_pk;$vt_table)
 
 Form:C1466.errorMessage:=""
 
@@ -55,7 +56,7 @@ End if
   //Check all lines have a selected Set and Operation
 If ($vb_continue)
 	For each ($vo_line;Form:C1466.subform.manipLines)
-		If ($vo_line.id="") | ($vo_line.operation="")
+		If ($vo_line.set="") | ($vo_line.operation="")
 			$vb_continue:=False:C215
 		End if 
 	End for each 
@@ -88,17 +89,17 @@ If ($vb_continue)
 	End case 
 	
 	For each ($vo_line;Form:C1466.subform.manipLines)
-		$e_ulo:=ds:C1482["uloData"].get($vo_line.id)
+		$e_ulo:=ds:C1482["uloData"].get($vo_line.set)
 		$es_set1:=ds:C1482[$vt_table].query($vt_pk+" in :1";$e_ulo.detail.recordIds)
 		
 		Case of 
-			: ($vp_oper->{$vp_oper->}="UNION")
+			: ($vo_line.operation="UNION")
 				$es_runningSet:=$es_runningSet.or($es_set1)
 				
-			: ($vp_oper->{$vp_oper->}="DIFFERENCE")
+			: ($vo_line.operation="DIFFERENCE")
 				$es_runningSet:=$es_runningSet.minus($es_set1)
 				
-			: ($vp_oper->{$vp_oper->}="INTERSECTION")
+			: ($vo_line.operation="INTERSECTION")
 				$es_runningSet:=$es_runningSet.and($es_set1)
 				
 		End case 

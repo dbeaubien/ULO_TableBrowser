@@ -28,6 +28,7 @@ Case of
 	: ($vt_objectName="form")
 		Case of 
 			: ($vo_formEvent.code=On Load:K2:1)
+				Form:C1466.newSetName:=""
 				
 				ULO_SET_BACKGROUND 
 				
