@@ -287,10 +287,10 @@
 				},
 				"lb_viewFields": {
 					"type": "listbox",
-					"top": 102,
+					"top": 122,
 					"left": 236,
 					"width": 157,
-					"height": 268,
+					"height": 248,
 					"sizingX": "grow",
 					"sizingY": "grow",
 					"resizingMode": "legacy",
@@ -519,6 +519,31 @@
 					"dataSource": "Form:C1466.workingSort.name",
 					"entryFilter": "&\"A-z;0-9; ;_;-\"",
 					"events": []
+				},
+				"PROMPT_ViewName1": {
+					"type": "text",
+					"top": 99,
+					"left": 236,
+					"width": 35,
+					"height": 16,
+					"class": "tester",
+					"textAlign": "left",
+					"text": "Filter :"
+				},
+				"txt_fieldFilter": {
+					"type": "input",
+					"top": 99,
+					"left": 279,
+					"width": 114,
+					"height": 16,
+					"dataSource": "Form:C1466.fieldFilter",
+					"class": "default",
+					"contextMenu": "none",
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					]
 				}
 			}
 		}

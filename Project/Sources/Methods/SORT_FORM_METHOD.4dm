@@ -29,6 +29,7 @@ Case of
 			: ($vo_formEvent.code=On Load:K2:1)
 				OBJECT SET ENABLED:C1123(*;"bt_deleteSort";Form:C1466.allowDelete)
 				OBJECT SET ENABLED:C1123(*;"bt_addField";False:C215)
+				Form:C1466.fieldFilter:=""
 				
 				ULO_SET_BACKGROUND 
 				ULO_SET_LIST_COLOURS ("lb_viewFields")
@@ -116,6 +117,14 @@ Case of
 				If (Form:C1466.selectedField#Null:C1517)
 					SORT_FORM_MOVE_SELECTED_FIELD (Form:C1466.sort.detail.sortData)
 				End if 
+		End case 
+		
+	: ($vt_objectName="txt_fieldFilter")
+		
+		Case of 
+			: ($vo_formEvent.code=On Data Change:K2:15)
+				VIEW_FORM_BUILD_DISPLAY_FIELD (Form:C1466.sort.detail.sortData)
+				
 		End case 
 End case 
 

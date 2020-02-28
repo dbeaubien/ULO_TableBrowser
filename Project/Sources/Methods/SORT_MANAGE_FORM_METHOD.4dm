@@ -28,7 +28,10 @@ Case of
 	: ($vt_objectName="form")
 		Case of 
 			: ($vo_formEvent.code=On Load:K2:1)
+				Form:C1466.fieldFilter:=""
+				
 				SORT_MANAGE_SET_ENABLED 
+				
 				
 				ULO_SET_BACKGROUND 
 				ULO_SET_LIST_COLOURS ("lb_viewFields")
@@ -230,6 +233,12 @@ Case of
 				End if 
 		End case 
 		
+	: ($vt_objectName="txt_fieldFilter")
 		
+		Case of 
+			: ($vo_formEvent.code=On Data Change:K2:15)
+				VIEW_FORM_BUILD_DISPLAY_FIELD (Form:C1466.sort.detail.sortData)
+				
+		End case 
 		
 End case 
