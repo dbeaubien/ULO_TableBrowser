@@ -271,10 +271,12 @@ Case of
 				SET TIMER:C645(-1)
 		End case 
 		
+	: ($vt_eventObject="ULO_Button_@")
+		BUTTON_GENERIC_POP ($vt_eventObject;True:C214)
+		
 	Else 
 		Case of 
 			: ($vl_event=On Clicked:K2:4)
-				ALERT:C41($vt_eventObject)
 				  //ALERT(OBJECT Get title(*;$vt_eventObject)+" : "+String($vl_event))
 				$vl_buttonNumber:=Num:C11($vt_eventObject)
 				$vt_method:=Form:C1466.buttons[$vl_buttonNumber].method
