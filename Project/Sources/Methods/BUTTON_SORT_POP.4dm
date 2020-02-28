@@ -102,10 +102,7 @@ Case of
 		End if 
 		
 	: ($1="MANAGE")
-		SORT_MANAGE
-		
-	: ($1="NEW") | ($1="DUPE") | ($1="EDIT")
-		SORT_EDIT ($1)
+		SORT_MANAGE 
 		
 	: ($1="LOAD:@")
 		  //get the name of the sort to load and run it.
