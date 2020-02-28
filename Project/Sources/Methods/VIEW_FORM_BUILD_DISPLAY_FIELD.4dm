@@ -15,14 +15,19 @@
 C_BOOLEAN:C305($vb_add)
 C_LONGINT:C283($vl_idx;$vl_idx2)
 C_OBJECT:C1216($vo_field)
-C_COLLECTION:C1488($1;$vc_data)
+C_COLLECTION:C1488($1;$vc_data;$vc_fields)
 
 $vc_data:=$1
 
 $vl_idx:=UTIL_Col_Find_Index (Form:C1466.fields;"table";al_tableNum{at_tableName})
 If ($vl_idx>=0)
 	Form:C1466.displayFields:=New collection:C1472
-	For each ($vo_field;Form:C1466.fields[$vl_idx].fields)
+	If (Form:C1466.fieldFilter#"")
+		$vc_fields:=Form:C1466.fields[$vl_idx].fields.query("name == :1";"@"+Form:C1466.fieldFilter+"@")
+	Else 
+		$vc_fields:=Form:C1466.fields[$vl_idx].fields
+	End if 
+	For each ($vo_field;$vc_fields)
 		If ($vo_field.kind="storage")
 			
 			  //Check if field is apart of view
@@ -43,4 +48,5 @@ If ($vl_idx>=0)
 			End if 
 		End if 
 	End for each 
+	Form:C1466.displayFields:=Form:C1466.displayFields.orderBy("name asc")
 End if 

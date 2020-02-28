@@ -15,6 +15,7 @@ Case of
 		
 		Case of 
 			: ($vo_formEvent.code=On Load:K2:1)
+				Form:C1466.fieldFilter:=""
 				OBJECT SET ENABLED:C1123(*;"bt_deleteView";Form:C1466.allowDelete)
 				VIEW_FORM_BUILD_DISPLAY_FIELD (Form:C1466.view.detail.cols)
 				VIEW_FORM_BUILD_DISPLAY_COL 
@@ -181,5 +182,11 @@ Case of
 				End if 
 		End case 
 		
+	: ($vt_objectName="txt_fieldFilter")
 		
+		Case of 
+			: ($vo_formEvent.code=On Data Change:K2:15)
+				VIEW_FORM_BUILD_DISPLAY_FIELD (Form:C1466.view.detail.cols)
+				
+		End case 
 End case 
