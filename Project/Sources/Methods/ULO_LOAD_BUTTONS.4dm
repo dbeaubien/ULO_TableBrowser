@@ -65,7 +65,9 @@ For each ($vo_button;$1)
 					$vt_button:="ULO_Button_"+String:C10($vo_button.number;"00")
 					$vt_buttonBG:="ULO_ButtonBG_"+String:C10($vo_button.number;"00")
 			End case 
-			$vo_button.reference:=$vt_button
+			Use ($vo_button)
+				$vo_button.reference:=$vt_button
+			End use 
 			  //If ($vo_button.number>0)
 			  //OBJECT DUPLICATE(*;"ULO_ButtonBG_00";$vt_buttonBG)  //Duplicate the backgroud first
 			OBJECT DUPLICATE:C1111(*;"ULO_Button_00";$vt_button)
@@ -76,7 +78,7 @@ For each ($vo_button;$1)
 			  //OBJECT SET VISIBLE(*;$vt_buttonBG;True)
 			
 			  //Format: title;picture;background;titlePos(4=bottom);titleVisible(1=display);\
-																iconVisible(1=display);style(3=toolbarButton);horMargin;vertMargin;iconOffset;popupMenu;hyperlink;numStates
+																				iconVisible(1=display);style(3=toolbarButton);horMargin;vertMargin;iconOffset;popupMenu;hyperlink;numStates
 			
 			If (OB Is defined:C1231($vo_button;"icon"))
 				$vt_format:=$vo_button.title+";"+"#images/buttons/"+Storage:C1525.prefs.theme+"/"+$vo_button.icon+";;4;1;1;4;0;0;0;0;;4"

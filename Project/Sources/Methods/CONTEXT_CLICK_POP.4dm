@@ -1,4 +1,4 @@
-//%attributes = {"invisible":true}
+//%attributes = {"invisible":true,"shared":true}
 
   // ----------------------------------------------------
   // User name (OS): Dougie
