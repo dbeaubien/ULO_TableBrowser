@@ -12,7 +12,7 @@
   // ----------------------------------------------------
 
 
-C_LONGINT:C283($vl_col;$vl_row;$vl_pos;$vl_table;$vl_field)
+C_LONGINT:C283($vl_col;$vl_row;$vl_pos;$vl_table;$vl_field;$vl_idx)
 C_TEXT:C284($vt_temp;$vt_header)
 
 ARRAY TEXT:C222($at_colName;0)
@@ -70,7 +70,7 @@ If ($vl_pos>0)
 	  //Form.navItem.selectedSort.user:=Storage.user.id
 	  //Form.navItem.selectedSort.table:=Form.tableNumber
 	  //Form.navItem.selectedSort.name:="New Sort #"+String(ds["uloData"]\
-								.query("type == 13 && user == :1 && table == :2";Storage.user.id;Form.tableNumber).length+1)
+										.query("type == 13 && user == :1 && table == :2";Storage.user.id;Form.tableNumber).length+1)
 	  //Form.navItem.selectedSort.group:=1  //TODO: Group?
 	  //Form.navItem.selectedSort.detail.public:=False
 	  //Form.navItem.selectedSort.detail.sortData:=New collection

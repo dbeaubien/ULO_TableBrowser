@@ -17,7 +17,7 @@
   // $6 - String - Display Format (optional)
   // ----------------------------------------------------
 
-C_TEXT:C284($1;$2;$3;$5)
+C_TEXT:C284($1;$2;$3;$5;$6)
 C_LONGINT:C283($4)
 
 C_OBJECT:C1216($vo_col)
