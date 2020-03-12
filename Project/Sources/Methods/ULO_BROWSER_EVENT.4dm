@@ -192,8 +192,11 @@ Case of
 				$index:=UTIL_Col_Find_Index (Storage:C1525.buttons;"action";"FIND")
 				If ($index>=0)
 					If (Storage:C1525.buttons[$index].method#"")  //If there is a host search method specified
-						EXECUTE METHOD:C1007(Storage:C1525.buttons[$index].method;$es_return;Form:C1466.tableNumber;$vt_value)  //Return an entity selection
+						EXECUTE METHOD:C1007(Storage:C1525.buttons[$index].method;$es_return;Form:C1466.tableNumber;Form:C1466.navItem.handle;$vt_value)  //Return an entity selection
 					End if 
+				End if 
+				If (Storage:C1525.hostMethods.filter#"")
+					EXECUTE METHOD:C1007(Storage:C1525.hostMethods.filter;$es_return;Form:C1466.tableNumber;Form:C1466.navItem.handle;$es_return)
 				End if 
 				Form:C1466.uloRecords:=$es_return
 				
