@@ -29,6 +29,7 @@ Case of
 		$vo_formData.allowDelete:=False:C215
 		  //Is a new view, create default $vo_formData
 		$e_uloData:=ds:C1482["uloData"].new()
+		$e_uloData.type:=2
 		$e_uloData.detail:=New object:C1471
 		$e_uloData.table:=Form:C1466.tableNumber
 		$vo_formData.view.id:=""

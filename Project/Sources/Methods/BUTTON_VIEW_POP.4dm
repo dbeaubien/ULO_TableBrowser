@@ -19,6 +19,11 @@ Case of
 		$es_views:=ds:C1482["uloData"].query("table == :1 && default == True && user == 0 && type == 2";Form:C1466.tableNumber)
 		If ($es_views.length>0)
 			$vt_defaultViewId:=$es_views.first().id
+		Else 
+			  //No system default found, need to generate one from json data
+			
+			
+			$vt_defaultViewId:="XXXX"
 		End if 
 		
 		APPEND MENU ITEM:C411($vt_ViewMenu;"System Default View")

@@ -159,6 +159,7 @@ Case of
 					$vo_col:=New object:C1471
 					$vo_col.selected:=True:C214
 					$vo_col.table:=-1
+					$vo_col.fontColourOverride:=False:C215
 					If (Form:C1466.view.detail.cols.query("table == -1").length=0)
 						$vo_col.field:=1
 					Else 

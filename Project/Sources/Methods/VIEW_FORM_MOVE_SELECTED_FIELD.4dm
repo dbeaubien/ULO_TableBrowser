@@ -48,6 +48,7 @@ For each ($vo_field;Form:C1466.selectedFields)
 			$vo_col.fontStyle:=0
 			$vo_col.fontColour:=0x0000  //Black
 			$vo_col.fontColourHex:="000000"
+			$vo_col.fontColourOverride:=False:C215
 			$vo_col.alignment:="Left"
 			$vo_col.total:=False:C215
 			$vo_col.min:=False:C215

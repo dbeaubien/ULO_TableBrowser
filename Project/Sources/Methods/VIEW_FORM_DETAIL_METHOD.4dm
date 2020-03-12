@@ -1,7 +1,7 @@
 //%attributes = {}
 C_OBJECT:C1216($1;$vo_formEvent)
 C_TEXT:C284($vt_objectName;$vt_prop)
-C_LONGINT:C283($vl_newColour;$vl_fontColour)
+C_LONGINT:C283($vl_newColour;vl_fontColour)
 C_BOOLEAN:C305($vb_formula)
 
 $vo_formEvent:=$1
@@ -99,11 +99,11 @@ Case of
 						Form:C1466.alignCenter:=1
 				End case 
 				
-				EXECUTE FORMULA:C63("$vl_fontColour:=0x00"+Form:C1466.col.fontColourHex)
+				EXECUTE FORMULA:C63("vl_fontColour:=0x00"+Form:C1466.col.fontColourHex)
 				
 				OBJECT SET ENTERABLE:C238(*;"input_formula";$vb_formula)
 				OBJECT SET ENABLED:C1123(*;"dropdown_datatype";$vb_formula)
-				OBJECT SET RGB COLORS:C628(*;"rect_fontColour";$vl_fontColour;$vl_fontColour)
+				OBJECT SET RGB COLORS:C628(*;"rect_fontColour";vl_fontColour;vl_fontColour)
 				OBJECT SET ENABLED:C1123(*;"cb_agg_@";False:C215)
 				
 				Case of 
@@ -126,17 +126,17 @@ Case of
 	: ($vt_objectName="input_fontColourHex")
 		Case of 
 			: ($vo_formEvent.code=On Data Change:K2:15)
-				EXECUTE FORMULA:C63("$vl_fontColour:=0x00"+Form:C1466.col.fontColourHex)
-				Form:C1466.col.fontColour:=$vl_fontColour
-				OBJECT SET RGB COLORS:C628(*;"rect_fontColour";$vl_fontColour;$vl_fontColour)
+				EXECUTE FORMULA:C63("vl_fontColour:=0x00"+Form:C1466.col.fontColourHex)
+				Form:C1466.col.fontColour:=vl_fontColour
+				OBJECT SET RGB COLORS:C628(*;"rect_fontColour";vl_fontColour;vl_fontColour)
 		End case 
 		
 		
 	: ($vt_objectName="bt_fontColourPick")
 		Case of 
 			: ($vo_formEvent.code=On Clicked:K2:4)
-				EXECUTE FORMULA:C63("$vl_fontColour:=0x00"+Form:C1466.col.fontColourHex)
-				$vl_newColour:=Select RGB color:C956($vl_fontColour)
+				EXECUTE FORMULA:C63("vl_fontColour:=0x00"+Form:C1466.col.fontColourHex)
+				$vl_newColour:=Select RGB color:C956(vl_fontColour)
 				Form:C1466.col.fontColourHex:=UTIL_Get_Hex ($vl_newColour)
 				Form:C1466.col.fontColour:=$vl_newColour
 				OBJECT SET RGB COLORS:C628(*;"rect_fontColour";$vl_newColour;$vl_newColour)

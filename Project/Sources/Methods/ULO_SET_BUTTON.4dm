@@ -18,11 +18,12 @@
   // $8 = Button Colour (number) 
   // $9 = Font Colour (number) 
   // $10 = Custom Method (text) 
+  // $11 = Button Type
   // ----------------------------------------------------
 
 C_COLLECTION:C1488($vc_buttons)
 C_OBJECT:C1216($vo_button)
-C_TEXT:C284($1;$2;$3;$4;$6;$10)
+C_TEXT:C284($1;$2;$3;$4;$6;$10;$11)
 C_BOOLEAN:C305($5)
 C_LONGINT:C283($7;$8;$9;$cp)
 $cp:=Count parameters:C259
@@ -75,6 +76,11 @@ Else
 				$vo_button.method:=$10
 			Else 
 				$vo_button.method:=BUTTON_Defaults ("METHOD")
+			End if 
+			If ($cp>10)
+				$vo_button.type:=$11
+			Else 
+				$vo_button.type:="standard"
 			End if 
 		End use 
 		Use ($vc_buttons)

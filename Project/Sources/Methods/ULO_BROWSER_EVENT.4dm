@@ -19,10 +19,11 @@ Case of
 	: ($vt_eventObject="form")
 		Case of 
 			: ($vl_event=On Load:K2:1)
+				TRACE:C157
 				Form:C1466.resize:=False:C215
 				Form:C1466.pendingResize:=False:C215
-				Form:C1466.refresh:=True:C214
-				Form:C1466.fullRefresh:=False:C215
+				Form:C1466.refresh:=False:C215
+				Form:C1466.fullRefresh:=True:C214
 				Form:C1466.relate:=False:C215
 				Form:C1466.forceSelectNav:=False:C215
 				Form:C1466.customColumns:=New collection:C1472
@@ -56,16 +57,16 @@ Case of
 				
 				LISTBOX SELECT ROW:C912(*;"ULO_Navbar";$index+1;lk replace selection:K53:1)
 				Form:C1466.lastNavItemIndex:=$index+1
-				Case of 
-					: (Form:C1466.navItem.type="DATA")
-						Form:C1466.tableNumber:=Form:C1466.navItem.table
-						ULO_LOAD_VIEW   //This is also calling ULO_LIST_UPDATE_FOOTER if a default view exists
-						
-						
-					: (Form:C1466.navItem.type="WEB")
-						ULO_LOAD_WEB_AREA 
-						
-				End case 
+				  //Case of 
+				  //: (Form.navItem.type="DATA")
+				  //Form.tableNumber:=Form.navItem.table
+				  //ULO_LOAD_VIEW   //This is also calling ULO_LIST_UPDATE_FOOTER if a default view exists
+				
+				
+				  //: (Form.navItem.type="WEB")
+				  //ULO_LOAD_WEB_AREA 
+				
+				  //End case 
 				If (Storage:C1525.hostMethods.sidebarLoad#"")
 					EXECUTE METHOD:C1007(Storage:C1525.hostMethods.sidebarLoad;$es_return;Form:C1466.tableNumber;Form:C1466.navItem.handle;Form:C1466.uloRecords)
 					Form:C1466.uloRecords:=$es_return
@@ -86,7 +87,15 @@ Case of
 						End if 
 						If (Form:C1466.fullRefresh)
 							Form:C1466.fullRefresh:=False:C215
-							ULO_LOAD_VIEW 
+							
+							Case of 
+								: (Form:C1466.navItem.type="DATA")
+									Form:C1466.tableNumber:=Form:C1466.navItem.table
+									ULO_LOAD_VIEW 
+								: (Form:C1466.navItem.type="WEB")
+									ULO_LOAD_WEB_AREA 
+							End case 
+							
 						Else   //Just plain refresh
 							ULO_LIST_UPDATE_FOOTER   //We're calling this twice on startup if a default view exists, but it needs to be called here
 						End if 

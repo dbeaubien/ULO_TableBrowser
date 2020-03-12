@@ -93,6 +93,7 @@ If (Form:C1466.tableNumber>0)
 						OBJECT SET RGB COLORS:C628(*;$vt_fObject;$vl_fontColour)
 					End if 
 				End if 
+				LISTBOX SET COLUMN WIDTH:C833(*;$vt_hObject;$vo_col.width)
 				
 				
 				
@@ -159,7 +160,7 @@ If (Form:C1466.tableNumber>0)
 				  //End if 
 				
 				  //LISTBOX INSERT COLUMN FORMULA(*;"ULO_LIST";$i;$vt_colName;$vt_formula;\
-					$vl_type;$vt_hObject;$vp_nil;$vt_fObject;$vp_nil)
+										$vl_type;$vt_hObject;$vp_nil;$vt_fObject;$vp_nil)
 				
 				  //OBJECT SET FORMAT(*;$vt_colName;$vt_format)
 				  //OBJECT SET FONT STYLE(*;$vt_colName;$vl_fontStyle)
@@ -185,7 +186,6 @@ If (Form:C1466.tableNumber>0)
 				  //End if 
 				
 				  //If (Not(Undefined($vo_col.width)))
-				  //LISTBOX SET COLUMN WIDTH(*;$vt_hObject;$vo_col.width)
 				  //End if 
 				  //End if 
 			End if 
