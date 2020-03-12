@@ -5,8 +5,7 @@ C_TEXT:C284($vt_eventObject;$vt_value;$vt_method;$vt_head)
 C_LONGINT:C283($vl_event;$vl_table;$vl_selected;$index;\
 $vl_buttonNumber;$vl_idx;$vl_field;$vl_fieldIdx;\
 $vl_sortIdx)
-
-C_COLLECTION:C1488($vc_fields)
+C_COLLECTION:C1488($vc_fields;$vc_hostOptions)
 
 $vl_event:=$1.code
 
@@ -125,10 +124,11 @@ Case of
 						: (Form:C1466.navItem.type="DATA")
 							Form:C1466.tableNumber:=Form:C1466.navItem.table
 							ULO_LOAD_VIEW 
+							ULO_CREATE_SHORTCUTS 
 							
 						: (Form:C1466.navItem.type="WEB")
 							ULO_LOAD_WEB_AREA 
-							
+							ULO_CREATE_SHORTCUTS 
 					End case 
 				Else 
 					LISTBOX SELECT ROW:C912(*;"ULO_Navbar";Form:C1466.lastNavItemIndex;lk replace selection:K53:1)
@@ -180,10 +180,11 @@ Case of
 		SET TIMER:C645(-1)
 		
 	: ($vt_eventObject="ULO_ExportView")
-		ULO_EXPORT_VIEW 
-		
-		GOTO OBJECT:C206(*;"ULO_LIST")
-		
+		If (Form:C1466.navItem.type="DATA")
+			ULO_EXPORT_VIEW 
+			
+			GOTO OBJECT:C206(*;"ULO_LIST")
+		End if 
 	: ($vt_eventObject="SearchText_@")  //Text field from the find widget
 		Case of 
 			: ($vl_event=On Selection Change:K2:29)
@@ -277,6 +278,14 @@ Case of
 	: ($vt_eventObject="ULO_Button_@")
 		BUTTON_GENERIC_POP ($vt_eventObject)
 		
+	: ($vt_eventObject="ULO_Shortcut_@")
+		
+		$vl_idx:=UTIL_Col_Find_Index (Form:C1466.shortcuts;"name";$vt_eventObject)
+		If ($vl_idx>=0)
+			If (Form:C1466.shortcuts[$vl_idx].function#"")
+				EXECUTE METHOD:C1007(Form:C1466.shortcuts[$vl_idx].method;$vc_hostOptions;Form:C1466.tableNumber;Form:C1466.navItem.handle;Form:C1466.shortcuts[$vl_idx].function)  //Return a collection
+			End if 
+		End if 
 	Else 
 		Case of 
 			: ($vl_event=On Clicked:K2:4)

@@ -29,6 +29,7 @@ $vo_uloData.selectedRecord:=New object:C1471  //Selected record object
 $vo_uloData.selectedRecord:=1  //Currently selected record
 $vo_uloData.selectionMessage:=""  //Currently selected record
 $vo_uloData.selectedRecords:=ds:C1482[Table name:C256($tableNumber)].newSelection()  //Selected /highlighed records
+$vo_uloData.shortcuts:=New collection:C1472
 If ($cp>2)
 	$vo_uloData.uloRecords:=$3
 Else 
