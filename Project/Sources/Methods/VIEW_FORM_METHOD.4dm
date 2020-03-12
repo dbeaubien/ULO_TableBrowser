@@ -1,7 +1,7 @@
 //%attributes = {}
-C_OBJECT:C1216($1;$vo_formEvent;$vo_data;$vo_field;$vo_col)
+C_OBJECT:C1216($1;$vo_formEvent;$vo_data;$vo_field;$vo_col;$vo_column)
 C_COLLECTION:C1488($vc_cols)
-C_TEXT:C284($vt_objectName)
+C_TEXT:C284($vt_objectName;$vt_menu;$vt_selected)
 C_LONGINT:C283($vl_dropPos;$vl_startPos;$vl_idx)
 $vo_formEvent:=$1
 If (OB Is defined:C1231($vo_formEvent;"objectName"))
@@ -115,8 +115,10 @@ Case of
 						End if 
 					Else 
 						CONFIRM:C162("Are you sure you wish to delete the Column "+Form:C1466.selectedCol.header+"?")
+						
 						If (OK=1)
-							Form:C1466.selectedCol.remove(Form:C1466.selectedColIndex)
+							Form:C1466.displayCols.remove(Form:C1466.selectedColIndex-1)
+							Form:C1466.displayCols:=Form:C1466.displayCols
 							Form:C1466.view.detail.cols.remove($vl_idx)
 						End if 
 					End if 
@@ -129,34 +131,76 @@ Case of
 			: ($vo_formEvent.code=On Clicked:K2:4)
 				  //Popup for adding custom formulas?
 				
-				  //temp, add new empty formula
-				$vo_col:=New object:C1471
-				$vo_col.selected:=True:C214
-				$vo_col.table:=-1
-				If (Form:C1466.view.detail.cols.query("table == -1").length=0)
-					$vo_col.field:=1
+				If (Form:C1466.customColumns.length>0)
+					
+					$vt_menu:=Create menu:C408
+					
+					APPEND MENU ITEM:C411($vt_menu;"Custom Formula")
+					SET MENU ITEM PARAMETER:C1004($vt_menu;-1;"Custom Formula")
+					
+					APPEND MENU ITEM:C411($vt_menu;"-")
+					DISABLE MENU ITEM:C150($vt_menu;-1)
+					
+					For each ($vo_column;Form:C1466.customColumns)
+						APPEND MENU ITEM:C411($vt_menu;$vo_column.name)
+						SET MENU ITEM PARAMETER:C1004($vt_menu;-1;$vo_column.name)
+					End for each 
+					
+					$vt_selected:=Dynamic pop up menu:C1006($vt_menu)
+					
+					RELEASE MENU:C978($vt_menu)
+					
 				Else 
-					$vo_col.field:=Form:C1466.view.detail.cols.query("table == -1").max("field")+1
+					$vt_selected:="Custom Formula"
 				End if 
-				$vo_col.fieldName:="Custom Formula"
-				$vo_col.header:="New Column"
-				$vo_col.formula:=""
-				$vo_col.relation:=""
-				$vo_col.width:=100
-				$vo_col.fieldType:=Is alpha field:K8:1
-				$vo_col.format:=""
-				$vo_col.fontStyle:=0
-				$vo_col.fontColour:=0x0000  //Black
-				$vo_col.fontColourHex:="000000"
-				$vo_col.alignment:="Left"
-				$vo_col.total:=False:C215
-				$vo_col.min:=False:C215
-				$vo_col.max:=False:C215
-				$vo_col.average:=False:C215
-				Form:C1466.view.detail.cols.push(OB Copy:C1225($vo_col))
-				Form:C1466.displayCols.push(OB Copy:C1225($vo_col))
-				LISTBOX SELECT ROW:C912(*;"lb_viewCols";Form:C1466.displayCols.length;lk replace selection:K53:1)
-				SET TIMER:C645(-1)
+				
+				If ($vt_selected#"")
+					  //temp, add new empty formula
+					$vo_col:=New object:C1471
+					$vo_col.selected:=True:C214
+					$vo_col.table:=-1
+					If (Form:C1466.view.detail.cols.query("table == -1").length=0)
+						$vo_col.field:=1
+					Else 
+						$vo_col.field:=Form:C1466.view.detail.cols.query("table == -1").max("field")+1
+					End if 
+					$vo_col.fontStyle:=0
+					$vo_col.fontColour:=0x0000  //Black
+					$vo_col.fontColourHex:="000000"
+					$vo_col.alignment:="Left"
+					$vo_col.total:=False:C215
+					$vo_col.min:=False:C215
+					$vo_col.max:=False:C215
+					$vo_col.average:=False:C215
+					$vo_col.width:=100
+					
+					If ($vt_selected="Custom Formula")
+						$vo_col.fieldName:="Custom Formula"
+						$vo_col.header:="New Column"
+						$vo_col.formula:=""
+						$vo_col.relation:=""
+						$vo_col.fieldType:=Is alpha field:K8:1
+						$vo_col.format:=""
+						
+					Else 
+						$vl_idx:=UTIL_Col_Find_Index (Form:C1466.customColumns;"name";$vt_selected)
+						If ($vl_idx>=0)
+							
+							$vo_col.fieldName:=Form:C1466.customColumns[$vl_idx].name
+							$vo_col.header:=Form:C1466.customColumns[$vl_idx].header
+							$vo_col.formula:=Form:C1466.customColumns[$vl_idx].formula
+							$vo_col.sortFormula:=Form:C1466.customColumns[$vl_idx].method
+							$vo_col.fieldType:=Form:C1466.customColumns[$vl_idx].dataType
+							$vo_col.format:=Form:C1466.customColumns[$vl_idx].format
+						End if 
+					End if 
+					
+					Form:C1466.view.detail.cols.push(OB Copy:C1225($vo_col))
+					Form:C1466.displayCols.push(OB Copy:C1225($vo_col))
+					LISTBOX SELECT ROW:C912(*;"lb_viewCols";Form:C1466.displayCols.length;lk replace selection:K53:1)
+					SET TIMER:C645(-1)
+					
+				End if 
 		End case 
 		
 	: ($vt_objectName="lb_viewFields")

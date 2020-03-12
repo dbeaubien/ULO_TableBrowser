@@ -87,6 +87,7 @@ Case of
 		$e_uloData:=ds:C1482["uloData"].get($vo_formData.view.id)
 End case 
 
+$vo_formData.customColumns:=Form:C1466.customColumns
 $vo_formData.fields:=New collection:C1472  //Fields from defined table and its N - 1 related tables
 $vo_formData.fields.push(New object:C1471("table";Form:C1466.tableNumber;"fields";ULO_Get_Table_Fields (Table name:C256(Form:C1466.tableNumber));"relation";""))
 

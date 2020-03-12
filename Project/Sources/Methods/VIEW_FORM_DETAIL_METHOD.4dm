@@ -45,6 +45,10 @@ Case of
 				
 				at_dataType:=Find in array:C230(al_dataType;Form:C1466.col.fieldType)
 				$vb_formula:=(Form:C1466.col.table<=0)  //Column is a custom formula is table is < 1
+				If ($vb_formula)
+					$vb_formula:=Not:C34(OB Is defined:C1231(Form:C1466.col;"sortFormula"))
+				End if 
+				
 				
 				Form:C1466.total:=Num:C11(Form:C1466.col.total)
 				Form:C1466.average:=Num:C11(Form:C1466.col.average)

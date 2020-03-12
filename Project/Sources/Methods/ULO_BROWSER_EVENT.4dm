@@ -24,6 +24,10 @@ Case of
 				Form:C1466.refresh:=True:C214
 				Form:C1466.fullRefresh:=False:C215
 				Form:C1466.relate:=False:C215
+				Form:C1466.forceSelectNav:=False:C215
+				Form:C1466.customColumns:=New collection:C1472
+				Form:C1466.customSort:=New object:C1471("field";0;"dir";1)
+				
 				$index:=UTIL_Col_Find_Index (Form:C1466.sidebarSource;"handle";Form:C1466.sidebarStart)
 				If ($index=-1)
 					$index:=1
@@ -57,10 +61,17 @@ Case of
 						Form:C1466.tableNumber:=Form:C1466.navItem.table
 						ULO_LOAD_VIEW   //This is also calling ULO_LIST_UPDATE_FOOTER if a default view exists
 						
+						
 					: (Form:C1466.navItem.type="WEB")
 						ULO_LOAD_WEB_AREA 
 						
 				End case 
+				If (Storage:C1525.hostMethods.sidebarLoad#"")
+					EXECUTE METHOD:C1007(Storage:C1525.hostMethods.sidebarLoad;$es_return;Form:C1466.tableNumber;Form:C1466.navItem.handle;Form:C1466.uloRecords)
+					Form:C1466.uloRecords:=$es_return
+				End if 
+				ULO_CREATE_SHORTCUTS 
+				
 				SET WINDOW RECT:C444(Form:C1466.wLeft;Form:C1466.wTop;Form:C1466.wRight;Form:C1466.wBottom)
 				SET TIMER:C645(-1)
 				
@@ -120,12 +131,22 @@ Case of
 					Case of 
 						: (Form:C1466.navItem.type="HEADER")
 							LISTBOX SELECT ROW:C912(*;"ULO_Navbar";Form:C1466.lastNavItemIndex;lk replace selection:K53:1)
+							Form:C1466.forceSelectNav:=True:C214
 							
 						: (Form:C1466.navItem.type="DATA")
-							Form:C1466.tableNumber:=Form:C1466.navItem.table
-							ULO_LOAD_VIEW 
-							ULO_CREATE_SHORTCUTS 
-							
+							If (Not:C34(Form:C1466.forceSelectNav))
+								Form:C1466.tableNumber:=Form:C1466.navItem.table
+								ULO_LOAD_VIEW 
+								ULO_CREATE_SHORTCUTS 
+								Form:C1466.customColumns:=New collection:C1472
+								
+								If (Storage:C1525.hostMethods.sidebarLoad#"")
+									EXECUTE METHOD:C1007(Storage:C1525.hostMethods.sidebarLoad;$es_return;Form:C1466.tableNumber;Form:C1466.navItem.handle;Form:C1466.uloRecords)
+									Form:C1466.uloRecords:=$es_return
+								End if 
+							Else 
+								Form:C1466.forceSelectNav:=False:C215
+							End if 
 						: (Form:C1466.navItem.type="WEB")
 							ULO_LOAD_WEB_AREA 
 							ULO_CREATE_SHORTCUTS 
