@@ -11,7 +11,7 @@
   // Parameters
   // ----------------------------------------------------
 
-C_TEXT:C284($1;$vt_menu;$vt_selected;$vt_newWinMenu;$vt_sameWinMenu)
+C_TEXT:C284($1;$vt_menu;$vt_selected)
 C_LONGINT:C283($vl_CurrentUser;$cp;$vl_menuNum;$index;$vl_count;$vl_idx)
 C_OBJECT:C1216($vo_view;$vo_option;$vo_coord;$vo_field;$vo_param;$vo_col)
 C_COLLECTION:C1488($vc_hostOptions;$vc_fields;$vc_menuItems)
@@ -21,8 +21,6 @@ $cp:=Count parameters:C259
 
 If ($cp=0)
 	$vt_menu:=Create menu:C408
-	$vt_newWinMenu:=Create menu:C408
-	$vt_sameWinMenu:=Create menu:C408
 	$vc_menuItems:=New collection:C1472
 	$vo_coord:=ULO_Get_Popup_Coord ("ULO_Button_RELATE")
 	
@@ -41,18 +39,12 @@ If ($cp=0)
 	End for each 
 	
 	If ($vc_menuItems.length>0)
-		For each ($vo_col;$vc_menuItems)
-			$vo_col.action:="new"
-			APPEND MENU ITEM:C411($vt_newWinMenu;$vo_col.fieldName+" ["+String:C10($vo_col.count)+"]")
-			SET MENU ITEM PARAMETER:C1004($vt_newWinMenu;-1;JSON Stringify:C1217($vo_col))
-			
-			$vo_col.action:="same"
-			APPEND MENU ITEM:C411($vt_sameWinMenu;$vo_col.fieldName+" ["+String:C10($vo_col.count)+"]")
-			SET MENU ITEM PARAMETER:C1004($vt_sameWinMenu;-1;JSON Stringify:C1217($vo_col))
-		End for each 
 		
-		APPEND MENU ITEM:C411($vt_menu;"New Window";$vt_newWinMenu)
-		APPEND MENU ITEM:C411($vt_menu;"Same Window";$vt_sameWinMenu)
+		For each ($vo_col;$vc_menuItems)
+			$vo_col.action:="same"
+			APPEND MENU ITEM:C411($vt_menu;$vo_col.fieldName+" ["+String:C10($vo_col.count)+"]")
+			SET MENU ITEM PARAMETER:C1004($vt_menu;-1;JSON Stringify:C1217($vo_col))
+		End for each 
 		
 		$vt_selected:=Dynamic pop up menu:C1006($vt_menu;"";$vo_coord.x;$vo_coord.y)
 		If ($vt_selected#"")
