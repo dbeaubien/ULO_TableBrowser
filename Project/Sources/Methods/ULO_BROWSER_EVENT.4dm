@@ -153,7 +153,7 @@ Case of
 								Form:C1466.customColumns:=New collection:C1472
 								
 								If (Storage:C1525.hostMethods.sidebarLoad#"")
-									EXECUTE METHOD:C1007(Storage:C1525.hostMethods.sidebarLoad;$es_return;Form:C1466.tableNumber;Form:C1466.navItem.handle;Form:C1466.uloRecords)
+									EXECUTE METHOD:C1007(Storage:C1525.hostMethods.sidebarLoad;$es_return;Form:C1466.tableNumber;Form:C1466.navItem.handle)
 									Form:C1466.uloRecords:=$es_return
 								End if 
 							Else 
