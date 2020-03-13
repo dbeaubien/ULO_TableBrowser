@@ -32,6 +32,8 @@ Case of
 		$e_uloData.type:=2
 		$e_uloData.detail:=New object:C1471
 		$e_uloData.table:=Form:C1466.tableNumber
+		$e_uloData.user:=Storage:C1525.user.id
+		$e_uloData.handle:=Form:C1466.navItem.handle
 		$vo_formData.view.id:=""
 		$vo_formData.view.table:=Form:C1466.tableNumber
 		$vo_formData.view.name:="New View"

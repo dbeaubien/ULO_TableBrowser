@@ -84,7 +84,7 @@ If (Form:C1466.tableNumber>0)
 						LISTBOX SET FOOTER CALCULATION:C1140(*;$vt_colName;lk footer custom:K70:1)
 						
 						OBJECT SET HORIZONTAL ALIGNMENT:C706(*;$vt_fObject;$vl_alignment)
-						OBJECT SET FORMAT:C236(*;$vt_fObject;$vo_col.format)
+						  //OBJECT SET FORMAT(*;$vt_fObject;$vo_col.format)
 						
 						If ($vo_col.fontStyle=0) | ($vo_col.fontStyle=2) | ($vo_col.fontStyle=4) | ($vo_col.fontStyle=6)
 							$vl_fontStyle:=$vo_col.fontStyle+1  //Add bold if missing

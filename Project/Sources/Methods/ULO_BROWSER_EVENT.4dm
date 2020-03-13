@@ -6,6 +6,7 @@ C_LONGINT:C283($vl_event;$vl_table;$vl_selected;$index;\
 $vl_buttonNumber;$vl_idx;$vl_field;$vl_fieldIdx;\
 $vl_sortIdx)
 C_COLLECTION:C1488($vc_fields;$vc_hostOptions)
+C_OBJECT:C1216(vo_colObj)
 
 $vl_event:=$1.code
 
@@ -28,6 +29,8 @@ Case of
 				Form:C1466.forceSelectNav:=False:C215
 				Form:C1466.customColumns:=New collection:C1472
 				Form:C1466.customSort:=New object:C1471("field";0;"dir";1)
+				
+				vo_colObj:=New object:C1471("case";"data")
 				
 				$index:=UTIL_Col_Find_Index (Form:C1466.sidebarSource;"handle";Form:C1466.sidebarStart)
 				If ($index=-1)

@@ -46,7 +46,7 @@ Case of
 				at_dataType:=Find in array:C230(al_dataType;Form:C1466.col.fieldType)
 				$vb_formula:=(Form:C1466.col.table<=0)  //Column is a custom formula is table is < 1
 				If ($vb_formula)
-					$vb_formula:=Not:C34(OB Is defined:C1231(Form:C1466.col;"sortFormula"))
+					$vb_formula:=Not:C34(OB Is defined:C1231(Form:C1466.col;"method"))
 				End if 
 				
 				
@@ -108,6 +108,13 @@ Case of
 				
 				Case of 
 					: (Form:C1466.col.table=-1)  //All disabled when custom formula
+						If (OB Is defined:C1231(Form:C1466.col;"aggregates"))
+							OBJECT SET ENABLED:C1123(*;"cb_agg_max";Form:C1466.col.aggregates.max)
+							OBJECT SET ENABLED:C1123(*;"cb_agg_min";Form:C1466.col.aggregates.min)
+							OBJECT SET ENABLED:C1123(*;"cb_agg_total";Form:C1466.col.aggregates.sum)
+							OBJECT SET ENABLED:C1123(*;"cb_agg_average";Form:C1466.col.aggregates.avg)
+						End if 
+						
 					: (Form:C1466.col.fieldType=Is integer:K8:5) | (Form:C1466.col.fieldType=Is real:K8:4) | (Form:C1466.col.fieldType=Is longint:K8:6)
 						OBJECT SET ENABLED:C1123(*;"cb_agg_@";True:C214)
 						
@@ -118,8 +125,6 @@ Case of
 					: (Form:C1466.col.fieldType=Is boolean:K8:9)
 						OBJECT SET ENABLED:C1123(*;"cb_agg_total";True:C214)
 				End case 
-				
-				
 				
 		End case 
 		

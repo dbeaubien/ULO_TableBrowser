@@ -14,6 +14,7 @@
 
 C_LONGINT:C283($vl_col;$vl_row;$vl_pos;$vl_table;$vl_field;$vl_idx)
 C_TEXT:C284($vt_temp;$vt_header)
+C_OBJECT:C1216(vo_sortObj)
 
 ARRAY TEXT:C222($at_colName;0)
 ARRAY TEXT:C222($at_headerName;0)
@@ -40,7 +41,7 @@ If ($vl_pos>0)
 	
 	If ($vl_table<0)
 		$vl_idx:=UTIL_Col_Find_Index (Form:C1466.navItem.selectedView.detail.cols;"field";$vl_field;"table";$vl_table)
-		If (OB Is defined:C1231(Form:C1466.navItem.selectedView.detail.cols[$vl_idx];"sortFormula"))
+		If (OB Is defined:C1231(Form:C1466.navItem.selectedView.detail.cols[$vl_idx];"method"))
 			If (Form:C1466.customSort.field=$vl_field)
 				Form:C1466.customSort.dir:=Choose:C955((Form:C1466.customSort.dir=2);1;2)
 			Else 
@@ -48,7 +49,10 @@ If ($vl_pos>0)
 				Form:C1466.customSort.dir:=1
 			End if 
 			
-			EXECUTE METHOD:C1007(Form:C1466.navItem.selectedView.detail.cols[$vl_idx].sortFormula)
+			vo_sortObj:=New object:C1471("case";"sort")
+			
+			EXECUTE FORMULA:C63(Form:C1466.navItem.selectedView.detail.cols[$vl_idx].method+"(vo_sortObj)")
+			  //EXECUTE METHOD(Form.navItem.selectedView.detail.cols[$vl_idx].sortFormula)
 			$ap_headerVar{$vl_col}->:=Form:C1466.customSort.dir
 		End if 
 	Else 
@@ -70,7 +74,7 @@ If ($vl_pos>0)
 	  //Form.navItem.selectedSort.user:=Storage.user.id
 	  //Form.navItem.selectedSort.table:=Form.tableNumber
 	  //Form.navItem.selectedSort.name:="New Sort #"+String(ds["uloData"]\
-										.query("type == 13 && user == :1 && table == :2";Storage.user.id;Form.tableNumber).length+1)
+												.query("type == 13 && user == :1 && table == :2";Storage.user.id;Form.tableNumber).length+1)
 	  //Form.navItem.selectedSort.group:=1  //TODO: Group?
 	  //Form.navItem.selectedSort.detail.public:=False
 	  //Form.navItem.selectedSort.detail.sortData:=New collection
