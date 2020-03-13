@@ -63,7 +63,7 @@ If (Form:C1466.navItem.selectedView.detail.useFooter)
 						vo_footerObj.aggregates.push(New object:C1471("name";"average";"value";Null:C1517))
 					End if 
 					
-					EXECUTE FORMULA:C63($vc_cols[$idx].method+"(vo_footerObj)")
+					EXECUTE FORMULA:C63($vc_cols[$idx].footerFormula)
 				End if 
 			End if 
 			

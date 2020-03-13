@@ -29,10 +29,17 @@ If (UTIL_Col_Find_Index (Form:C1466.customColumns;"name";$1)=-1)
 	$vo_col.name:=$1
 	$vo_col.method:=$2
 	$vo_col.formula:=$2+"(vo_colObj"
+	$vo_col.sortFormula:=$2+"(vo_sortObj"
+	$vo_col.footerFormula:=$2+"(vo_footerObj"
 	For each ($vt_param;$3)
 		$vo_col.formula:=$vo_col.formula+";"+$vt_param
+		$vo_col.sortFormula:=$vo_col.sortFormula+";"+$vt_param
+		$vo_col.footerFormula:=$vo_col.footerFormula+";"+$vt_param
 	End for each 
 	$vo_col.formula:=$vo_col.formula+")"
+	$vo_col.sortFormula:=$vo_col.sortFormula+")"
+	$vo_col.footerFormula:=$vo_col.footerFormula+")"
+	
 	$vo_col.dataType:=$4
 	$vo_col.header:=$5
 	If (Count parameters:C259>5)

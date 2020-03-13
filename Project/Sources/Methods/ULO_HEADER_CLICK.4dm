@@ -41,7 +41,8 @@ If ($vl_pos>0)
 	
 	If ($vl_table<0)
 		$vl_idx:=UTIL_Col_Find_Index (Form:C1466.navItem.selectedView.detail.cols;"field";$vl_field;"table";$vl_table)
-		If (OB Is defined:C1231(Form:C1466.navItem.selectedView.detail.cols[$vl_idx];"method"))
+		If (OB Is defined:C1231(Form:C1466.navItem.selectedView.detail.cols[$vl_idx];"sortFormula"))
+			
 			If (Form:C1466.customSort.field=$vl_field)
 				Form:C1466.customSort.dir:=Choose:C955((Form:C1466.customSort.dir=2);1;2)
 			Else 
@@ -51,8 +52,8 @@ If ($vl_pos>0)
 			
 			vo_sortObj:=New object:C1471("case";"sort")
 			
-			EXECUTE FORMULA:C63(Form:C1466.navItem.selectedView.detail.cols[$vl_idx].method+"(vo_sortObj)")
-			  //EXECUTE METHOD(Form.navItem.selectedView.detail.cols[$vl_idx].sortFormula)
+			  //EXECUTE FORMULA(Form.navItem.selectedView.detail.cols[$vl_idx].method+"(vo_sortObj)")
+			EXECUTE METHOD:C1007(Form:C1466.navItem.selectedView.detail.cols[$vl_idx].sortFormula)
 			$ap_headerVar{$vl_col}->:=Form:C1466.customSort.dir
 		End if 
 	Else 

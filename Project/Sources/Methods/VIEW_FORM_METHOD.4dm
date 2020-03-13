@@ -191,6 +191,8 @@ Case of
 							$vo_col.header:=Form:C1466.customColumns[$vl_idx].header
 							$vo_col.formula:=Form:C1466.customColumns[$vl_idx].formula
 							$vo_col.method:=Form:C1466.customColumns[$vl_idx].method
+							$vo_col.sortFormula:=Form:C1466.customColumns[$vl_idx].sortFormula
+							$vo_col.footerFormula:=Form:C1466.customColumns[$vl_idx].footerFormula
 							$vo_col.fieldType:=Form:C1466.customColumns[$vl_idx].dataType
 							$vo_col.format:=Form:C1466.customColumns[$vl_idx].format
 							$vo_col.aggregates:=OB Copy:C1225(Form:C1466.customColumns[$vl_idx].aggregates)
