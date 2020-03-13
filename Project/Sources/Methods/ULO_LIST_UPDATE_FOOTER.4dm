@@ -12,7 +12,7 @@
   // ----------------------------------------------------
 
 C_TEXT:C284($CR;$vt_footer)
-C_LONGINT:C283($i;$idx;$vl_items;$vl_maxItems)
+C_LONGINT:C283($i;$idx;$vl_items;$vl_maxItems;$vl_idx)
 C_COLLECTION:C1488($vc_cols)
 C_REAL:C285($vr_result)
 C_OBJECT:C1216(vo_footerObj)

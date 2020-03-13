@@ -31,3 +31,7 @@ C_LONGINT:C283(vl_HighlightedItems)
 C_POINTER:C301(vp_HOST_BRW_Table)
 C_REAL:C285(vr_ExportValue)
 C_TEXT:C284(vt_ExportValue)
+
+C_OBJECT:C1216(vo_colObj)
+C_OBJECT:C1216(vo_footerObj)
+C_OBJECT:C1216(vo_sortObj)

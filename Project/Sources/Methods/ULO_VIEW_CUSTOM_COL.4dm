@@ -18,7 +18,7 @@
   // $7 - Object  - Allowed Aggregates - { sum: bool, avg: bool, min: bool, max: bool } (Optional, defaults to all false)
   // ----------------------------------------------------
 
-C_TEXT:C284($1;$2;$5;$6)
+C_TEXT:C284($1;$2;$5;$6;$vt_param)
 C_COLLECTION:C1488($3)
 C_LONGINT:C283($4)
 
@@ -50,7 +50,7 @@ If (UTIL_Col_Find_Index (Form:C1466.customColumns;"name";$1)=-1)
 	If (Count parameters:C259>6)
 		$vo_col.aggregates:=OB Copy:C1225($7)
 	Else 
-		$vo_col.aggregates:=New object:C1471("sum";False:C215;"avg";False:C215;"min";False:C215;"max")
+		$vo_col.aggregates:=New object:C1471("sum";False:C215;"avg";False:C215;"min";False:C215;"max";False:C215)
 	End if 
 	Form:C1466.customColumns.push(OB Copy:C1225($vo_col))
 End if 
