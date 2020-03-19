@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<?xml-stylesheet type = "text/css" href="BuildLogStyleSheet.css"?>
+<BuildApplicationLog>
+
+  <Log>
+    <MessageType>Comment</MessageType>
+    <Target>Component</Target>
+    <CodeDesc>NO_ERR</CodeDesc>
+    <CodeId>0</CodeId>
+    <Message>Start compilation [2020-03-19T09:53:57]</Message>
+  </Log>
+
+  <Log>
+    <MessageType>Comment</MessageType>
+    <Target>Common</Target>
+    <CodeDesc>NO_ERR</CodeDesc>
+    <CodeId>0</CodeId>
+    <Message>Start copying files : C:\dev\4D\CompiledComponent\Components\ULO_TableBrowser.4dbase\ULO_TableBrowser.4DZ</Message>
+  </Log>
+
+  <Log>
+    <MessageType>Comment</MessageType>
+    <Target>Common</Target>
+    <CodeDesc>NO_ERR</CodeDesc>
+    <CodeId>0</CodeId>
+    <Message>End copying files : C:\dev\4D\CompiledComponent\Components\ULO_TableBrowser.4dbase\ULO_TableBrowser.4DZ</Message>
+  </Log>
+
+  <Log>
+    <MessageType>Comment</MessageType>
+    <Target>Component</Target>
+    <CodeDesc>NO_ERR</CodeDesc>
+    <CodeId>0</CodeId>
+    <Message>End compilation [2020-03-19T09:53:59]</Message>
+  </Log>
+
+</BuildApplicationLog>

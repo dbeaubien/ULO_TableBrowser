@@ -49,8 +49,4 @@ If (Form:C1466.navItem.selectedSort#Null:C1517)
 	End for 
 	
 	Form:C1466.uloRecords:=Form:C1466.uloRecords.orderBy($vc_sort)
-Else 
-	If (Form:C1466.uloRecords.isOrdered())
-		Form:C1466.uloRecords:=Form:C1466.uloRecords.or(Form:C1466.uloRecords)
-	End if 
 End if 

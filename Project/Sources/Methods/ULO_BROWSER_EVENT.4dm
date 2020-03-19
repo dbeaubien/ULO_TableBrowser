@@ -20,7 +20,7 @@ Case of
 	: ($vt_eventObject="form")
 		Case of 
 			: ($vl_event=On Load:K2:1)
-				TRACE:C157
+				  //TRACE
 				Form:C1466.resize:=False:C215
 				Form:C1466.pendingResize:=False:C215
 				Form:C1466.refresh:=False:C215
@@ -134,6 +134,7 @@ Case of
 				
 				If (Form:C1466.navItem.type="header")
 					LISTBOX SELECT ROW:C912(*;"ULO_Navbar";Form:C1466.lastNavItemIndex;lk replace selection:K53:1)
+					Form:C1466.forceSelectNav:=True:C214
 				End if 
 				
 				
@@ -142,9 +143,10 @@ Case of
 				If (Form:C1466.navItem#Null:C1517)
 					Case of 
 						: (Form:C1466.navItem.type="HEADER")
-							LISTBOX SELECT ROW:C912(*;"ULO_Navbar";Form:C1466.lastNavItemIndex;lk replace selection:K53:1)
-							Form:C1466.forceSelectNav:=True:C214
-							
+							If (Form:C1466.lastNavItemIndex#Form:C1466.selectedNavItem)
+								LISTBOX SELECT ROW:C912(*;"ULO_Navbar";Form:C1466.lastNavItemIndex;lk replace selection:K53:1)
+								Form:C1466.forceSelectNav:=True:C214
+							End if 
 						: (Form:C1466.navItem.type="DATA")
 							If (Not:C34(Form:C1466.forceSelectNav))
 								Form:C1466.tableNumber:=Form:C1466.navItem.table
@@ -160,8 +162,12 @@ Case of
 								Form:C1466.forceSelectNav:=False:C215
 							End if 
 						: (Form:C1466.navItem.type="WEB")
-							ULO_LOAD_WEB_AREA 
-							ULO_CREATE_SHORTCUTS 
+							If (Not:C34(Form:C1466.forceSelectNav))
+								ULO_LOAD_WEB_AREA 
+								ULO_CREATE_SHORTCUTS 
+							Else 
+								Form:C1466.forceSelectNav:=False:C215
+							End if 
 					End case 
 				Else 
 					LISTBOX SELECT ROW:C912(*;"ULO_Navbar";Form:C1466.lastNavItemIndex;lk replace selection:K53:1)
@@ -188,7 +194,7 @@ Case of
 				SET TIMER:C645(-1)
 				
 			: ($vl_event=On Clicked:K2:4)
-				Form:C1466.refresh:=True:C214
+				  //Form.refresh:=True
 				SET TIMER:C645(-1)
 				
 			: ($vl_event=On Column Resize:K2:31)
@@ -328,7 +334,9 @@ Case of
 				  //pass
 				  //tableNumber
 				  //entitySelection
-				EXECUTE METHOD:C1007($vt_method;*;$1;Form:C1466.navItem;JSON Stringify:C1217(Form:C1466.buttons[$vl_buttonNumber]))
+				If ($vt_method#"")  //Temp fix
+					EXECUTE METHOD:C1007($vt_method;*;$1;Form:C1466.navItem;JSON Stringify:C1217(Form:C1466.buttons[$vl_buttonNumber]))
+				End if 
 		End case 
 		
 End case 

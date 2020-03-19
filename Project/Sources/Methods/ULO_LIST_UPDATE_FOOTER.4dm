@@ -33,7 +33,7 @@ If (Form:C1466.navItem.selectedView.detail.useFooter)
 	$vc_cols:=Form:C1466.navItem.selectedView.detail.cols
 	
 	LISTBOX GET ARRAYS:C832(*;"ULO_LIST";$at_colName;$at_headerName;$ap_colVar;$ap_headerVar;$ab_colVisible;$ap_style;$at_footerName;$ap_footerVar)
-	TRACE:C157
+	  //TRACE
 	For ($i;1;Size of array:C274($at_colName))
 		$idx:=$i-1  //Collection index
 		If ($vc_cols[$idx].selected)
