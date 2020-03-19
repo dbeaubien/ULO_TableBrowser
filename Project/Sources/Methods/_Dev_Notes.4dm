@@ -2,8 +2,9 @@
   //ulo data `type` enum
   //  1 - Set
   //  2 - View
-  //  3 - Query
+  //  3 - Theme
   //  4 - Tab
+  //  5 - Query
 
   // 13 - Sort
   // 20 - User Preferences
