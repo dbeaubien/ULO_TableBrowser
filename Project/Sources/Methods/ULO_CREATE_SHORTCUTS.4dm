@@ -30,22 +30,22 @@ For each ($vo_button;Storage:C1525.buttons)
 			
 			For each ($vo_hostOption;$vc_hostOptions)
 				  //Look for an existing button with this shortcut
-				$vl_idx:=UTIL_Col_Find_Index (Form:C1466.shortcuts;"shortcut";$vo_hostOption.shortcut;"modifier";$vo_hostOption.modifier)
-				If ($vl_idx=-1)
-					$vt_newName:="ULO_Shortcut_"+String:C10(Form:C1466.shortcuts.length+1)
-					OBJECT DUPLICATE:C1111(*;"ULO_Shortcut";$vt_newName)
-					OBJECT SET SHORTCUT:C1185(*;$vt_newName;$vo_hostOption.shortcut;$vo_hostOption.modifier)
+				If (OB Is defined:C1231($vo_hostOption;"shortcut")) & (OB Is defined:C1231($vo_hostOption;"modifier"))
+					$vl_idx:=UTIL_Col_Find_Index (Form:C1466.shortcuts;"shortcut";$vo_hostOption.shortcut;"modifier";$vo_hostOption.modifier)
+					If ($vl_idx=-1)
+						$vt_newName:="ULO_Shortcut_"+String:C10(Form:C1466.shortcuts.length+1)
+						OBJECT DUPLICATE:C1111(*;"ULO_Shortcut";$vt_newName)
+						OBJECT SET SHORTCUT:C1185(*;$vt_newName;$vo_hostOption.shortcut;$vo_hostOption.modifier)
+						
+						$vo_shortcut:=OB Copy:C1225($vo_hostOption)
+						$vo_shortcut.name:=$vt_newName
+						Form:C1466.shortcuts.push(OB Copy:C1225($vo_shortcut))
+						$vl_idx:=Form:C1466.shortcuts.length-1
+					End if 
 					
-					$vo_shortcut:=OB Copy:C1225($vo_hostOption)
-					$vo_shortcut.name:=$vt_newName
-					Form:C1466.shortcuts.push(OB Copy:C1225($vo_shortcut))
-					$vl_idx:=Form:C1466.shortcuts.length-1
+					Form:C1466.shortcuts[$vl_idx].method:=$vo_button.method
+					Form:C1466.shortcuts[$vl_idx].function:=$vo_hostOption.function
 				End if 
-				
-				Form:C1466.shortcuts[$vl_idx].method:=$vo_button.method
-				Form:C1466.shortcuts[$vl_idx].function:=$vo_hostOption.function
-				
-				
 			End for each 
 		End if 
 	End if 
