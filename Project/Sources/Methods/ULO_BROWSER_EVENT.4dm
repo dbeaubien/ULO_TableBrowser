@@ -180,6 +180,9 @@ Case of
 			: ($vl_event=On Double Clicked:K2:5)
 				If (OB Is defined:C1231(Form:C1466.navItem;"rowDoubleClick"))
 					$vt_method:=Form:C1466.navItem.rowDoubleClick
+					If ($vt_method="")
+						$vt_method:="ULO_MODIFY"
+					End if 
 					If (Form:C1466.selectedRecord#Null:C1517)
 						EXECUTE METHOD:C1007($vt_method;*;"Double click test: "+JSON Stringify:C1217(Form:C1466.selectedRecord.toObject()))
 					End if 
