@@ -27,7 +27,7 @@ C_TEXT:C284($1;$2;$3;$4;$6;$10;$11)
 C_BOOLEAN:C305($5)
 C_LONGINT:C283($7;$8;$9;$cp)
 $cp:=Count parameters:C259
-If ($cp>10) | ($cp=0)
+If ($cp>11) | ($cp=0)
 	  //return an error for incorrect number of parameters
 Else 
 	$vc_buttons:=New shared collection:C1527
