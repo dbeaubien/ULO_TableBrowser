@@ -1,4 +1,4 @@
-//%attributes = {"invisible":true}
+//%attributes = {"shared":true}
   //PROJECT METHOD:           INT_SET_LIST_COLOURS
   //MODULE::                  INT
   //REQUIRED:                 CORE
