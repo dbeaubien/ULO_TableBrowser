@@ -30,6 +30,7 @@ Case of
 		  //Now get the default options
 		APPEND MENU ITEM:C411($vt_menu;"Export View")
 		SET MENU ITEM PARAMETER:C1004($vt_menu;-1;"EXPORTVIEW")
+		SET MENU ITEM SHORTCUT:C423($vt_menu;-1;"E";Command key mask:K16:1)
 		
 		APPEND MENU ITEM:C411($vt_menu;"Quick Report")
 		SET MENU ITEM PARAMETER:C1004($vt_menu;-1;"QUICKREPORT")
