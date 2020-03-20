@@ -1,5 +1,5 @@
 //%attributes = {"shared":true}
-C_OBJECT:C1216($1;$vo_sub;$es;$es_return;$vo_sort)
+C_OBJECT:C1216($1;$vo_sub;$es;$es_return;$vo_sort;$vo_sidebar)
 
 C_TEXT:C284($vt_eventObject;$vt_value;$vt_method;$vt_head)
 C_LONGINT:C283($vl_event;$vl_table;$vl_selected;$index;\

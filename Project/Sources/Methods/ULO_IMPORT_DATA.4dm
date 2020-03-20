@@ -12,7 +12,12 @@
   // $0 - Collection - Collection of newly created [uloData]id
   // ----------------------------------------------------
 
-C_COLLECTION:C1488($0;$vc_uloDataId)
+C_COLLECTION:C1488($0;$vc_uloDataId;$e_uloData)
+
+C_TEXT:C284($vt_file;$vt_json)
+C_OBJECT:C1216($vo_data;$vo_res)
+C_LONGINT:C283($i;$j)
+C_BOOLEAN:C305($vb_continue)
 
 ARRAY TEXT:C222($at_files;0)
 

@@ -12,7 +12,7 @@
   // $1 - Entity Selection - [uloData] records to export
   // ----------------------------------------------------
 
-C_OBJECT:C1216($1;$es_uloData)
+C_OBJECT:C1216($1;$es_uloData;$e_uloData;$vo_export)
 C_TEXT:C284($vt_filepath;$vt_json;$vt_filename)
 
 $es_uloData:=$1
@@ -30,9 +30,9 @@ If (OK=1)
 			$vo_export.type:=$e_uloData.type
 			$vo_export.default:=$e_uloData.default
 			$vo_export.user:=$e_uloData.user
-			$vo_export.detail:=OB Copy:C1225($e_uloData.detail;*)
+			$vo_export.detail:=OB Copy:C1225($e_uloData.detail)
 			
-			$vt_json:=JSON Stringify:C1217($vo_export)
+			$vt_json:=JSON Stringify:C1217($vo_export;*)
 			
 			TEXT TO DOCUMENT:C1237($vt_filepath+$vt_filename;$vt_json)
 		End for each 
