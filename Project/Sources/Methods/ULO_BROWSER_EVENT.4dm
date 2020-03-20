@@ -45,6 +45,14 @@ Case of
 					  //Else is top level item and always visible!
 				End if 
 				
+				  //Set all top level nav headers to expanded
+				For each ($vo_sidebar;Form:C1466.sidebarSource)
+					If ($vo_sidebar.type="HEADER")
+						$vo_sidebar.expanded:=True:C214
+					End if 
+				End for each 
+				
+				
 				ULO_SET_BACKGROUND 
 				
 				ULO_LOAD_THEME 

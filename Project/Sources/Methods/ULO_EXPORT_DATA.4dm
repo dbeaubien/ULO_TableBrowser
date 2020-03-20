@@ -28,6 +28,8 @@ If (OK=1)
 			$vo_export.handle:=$e_uloData.handle
 			$vo_export.table:=$e_uloData.table
 			$vo_export.type:=$e_uloData.type
+			$vo_export.default:=$e_uloData.default
+			$vo_export.user:=$e_uloData.user
 			$vo_export.detail:=OB Copy:C1225($e_uloData.detail;*)
 			
 			$vt_json:=JSON Stringify:C1217($vo_export)
