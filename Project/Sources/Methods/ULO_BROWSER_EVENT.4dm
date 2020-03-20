@@ -1,7 +1,7 @@
 //%attributes = {"shared":true}
 C_OBJECT:C1216($1;$vo_sub;$es;$es_return;$vo_sort;$vo_sidebar)
 
-C_TEXT:C284($vt_eventObject;$vt_value;$vt_method;$vt_head)
+C_TEXT:C284($vt_eventObject;$vt_value;$vt_method;$vt_head;$vt_case)
 C_LONGINT:C283($vl_event;$vl_table;$vl_selected;$index;\
 $vl_buttonNumber;$vl_idx;$vl_field;$vl_fieldIdx;\
 $vl_sortIdx)
@@ -338,9 +338,10 @@ Case of
 		BUTTON_GENERIC_POP ($vt_eventObject)
 		
 	: ($vt_eventObject="ULO_HostShortcut@")
-		$vt_case:=Replace string:C233($vt_eventObject;"ULO_HostShortcut";"")
-		EXECUTE METHOD:C1007("ULO_Shortcut";*;$vt_case)
-		
+		If ($vl_event=On Clicked:K2:4)
+			$vt_case:=Replace string:C233($vt_eventObject;"ULO_HostShortcut";"")
+			EXECUTE METHOD:C1007("ULO_Shortcut";*;$vt_case)
+		End if 
 	: ($vt_eventObject="ULO_Shortcut_@")
 		
 		$vl_idx:=UTIL_Col_Find_Index (Form:C1466.shortcuts;"name";$vt_eventObject)

@@ -13,7 +13,8 @@
   // ----------------------------------------------------
 
 C_TEXT:C284($1;$vt_targetHandle)
-
+C_LONGINT:C283($vl_navitemIndex;$vl_sidebarIdx)
+C_OBJECT:C1216($es_return)
 
 $vt_targetHandle:=$1
 
