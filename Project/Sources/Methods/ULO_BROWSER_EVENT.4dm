@@ -193,7 +193,7 @@ Case of
 			: ($vl_event=On Double Clicked:K2:5)
 				$vt_method:=Storage:C1525.hostMethods.rowDoubleClick  //Defind in INIT_STORAGE and set to a default of "ULO_MODIFY"
 				If (Form:C1466.selectedRecord#Null:C1517)
-					EXECUTE METHOD:C1007($vt_method;*;"Double click test: "+JSON Stringify:C1217(Form:C1466.selectedRecord.toObject()))
+					EXECUTE METHOD:C1007($vt_method;*;Form:C1466.tableNumber;Form:C1466.navItem.handle)
 				End if 
 				Form:C1466.refresh:=True:C214
 				SET TIMER:C645(-1)
