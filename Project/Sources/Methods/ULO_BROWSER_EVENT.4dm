@@ -337,6 +337,10 @@ Case of
 	: ($vt_eventObject="ULO_Button_@")
 		BUTTON_GENERIC_POP ($vt_eventObject)
 		
+	: ($vt_eventObject="ULO_HostShortcut@")
+		$vt_case:=Replace string:C233($vt_eventObject;"ULO_HostShortcut";"")
+		EXECUTE METHOD:C1007("ULO_Shortcut";*;$vt_case)
+		
 	: ($vt_eventObject="ULO_Shortcut_@")
 		
 		$vl_idx:=UTIL_Col_Find_Index (Form:C1466.shortcuts;"name";$vt_eventObject)
