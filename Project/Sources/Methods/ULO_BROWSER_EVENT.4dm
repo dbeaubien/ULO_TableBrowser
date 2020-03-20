@@ -110,6 +110,7 @@ Case of
 								End case 
 								
 							: (Form:C1466.footerRefresh)
+								Form:C1466.footerRefresh:=False:C215
 								ULO_LIST_UPDATE_FOOTER 
 								
 						End case 
@@ -235,9 +236,11 @@ Case of
 			
 			GOTO OBJECT:C206(*;"ULO_LIST")
 		End if 
-	: ($vt_eventObject="SearchText_@")  //Text field from the find widget
+	: ($vt_eventObject="ULO_DEFAULT_FIND")
+		
 		Case of 
-			: ($vl_event=On Selection Change:K2:29)
+			: ($vl_event=On Losing Focus:K2:8)
+				
 				$vt_value:=OBJECT Get pointer:C1124(Object named:K67:5;"ULO_DEFAULT_FIND")->  //Get the value from the find object
 				$es_return:=Form:C1466.uloRecords
 				$index:=UTIL_Col_Find_Index (Storage:C1525.buttons;"action";"FIND")
@@ -251,6 +254,8 @@ Case of
 				End if 
 				Form:C1466.uloRecords:=$es_return
 				
+				Form:C1466.footerRefresh:=True:C214
+				SET TIMER:C645(-1)
 		End case 
 		
 	: ($vt_eventObject="ULO_Button_VIEW") | ($vt_eventObject="ULO_ButtonBG_VIEW")
