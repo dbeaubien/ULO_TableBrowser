@@ -1,7 +1,7 @@
 //%attributes = {"shared":true}
-C_OBJECT:C1216($1;$vo_sub;$es;$es_return;$vo_sort)
+C_OBJECT:C1216($1;$vo_sub;$es;$es_return;$vo_sort;$vo_sidebar)
 
-C_TEXT:C284($vt_eventObject;$vt_value;$vt_method;$vt_head)
+C_TEXT:C284($vt_eventObject;$vt_value;$vt_method;$vt_head;$vt_case)
 C_LONGINT:C283($vl_event;$vl_table;$vl_selected;$index;\
 $vl_buttonNumber;$vl_idx;$vl_field;$vl_fieldIdx;\
 $vl_sortIdx)
@@ -23,6 +23,7 @@ Case of
 				  //TRACE
 				Form:C1466.resize:=False:C215
 				Form:C1466.pendingResize:=False:C215
+				Form:C1466.footerRefresh:=False:C215
 				Form:C1466.refresh:=False:C215
 				Form:C1466.fullRefresh:=True:C214
 				Form:C1466.relate:=False:C215
@@ -44,6 +45,14 @@ Case of
 					End if 
 					  //Else is top level item and always visible!
 				End if 
+				
+				  //Set all top level nav headers to expanded
+				For each ($vo_sidebar;Form:C1466.sidebarSource)
+					If ($vo_sidebar.type="HEADER")
+						$vo_sidebar.expanded:=True:C214
+					End if 
+				End for each 
+				
 				
 				ULO_SET_BACKGROUND 
 				
@@ -88,20 +97,24 @@ Case of
 							Form:C1466.sidebarSource[$index].selection:=Form:C1466.navItem.selection
 							Form:C1466.relate:=False:C215
 						End if 
-						If (Form:C1466.fullRefresh)
-							Form:C1466.fullRefresh:=False:C215
-							
-							Case of 
-								: (Form:C1466.navItem.type="DATA")
-									Form:C1466.tableNumber:=Form:C1466.navItem.table
-									ULO_LOAD_VIEW 
-								: (Form:C1466.navItem.type="WEB")
-									ULO_LOAD_WEB_AREA 
-							End case 
-							
-						Else   //Just plain refresh
-							ULO_LIST_UPDATE_FOOTER   //We're calling this twice on startup if a default view exists, but it needs to be called here
-						End if 
+						
+						Case of 
+							: (Form:C1466.fullRefresh)
+								Form:C1466.fullRefresh:=False:C215
+								Case of 
+									: (Form:C1466.navItem.type="DATA")
+										Form:C1466.tableNumber:=Form:C1466.navItem.table
+										ULO_LOAD_VIEW 
+									: (Form:C1466.navItem.type="WEB")
+										ULO_LOAD_WEB_AREA 
+								End case 
+								
+							: (Form:C1466.footerRefresh)
+								Form:C1466.footerRefresh:=False:C215
+								ULO_LIST_UPDATE_FOOTER 
+								
+						End case 
+						
 						$vl_selected:=Form:C1466.selectedRecords.length
 						OBJECT SET ENABLED:C1123(*;"ULO_Button_SHOWSUBSET";($vl_selected>0))
 						OBJECT SET ENABLED:C1123(*;"ULO_Button_OMITSUBSET";($vl_selected>0))
@@ -189,10 +202,11 @@ Case of
 				
 				CONTEXT_CLICK_POP 
 				Form:C1466.refresh:=True:C214
+				Form:C1466.footerRefresh:=True:C214
 				SET TIMER:C645(-1)
 				
 			: ($vl_event=On Clicked:K2:4)
-				  //Form.refresh:=True
+				Form:C1466.refresh:=True:C214
 				SET TIMER:C645(-1)
 				
 			: ($vl_event=On Column Resize:K2:31)
@@ -222,9 +236,11 @@ Case of
 			
 			GOTO OBJECT:C206(*;"ULO_LIST")
 		End if 
-	: ($vt_eventObject="SearchText_@")  //Text field from the find widget
+	: ($vt_eventObject="ULO_DEFAULT_FIND")
+		
 		Case of 
-			: ($vl_event=On Selection Change:K2:29)
+			: ($vl_event=On Losing Focus:K2:8)
+				
 				$vt_value:=OBJECT Get pointer:C1124(Object named:K67:5;"ULO_DEFAULT_FIND")->  //Get the value from the find object
 				$es_return:=Form:C1466.uloRecords
 				$index:=UTIL_Col_Find_Index (Storage:C1525.buttons;"action";"FIND")
@@ -238,6 +254,8 @@ Case of
 				End if 
 				Form:C1466.uloRecords:=$es_return
 				
+				Form:C1466.footerRefresh:=True:C214
+				SET TIMER:C645(-1)
 		End case 
 		
 	: ($vt_eventObject="ULO_Button_VIEW") | ($vt_eventObject="ULO_ButtonBG_VIEW")
@@ -277,6 +295,7 @@ Case of
 				End if 
 				Form:C1466.uloRecords:=$es
 				Form:C1466.refresh:=True:C214
+				Form:C1466.footerRefresh:=True:C214
 				SET TIMER:C645(-1)
 		End case 
 		
@@ -285,6 +304,7 @@ Case of
 			: ($vl_event=On Clicked:K2:4)
 				Form:C1466.uloRecords:=Form:C1466.selectedRecords
 				Form:C1466.refresh:=True:C214
+				Form:C1466.footerRefresh:=True:C214
 				SET TIMER:C645(-1)
 		End case 
 		
@@ -293,6 +313,7 @@ Case of
 			: ($vl_event=On Clicked:K2:4)
 				Form:C1466.uloRecords:=Form:C1466.uloRecords.minus(Form:C1466.selectedRecords)
 				Form:C1466.refresh:=True:C214
+				Form:C1466.footerRefresh:=True:C214
 				SET TIMER:C645(-1)
 		End case 
 		
@@ -301,6 +322,7 @@ Case of
 			: ($vl_event=On Clicked:K2:4)
 				BUTTON_SEARCH_POP 
 				Form:C1466.refresh:=True:C214
+				Form:C1466.footerRefresh:=True:C214
 				SET TIMER:C645(-1)
 				
 		End case 
@@ -315,6 +337,11 @@ Case of
 	: ($vt_eventObject="ULO_Button_@")
 		BUTTON_GENERIC_POP ($vt_eventObject)
 		
+	: ($vt_eventObject="ULO_HostShortcut@")
+		If ($vl_event=On Clicked:K2:4)
+			$vt_case:=Replace string:C233($vt_eventObject;"ULO_HostShortcut";"")
+			EXECUTE METHOD:C1007("ULO_Shortcut";*;$vt_case)
+		End if 
 	: ($vt_eventObject="ULO_Shortcut_@")
 		
 		$vl_idx:=UTIL_Col_Find_Index (Form:C1466.shortcuts;"name";$vt_eventObject)
@@ -326,14 +353,11 @@ Case of
 	Else 
 		Case of 
 			: ($vl_event=On Clicked:K2:4)
-				  //ALERT(OBJECT Get title(*;$vt_eventObject)+" : "+String($vl_event))
-				$vl_buttonNumber:=Num:C11($vt_eventObject)
-				$vt_method:=Form:C1466.buttons[$vl_buttonNumber].method
-				  //pass
-				  //tableNumber
-				  //entitySelection
-				If ($vt_method#"")  //Temp fix
-					EXECUTE METHOD:C1007($vt_method;*;$1;Form:C1466.navItem;JSON Stringify:C1217(Form:C1466.buttons[$vl_buttonNumber]))
+				$vl_idx:=UTIL_Col_Find_Index (Form:C1466.buttons;"reference";$vt_eventObject)
+				If ($vl_idx>=0)
+					If (Form:C1466.buttons[$vl_idx].method#"")  //Temp fix
+						EXECUTE METHOD:C1007(Form:C1466.buttons[$vl_idx].method;*;$1;Form:C1466.navItem;JSON Stringify:C1217(Form:C1466.buttons[$vl_buttonNumber]))
+					End if 
 				End if 
 		End case 
 		
