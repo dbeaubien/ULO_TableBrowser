@@ -4,11 +4,13 @@
   // User name (OS): Tom
   // Date and time: 17/02/20, 13:20:28
   // ----------------------------------------------------
-  // Method: ULO_HEADER_CLICK
+  // Method: ULO_Header_Click
   // Description
   // 
   //
   // Parameters
+  // $0 - Longint - Value returned by Event to determine if 4D
+  //                should attempt a regular sort
   // ----------------------------------------------------
 
 

@@ -215,11 +215,6 @@ Case of
 				  //after the user has finished resizing
 				Form:C1466.resizing:=True:C214
 				SET TIMER:C645(-1)
-				
-			: ($vl_event=On Header Click:K2:40)
-				
-				ULO_HEADER_CLICK 
-				
 		End case 
 		
 	: ($vt_eventObject="SearchPop@")
