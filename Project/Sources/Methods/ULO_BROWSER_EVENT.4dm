@@ -226,10 +226,12 @@ Case of
 		SET TIMER:C645(-1)
 		
 	: ($vt_eventObject="ULO_ExportView")
-		If (Form:C1466.navItem.type="DATA")
-			ULO_EXPORT_VIEW 
-			
-			GOTO OBJECT:C206(*;"ULO_LIST")
+		If ($vl_event=On Clicked:K2:4)
+			If (Form:C1466.navItem.type="DATA")
+				ULO_EXPORT_VIEW 
+				
+				GOTO OBJECT:C206(*;"ULO_LIST")
+			End if 
 		End if 
 	: ($vt_eventObject="ULO_DEFAULT_FIND")
 		
@@ -330,19 +332,21 @@ Case of
 		End case 
 		
 	: ($vt_eventObject="ULO_Button_@")
-		BUTTON_GENERIC_POP ($vt_eventObject)
-		
+		If ($vl_event=On Clicked:K2:4)
+			BUTTON_GENERIC_POP ($vt_eventObject)
+		End if 
 	: ($vt_eventObject="ULO_HostShortcut@")
 		If ($vl_event=On Clicked:K2:4)
 			$vt_case:=Replace string:C233($vt_eventObject;"ULO_HostShortcut";"")
 			EXECUTE METHOD:C1007("ULO_Shortcut";*;$vt_case)
 		End if 
 	: ($vt_eventObject="ULO_Shortcut_@")
-		
-		$vl_idx:=UTIL_Col_Find_Index (Form:C1466.shortcuts;"name";$vt_eventObject)
-		If ($vl_idx>=0)
-			If (Form:C1466.shortcuts[$vl_idx].function#"")
-				EXECUTE METHOD:C1007(Form:C1466.shortcuts[$vl_idx].method;$vc_hostOptions;Form:C1466.tableNumber;Form:C1466.navItem.handle;Form:C1466.shortcuts[$vl_idx].function)  //Return a collection
+		If ($vl_event=On Clicked:K2:4)
+			$vl_idx:=UTIL_Col_Find_Index (Form:C1466.shortcuts;"name";$vt_eventObject)
+			If ($vl_idx>=0)
+				If (Form:C1466.shortcuts[$vl_idx].function#"")
+					EXECUTE METHOD:C1007(Form:C1466.shortcuts[$vl_idx].method;$vc_hostOptions;Form:C1466.tableNumber;Form:C1466.navItem.handle;Form:C1466.shortcuts[$vl_idx].function)  //Return a collection
+				End if 
 			End if 
 		End if 
 	Else 
