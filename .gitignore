@@ -13,3 +13,4 @@
 *.Match
 
 /Project/*.lnk
+/Project/Logs/*
