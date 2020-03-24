@@ -79,10 +79,10 @@ Case of
 				  //ULO_LOAD_WEB_AREA 
 				
 				  //End case 
-				If (Storage:C1525.hostMethods.sidebarLoad#"")
-					EXECUTE METHOD:C1007(Storage:C1525.hostMethods.sidebarLoad;$es_return;Form:C1466.tableNumber;Form:C1466.navItem.handle)
-					Form:C1466.uloRecords:=$es_return
-				End if 
+				  //If (Storage.hostMethods.sidebarLoad#"")
+				  //EXECUTE METHOD(Storage.hostMethods.sidebarLoad;$es_return;Form.tableNumber;Form.navItem.handle)
+				  //Form.uloRecords:=$es_return
+				  //End if 
 				ULO_CREATE_SHORTCUTS 
 				
 				SET WINDOW RECT:C444(Form:C1466.wLeft;Form:C1466.wTop;Form:C1466.wRight;Form:C1466.wBottom)
@@ -162,20 +162,24 @@ Case of
 							End if 
 						: (Form:C1466.navItem.type="DATA")
 							If (Not:C34(Form:C1466.forceSelectNav))
+								
+								EXECUTE METHOD:C1007("ULO_FORM_EVENT";*;$1;Form:C1466.navItems[Form:C1466.lastNavItemIndex-1].table;Form:C1466.navItems[Form:C1466.lastNavItemIndex-1].handle)
+								
 								Form:C1466.tableNumber:=Form:C1466.navItem.table
 								ULO_LOAD_VIEW 
 								ULO_CREATE_SHORTCUTS 
 								Form:C1466.customColumns:=New collection:C1472
 								
-								If (Storage:C1525.hostMethods.sidebarLoad#"")
-									EXECUTE METHOD:C1007(Storage:C1525.hostMethods.sidebarLoad;$es_return;Form:C1466.tableNumber;Form:C1466.navItem.handle)
-									Form:C1466.uloRecords:=$es_return
-								End if 
+								  //If (Storage.hostMethods.sidebarLoad#"")
+								  //EXECUTE METHOD(Storage.hostMethods.sidebarLoad;$es_return;Form.tableNumber;Form.navItem.handle)
+								  //Form.uloRecords:=$es_return
+								  //End if 
 							Else 
 								Form:C1466.forceSelectNav:=False:C215
 							End if 
 						: (Form:C1466.navItem.type="WEB")
 							If (Not:C34(Form:C1466.forceSelectNav))
+								EXECUTE METHOD:C1007("ULO_FORM_EVENT";*;$1;Form:C1466.navItems[Form:C1466.lastNavItemIndex-1].table;Form:C1466.navItems[Form:C1466.lastNavItemIndex-1].handle)
 								ULO_LOAD_WEB_AREA 
 								ULO_CREATE_SHORTCUTS 
 							Else 

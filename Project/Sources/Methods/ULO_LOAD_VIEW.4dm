@@ -1,5 +1,5 @@
 //%attributes = {"invisible":true}
-C_OBJECT:C1216($vo_col;$vo_view)
+C_OBJECT:C1216($vo_col;$vo_view;$es_return)
 C_POINTER:C301($vp_nil;$vp_table)
 C_LONGINT:C283($i;$vl_columns;$vl_type;$vl_numFields;$vl_fontStyle;$vl_alignment;$vl_fontColour)
 C_TEXT:C284($vt_colName;$vt_hObject;$vt_formula;$vt_header;$vt_fObject;$vt_format)
@@ -20,12 +20,22 @@ If (Form:C1466.tableNumber>0)
 	  //Need a way to check to see if we have a selection 
 	  //for the selected data store and load it if we have
 	  //If not then revert to all records...
+	
+	If (Storage:C1525.hostMethods.sidebarLoad#"")
+		EXECUTE METHOD:C1007(Storage:C1525.hostMethods.sidebarLoad;$es_return;Form:C1466.tableNumber;Form:C1466.navItem.handle)
+		Form:C1466.uloRecords:=$es_return
+	End if 
+	
 	If (Form:C1466.navItem.selection#Null:C1517)
 		Form:C1466.uloRecords:=Form:C1466.navItem.selection
 	Else 
-		Form:C1466.navItem.selection:=New object:C1471
-		Form:C1466.navItem.selection:=ds:C1482[Table name:C256($vp_table)].all()
-		Form:C1466.uloRecords:=Form:C1466.navItem.selection
+		If ($es_return#Null:C1517)
+			Form:C1466.uloRecords:=$es_return
+		Else 
+			Form:C1466.navItem.selection:=New object:C1471
+			Form:C1466.navItem.selection:=ds:C1482[Table name:C256($vp_table)].all()
+			Form:C1466.uloRecords:=Form:C1466.navItem.selection
+		End if 
 		  //Push the loaded selection to the sore of current selections???
 	End if 
 	
@@ -160,7 +170,7 @@ If (Form:C1466.tableNumber>0)
 				  //End if 
 				
 				  //LISTBOX INSERT COLUMN FORMULA(*;"ULO_LIST";$i;$vt_colName;$vt_formula;\
-										$vl_type;$vt_hObject;$vp_nil;$vt_fObject;$vp_nil)
+															$vl_type;$vt_hObject;$vp_nil;$vt_fObject;$vp_nil)
 				
 				  //OBJECT SET FORMAT(*;$vt_colName;$vt_format)
 				  //OBJECT SET FONT STYLE(*;$vt_colName;$vl_fontStyle)

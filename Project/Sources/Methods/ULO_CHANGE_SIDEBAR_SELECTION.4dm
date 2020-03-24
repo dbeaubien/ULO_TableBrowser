@@ -37,10 +37,10 @@ If ($vl_sidebarIdx>=0)
 		Form:C1466.lastNavItemIndex:=$vl_navitemIndex+1
 	End if 
 	
-	If (Storage:C1525.hostMethods.sidebarLoad#"")
-		EXECUTE METHOD:C1007(Storage:C1525.hostMethods.sidebarLoad;$es_return;Form:C1466.tableNumber;Form:C1466.navItem.handle)
-		Form:C1466.uloRecords:=$es_return
-	End if 
+	  //If (Storage.hostMethods.sidebarLoad#"")
+	  //EXECUTE METHOD(Storage.hostMethods.sidebarLoad;$es_return;Form.tableNumber;Form.navItem.handle)
+	  //Form.uloRecords:=$es_return
+	  //End if 
 	ULO_CREATE_SHORTCUTS 
 	
 	Form:C1466.fullRefresh:=True:C214
