@@ -22,6 +22,7 @@ $cp:=Count parameters:C259
 $vc_hostOptions:=New collection:C1472
 
 If ($cp>0)  //True passed as second parameter
+	$vo_coord:=ULO_Get_Popup_Coord ($vt_eventObject)
 	$vl_buttonNumber:=UTIL_Col_Find_Index (Form:C1466.buttons;"reference";$vt_eventObject)
 	If ($vl_buttonNumber#-1)
 		$vt_method:=Form:C1466.buttons[$vl_buttonNumber].method
@@ -33,10 +34,9 @@ If ($cp>0)  //True passed as second parameter
 	If ($vc_hostOptions.length>0)
 		$vt_menu:=UTIL_Parse_Host_Menu_Options ($vt_menu;$vc_hostOptions)
 	End if 
-	$vt_selected:=Dynamic pop up menu:C1006($vt_menu)
+	$vt_selected:=Dynamic pop up menu:C1006($vt_menu;"";$vo_coord.x;$vo_coord.y)
 	If ($vt_selected#"")  //If there is a host search method specified
 		EXECUTE METHOD:C1007($vt_method;$vc_hostOptions;Form:C1466.tableNumber;Form:C1466.navItem.handle;$vt_selected)  //Runs the action
 	End if 
-	
 End if 
 
