@@ -53,6 +53,7 @@ Case of
 					End if 
 				End for each 
 				
+				EXECUTE METHOD:C1007("ULO_FORM_EVENT";*;$1)
 				
 				ULO_SET_BACKGROUND 
 				
