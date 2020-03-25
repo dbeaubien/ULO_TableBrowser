@@ -37,6 +37,10 @@ If ($cp>0)  //True passed as second parameter
 	$vt_selected:=Dynamic pop up menu:C1006($vt_menu;"";$vo_coord.x;$vo_coord.y)
 	If ($vt_selected#"")  //If there is a host search method specified
 		EXECUTE METHOD:C1007($vt_method;$vc_hostOptions;Form:C1466.tableNumber;Form:C1466.navItem.handle;$vt_selected)  //Runs the action
+		
+		Form:C1466.refresh:=True:C214
+		Form:C1466.footerRefresh:=True:C214
+		SET TIMER:C645(-1)
 	End if 
 End if 
 

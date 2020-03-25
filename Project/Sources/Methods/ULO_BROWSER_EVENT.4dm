@@ -121,6 +121,7 @@ Case of
 						OBJECT SET ENABLED:C1123(*;"ULO_Button_OMITSUBSET";($vl_selected>0))
 						ULO_SELECTION_MESSAGE 
 						Form:C1466.navItem.selection:=Form:C1466.uloRecords
+						Form:C1466.uloRecords:=Form:C1466.uloRecords  //to reload data after user Actions / Contexual actions
 						$index:=UTIL_Col_Find_Index (Form:C1466.sidebarSource;"index";Form:C1466.navItem.index)
 						If ($index>=0)
 							Form:C1466.sidebarSource[$index].selection:=Form:C1466.navItem.selection
