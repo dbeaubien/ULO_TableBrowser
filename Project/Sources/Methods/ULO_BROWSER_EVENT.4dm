@@ -146,12 +146,16 @@ Case of
 				
 				SIDEBAR_DBL_CLICK 
 				
-				If (Form:C1466.navItem.type="header")
-					LISTBOX SELECT ROW:C912(*;"ULO_Navbar";Form:C1466.lastNavItemIndex;lk replace selection:K53:1)
-					Form:C1466.forceSelectNav:=True:C214
-				End if 
 				
-				
+				Case of 
+					: (Form:C1466.navItem.type="header")
+						LISTBOX SELECT ROW:C912(*;"ULO_Navbar";Form:C1466.lastNavItemIndex;lk replace selection:K53:1)
+						Form:C1466.forceSelectNav:=True:C214
+						
+					: (Form:C1466.navItem.type="data")
+						LISTBOX SELECT ROW:C912(*;"ULO_Navbar";Form:C1466.selectedNavItem;lk replace selection:K53:1)
+						
+				End case 
 				
 			: ($vl_event=On Selection Change:K2:29)  // | ($vl_event=On Clicked)
 				If (Form:C1466.navItem#Null:C1517)
