@@ -172,9 +172,9 @@ Case of
 								EXECUTE METHOD:C1007("ULO_FORM_EVENT";*;$1;Form:C1466.navItems[Form:C1466.lastNavItemIndex-1].table;Form:C1466.navItems[Form:C1466.lastNavItemIndex-1].handle)
 								
 								Form:C1466.tableNumber:=Form:C1466.navItem.table
+								Form:C1466.customColumns:=New collection:C1472
 								ULO_LOAD_VIEW 
 								ULO_CREATE_SHORTCUTS 
-								Form:C1466.customColumns:=New collection:C1472
 								
 								  //If (Storage.hostMethods.sidebarLoad#"")
 								  //EXECUTE METHOD(Storage.hostMethods.sidebarLoad;$es_return;Form.tableNumber;Form.navItem.handle)
