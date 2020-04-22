@@ -195,7 +195,8 @@ Case of
 				Else 
 					LISTBOX SELECT ROW:C912(*;"ULO_Navbar";Form:C1466.lastNavItemIndex;lk replace selection:K53:1)
 				End if 
-				ULO_SELECTION_MESSAGE 
+				  //ULO_SELECTION_MESSAGE 
+				  //This was causing an error when called here...
 		End case 
 		
 	: ($vt_eventObject="ULO_LIST")
