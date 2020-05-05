@@ -20,16 +20,19 @@ $vp_table:=Table:C252(Form:C1466.tableNumber)
 $cp:=Count parameters:C259
 $vc_hostOptions:=New collection:C1472
 
+  //first make call to host to get any host options.
+$index:=UTIL_Col_Find_Index (Storage:C1525.buttons;"action";"RELATE")
+If ($index>=0)
+	If (Storage:C1525.buttons[$index].method#"")  //If there is a host search method specified
+		$vt_hostMethod:=Storage:C1525.buttons[$index].method
+	End if 
+End if 
+
 If ($cp=0)
 	$vt_menu:=Create menu:C408
 	
-	  //first make call to host to get any options.
-	$index:=UTIL_Col_Find_Index (Storage:C1525.buttons;"action";"RELATE")
-	If ($index>=0)
-		If (Storage:C1525.buttons[$index].method#"")  //If there is a host search method specified
-			$vt_hostMethod:=Storage:C1525.buttons[$index].method
-			EXECUTE METHOD:C1007($vt_hostMethod;$vc_hostOptions;Form:C1466.tableNumber;Form:C1466.navItem.handle)  //Return a collection
-		End if 
+	If ($vt_hostMethod#"")
+		EXECUTE METHOD:C1007($vt_hostMethod;$vc_hostOptions;Form:C1466.tableNumber;Form:C1466.navItem.handle)  //Return a collection
 	End if 
 	
 	If ($vc_hostOptions.length>0)
@@ -97,8 +100,8 @@ Else
 			
 		: ($vo_param.action="same") | ($vo_param.action="sameHost")
 			
-			If ($vo_param.action="sameHost")  //If host we will have already set the selection
-				EXECUTE METHOD:C1007($vt_hostMethod;$vc_hostOptions;Form:C1466.tableNumber;Form:C1466.navItem.handle;$1)  //Return a collection
+			If ($vo_param.action="sameHost") & ($vt_hostMethod#"")  //If host we will have already set the selection
+				EXECUTE METHOD:C1007($vt_hostMethod;$vc_hostOptions;Form:C1466.tableNumber;Form:C1466.navItem.handle;$vo_param.relation)  //Return a collection
 			Else 
 				Form:C1466.uloRecords:=Form:C1466.uloRecords[$vo_param.relation]
 			End if 
