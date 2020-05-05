@@ -104,10 +104,10 @@ Else
 				EXECUTE METHOD:C1007($vt_hostMethod;$vc_hostOptions;Form:C1466.tableNumber;Form:C1466.navItem.handle;$vo_param.relation)  //Return a collection
 			Else 
 				Form:C1466.uloRecords:=Form:C1466.uloRecords[$vo_param.relation]
+				Form:C1466.tableNumber:=$vo_param.table
 			End if 
-			Form:C1466.tableNumber:=$vo_param.table
 			
-			$index:=UTIL_Col_Find_Index (Form:C1466.sidebarSource;"table";$vo_param.table;"type";"DATA")
+			$index:=UTIL_Col_Find_Index (Form:C1466.sidebarSource;"table";Form:C1466.tableNumber;"type";"DATA")
 			
 			  //If desired sidebar item is child, ensure parent(s) are expanded
 			If (OB Is defined:C1231(Form:C1466.sidebarSource[$index];"childOfIndex"))
