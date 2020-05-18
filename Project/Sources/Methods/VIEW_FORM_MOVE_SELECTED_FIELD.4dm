@@ -44,7 +44,20 @@ For each ($vo_field;Form:C1466.selectedFields)
 			
 			$vo_col.width:=100
 			$vo_col.fieldType:=Type:C295(Field:C253(al_tableNum{at_tableName};$vo_field.fieldNumber)->)
-			$vo_col.format:=""
+			Case of 
+				: ($vo_col.fieldType=Is date:K8:7)
+					$vo_col.format:="dd/mm/yyyy"
+				: ($vo_col.fieldType=Is real:K8:4)
+					$vo_col.format:="###,###,###,##0.00;-###,###,###,##0.00;"
+				: ($vo_col.fieldType=Is longint:K8:6)
+					$vo_col.format:="###,##0;-###,##0;"
+				: ($vo_col.fieldType=Is integer:K8:5)
+					$vo_col.format:="###,###,##0;-###,###,##0;"
+				: ($vo_col.fieldType=Is boolean:K8:9)
+					$vo_col.format:="Y;N"
+				Else 
+					$vo_col.format:=""
+			End case 
 			$vo_col.fontStyle:=0
 			$vo_col.fontColour:=0x0000  //Black
 			$vo_col.fontColourHex:="000000"
