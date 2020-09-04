@@ -381,5 +381,6 @@
 		"version": "1",
 		"kind": "form"
 	},
-	"formSizeAnchor": "BackgroundColour"
+	"formSizeAnchor": "BackgroundColour",
+	"menuBar": "None"
 }
