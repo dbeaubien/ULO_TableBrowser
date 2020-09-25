@@ -3,17 +3,7 @@
 		{
 			"id": 1,
 			"name": "Menu Bar #1",
-			"items": [
-				{
-					"link": 32001
-				},
-				{
-					"link": 32002
-				},
-				{
-					"link": 32003
-				}
-			]
+			"items": []
 		}
 	],
 	"menus": [
@@ -78,16 +68,6 @@
 				{
 					"title": ":xliff:CommonMenuItemShowClipboard",
 					"action": "showClipboard"
-				}
-			]
-		},
-		{
-			"link": 32003,
-			"title": ":xliff:CommonMenuMode",
-			"items": [
-				{
-					"title": ":xliff:CommonMenuItemDesign",
-					"action": "design"
 				}
 			]
 		}
