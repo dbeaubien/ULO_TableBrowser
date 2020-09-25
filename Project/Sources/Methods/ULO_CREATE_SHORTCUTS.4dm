@@ -24,7 +24,7 @@ End for each
 For each ($vo_button;Storage:C1525.buttons)
 	$vc_hostOptions:=New collection:C1472
 	
-	If ($vo_button.type="popup")
+	If ($vo_button.type="popup") & ($vo_button.action#"RELATE")
 		If ($vo_button.method#"")
 			EXECUTE METHOD:C1007($vo_button.method;$vc_hostOptions;Form:C1466.tableNumber;Form:C1466.navItem.handle)  //Return a collection
 			

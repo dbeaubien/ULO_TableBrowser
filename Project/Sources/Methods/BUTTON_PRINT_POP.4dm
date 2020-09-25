@@ -51,7 +51,7 @@ Case of
 	: ($1="EXPORTVIEW")
 		C_OBJECT:C1216($vo_eventObject)
 		$vo_eventObject:=New object:C1471
-		$vo_eventObject.code:=-999
+		$vo_eventObject.code:=On Clicked:K2:4
 		$vo_eventObject.objectName:="ULO_ExportView"
 		ULO_BROWSER_EVENT ($vo_eventObject)
 		

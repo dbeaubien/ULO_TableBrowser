@@ -195,7 +195,8 @@ Case of
 				Else 
 					LISTBOX SELECT ROW:C912(*;"ULO_Navbar";Form:C1466.lastNavItemIndex;lk replace selection:K53:1)
 				End if 
-				ULO_SELECTION_MESSAGE 
+				  //ULO_SELECTION_MESSAGE 
+				  //This was causing an error when called here...
 		End case 
 		
 	: ($vt_eventObject="ULO_LIST")
@@ -236,12 +237,12 @@ Case of
 		SET TIMER:C645(-1)
 		
 	: ($vt_eventObject="ULO_ExportView")
-		If ($vl_event=On Clicked:K2:4)
-			If (Form:C1466.navItem.type="DATA")
-				ULO_EXPORT_VIEW 
-				
-				GOTO OBJECT:C206(*;"ULO_LIST")
-			End if 
+		  //If ($vl_event=On Clicked)
+		If (Form:C1466.navItem.type="DATA")
+			ULO_EXPORT_VIEW 
+			
+			GOTO OBJECT:C206(*;"ULO_LIST")
+			  //End if 
 		End if 
 	: ($vt_eventObject="ULO_DEFAULT_FIND")
 		

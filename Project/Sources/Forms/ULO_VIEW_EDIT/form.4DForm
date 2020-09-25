@@ -495,7 +495,7 @@
 					"width": 52,
 					"height": 16,
 					"dataSource": "Form:C1466.view.detail.lockedColumns",
-					"dataSourceTypeHint": "number",
+					"dataSourceTypeHint": "integer",
 					"class": "default",
 					"contextMenu": "none",
 					"dragging": "none",
@@ -521,7 +521,7 @@
 					"width": 52,
 					"height": 16,
 					"dataSource": "Form:C1466.view.detail.headerHeight",
-					"dataSourceTypeHint": "number",
+					"dataSourceTypeHint": "integer",
 					"class": "default",
 					"contextMenu": "none",
 					"min": 1,
@@ -558,7 +558,7 @@
 					"width": 52,
 					"height": 16,
 					"dataSource": "Form:C1466.view.detail.rowHeight",
-					"dataSourceTypeHint": "number",
+					"dataSourceTypeHint": "integer",
 					"class": "default",
 					"contextMenu": "none",
 					"min": 1,
@@ -607,7 +607,7 @@
 					],
 					"stroke": "#ff0000"
 				},
-				"isPublic1": {
+				"isDefault": {
 					"type": "checkbox",
 					"top": 218,
 					"left": 209,

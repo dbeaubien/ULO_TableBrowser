@@ -7,7 +7,7 @@
   //5 - Sub menu for deleting saved searches
 
 
-  //Manages all fo the popup actions for the search button
+  //Manages all of the popup actions for the search button
 C_TEXT:C284($1;$vt_menu;$vt_selected;$vt_shortcut)
 C_LONGINT:C283($cp;$vl_menuNum;$index;$vl_modifier)
 C_OBJECT:C1216($vo_option;$vo_coord)
