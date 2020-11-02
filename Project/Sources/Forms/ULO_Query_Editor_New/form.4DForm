@@ -54,7 +54,7 @@
 					"left": 20,
 					"width": 216,
 					"height": 22,
-					"dataSource": "at_tableList",
+					"dataSource": "",
 					"focusable": false,
 					"events": [
 						"onDataChange"
@@ -74,7 +74,8 @@
 					"events": [
 						"onClick"
 					],
-					"action": "accept"
+					"action": "accept",
+					"stroke": "#008000"
 				},
 				"bt_clearQuery": {
 					"type": "button",
@@ -89,7 +90,8 @@
 						"onClick"
 					],
 					"dataSource": "",
-					"method": "ObjectMethods/bt_clearQuery.4dm"
+					"method": "ObjectMethods/bt_clearQuery.4dm",
+					"stroke": "#0000cd"
 				},
 				"bt_cancel": {
 					"type": "button",
@@ -106,7 +108,8 @@
 					],
 					"class": "",
 					"dataSource": "",
-					"action": "cancel"
+					"action": "cancel",
+					"stroke": "#ff0000"
 				},
 				"queryLines": {
 					"type": "subform",

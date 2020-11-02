@@ -3,6 +3,8 @@ C_LONGINT:C283($vl_fia)
 Case of 
 	: (Form event code:C388=On Load:K2:1)
 		
+		ULO_SET_BACKGROUND 
+		
 		ARRAY TEXT:C222($at_tableName;0)
 		ARRAY LONGINT:C221($al_tableNum;0)
 		
