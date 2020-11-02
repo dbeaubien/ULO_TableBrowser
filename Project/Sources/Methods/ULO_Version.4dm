@@ -2,6 +2,8 @@
 C_TEXT:C284($0)
 $0:="1.0.1"
 
+  //2020-02-11 - 1.1.0
+  //- New Query Editor 
 
   //2020-05-20 - 0.0.1
   //- Start of version history
