@@ -39,6 +39,7 @@ If ($cp=0)
 		$vt_menu:=UTIL_Parse_Host_Menu_Options ($vt_menu;$vc_hostOptions)
 	End if 
 	
+	ULO_GET_TABLE_TITLES (->$at_tableName;->$al_tableNum)
 	
 	$vc_menuItems:=New collection:C1472
 	$vo_coord:=ULO_Get_Popup_Coord ("ULO_Button_RELATE")
@@ -48,11 +49,14 @@ If ($cp=0)
 		If ($vo_field.kind="relatedEntit@")
 			$vl_count:=Form:C1466.uloRecords[$vo_field.fieldName].length
 			
-			$vl_idx:=UTIL_Col_Find_Index (Form:C1466.sidebarSource;"handle";$vo_field.relatedDataClass)  //TODO: Needs changing
-			If ($vl_idx>=0)
-				$vc_menuItems.push(New object:C1471("relation";$vo_field.fieldName;"table";Form:C1466.sidebarSource[$vl_idx].table;"count";$vl_count;"fieldName";$vo_field.relatedDataClass))
-			Else 
-				  //Can't find nav item for this table number
+			$vl_fia:=Find in array:C230($at_tableName;$vo_field.relatedDataClass)
+			If ($vl_fia>0)
+				$vl_idx:=UTIL_Col_Find_Index (Form:C1466.sidebarSource;"table";$al_tableNum{$vl_fia})  //TODO: Needs changing
+				If ($vl_idx>=0)
+					$vc_menuItems.push(New object:C1471("relation";$vo_field.fieldName;"table";Form:C1466.sidebarSource[$vl_idx].table;"count";$vl_count;"fieldName";$vo_field.relatedDataClass))
+				Else 
+					  //Can't find nav item for this table number
+				End if 
 			End if 
 		End if 
 	End for each 
