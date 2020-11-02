@@ -76,11 +76,15 @@ If (Form:C1466.tableNumber>0)
 				
 				$vl_fontColour:=Choose:C955($vo_col.fontColourOverride;$vo_col.fontColour;Form:C1466.theme.rowFontColour)
 				
-				
 				LISTBOX INSERT COLUMN FORMULA:C970(*;"ULO_LIST";$i;$vt_colName;$vt_formula;\
 					$vo_col.fieldType;$vt_hObject;$vp_nil;$vt_fObject;$vp_nil)
 				
-				OBJECT SET FORMAT:C236(*;$vt_colName;$vo_col.format)
+				If ($vo_col.fieldType=Is picture:K8:10)
+					OBJECT SET FORMAT:C236(*;$vt_colName;Char:C90(Scaled to fit prop centered:K6:6))
+				Else 
+					OBJECT SET FORMAT:C236(*;$vt_colName;$vo_col.format)
+				End if 
+				
 				OBJECT SET FONT STYLE:C166(*;$vt_colName;$vo_col.fontStyle)
 				OBJECT SET HORIZONTAL ALIGNMENT:C706(*;$vt_colName;$vl_alignment)
 				OBJECT SET RGB COLORS:C628(*;$vt_colName;$vl_fontColour)
@@ -170,7 +174,7 @@ If (Form:C1466.tableNumber>0)
 				  //End if 
 				
 				  //LISTBOX INSERT COLUMN FORMULA(*;"ULO_LIST";$i;$vt_colName;$vt_formula;\
-															$vl_type;$vt_hObject;$vp_nil;$vt_fObject;$vp_nil)
+																									$vl_type;$vt_hObject;$vp_nil;$vt_fObject;$vp_nil)
 				
 				  //OBJECT SET FORMAT(*;$vt_colName;$vt_format)
 				  //OBJECT SET FONT STYLE(*;$vt_colName;$vl_fontStyle)
