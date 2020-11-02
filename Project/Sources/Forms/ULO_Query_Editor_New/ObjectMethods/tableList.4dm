@@ -6,9 +6,14 @@ C_BOOLEAN:C305($vb_fieldIndexed;$vb_fieldInvisible;$vb_fieldUnique)
 Case of 
 	: (Form event code:C388=On Data Change:K2:15)
 		
-		$vc_fields:=ULO_Get_Table_Fields (at_tableName{OBJECT Get pointer:C1124(Object current:K67:2)->})
+		ARRAY TEXT:C222($at_tableName;0)
+		ARRAY LONGINT:C221($al_tableNum;0)
+		
+		COLLECTION TO ARRAY:C1562(Form:C1466.linkedTables;$at_tableName;"tableName";$al_tableNum;"tableNum")
+		
+		$vc_fields:=ULO_Get_Table_Fields ($at_tableName{OBJECT Get pointer:C1124(Object current:K67:2)->})
 		$vc_fields:=$vc_fields.query("kind == 'storage'")
-		$vl_table:=al_tableNum{OBJECT Get pointer:C1124(Object current:K67:2)->}
+		$vl_table:=$al_tableNum{OBJECT Get pointer:C1124(Object current:K67:2)->}
 		Form:C1466.currentTable:=$vl_table
 		
 		ARRAY LONGINT:C221($al_fields;0)

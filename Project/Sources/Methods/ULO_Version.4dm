@@ -1,6 +1,6 @@
 //%attributes = {"shared":true}
 C_TEXT:C284($0)
-$0:="1.0.1"
+$0:="1.1.0"
 
   //2020-02-11 - 1.1.0
   //- New Query Editor 

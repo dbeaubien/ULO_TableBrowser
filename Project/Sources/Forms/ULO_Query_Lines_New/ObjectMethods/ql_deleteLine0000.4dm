@@ -16,6 +16,6 @@ If (FORM Event:C1606.code=On Clicked:K2:4)
 		End for 
 		
 	Else 
-		ALERT:C41("Cannot the last query line")
+		ALERT:C41("Cannot delete the last query line")
 	End if 
 End if 
