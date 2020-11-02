@@ -12,7 +12,7 @@
 
 C_OBJECT:C1216($0;$vo_queryLine;$vo_params)
 C_COLLECTION:C1488($2)
-C_TEXT:C284($vt_queryString;$vt_conjunction)
+C_TEXT:C284($vt_queryString;$vt_conjunction;$vt_field)
 C_LONGINT:C283($1;$vl_queryIndex;$vl_type)
 $vo_params:=New object:C1471
 $vo_params.parameters:=New collection:C1472
@@ -24,10 +24,31 @@ For each ($vo_queryLine;$2)
 			$vt_conjunction:=" "+$vo_queryLine.conjunction+" "
 		End if 
 	End if 
-	$vt_queryString:=$vt_queryString+Field name:C257($1;$vo_queryLine.field)+" "+$vo_queryLine.oper+" :"+String:C10($vl_queryIndex)+$vt_conjunction
+	
+	$vt_field:=$vo_queryLine.fieldName
+	If (OB Is defined:C1231($vo_queryLine;"relation"))
+		If ($vo_queryLine.relation#"")
+			$vt_field:=$vo_queryLine.relation+"."+$vt_field
+		End if 
+	End if 
+	If (OB Is defined:C1231($vo_queryLine;"attribute"))
+		If ($vo_queryLine.attribute#"")
+			$vt_field:=$vt_field+"."+$vo_queryLine.attribute
+		End if 
+	End if 
+	
+	If ($vo_queryLine.lBracket)
+		$vt_queryString:=$vt_queryString+"("
+	End if 
+	$vt_queryString:=$vt_queryString+$vt_field+" "+$vo_queryLine.oper+" :"+String:C10($vl_queryIndex)
+	If ($vo_queryLine.rBracket)
+		$vt_queryString:=$vt_queryString+")"
+	End if 
+	$vt_queryString:=$vt_queryString+$vt_conjunction
+	
 	$vl_type:=$vo_queryLine.type
 	Case of 
-		: ($vl_type=Is text:K8:3) | ($vl_type=Is alpha field:K8:1)
+		: ($vl_type=Is text:K8:3) | ($vl_type=Is alpha field:K8:1) | ($vl_type=Is object:K8:27)
 			$vo_params.parameters.push($vo_queryLine.value)
 		: ($vl_type=Is longint:K8:6) | ($vl_type=Is real:K8:4) | ($vl_type=Is integer:K8:5)
 			$vo_params.parameters.push(Num:C11($vo_queryLine.value))

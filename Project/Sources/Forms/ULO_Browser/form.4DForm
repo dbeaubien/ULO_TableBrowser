@@ -382,9 +382,5 @@
 		"kind": "form"
 	},
 	"formSizeAnchor": "BackgroundColour",
-<<<<<<< HEAD
 	"menuBar": "Menu Bar #1"
-=======
-	"menuBar": "None"
->>>>>>> 64a42d09b4cc590a79c5da597602fe7dd425107f
 }
