@@ -12,7 +12,7 @@
   // ----------------------------------------------------
 
 C_TEXT:C284($1;$vt_menu;$vt_selected;$vt_hostMethod)
-C_LONGINT:C283($vl_CurrentUser;$cp;$vl_menuNum;$index;$vl_count;$vl_idx)
+C_LONGINT:C283($vl_CurrentUser;$cp;$vl_menuNum;$index;$vl_count;$vl_idx;$vl_fia)
 C_OBJECT:C1216($vo_view;$vo_option;$vo_coord;$vo_field;$vo_param;$vo_col)
 C_COLLECTION:C1488($vc_hostOptions;$vc_fields;$vc_menuItems)
 C_POINTER:C301($vp_table)
@@ -38,6 +38,9 @@ If ($cp=0)
 	If ($vc_hostOptions.length>0)
 		$vt_menu:=UTIL_Parse_Host_Menu_Options ($vt_menu;$vc_hostOptions)
 	End if 
+	
+	ARRAY TEXT:C222($at_tableName;0)
+	ARRAY LONGINT:C221($al_tableNum;0)
 	
 	ULO_GET_TABLE_TITLES (->$at_tableName;->$al_tableNum)
 	
