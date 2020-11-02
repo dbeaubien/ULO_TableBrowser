@@ -18,6 +18,9 @@ C_OBJECT:C1216($1;$vo_queryData)
 C_TEXT:C284($2;$vt_rowExtension)
 C_LONGINT:C283($vl_fia;$vl_fieldType)
 
+C_OBJECT:C1216($vo_field)
+
+
 ARRAY TEXT:C222($at_queryOperCode;0)
 ARRAY TEXT:C222($at_queryOperName;0)
 ARRAY TEXT:C222($at_queryConjCode;0)
@@ -52,6 +55,13 @@ End if
 
 If ($vo_queryData.lBracket)
 	OBJECT SET TITLE:C194(*;"ql_lBracket"+$vt_rowExtension;"(")
+End if 
+
+OBJECT GET COORDINATES:C663(*;"ql_field"+$vt_rowExtension;$vl_left;$vl_top;$vl_right;$vl_bottom)
+If ($vo_field.fieldType=Is object:K8:27)
+	OBJECT SET COORDINATES:C1248(*;"ql_field"+$vt_rowExtension;$vl_left;$vl_top;124;$vl_bottom)
+Else 
+	OBJECT SET COORDINATES:C1248(*;"ql_field"+$vt_rowExtension;$vl_left;$vl_top;244;$vl_bottom)
 End if 
 
 OBJECT SET VISIBLE:C603(*;"ql_value@"+$vt_rowExtension;False:C215)
