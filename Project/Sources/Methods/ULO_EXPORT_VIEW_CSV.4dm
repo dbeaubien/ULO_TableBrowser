@@ -12,7 +12,8 @@
   // ----------------------------------------------------
 
   //Declare
-C_LONGINT:C283($1;$vl_Progress)
+C_OBJECT:C1216($1;$es_records)
+C_LONGINT:C283($vl_Progress)
 C_LONGINT:C283($recordIndex;$vl_headerFormat;$vl_font;$vl_workbook;$vl_worksheet)
 C_LONGINT:C283($cp;$fieldIndex;$vl_fia;$width;$height)
 C_TIME:C306($vh_Doc)
@@ -21,9 +22,10 @@ C_OBJECT:C1216($vo_col;$e_record)
 $cp:=Count parameters:C259
 
   //Ask the user to create and name a document
-$vh_Doc:=Create document:C266("";"CSV")
+$vh_Doc:=Create document:C266("";"csv")
 
 If (OK=1)  //If user has created a document ....
+	$es_records:=$1
 	$vl_Progress:=Progress New 
 	CLOSE DOCUMENT:C267($vh_Doc)
 	$vt_filename:=Document
@@ -48,7 +50,7 @@ If (OK=1)  //If user has created a document ....
 	
 	  //Loop through the records
 	$recordIndex:=1
-	For each ($e_record;Form:C1466.uloRecords)
+	For each ($e_record;$es_records)
 		
 		  //Then loop through the columns
 		$fieldIndex:=1  //Used for excel column number
@@ -85,6 +87,13 @@ If (OK=1)  //If user has created a document ....
 							vt_ExportValue:=String:C10($e_record[$vo_col.formula])
 						End if 
 						
+					: ($vo_col.fieldType=Is boolean:K8:9)
+						If ($vo_col.field<0)
+							EXECUTE FORMULA:C63("vt_ExportValue:=string("+$e_record[$vo_col.formula]+")")
+						Else 
+							vt_ExportValue:=String:C10($e_record[$vo_col.formula])
+						End if 
+						
 				End case   //END field type case
 				$fieldIndex:=$fieldIndex+1
 				
@@ -99,7 +108,7 @@ If (OK=1)  //If user has created a document ....
 			End if   //END selected check
 		End for each   //END field loop
 		
-		Progress SET PROGRESS ($vl_Progress;-1;"Exporting: "+String:C10($recordIndex)+" of  "+String:C10(Form:C1466.uloRecords.length))
+		Progress SET PROGRESS ($vl_Progress;-1;"Exporting: "+String:C10($recordIndex)+" of  "+String:C10($es_records.length))
 		$recordIndex:=$recordIndex+1
 	End for each   //END record loop
 	Progress QUIT ($vl_Progress)

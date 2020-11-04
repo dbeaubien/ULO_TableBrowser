@@ -12,11 +12,12 @@
   // ----------------------------------------------------
 
   //Declare
-C_LONGINT:C283($1;$i;$vl_Progress;$recordIndex;$vl_headerFormat;$vl_font;\
+C_LONGINT:C283($i;$vl_Progress;$recordIndex;$vl_headerFormat;$vl_font;\
 $vl_workbook;$vl_worksheet;$vl_tempFooterFont;$cp;$fieldIndex;$vl_fia;\
 $width;$height;$vl_footerRow;$vl_fontSize;$vl_rowBgAltColour;$vl_rowBgColour;\
 $vl_headerFormat;$vl_font;$vl_dateFormat;$vl_dateNr;$vl_PictureID;\
 $vl_customHeaderFormat;$vl_fontColour;$vl_hLineColour;$vl_vLineColour;$vl_tempFont)
+C_OBJECT:C1216($1;$es_records)
 C_TIME:C306($vh_Doc)
 C_TEXT:C284(vt_ExportValue;$vt_filename;$vt_font;$vt_formula;$vt_col)
 C_REAL:C285(vr_ExportValue)
@@ -32,9 +33,10 @@ $cp:=Count parameters:C259
 $vc_columnThemes:=New collection:C1472
 
   //Ask the user to create and name a document
-$vh_Doc:=Create document:C266("";"XLSX")
+$vh_Doc:=Create document:C266("";"xlsx")
 
 If (OK=1)  //If user has created a document ....
+	$es_records:=$1
 	$vl_Progress:=Progress New 
 	CLOSE DOCUMENT:C267($vh_Doc)
 	$vt_filename:=Document
@@ -269,7 +271,7 @@ If (OK=1)  //If user has created a document ....
 	
 	  //Loop through the records
 	$recordIndex:=1
-	For each ($e_record;Form:C1466.uloRecords)
+	For each ($e_record;$es_records)
 		  //Then loop through the columns
 		$fieldIndex:=1  //Used for excel column number
 		For each ($vo_col;Form:C1466.navItem.selectedView.detail.cols)
@@ -303,7 +305,7 @@ If (OK=1)  //If user has created a document ....
 						End if 
 						xlSheetSetCellDateTime ($vl_worksheet;$recordIndex+1;$fieldIndex;vd_ExportValue;0;0;$vc_columnThemes[$fieldIndex-1][Num:C11($vb_alt)])
 						
-					: ($vo_col.fieldType=Is time:K8:8)
+					: (($vo_col.fieldType=Is time:K8:8) | ($vo_col.fieldType=Is boolean:K8:9))
 						If ($vo_col.field<0)
 							EXECUTE FORMULA:C63("vt_ExportValue:=string("+$e_record[$vo_col.formula]+")")
 						Else 
@@ -338,7 +340,7 @@ If (OK=1)  //If user has created a document ....
 			End if   //END selected check
 		End for each   //END field loop
 		
-		Progress SET PROGRESS ($vl_Progress;-1;"Exporting: "+String:C10($recordIndex)+" of  "+String:C10(Form:C1466.uloRecords.length))
+		Progress SET PROGRESS ($vl_Progress;-1;"Exporting: "+String:C10($recordIndex)+" of  "+String:C10($es_records.length))
 		  //Progress_State ("Update";"Exporting: "+String($recordIndex)+" of  "+String($vl_RIS))
 		$recordIndex:=$recordIndex+1
 		$vb_alt:=Not:C34($vb_alt)

@@ -18,7 +18,7 @@ C_LONGINT:C283($1;$cp)
 C_LONGINT:C283($vl_win;$vl_W;$vl_H;$vl_TableNum;$vl_sel;$vl_ris)
 C_POINTER:C301(vp_HOST_BRW_Table)
 C_LONGINT:C283(b_exportCSV;b_exportExcel;vl_DisplayedItems;vl_HighlightedItems)
-C_OBJECT:C1216($vo_formData)
+C_OBJECT:C1216($vo_formData;$es_records)
 $cp:=Count parameters:C259
 $vl_ris:=Form:C1466.uloRecords.length
 $vl_sel:=Form:C1466.selectedRecords.length
@@ -38,15 +38,17 @@ If (b_exportExcel=1) | (b_exportCSV=1)  //If a report was chosen
 	
 	  //Reduce the selection if we need to
 	If ($vo_formData.highlighted)
-		USE SET:C118("UserSet")
+		$es_records:=Form:C1466.selectedRecords
+	Else 
+		$es_records:=Form:C1466.uloRecords
 	End if 
 	
 	Case of 
 		: (b_exportExcel=1)
-			ULO_EXPORT_VIEW_XLSX ($vl_TableNum)
+			ULO_EXPORT_VIEW_XLSX ($es_records)
 			
 		: (b_exportCSV=1)
-			ULO_EXPORT_VIEW_CSV ($vl_TableNum)
+			ULO_EXPORT_VIEW_CSV ($es_records)
 			
 	End case 
 	
