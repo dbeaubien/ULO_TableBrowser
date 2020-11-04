@@ -261,7 +261,7 @@ Case of
 					EXECUTE METHOD:C1007(Storage:C1525.hostMethods.filter;$es_return;Form:C1466.tableNumber;Form:C1466.navItem.handle;$es_return)
 				End if 
 				Form:C1466.uloRecords:=$es_return
-				
+				OBJECT Get pointer:C1124(Object named:K67:5;"ULO_DEFAULT_FIND")->:=""  //Clear search field value
 				Form:C1466.footerRefresh:=True:C214
 				SET TIMER:C645(-1)
 		End case 
