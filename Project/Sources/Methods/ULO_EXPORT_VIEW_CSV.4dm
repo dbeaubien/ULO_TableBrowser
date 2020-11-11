@@ -27,7 +27,6 @@ $vh_Doc:=Create document:C266("";"csv")
 If (OK=1)  //If user has created a document ....
 	$es_records:=$1
 	$vl_Progress:=Progress New 
-	CLOSE DOCUMENT:C267($vh_Doc)
 	$vt_filename:=Document
 	Progress SET PROGRESS ($vl_Progress;-1;"Exporting view please wait ...")
 	
