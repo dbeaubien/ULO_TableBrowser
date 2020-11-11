@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?><preferences stamp="4">
+﻿<?xml version="1.0" encoding="UTF-8"?><preferences stamp="5">
 	<com.4d>
 		<deployment>
 			<options/>
@@ -7,7 +7,7 @@
 			<cache flush_buffer_delay="20s"/>
 		</database>
 		<interface>
-			<user formula_editor_with_full_lists="false"/>
+			<user flush_window="false" formula_editor_with_full_lists="false" print_progress="false" splash_screen="false"/>
 			<developper disable_formula_editor_filtering="true"/>
 		</interface>
 		<general execute_host_database_event="false"/>
