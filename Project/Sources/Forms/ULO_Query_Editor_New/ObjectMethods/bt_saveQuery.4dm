@@ -1,6 +1,6 @@
 C_TEXT:C284($vt_saveMenu;$vt_selected)
 C_BOOLEAN:C305($vb_disable)
-C_OBJECT:C1216($vo_saveForm)
+C_OBJECT:C1216($vo_saveForm;$e_query;$vo_res)
 C_LONGINT:C283($vl_wind)
 
 If (Form event code:C388=On Clicked:K2:4)
@@ -86,3 +86,4 @@ If (Form event code:C388=On Clicked:K2:4)
 		RELEASE MENU:C978($vt_saveMenu)
 		
 	End if 
+End if 

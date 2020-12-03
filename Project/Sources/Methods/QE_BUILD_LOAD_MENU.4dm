@@ -17,7 +17,7 @@ C_TEXT:C284($0;$vt_menu)
 C_LONGINT:C283($1;$vl_tableNum)
 
 C_TEXT:C284($vt_userMenu;$vt_publicMenu)
-C_OBJECT:C1216($es_userQuery;$es_publicQuery)
+C_OBJECT:C1216($es_userQuery;$es_publicQuery;$e_publicQuery;$e_userQuery)
 
 $vl_tableNum:=$1
 

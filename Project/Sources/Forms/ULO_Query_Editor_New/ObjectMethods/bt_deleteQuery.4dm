@@ -1,3 +1,5 @@
+C_OBJECT:C1216($vo_res)
+
 If (Form event code:C388=On Clicked:K2:4)
 	
 	If (OB Is defined:C1231(Form:C1466.selectedQuery;"user"))
