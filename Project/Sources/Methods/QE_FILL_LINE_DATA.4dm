@@ -58,7 +58,7 @@ If ($vo_queryData.lBracket)
 End if 
 
 OBJECT GET COORDINATES:C663(*;"ql_field"+$vt_rowExtension;$vl_left;$vl_top;$vl_right;$vl_bottom)
-If ($vo_field.fieldType=Is object:K8:27)
+If ($vo_queryData.type=Is object:K8:27)
 	OBJECT SET COORDINATES:C1248(*;"ql_field"+$vt_rowExtension;$vl_left;$vl_top;124;$vl_bottom)
 Else 
 	OBJECT SET COORDINATES:C1248(*;"ql_field"+$vt_rowExtension;$vl_left;$vl_top;244;$vl_bottom)

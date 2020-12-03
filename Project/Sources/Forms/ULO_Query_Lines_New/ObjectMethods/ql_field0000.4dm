@@ -50,6 +50,7 @@ Case of
 					OBJECT SET COORDINATES:C1248(*;"ql_field"+String:C10($row;"0000");$vl_left;$vl_top;124;$vl_bottom)
 				Else 
 					OBJECT SET COORDINATES:C1248(*;"ql_field"+String:C10($row;"0000");$vl_left;$vl_top;244;$vl_bottom)
+					Form:C1466.parent.lastQuery[$row].attribute:=""
 				End if 
 				
 				Form:C1466.parent.lastQuery[$row].fieldName:=$vo_field.fieldName

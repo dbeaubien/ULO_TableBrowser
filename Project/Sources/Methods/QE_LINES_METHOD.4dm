@@ -38,4 +38,19 @@ Case of
 		  //Fill first row data
 		QE_FILL_LINE_DATA (Form:C1466.parent.lastQuery[0];"0000")
 		
+	: ($1="LOAD")
+		Form:C1466.parent.lastQuery:=$2.lastQuery
+		
+		  //Hide all ql elements.
+		OBJECT SET VISIBLE:C603(*;"ql_@";False:C215)
+		  //Show only first row
+		OBJECT SET VISIBLE:C603(*;"ql_@0000";True:C214)
+		  //Fill first row data
+		QE_FILL_LINE_DATA (Form:C1466.parent.lastQuery[0];"0000")
+		
+		  //Loop remaining elements, adding each row
+		For ($i;1;Form:C1466.parent.lastQuery.length-1)
+			QE_ADD_LINE ($i)
+		End for 
+		
 End case 

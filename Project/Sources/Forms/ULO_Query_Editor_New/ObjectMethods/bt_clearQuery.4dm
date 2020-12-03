@@ -25,6 +25,8 @@ Case of
 		ARRAY LONGINT:C221($al_fields;0)
 		ARRAY TEXT:C222($at_fields;0)
 		
+		Form:C1466.selectedQuery:=New object:C1471
+		
 		Form:C1466.queryFields:=New collection:C1472
 		COLLECTION TO ARRAY:C1562($vc_fields;$al_fields;"fieldNumber";$at_fields;"fieldName")
 		ARRAY TO COLLECTION:C1563(Form:C1466.queryFields;$al_fields;"fieldNum";$at_fields;"fieldName")

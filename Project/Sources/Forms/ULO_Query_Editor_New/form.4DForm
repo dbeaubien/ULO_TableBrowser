@@ -9,8 +9,8 @@
 	"windowMinHeight": 0,
 	"windowMaxWidth": 32767,
 	"windowMaxHeight": 32767,
-	"rightMargin": 0,
-	"bottomMargin": 0,
+	"rightMargin": 20,
+	"bottomMargin": 20,
 	"events": [
 		"onLoad",
 		"onPageChange",
@@ -122,10 +122,77 @@
 					"scrollbarVertical": "visible",
 					"borderStyle": "solid",
 					"dataSourceTypeHint": "undefined"
+				},
+				"bt_deleteQuery": {
+					"type": "button",
+					"top": 14,
+					"left": 670,
+					"width": 90,
+					"height": 24,
+					"sizingX": "move",
+					"sizingY": "move",
+					"text": "Delete",
+					"focusable": false,
+					"events": [
+						"onClick"
+					],
+					"action": "",
+					"stroke": "#ff0000",
+					"method": "ObjectMethods/bt_deleteQuery.4dm"
+				},
+				"bt_saveQuery": {
+					"type": "button",
+					"top": 14,
+					"left": 560,
+					"width": 90,
+					"height": 24,
+					"sizingX": "move",
+					"sizingY": "move",
+					"text": "Save",
+					"focusable": false,
+					"events": [
+						"onClick"
+					],
+					"action": "",
+					"stroke": "#008000",
+					"style": "bevel",
+					"popupPlacement": "separated",
+					"method": "ObjectMethods/bt_saveQuery.4dm"
+				},
+				"bt_loadQuery": {
+					"type": "button",
+					"top": 14,
+					"left": 450,
+					"width": 90,
+					"height": 24,
+					"sizingX": "move",
+					"sizingY": "move",
+					"text": "Load",
+					"focusable": false,
+					"events": [
+						"onClick"
+					],
+					"action": "",
+					"stroke": "#0000cd",
+					"style": "bevel",
+					"popupPlacement": "separated",
+					"method": "ObjectMethods/bt_loadQuery.4dm"
+				},
+				"Input": {
+					"type": "input",
+					"left": 290,
+					"top": 18,
+					"width": 153,
+					"height": 16,
+					"enterable": false,
+					"fill": "transparent",
+					"borderStyle": "none",
+					"dataSource": "Form:C1466.selectedQuery.name",
+					"textAlign": "right"
 				}
 			}
 		}
 	],
-	"formSizeAnchor": "BackgroundColour",
+	"formSizeAnchor": "bt_runQuery",
 	"method": "method.4dm"
 }

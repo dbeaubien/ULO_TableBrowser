@@ -225,7 +225,19 @@
 					],
 					"visibility": "hidden"
 				}
-			}
+			},
+			"entryOrder": [
+				"ql_valueDate0000",
+				"ql_valueNum0000",
+				"ql_lBracket0000",
+				"ql_field0000",
+				"ql_attribute0000",
+				"ql_operator0000",
+				"ql_valueText0000",
+				"ql_rBracket0000",
+				"ql_conjunction0000",
+				"ql_deleteLine0000"
+			]
 		}
 	],
 	"width": 720,
