@@ -530,7 +530,8 @@
 						"onClick"
 					],
 					"style": "roundedBevel",
-					"stroke": "#008000"
+					"stroke": "#008000",
+					"class": "button"
 				},
 				"Text11": {
 					"type": "text",
@@ -602,5 +603,6 @@
 			]
 		}
 	],
-	"method": "method.4dm"
+	"method": "method.4dm",
+	"geometryStamp": 1
 }

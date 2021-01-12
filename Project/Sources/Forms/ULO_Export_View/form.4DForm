@@ -105,7 +105,8 @@
 					],
 					"stroke": "#ff0000",
 					"style": "roundedBevel",
-					"action": "cancel"
+					"action": "cancel",
+					"class": "button"
 				},
 				"ExportExcel": {
 					"type": "button",
@@ -120,7 +121,8 @@
 					"stroke": "#008000",
 					"style": "roundedBevel",
 					"action": "accept",
-					"dataSource": "b_exportExcel"
+					"dataSource": "b_exportExcel",
+					"class": "button"
 				},
 				"ExportCSV": {
 					"type": "button",
@@ -135,7 +137,8 @@
 					"stroke": "#FF8000",
 					"style": "roundedBevel",
 					"action": "accept",
-					"dataSource": "b_exportCSV"
+					"dataSource": "b_exportCSV",
+					"class": "button"
 				}
 			}
 		},
@@ -147,5 +150,6 @@
 		"version": "1",
 		"kind": "form"
 	},
-	"formSizeAnchor": "ExportCSV"
+	"formSizeAnchor": "ExportCSV",
+	"geometryStamp": 3
 }

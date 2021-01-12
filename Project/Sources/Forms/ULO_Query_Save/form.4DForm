@@ -62,7 +62,8 @@
 						"onClick"
 					],
 					"action": "accept",
-					"stroke": "#008000"
+					"stroke": "#008000",
+					"class": "button"
 				},
 				"bt_cancel": {
 					"type": "button",
@@ -77,7 +78,7 @@
 					"events": [
 						"onClick"
 					],
-					"class": "",
+					"class": "button",
 					"dataSource": "",
 					"action": "cancel",
 					"stroke": "#ff0000"
@@ -123,5 +124,6 @@
 		}
 	],
 	"formSizeAnchor": "bt_runQuery",
-	"method": "method.4dm"
+	"method": "method.4dm",
+	"geometryStamp": 2
 }

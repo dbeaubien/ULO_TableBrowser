@@ -89,7 +89,7 @@
 					"action": "",
 					"shortcutKey": "[Enter]",
 					"text": "Apply Changes",
-					"class": "default",
+					"class": "button",
 					"defaultButton": true,
 					"events": [
 						"onClick"
@@ -107,7 +107,7 @@
 					"shortcutKey": ".",
 					"shortcutAccel": true,
 					"text": "Cancel",
-					"class": "default",
+					"class": "button",
 					"events": [
 						"onClick"
 					]
@@ -391,7 +391,8 @@
 					"style": "roundedBevel",
 					"events": [
 						"onClick"
-					]
+					],
+					"class": "button"
 				},
 				"bt_addField": {
 					"type": "button",
@@ -405,7 +406,8 @@
 					"style": "roundedBevel",
 					"events": [
 						"onClick"
-					]
+					],
+					"class": "button"
 				},
 				"lb_sort": {
 					"type": "listbox",
@@ -486,7 +488,8 @@
 					"style": "roundedBevel",
 					"events": [
 						"onClick"
-					]
+					],
+					"class": "button"
 				},
 				"bt_addSort": {
 					"type": "button",
@@ -500,7 +503,8 @@
 					"style": "roundedBevel",
 					"events": [
 						"onClick"
-					]
+					],
+					"class": "button"
 				},
 				"Text": {
 					"type": "text",
@@ -549,5 +553,6 @@
 		}
 	],
 	"formSizeAnchor": "BackgroundColour",
-	"method": "method.4dm"
+	"method": "method.4dm",
+	"geometryStamp": 6
 }

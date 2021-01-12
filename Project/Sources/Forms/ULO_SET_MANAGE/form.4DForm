@@ -55,7 +55,7 @@
 					"action": "accept",
 					"shortcutKey": "[Enter]",
 					"text": "OK",
-					"class": "default",
+					"class": "button",
 					"defaultButton": true,
 					"events": [
 						"onClick"
@@ -135,7 +135,8 @@
 					"height": 21,
 					"events": [
 						"onClick"
-					]
+					],
+					"class": "button"
 				},
 				"bt_addLine": {
 					"type": "button",
@@ -148,7 +149,7 @@
 					"action": "",
 					"shortcutKey": "",
 					"text": "Add Line",
-					"class": "default",
+					"class": "button",
 					"defaultButton": false,
 					"events": [
 						"onClick"
@@ -175,5 +176,6 @@
 			}
 		}
 	],
-	"method": "method.4dm"
+	"method": "method.4dm",
+	"geometryStamp": 3
 }

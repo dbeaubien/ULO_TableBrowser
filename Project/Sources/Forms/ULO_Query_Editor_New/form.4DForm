@@ -75,7 +75,8 @@
 						"onClick"
 					],
 					"action": "accept",
-					"stroke": "#008000"
+					"stroke": "#008000",
+					"class": "button"
 				},
 				"bt_clearQuery": {
 					"type": "button",
@@ -91,7 +92,8 @@
 					],
 					"dataSource": "",
 					"method": "ObjectMethods/bt_clearQuery.4dm",
-					"stroke": "#0000cd"
+					"stroke": "#0000cd",
+					"class": "button"
 				},
 				"bt_cancel": {
 					"type": "button",
@@ -106,7 +108,7 @@
 					"events": [
 						"onClick"
 					],
-					"class": "",
+					"class": "button",
 					"dataSource": "",
 					"action": "cancel",
 					"stroke": "#ff0000"
@@ -138,7 +140,8 @@
 					],
 					"action": "",
 					"stroke": "#ff0000",
-					"method": "ObjectMethods/bt_deleteQuery.4dm"
+					"method": "ObjectMethods/bt_deleteQuery.4dm",
+					"class": "button"
 				},
 				"bt_saveQuery": {
 					"type": "button",
@@ -157,7 +160,8 @@
 					"stroke": "#008000",
 					"style": "bevel",
 					"popupPlacement": "separated",
-					"method": "ObjectMethods/bt_saveQuery.4dm"
+					"method": "ObjectMethods/bt_saveQuery.4dm",
+					"class": "button"
 				},
 				"bt_loadQuery": {
 					"type": "button",
@@ -176,7 +180,8 @@
 					"stroke": "#0000cd",
 					"style": "bevel",
 					"popupPlacement": "separated",
-					"method": "ObjectMethods/bt_loadQuery.4dm"
+					"method": "ObjectMethods/bt_loadQuery.4dm",
+					"class": "button"
 				},
 				"Input": {
 					"type": "input",
@@ -194,5 +199,6 @@
 		}
 	],
 	"formSizeAnchor": "bt_runQuery",
-	"method": "method.4dm"
+	"method": "method.4dm",
+	"geometryStamp": 6
 }

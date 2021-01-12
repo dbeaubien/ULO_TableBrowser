@@ -94,7 +94,7 @@
 					"action": "accept",
 					"shortcutKey": "[Enter]",
 					"text": "OK",
-					"class": "default",
+					"class": "button",
 					"defaultButton": true,
 					"events": [
 						"onClick"
@@ -112,7 +112,7 @@
 					"shortcutKey": ".",
 					"shortcutAccel": true,
 					"text": "Cancel",
-					"class": "default",
+					"class": "button",
 					"events": [
 						"onClick"
 					]
@@ -404,7 +404,8 @@
 					"style": "roundedBevel",
 					"events": [
 						"onClick"
-					]
+					],
+					"class": "button"
 				},
 				"bt_deleteField": {
 					"type": "button",
@@ -418,7 +419,8 @@
 					"style": "roundedBevel",
 					"events": [
 						"onClick"
-					]
+					],
+					"class": "button"
 				},
 				"bt_addField": {
 					"type": "button",
@@ -432,7 +434,8 @@
 					"style": "roundedBevel",
 					"events": [
 						"onClick"
-					]
+					],
+					"class": "button"
 				},
 				"PROMPT_ViewName1": {
 					"type": "text",
@@ -605,7 +608,8 @@
 					"events": [
 						"onClick"
 					],
-					"stroke": "#ff0000"
+					"stroke": "#ff0000",
+					"class": "button"
 				},
 				"isDefault": {
 					"type": "checkbox",
@@ -628,5 +632,6 @@
 	"$4d": {
 		"version": "1",
 		"kind": "form"
-	}
+	},
+	"geometryStamp": 6
 }
