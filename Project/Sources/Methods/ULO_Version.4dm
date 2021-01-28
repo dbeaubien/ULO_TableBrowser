@@ -2,6 +2,9 @@
 C_TEXT:C284($0)
 $0:="1.2.0"
 
+  //20201-01-28 - 1.2.1
+  // BUTTON_VIEW_POP - Added use of 'handle' to default view queries
+
   //2020-12-03 - 1.2.0
   // Save / Load in Query editor
 
