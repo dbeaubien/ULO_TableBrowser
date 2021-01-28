@@ -12,17 +12,13 @@ Case of
 	: ($vl_NumParameters=0)
 		$vt_ViewMenu:=Create menu:C408
 		
-		  //separate menu options for user/system default?
-		
-		
+		  //separate menu options for user/system default
 		  //Look for system default
-		$es_views:=ds:C1482["uloData"].query("table == :1 && default == True && user == 0 && type == 2";Form:C1466.tableNumber)
+		$es_views:=ds:C1482["uloData"].query("table == :1 && handle == :2 && default == True && user == 0 && type == 2";Form:C1466.tableNumber;Form:C1466.navItem.handle)
 		If ($es_views.length>0)
 			$vt_defaultViewId:=$es_views.first().id
 		Else 
 			  //No system default found, need to generate one from json data
-			
-			
 			$vt_defaultViewId:="XXXX"
 		End if 
 		
@@ -33,7 +29,7 @@ Case of
 		End if 
 		
 		  //Look for user default
-		$es_views:=ds:C1482["uloData"].query("table == :1 && default == :2 && user == :3 && type == 2";Form:C1466.tableNumber;True:C214;Storage:C1525.user.id)
+		$es_views:=ds:C1482["uloData"].query("table == :1 && handle == :2 && default == :2 && user == :3 && type == 2";Form:C1466.tableNumber;True:C214;Storage:C1525.user.id;Form:C1466.navItem.handle)
 		If ($es_views.length>0)
 			$vt_userDefaultId:=$es_views.first().id
 		End if 
