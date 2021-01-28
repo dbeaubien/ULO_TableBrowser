@@ -29,7 +29,7 @@ Case of
 		End if 
 		
 		  //Look for user default
-		$es_views:=ds:C1482["uloData"].query("table == :1 && handle == :2 && default == :2 && user == :3 && type == 2";Form:C1466.tableNumber;True:C214;Storage:C1525.user.id;Form:C1466.navItem.handle)
+		$es_views:=ds:C1482["uloData"].query("table == :1 && default == :2 && user == :3 && handle == :4 && type == 2";Form:C1466.tableNumber;True:C214;Storage:C1525.user.id;Form:C1466.navItem.handle)
 		If ($es_views.length>0)
 			$vt_userDefaultId:=$es_views.first().id
 		End if 
