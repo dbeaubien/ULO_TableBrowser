@@ -2,7 +2,12 @@
 C_TEXT:C284($0)
 $0:="1.2.0"
 
-  //20201-01-28 - 1.2.1
+  //2021-01-28 - 1.2.2
+  // BUTTON_VIEW_POP - Fixed parameter usage from prev change
+  //                 - Changed 'Null' view query on load case to pass object
+  // ULO_LOAD_VIEW   - Added check for above object to force creation of system default view
+
+  //2021-01-28 - 1.2.1
   // BUTTON_VIEW_POP - Added use of 'handle' to default view queries
 
   //2020-12-03 - 1.2.0
