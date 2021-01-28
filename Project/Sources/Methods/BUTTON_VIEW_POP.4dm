@@ -145,7 +145,7 @@ Case of
 		If ($e_view#Null:C1517)
 			Form:C1466.navItem.selectedView:=$e_view.toObject()
 		Else 
-			Form:C1466.navItem.selectedView:=Null:C1517
+			Form:C1466.navItem.selectedView:=New object:C1471("createNew";True:C214)
 		End if 
 		ULO_LOAD_VIEW 
 		
