@@ -180,7 +180,7 @@ If (Form:C1466.tableNumber>0)
 				  //End if 
 				
 				  //LISTBOX INSERT COLUMN FORMULA(*;"ULO_LIST";$i;$vt_colName;$vt_formula;\
-																														$vl_type;$vt_hObject;$vp_nil;$vt_fObject;$vp_nil)
+																																			$vl_type;$vt_hObject;$vp_nil;$vt_fObject;$vp_nil)
 				
 				  //OBJECT SET FORMAT(*;$vt_colName;$vt_format)
 				  //OBJECT SET FONT STYLE(*;$vt_colName;$vl_fontStyle)
@@ -232,7 +232,7 @@ If (Form:C1466.tableNumber>0)
 		
 	Else 
 		Form:C1466.navItem.selectedView:=New object:C1471
-		Form:C1466.navItem.selectedView.id:=""
+		Form:C1466.navItem.selectedView.id:="XXXX"  //To link to 'System Default View' in BUTTON_VIEW_POP
 		Form:C1466.navItem.selectedView.user:=0
 		Form:C1466.navItem.selectedView.detail:=New object:C1471
 		Form:C1466.navItem.selectedView.detail.cols:=New collection:C1472
