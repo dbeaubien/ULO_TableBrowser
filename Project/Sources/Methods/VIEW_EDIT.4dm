@@ -60,6 +60,7 @@ Case of
 			$e_uloData:=UTIL_Duplicate_Entity ($e_view;"uloData")
 			$e_uloData.id:=""  //Sets new UUID
 			$e_uloData.name:=Form:C1466.navItem.selectedView.name+" - Copy"
+			$e_uloData.handle:=Form:C1466.navItem.handle  //Reset handle to currently selected
 			$e_uloData.user:=Storage:C1525.user.id
 			$e_uloData.favourite:=False:C215
 			$e_uloData.default:=False:C215
