@@ -1,8 +1,11 @@
 //%attributes = {"shared":true}
 C_TEXT:C284($0)
-$0:="1.2.3"
+$0:="1.2.4"
 
-  //2021-01-29
+  //2021-01-29 - 1.2.4
+  // ULO_LOAD_VIEW - Added fake ID to generated view so pop menu marks System Default as selected
+
+  //2021-01-29 - 1.2.3
   // BUTTON_VIEW_POP - Removed 'default' check from MyView and OtherViews queries
   //                 - Instead checks the view is not System or User default when adding to menu
   //                   This is to support sharing of views between concessions
