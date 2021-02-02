@@ -40,6 +40,9 @@ $vo_theme.headerFontSize:=11
 $vo_theme.headerFont:="Segoe UI"
 
 $es_uloData:=ds:C1482["uloData"].query("user == :1 & type == 3";Storage:C1525.user.id)
+If ($es_uloData.length=0)
+	$es_uloData:=ds:C1482["uloData"].query("user == :1 & type == 3";0)
+End if 
 If ($es_uloData.length>0)
 	$e_uloData:=$es_uloData.first()
 	
