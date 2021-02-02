@@ -5,6 +5,7 @@ C_TEXT:C284($vt_id;$vt_MyViews;$vt_Option;$vt_ViewMenu;$vt_defaultViewId;$vt_use
 C_LONGINT:C283($vl_CurrentUser;$vl_NumParameters)
 C_OBJECT:C1216($vo_view;$e_view;$es_views;$vo_coord)
 C_COLLECTION:C1488($vc_views)
+C_BOOLEAN:C305($vb_disable)
 
 $vl_NumParameters:=Count parameters:C259
 
@@ -54,8 +55,10 @@ Case of
 		
 		If ($vc_views.length>0)
 			$vt_MyViews:=Create menu:C408
+			$vb_disable:=True:C214
 			For each ($vo_view;$vc_views)
 				If (($vo_view.id#$vt_defaultViewId) & ($vo_view.id#$vt_userDefaultId))
+					$vb_disable:=False:C215
 					APPEND MENU ITEM:C411($vt_MyViews;$vo_view.name)
 					SET MENU ITEM PARAMETER:C1004($vt_MyViews;-1;"VIEW:LOAD:"+$vo_view.id)
 					If ($vo_view.id=Form:C1466.navItem.selectedView.id)
@@ -64,6 +67,9 @@ Case of
 				End if 
 			End for each 
 			APPEND MENU ITEM:C411($vt_ViewMenu;"My Views";$vt_MyViews)
+			If ($vb_disable)
+				DISABLE MENU ITEM:C150($vt_ViewMenu;-1)
+			End if 
 			RELEASE MENU:C978($vt_MyViews)
 		Else 
 			APPEND MENU ITEM:C411($vt_ViewMenu;"My Views")
@@ -75,8 +81,10 @@ Case of
 			$vl_CurrentUser;Form:C1466.tableNumber).orderBy("name").toCollection("id,name,user,detail")
 		If ($vc_views.length>0)
 			$vt_MyViews:=Create menu:C408
+			$vb_disable:=True:C214
 			For each ($vo_view;$vc_views)
 				If (($vo_view.id#$vt_defaultViewId) & ($vo_view.id#$vt_userDefaultId))
+					$vb_disable:=False:C215
 					APPEND MENU ITEM:C411($vt_MyViews;$vo_view.name)
 					SET MENU ITEM PARAMETER:C1004($vt_MyViews;-1;"VIEW:LOAD:"+$vo_view.id)
 					If ($vo_view.id=Form:C1466.navItem.selectedView.id)
@@ -85,6 +93,9 @@ Case of
 				End if 
 			End for each 
 			APPEND MENU ITEM:C411($vt_ViewMenu;"Other Views";$vt_MyViews)
+			If ($vb_disable)
+				DISABLE MENU ITEM:C150($vt_ViewMenu;-1)
+			End if 
 			RELEASE MENU:C978($vt_MyViews)
 		Else 
 			APPEND MENU ITEM:C411($vt_ViewMenu;"Other Views")
