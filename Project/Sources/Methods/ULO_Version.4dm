@@ -1,6 +1,12 @@
 //%attributes = {"shared":true}
 C_TEXT:C284($0)
-$0:="1.2.4"
+$0:="1.2.5"
+
+  //2021-02-02 - 1.2.5
+  // VIEW_EDIT       - Added test when duping for fake ID assigned to system default
+  // ULO_LOAD_THEME  - Added query for system default (user = 0) where user default not found
+  // BUTTON_VIEW_POP - Now disables 'My Views' and 'Other Views' when no non-default options found
+  // ULO_LOAD_VIEW   - Set handle when generating default to prevent future errors 
 
   //2021-01-29 - 1.2.4
   // ULO_LOAD_VIEW - Added fake ID to generated view so pop menu marks System Default as selected
