@@ -55,7 +55,7 @@ Case of
 		$vo_formData.allowDelete:=False:C215
 		$vo_currentView:=OB Copy:C1225(Form:C1466.navItem.selectedView)
 		
-		If (Form:C1466.navItem.selectedView.id#"")
+		If ((Form:C1466.navItem.selectedView.id#"") & (Form:C1466.navItem.selectedView.id#"XXXX"))
 			$e_view:=ds:C1482["uloData"].get(Form:C1466.navItem.selectedView.id)
 			$e_uloData:=UTIL_Duplicate_Entity ($e_view;"uloData")
 			$e_uloData.id:=""  //Sets new UUID
