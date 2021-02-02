@@ -39,14 +39,14 @@ If (Form:C1466.tableNumber>0)
 		  //Push the loaded selection to the sore of current selections???
 	End if 
 	
-	If (OB Is defined:C1231(Form:C1466.navItem.selectedView;"createNew"))
-		  //Case only entered when 'System Default View' selected with no ID
-		  //Below forces creation of default view
-		$vo_view:=ULO_GET_VIEW (-10;-10;"NA")
+	If (Form:C1466.navItem.selectedView=Null:C1517)
+		$vo_view:=ULO_GET_VIEW (Storage:C1525.user.id;Form:C1466.tableNumber;Form:C1466.navItem.handle)  //EXECUTE METHOD("HOST_ULO_SET_VIEW";$vo_view;Form.tableNumber)
 		Form:C1466.navItem.selectedView:=OB Copy:C1225($vo_view)
 	Else 
-		If (Form:C1466.navItem.selectedView=Null:C1517)
-			$vo_view:=ULO_GET_VIEW (Storage:C1525.user.id;Form:C1466.tableNumber;Form:C1466.navItem.handle)  //EXECUTE METHOD("HOST_ULO_SET_VIEW";$vo_view;Form.tableNumber)
+		If (OB Is defined:C1231(Form:C1466.navItem.selectedView;"createNew"))
+			  //Case only entered when 'System Default View' selected with no ID
+			  //Below forces creation of default view
+			$vo_view:=ULO_GET_VIEW (-10;-10;"NA")
 			Form:C1466.navItem.selectedView:=OB Copy:C1225($vo_view)
 		End if 
 	End if 
@@ -180,7 +180,7 @@ If (Form:C1466.tableNumber>0)
 				  //End if 
 				
 				  //LISTBOX INSERT COLUMN FORMULA(*;"ULO_LIST";$i;$vt_colName;$vt_formula;\
-																																			$vl_type;$vt_hObject;$vp_nil;$vt_fObject;$vp_nil)
+																																								$vl_type;$vt_hObject;$vp_nil;$vt_fObject;$vp_nil)
 				
 				  //OBJECT SET FORMAT(*;$vt_colName;$vt_format)
 				  //OBJECT SET FONT STYLE(*;$vt_colName;$vl_fontStyle)
@@ -234,6 +234,7 @@ If (Form:C1466.tableNumber>0)
 		Form:C1466.navItem.selectedView:=New object:C1471
 		Form:C1466.navItem.selectedView.id:="XXXX"  //To link to 'System Default View' in BUTTON_VIEW_POP
 		Form:C1466.navItem.selectedView.user:=0
+		Form:C1466.navItem.selectedView.handle:=Form:C1466.navItem.handle
 		Form:C1466.navItem.selectedView.detail:=New object:C1471
 		Form:C1466.navItem.selectedView.detail.cols:=New collection:C1472
 		$vl_numFields:=Get last field number:C255($vp_table)
