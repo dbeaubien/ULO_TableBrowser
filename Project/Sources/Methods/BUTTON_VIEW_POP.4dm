@@ -113,7 +113,7 @@ Case of
 		  //Amend current view
 		APPEND MENU ITEM:C411($vt_ViewMenu;"Amend Current View")
 		SET MENU ITEM PARAMETER:C1004($vt_ViewMenu;-1;"VIEW:Amend")
-		If (($vl_CurrentUser#Form:C1466.navItem.selectedView.user) | (Form:C1466.navItem.selectedView.handle#Form:C1466.navItem.handle)) & ($vl_CurrentUser#-1)  //can only amend views that belong to you unless designer
+		If (($vl_CurrentUser#Form:C1466.navItem.selectedView.user) | (Form:C1466.navItem.selectedView.handle#Form:C1466.navItem.handle)) & ($vl_CurrentUser#1)  //can only amend views that belong to you unless designer
 			DISABLE MENU ITEM:C150($vt_ViewMenu;-1)
 		End if 
 		
