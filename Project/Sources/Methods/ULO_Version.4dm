@@ -1,6 +1,11 @@
 //%attributes = {"shared":true}
 C_TEXT:C284($0)
-$0:="1.2.5"
+$0:="1.2.6"
+
+  //2021-02-03 - 1.2.6
+  // ULO_LOAD_VIEW   - Test for format#'' before setting format
+  // BUTTON_VIEW_POP - 'Amend View' now always enabled when logged in as Designer
+  // ULO_VIEW_EDIT_DETIAL (FORM) -  Increased height of Formula field
 
   //2021-02-02 - 1.2.5
   // VIEW_EDIT       - Added test when duping for fake ID assigned to system default
