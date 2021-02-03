@@ -35,7 +35,7 @@
 			"objects": {
 				"BackgroundColour": {
 					"type": "rectangle",
-					"top": 0,
+					"top": 20,
 					"left": 0,
 					"width": 405,
 					"height": 505,
@@ -46,7 +46,7 @@
 				},
 				"VIEW_Accept": {
 					"type": "button",
-					"top": 463,
+					"top": 483,
 					"left": 305,
 					"width": 74,
 					"height": 22,
@@ -63,7 +63,7 @@
 				},
 				"VIEW_Cancel": {
 					"type": "button",
-					"top": 463,
+					"top": 483,
 					"left": 219,
 					"width": 74,
 					"height": 22,
@@ -84,7 +84,7 @@
 			"objects": {
 				"Group Box2": {
 					"type": "groupBox",
-					"top": 361,
+					"top": 381,
 					"left": 33,
 					"width": 345,
 					"height": 87,
@@ -95,12 +95,12 @@
 					"top": 30,
 					"left": 33,
 					"width": 345,
-					"height": 150,
+					"height": 170,
 					"text": "General :"
 				},
 				"Group Box1": {
 					"type": "groupBox",
-					"top": 193,
+					"top": 213,
 					"left": 34,
 					"width": 345,
 					"height": 158,
@@ -122,7 +122,7 @@
 				},
 				"cb_agg_total": {
 					"type": "checkbox",
-					"top": 385,
+					"top": 405,
 					"left": 100,
 					"width": 100,
 					"height": 17,
@@ -138,7 +138,7 @@
 				},
 				"cb_agg_min": {
 					"type": "checkbox",
-					"top": 415,
+					"top": 435,
 					"left": 100,
 					"width": 100,
 					"height": 17,
@@ -154,7 +154,7 @@
 				},
 				"cb_agg_average": {
 					"type": "checkbox",
-					"top": 385,
+					"top": 405,
 					"left": 227,
 					"width": 100,
 					"height": 17,
@@ -170,7 +170,7 @@
 				},
 				"cb_agg_max": {
 					"type": "checkbox",
-					"top": 415,
+					"top": 435,
 					"left": 227,
 					"width": 100,
 					"height": 17,
@@ -206,17 +206,18 @@
 					"top": 115,
 					"left": 159,
 					"width": 179,
-					"height": 16,
+					"height": 36,
 					"dataSource": "Form:C1466.col.formula",
 					"dragging": "none",
 					"dropping": "custom",
 					"events": [
 						"onDataChange"
-					]
+					],
+					"multiline": "yes"
 				},
 				"Text2": {
 					"type": "text",
-					"top": 215,
+					"top": 235,
 					"left": 56,
 					"width": 100,
 					"height": 15,
@@ -224,7 +225,7 @@
 				},
 				"cb_sty_bold": {
 					"type": "checkbox",
-					"top": 214,
+					"top": 234,
 					"left": 159,
 					"width": 60,
 					"height": 17,
@@ -240,7 +241,7 @@
 				},
 				"cb_sty_italic": {
 					"type": "checkbox",
-					"top": 214,
+					"top": 234,
 					"left": 219,
 					"width": 60,
 					"height": 17,
@@ -256,7 +257,7 @@
 				},
 				"cb_sty_underline": {
 					"type": "checkbox",
-					"top": 214,
+					"top": 234,
 					"left": 279,
 					"width": 80,
 					"height": 17,
@@ -272,7 +273,7 @@
 				},
 				"Text3": {
 					"type": "text",
-					"top": 245,
+					"top": 265,
 					"left": 56,
 					"width": 100,
 					"height": 15,
@@ -280,7 +281,7 @@
 				},
 				"input_fontColourHex": {
 					"type": "input",
-					"top": 244,
+					"top": 264,
 					"left": 159,
 					"width": 147,
 					"height": 16,
@@ -294,7 +295,7 @@
 				},
 				"rect_fontColour": {
 					"type": "rectangle",
-					"top": 244,
+					"top": 264,
 					"left": 314,
 					"width": 24,
 					"height": 16
@@ -302,7 +303,7 @@
 				"bt_fontColourPick": {
 					"type": "button",
 					"text": "",
-					"top": 244,
+					"top": 264,
 					"left": 314,
 					"width": 24,
 					"height": 16,
@@ -336,7 +337,7 @@
 				},
 				"Text5": {
 					"type": "text",
-					"top": 292,
+					"top": 312,
 					"left": 56,
 					"width": 100,
 					"height": 15,
@@ -345,7 +346,7 @@
 				"rb_left": {
 					"type": "radio",
 					"text": "Left",
-					"top": 290,
+					"top": 310,
 					"left": 159,
 					"width": 43,
 					"height": 20,
@@ -358,7 +359,7 @@
 				"rb_center": {
 					"type": "radio",
 					"text": "Center",
-					"top": 290,
+					"top": 310,
 					"left": 216,
 					"width": 63,
 					"height": 20,
@@ -371,7 +372,7 @@
 				"rb_right": {
 					"type": "radio",
 					"text": "Right",
-					"top": 289,
+					"top": 309,
 					"left": 286,
 					"width": 52,
 					"height": 20,
@@ -382,7 +383,7 @@
 				},
 				"Text6": {
 					"type": "text",
-					"top": 145,
+					"top": 165,
 					"left": 56,
 					"width": 100,
 					"height": 15,
@@ -391,7 +392,7 @@
 				"dropdown_datatype": {
 					"type": "dropdown",
 					"left": 159,
-					"top": 142,
+					"top": 162,
 					"width": 179,
 					"height": 20,
 					"events": [
@@ -401,7 +402,7 @@
 				},
 				"Text7": {
 					"type": "text",
-					"top": 322,
+					"top": 342,
 					"left": 56,
 					"width": 100,
 					"height": 15,
@@ -409,7 +410,7 @@
 				},
 				"input_fontColourHex1": {
 					"type": "input",
-					"top": 321,
+					"top": 341,
 					"left": 159,
 					"width": 147,
 					"height": 16,
@@ -424,7 +425,7 @@
 				},
 				"cb_override": {
 					"type": "checkbox",
-					"top": 267,
+					"top": 287,
 					"left": 159,
 					"width": 140,
 					"height": 17,
