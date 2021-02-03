@@ -88,7 +88,9 @@ If (Form:C1466.tableNumber>0)
 				If ($vo_col.fieldType=Is picture:K8:10)
 					OBJECT SET FORMAT:C236(*;$vt_colName;Char:C90(Scaled to fit prop centered:K6:6))
 				Else 
-					OBJECT SET FORMAT:C236(*;$vt_colName;$vo_col.format)
+					If ($vo_col.format#"")
+						OBJECT SET FORMAT:C236(*;$vt_colName;$vo_col.format)
+					End if 
 				End if 
 				
 				OBJECT SET FONT STYLE:C166(*;$vt_colName;$vo_col.fontStyle)
@@ -180,7 +182,7 @@ If (Form:C1466.tableNumber>0)
 				  //End if 
 				
 				  //LISTBOX INSERT COLUMN FORMULA(*;"ULO_LIST";$i;$vt_colName;$vt_formula;\
-																																								$vl_type;$vt_hObject;$vp_nil;$vt_fObject;$vp_nil)
+																																													$vl_type;$vt_hObject;$vp_nil;$vt_fObject;$vp_nil)
 				
 				  //OBJECT SET FORMAT(*;$vt_colName;$vt_format)
 				  //OBJECT SET FONT STYLE(*;$vt_colName;$vl_fontStyle)
