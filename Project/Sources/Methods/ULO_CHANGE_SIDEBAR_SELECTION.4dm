@@ -10,9 +10,11 @@
   //
   // Parameters
   // $1 - String - Handle
+  // $2 - Object - Selection to Load
   // ----------------------------------------------------
 
 C_TEXT:C284($1;$vt_targetHandle)
+C_OBJECT:C1216($2)
 C_LONGINT:C283($vl_navitemIndex;$vl_sidebarIdx)
 C_OBJECT:C1216($es_return)
 
@@ -32,6 +34,9 @@ If ($vl_sidebarIdx>=0)
 	
 	$vl_navitemIndex:=UTIL_Col_Find_Index (Form:C1466.navItems;"handle";$vt_targetHandle)
 	If ($vl_navitemIndex>=0)
+		If (Count parameters:C259>1)
+			Form:C1466.navItems[$vl_navitemIndex].selection:=$2
+		End if 
 		LISTBOX SELECT ROW:C912(*;"ULO_Navbar";$vl_navitemIndex+1;lk replace selection:K53:1)
 		
 		Form:C1466.lastNavItemIndex:=$vl_navitemIndex+1
