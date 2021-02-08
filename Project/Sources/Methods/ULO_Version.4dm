@@ -1,6 +1,9 @@
 //%attributes = {"shared":true}
 C_TEXT:C284($0)
-$0:="1.2.6"
+$0:="1.2.7"
+
+  //2021-02-08 - 1.2.7
+  // ULO_CHANGE_SIDEBAR_SELECTION - Added option 2nd param for passing new selection for targeted handle
 
   //2021-02-03 - 1.2.6
   // ULO_LOAD_VIEW   - Test for format#'' before setting format
