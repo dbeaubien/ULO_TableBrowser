@@ -1,6 +1,9 @@
 //%attributes = {"shared":true}
 C_TEXT:C284($0)
-$0:="1.2.7"
+$0:="1.2.8"
+
+  //2021-02-10 - 1.2.8
+  // ULO_EXPORT_VIEW_CSV - Fixed issue where CR was being printed before the last field, resulting in last field being first value for following record
 
   //2021-02-08 - 1.2.7
   // ULO_CHANGE_SIDEBAR_SELECTION - Added option 2nd param for passing new selection for targeted handle
