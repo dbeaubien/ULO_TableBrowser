@@ -4,7 +4,7 @@
   // User name (OS): Dougie
   // Date and time: 20/02/20, 15:28:52
   // ----------------------------------------------------
-  // Method: ULO_EXPORT_VIEW_XLSX
+  // Method: ULO_EXPORT_VIEW_CSV
   // Description
   // 
   //
@@ -23,7 +23,6 @@ $cp:=Count parameters:C259
 
   //Ask the user to create and name a document
 $vh_Doc:=Create document:C266("";"csv")
-
 If (OK=1)  //If user has created a document ....
 	$es_records:=$1
 	$vl_Progress:=Progress New 
@@ -94,7 +93,6 @@ If (OK=1)  //If user has created a document ....
 						End if 
 						
 				End case   //END field type case
-				$fieldIndex:=$fieldIndex+1
 				
 				SEND PACKET:C103($vh_Doc;vt_ExportValue)
 				  //Tag the column or record end
@@ -103,6 +101,7 @@ If (OK=1)  //If user has created a document ....
 				Else 
 					SEND PACKET:C103($vh_Doc;",")
 				End if 
+				$fieldIndex:=$fieldIndex+1
 				
 			End if   //END selected check
 		End for each   //END field loop
