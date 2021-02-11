@@ -9,7 +9,7 @@ Use (Storage:C1525)
 	Use (Storage:C1525.prefs)
 		Storage:C1525.prefs.theme:="ios"
 		Storage:C1525.prefs.maxSetsInMenu:=10
-		
+		Storage:C1525.prefs.allowNewRelateWindow:=False:C215
 	End use 
 	
 	Storage:C1525.appearance:=New shared object:C1526

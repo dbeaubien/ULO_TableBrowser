@@ -1,4 +1,4 @@
-//%attributes = {"invisible":true}
+//%attributes = {"shared":true}
 
   // ----------------------------------------------------
   // User name (OS): Tom
@@ -11,11 +11,12 @@
   // Parameters
   // ----------------------------------------------------
 
-C_TEXT:C284($1;$vt_menu;$vt_selected;$vt_hostMethod)
-C_LONGINT:C283($vl_CurrentUser;$cp;$vl_menuNum;$index;$vl_count;$vl_idx;$vl_fia)
-C_OBJECT:C1216($vo_view;$vo_option;$vo_coord;$vo_field;$vo_param;$vo_col)
-C_COLLECTION:C1488($vc_hostOptions;$vc_fields;$vc_menuItems)
+C_TEXT:C284($1;$vt_menu;$vt_selected;$vt_hostMethod;$vt_newWinMenu;$vt_sameWinMenu;$vt_primaryKey)
+C_LONGINT:C283($vl_CurrentUser;$cp;$vl_menuNum;$index;$vl_count;$vl_idx;$vl_fia;$vl_tableNum;$vl_proc)
+C_OBJECT:C1216($vo_view;$vo_option;$vo_coord;$vo_field;$vo_param;$vo_col;$es_records;$vo_info)
+C_COLLECTION:C1488($vc_hostOptions;$vc_fields;$vc_menuItems;$vc_ids)
 C_POINTER:C301($vp_table)
+
 $vp_table:=Table:C252(Form:C1466.tableNumber)
 $cp:=Count parameters:C259
 $vc_hostOptions:=New collection:C1472
@@ -70,11 +71,31 @@ If ($cp=0)
 			SET MENU ITEM PARAMETER:C1004($vt_menu;-1;"-")
 		End if 
 		
-		For each ($vo_col;$vc_menuItems)
-			$vo_col.action:="same"
-			APPEND MENU ITEM:C411($vt_menu;$vo_col.fieldName+" ["+String:C10($vo_col.count)+"]")
-			SET MENU ITEM PARAMETER:C1004($vt_menu;-1;JSON Stringify:C1217($vo_col))
-		End for each 
+		If (Storage:C1525.prefs.allowNewRelateWindow)
+			$vt_sameWinMenu:=Create menu:C408
+			$vt_newWinMenu:=Create menu:C408
+			
+			For each ($vo_col;$vc_menuItems)
+				$vo_col.action:="new"
+				APPEND MENU ITEM:C411($vt_newWinMenu;$vo_col.fieldName+" ["+String:C10($vo_col.count)+"]")
+				SET MENU ITEM PARAMETER:C1004($vt_newWinMenu;-1;JSON Stringify:C1217($vo_col))
+				
+				$vo_col.action:="same"
+				APPEND MENU ITEM:C411($vt_sameWinMenu;$vo_col.fieldName+" ["+String:C10($vo_col.count)+"]")
+				SET MENU ITEM PARAMETER:C1004($vt_sameWinMenu;-1;JSON Stringify:C1217($vo_col))
+			End for each 
+			
+			APPEND MENU ITEM:C411($vt_menu;"New Window";$vt_newWinMenu)
+			APPEND MENU ITEM:C411($vt_menu;"Same Window";$vt_sameWinMenu)
+			RELEASE MENU:C978($vt_newWinMenu)
+			RELEASE MENU:C978($vt_sameWinMenu)
+		Else 
+			For each ($vo_col;$vc_menuItems)
+				$vo_col.action:="same"
+				APPEND MENU ITEM:C411($vt_menu;$vo_col.fieldName+" ["+String:C10($vo_col.count)+"]")
+				SET MENU ITEM PARAMETER:C1004($vt_menu;-1;JSON Stringify:C1217($vo_col))
+			End for each 
+		End if 
 		
 		$vt_selected:=Dynamic pop up menu:C1006($vt_menu;"";$vo_coord.x;$vo_coord.y)
 		If ($vt_selected#"")
@@ -103,7 +124,17 @@ Else
 			$vo_winData.wTitle:="My Browser"
 			$vo_winData.sidebarStart:=$vo_param.fieldName
 			
-			ULO_MAIN ($vo_param.table;$vo_winData;Form:C1466.uloRecords[$vo_param.relation])
+			
+			$es_records:=Form:C1466.uloRecords[$vo_param.relation]
+			$vo_info:=$es_records.getDataClass().getInfo()
+			$vt_primaryKey:=$vo_info.primaryKey
+			$vl_tableNum:=$vo_info.tableNumber
+			$vc_ids:=$es_records[$vt_primaryKey]
+			
+			$vl_proc:=New process:C317("ULO_MAIN";0;"";$vo_param.table;$vo_winData;New object:C1471("tableNumber";$vl_tableNum;"idField";$vt_primaryKey;"ids";$vc_ids))
+			
+			  //$vl_proc:=New process("ULO_MAIN";0;"";$vo_param.table;$vo_winData;Form.uloRecords[$vo_param.relation])
+			  //ULO_MAIN ($vo_param.table;$vo_winData;Form.uloRecords[$vo_param.relation])
 			
 		: ($vo_param.action="same") | ($vo_param.action="sameHost")
 			

@@ -31,7 +31,12 @@ $vo_uloData.selectionMessage:=""  //Currently selected record
 $vo_uloData.selectedRecords:=ds:C1482[Table name:C256($tableNumber)].newSelection()  //Selected /highlighed records
 $vo_uloData.shortcuts:=New collection:C1472
 If ($cp>2)
-	$vo_uloData.uloRecords:=$3
+	If (OB Is defined:C1231($3;"tableNumber"))
+		$vo_uloData.uloRecords:=ds:C1482[Table name:C256($tableNumber)].query($3.idField+" in :1";$3.ids)
+		$vo_uloData.relate:=True:C214
+	Else 
+		$vo_uloData.uloRecords:=$3
+	End if 
 Else 
 	$vo_uloData.uloRecords:=ds:C1482[Table name:C256($tableNumber)].all()  //Current selection
 End if 

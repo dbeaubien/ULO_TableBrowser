@@ -6,7 +6,7 @@ C_LONGINT:C283($vl_event;$vl_table;$vl_selected;$index;\
 $vl_buttonNumber;$vl_idx;$vl_field;$vl_fieldIdx;\
 $vl_sortIdx)
 C_COLLECTION:C1488($vc_fields;$vc_hostOptions)
-C_OBJECT:C1216(vo_colObj)
+C_OBJECT:C1216(vo_colObj;$vo_state)
 
 $vl_event:=$1.code
 
@@ -26,10 +26,12 @@ Case of
 				Form:C1466.footerRefresh:=False:C215
 				Form:C1466.refresh:=False:C215
 				Form:C1466.fullRefresh:=True:C214
-				Form:C1466.relate:=False:C215
 				Form:C1466.forceSelectNav:=False:C215
 				Form:C1466.customColumns:=New collection:C1472
 				Form:C1466.customSort:=New object:C1471("field";0;"dir";1)
+				If (Not:C34(OB Is defined:C1231(Form:C1466;"relate")))
+					Form:C1466.relate:=False:C215
+				End if 
 				
 				vo_colObj:=New object:C1471("case";"data")
 				
@@ -54,6 +56,7 @@ Case of
 				End for each 
 				
 				EXECUTE METHOD:C1007("ULO_FORM_EVENT";*;$1)
+				
 				
 				ULO_SET_BACKGROUND 
 				
@@ -192,6 +195,15 @@ Case of
 								Form:C1466.forceSelectNav:=False:C215
 							End if 
 					End case 
+					
+					If (OB Is defined:C1231(Form:C1466.navItem;"buttonState"))
+						For each ($vo_state;Form:C1466.navItem.buttonState)
+							If ($vo_state.disabled)
+								ULO_DISABLE_BUTTON ($vo_state.code)
+							End if 
+						End for each 
+					End if 
+					
 				Else 
 					LISTBOX SELECT ROW:C912(*;"ULO_Navbar";Form:C1466.lastNavItemIndex;lk replace selection:K53:1)
 				End if 
