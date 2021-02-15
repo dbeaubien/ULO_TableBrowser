@@ -1,6 +1,12 @@
 //%attributes = {"shared":true}
 C_TEXT:C284($0)
-$0:="1.3.1"
+$0:="1.3.2"
+
+  //2021-02-15 - 1.3.2
+  // ULO_SET_PREF - Special case for 'relateIgnoreTables' where value is pushed into shared collection
+  // INIT_STORAGE - Initialisation of collection
+  // BUTTON_RELATE_POP - Now checks relateIgnoreTables before adding table to relate menu
+  //                   - Checks HOST relate options for given handle when searching sidebar
 
   //2021-02-15 - 1.3.1
   // ULO_LOAD_VIEW               - Now totals columns widths and adds blank column to fill empty space where column width < listbox width
