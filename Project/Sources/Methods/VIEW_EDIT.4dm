@@ -86,9 +86,28 @@ Case of
 		Form:C1466.navItem.selectedView:=$e_uloData.toObject()
 		
 	: ($1="Edit")
-		$vo_formData.allowDelete:=True:C214
-		$vo_formData.view:=OB Copy:C1225(Form:C1466.navItem.selectedView)
-		$e_uloData:=ds:C1482["uloData"].get($vo_formData.view.id)
+		
+		If (Form:C1466.navItem.selectedView.id="XXXX")
+			$e_uloData:=ds:C1482["uloData"].new()
+			$e_uloData.table:=Form:C1466.tableNumber
+			$e_uloData.name:=Choose:C955($e_uloData.name="";"New View";$e_uloData.name+" - Copy")
+			$e_uloData.handle:=Form:C1466.navItem.selectedView.handle
+			$e_uloData.type:=2
+			$e_uloData.user:=0
+			$e_uloData.group:=1  //TODO: Group?
+			$e_uloData.favourite:=False:C215
+			$e_uloData.default:=True:C214
+			$e_uloData.detail:=OB Copy:C1225(Form:C1466.navItem.selectedView.detail)
+			$e_uloData.detail.public:=False:C215
+			
+			$vo_formData.allowDelete:=False:C215
+			$vo_formData.view:=$e_uloData.toObject()
+			
+		Else 
+			$vo_formData.allowDelete:=True:C214
+			$vo_formData.view:=OB Copy:C1225(Form:C1466.navItem.selectedView)
+			$e_uloData:=ds:C1482["uloData"].get($vo_formData.view.id)
+		End if 
 End case 
 
 $vo_formData.customColumns:=Form:C1466.customColumns
