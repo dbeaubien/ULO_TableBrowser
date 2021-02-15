@@ -1,6 +1,21 @@
 //%attributes = {"shared":true}
 C_TEXT:C284($0)
-$0:="1.2.8"
+$0:="1.3.1"
+
+  //2021-02-15 - 1.3.1
+  // ULO_LOAD_VIEW               - Now totals columns widths and adds blank column to fill empty space where column width < listbox width
+  //                             - Added support for Header Alignment
+  // ULO_VIEW_EDIT_DETAIL (Form) - Added missing variable to Right alignment radio box
+  //                             - Added radio buttons for Header Alignment
+  // VIEW_FORM_DETAIL_METHOD     - Added support for header alignment form objects
+  // VIEW_EDIT                   - Added check for attempts to Edit System Generated view
+
+  //2021-02-11 - 1.3.0
+  // INIT_STORAGE      - Added allowNewRelateWindow to default 'prefs' obj
+  // BUTTON_RELATE_POP - Creates separate New and Current window menus when above pref is true
+  // ULO_MAIN          - Added support for passing obj containing collection of ids and table to query
+  // ULO_SET_PREF      - New method for setting Storage.prefs values
+  // ULO_BROWSER_EVENT - A number of changes to support opening relate as new process
 
   //2021-02-10 - 1.2.8
   // ULO_EXPORT_VIEW_CSV - Fixed issue where CR was being printed before the last field, resulting in last field being first value for following record
