@@ -55,11 +55,13 @@ If ($cp=0)
 			
 			$vl_fia:=Find in array:C230($at_tableName;$vo_field.relatedDataClass)
 			If ($vl_fia>0)
-				$vl_idx:=UTIL_Col_Find_Index (Form:C1466.sidebarSource;"table";$al_tableNum{$vl_fia})  //TODO: Needs changing
-				If ($vl_idx>=0)
-					$vc_menuItems.push(New object:C1471("relation";$vo_field.fieldName;"table";Form:C1466.sidebarSource[$vl_idx].table;"count";$vl_count;"fieldName";$vo_field.relatedDataClass))
-				Else 
-					  //Can't find nav item for this table number
+				If (Storage:C1525.prefs.relateIgnoreTables.indexOf($al_tableNum{$vl_fia})=-1)  //Check table is not in ignore collection
+					$vl_idx:=UTIL_Col_Find_Index (Form:C1466.sidebarSource;"table";$al_tableNum{$vl_fia})  //TODO: Needs changing
+					If ($vl_idx>=0)
+						$vc_menuItems.push(New object:C1471("relation";$vo_field.fieldName;"table";Form:C1466.sidebarSource[$vl_idx].table;"count";$vl_count;"fieldName";$vo_field.relatedDataClass))
+					Else 
+						  //Can't find nav item for this table number
+					End if 
 				End if 
 			End if 
 		End if 
@@ -145,7 +147,11 @@ Else
 				Form:C1466.tableNumber:=$vo_param.table
 			End if 
 			
-			$index:=UTIL_Col_Find_Index (Form:C1466.sidebarSource;"table";Form:C1466.tableNumber;"type";"DATA")
+			If (OB Is defined:C1231($vo_param;"handle"))
+				$index:=UTIL_Col_Find_Index (Form:C1466.sidebarSource;"table";Form:C1466.tableNumber;"type";"DATA";"handle";$vo_param.handle)
+			Else 
+				$index:=UTIL_Col_Find_Index (Form:C1466.sidebarSource;"table";Form:C1466.tableNumber;"type";"DATA")
+			End if 
 			
 			  //If desired sidebar item is child, ensure parent(s) are expanded
 			If (OB Is defined:C1231(Form:C1466.sidebarSource[$index];"childOfIndex"))

@@ -15,6 +15,16 @@
 
 C_VARIANT:C1683(${1})
 
-Use (Storage:C1525.prefs)
-	Storage:C1525.prefs[$1]:=$2
-End use 
+
+Case of 
+	: ($1="relateIgnoreTables")
+		Use (Storage:C1525.prefs.relateIgnoreTables)
+			Storage:C1525.prefs.relateIgnoreTables.push($2)
+		End use 
+		
+	Else 
+		Use (Storage:C1525.prefs)
+			Storage:C1525.prefs[$1]:=$2
+		End use 
+		
+End case 
