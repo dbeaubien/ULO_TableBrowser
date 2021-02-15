@@ -1,7 +1,8 @@
-//%attributes = {"invisible":true}
+//%attributes = {"shared":true}
 C_OBJECT:C1216($vo_col;$vo_view;$es_return)
 C_POINTER:C301($vp_nil;$vp_table)
-C_LONGINT:C283($i;$vl_columns;$vl_type;$vl_numFields;$vl_fontStyle;$vl_alignment;$vl_fontColour)
+C_LONGINT:C283($i;$vl_columns;$vl_type;$vl_numFields;$vl_fontStyle;$vl_alignment;\
+$vl_fontColour;$vl_totalWidth;$vl_left;$vl_top;$vl_right;$vl_bottom)
 C_TEXT:C284($vt_colName;$vt_hObject;$vt_formula;$vt_header;$vt_fObject;$vt_format)
   //Form.tableNumber:=Form.navItem.table
 
@@ -53,6 +54,7 @@ If (Form:C1466.tableNumber>0)
 	
 	If (Form:C1466.navItem.selectedView#Null:C1517)
 		$i:=0
+		$vl_totalWidth:=0
 		
 		For each ($vo_col;Form:C1466.navItem.selectedView.detail.cols)
 			If ($vo_col.selected)
@@ -116,103 +118,112 @@ If (Form:C1466.tableNumber>0)
 					End if 
 				End if 
 				LISTBOX SET COLUMN WIDTH:C833(*;$vt_hObject;$vo_col.width)
+				$vl_totalWidth:=$vl_totalWidth+$vo_col.width
 				
 				
-				
-				
-				  //If (Is field number valid($vp_table;$vo_col.field))  //& (Type(Field(Table($vp_table);$i)->)#38)
-				  //  //$vt_colName:="h_"+Field name(Table($vp_table);$vo_col.field) //Tom - Field name is not always unique, changed to Table + Field num
-				  //$vt_colName:="h_"+String($vo_col.table)+"_"+String($vo_col.field)
-				
-				  //$vt_hObject:="head_"+$vt_colName
-				  //$vt_fObject:="foot_"+$vt_colName
-				
-				  //If (Undefined($vo_col.formula))
-				  //$vt_formula:=Field name(Table($vp_table);$vo_col.field)
-				  //Else 
-				  //$vt_formula:=$vo_col.formula
-				  //End if 
-				  //If (Undefined($vo_col.type))
-				  //$vl_type:=Type(Field(Table($vp_table);$vo_col.field)->)
-				  //Else 
-				  //$vl_type:=$vo_col.type
-				  //End if 
-				  //If (Undefined($vo_col.header))
-				  //$vt_header:=Field name(Table($vp_table);$vo_col.field)
-				  //Else 
-				  //$vt_header:=$vo_col.header
-				  //End if 
-				  //If (Undefined($vo_col.fontStyle))
-				  //$vl_fontStyle:=0
-				  //Else 
-				  //$vl_fontStyle:=$vo_col.fontStyle
-				  //End if 
-				  //If (Undefined($vo_col.alignment))
-				  //$vl_alignment:=Align default
-				  //Else 
-				  //Case of 
-				  //: ($vo_col.alignment="left")
-				  //$vl_alignment:=Align left
-				  //: ($vo_col.alignment="right")
-				  //$vl_alignment:=Align right
-				  //: ($vo_col.alignment="center")
-				  //$vl_alignment:=Align center
-				  //Else 
-				  //$vl_alignment:=Align default
-				  //End case 
-				  //End if 
-				  //If (Undefined($vo_col.fontColour))
-				  //$vl_fontColour:=0
-				  //Else 
-				  //$vl_fontColour:=$vo_col.fontColour
-				  //End if 
-				  //If (Undefined($vo_col.fontColourOverride))
-				  //$vl_fontColour:=Form.theme.rowFontColour
-				  //Else 
-				  //$vl_fontColour:=Choose($vo_col.fontColourOverride;$vl_fontColour;Form.theme.rowFontColour)
-				  //End if 
-				  //If (Undefined($vo_col.format))
-				  //$vt_format:=""
-				  //Else 
-				  //$vt_format:=$vo_col.format
-				  //End if 
-				
-				  //If ($vo_col.table>0)
-				  //$vt_formula:="This."+$vt_formula
-				  //End if 
-				
-				  //LISTBOX INSERT COLUMN FORMULA(*;"ULO_LIST";$i;$vt_colName;$vt_formula;\
-																																													$vl_type;$vt_hObject;$vp_nil;$vt_fObject;$vp_nil)
-				
-				  //OBJECT SET FORMAT(*;$vt_colName;$vt_format)
-				  //OBJECT SET FONT STYLE(*;$vt_colName;$vl_fontStyle)
-				  //OBJECT SET HORIZONTAL ALIGNMENT(*;$vt_colName;$vl_alignment)
-				  //OBJECT SET RGB COLORS(*;$vt_colName;$vl_fontColour)
-				  //OBJECT SET ENTERABLE(*;$vt_colName;False)
-				
-				  //OBJECT SET TITLE(*;$vt_hObject;$vt_header)  //Sets the header text.
-				  //OBJECT SET FONT(*;$vt_hObject;"Label")  //Sets the header text.
-				
-				  //If (Form.navItem.selectedView.detail.useFooter)
-				  //If ($vo_col.average) | ($vo_col.max) | ($vo_col.total) | ($vo_col.min)
-				  //LISTBOX SET FOOTER CALCULATION(*;$vt_colName;lk footer custom)
-				
-				  //OBJECT SET HORIZONTAL ALIGNMENT(*;$vt_fObject;$vl_alignment)
-				  //OBJECT SET FORMAT(*;$vt_fObject;$vt_format)
-				  //If ($vl_fontStyle=0) | ($vl_fontStyle=2) | ($vl_fontStyle=4) | ($vl_fontStyle=6)
-				  //$vl_fontStyle:=$vl_fontStyle+1  //Add bold if missing
-				  //End if 
-				  //OBJECT SET FONT STYLE(*;$vt_fObject;$vl_fontStyle)
-				  //OBJECT SET RGB COLORS(*;$vt_fObject;$vl_fontColour)
-				  //End if 
-				  //End if 
-				
-				  //If (Not(Undefined($vo_col.width)))
-				  //End if 
-				  //End if 
+				If (False:C215)
+					  //If (Is field number valid($vp_table;$vo_col.field))  //& (Type(Field(Table($vp_table);$i)->)#38)
+					  //  //$vt_colName:="h_"+Field name(Table($vp_table);$vo_col.field) //Tom - Field name is not always unique, changed to Table + Field num
+					  //$vt_colName:="h_"+String($vo_col.table)+"_"+String($vo_col.field)
+					
+					  //$vt_hObject:="head_"+$vt_colName
+					  //$vt_fObject:="foot_"+$vt_colName
+					
+					  //If (Undefined($vo_col.formula))
+					  //$vt_formula:=Field name(Table($vp_table);$vo_col.field)
+					  //Else 
+					  //$vt_formula:=$vo_col.formula
+					  //End if 
+					  //If (Undefined($vo_col.type))
+					  //$vl_type:=Type(Field(Table($vp_table);$vo_col.field)->)
+					  //Else 
+					  //$vl_type:=$vo_col.type
+					  //End if 
+					  //If (Undefined($vo_col.header))
+					  //$vt_header:=Field name(Table($vp_table);$vo_col.field)
+					  //Else 
+					  //$vt_header:=$vo_col.header
+					  //End if 
+					  //If (Undefined($vo_col.fontStyle))
+					  //$vl_fontStyle:=0
+					  //Else 
+					  //$vl_fontStyle:=$vo_col.fontStyle
+					  //End if 
+					  //If (Undefined($vo_col.alignment))
+					  //$vl_alignment:=Align default
+					  //Else 
+					  //Case of 
+					  //: ($vo_col.alignment="left")
+					  //$vl_alignment:=Align left
+					  //: ($vo_col.alignment="right")
+					  //$vl_alignment:=Align right
+					  //: ($vo_col.alignment="center")
+					  //$vl_alignment:=Align center
+					  //Else 
+					  //$vl_alignment:=Align default
+					  //End case 
+					  //End if 
+					  //If (Undefined($vo_col.fontColour))
+					  //$vl_fontColour:=0
+					  //Else 
+					  //$vl_fontColour:=$vo_col.fontColour
+					  //End if 
+					  //If (Undefined($vo_col.fontColourOverride))
+					  //$vl_fontColour:=Form.theme.rowFontColour
+					  //Else 
+					  //$vl_fontColour:=Choose($vo_col.fontColourOverride;$vl_fontColour;Form.theme.rowFontColour)
+					  //End if 
+					  //If (Undefined($vo_col.format))
+					  //$vt_format:=""
+					  //Else 
+					  //$vt_format:=$vo_col.format
+					  //End if 
+					
+					  //If ($vo_col.table>0)
+					  //$vt_formula:="This."+$vt_formula
+					  //End if 
+					
+					  //LISTBOX INSERT COLUMN FORMULA(*;"ULO_LIST";$i;$vt_colName;$vt_formula;\
+																																																			$vl_type;$vt_hObject;$vp_nil;$vt_fObject;$vp_nil)
+					
+					  //OBJECT SET FORMAT(*;$vt_colName;$vt_format)
+					  //OBJECT SET FONT STYLE(*;$vt_colName;$vl_fontStyle)
+					  //OBJECT SET HORIZONTAL ALIGNMENT(*;$vt_colName;$vl_alignment)
+					  //OBJECT SET RGB COLORS(*;$vt_colName;$vl_fontColour)
+					  //OBJECT SET ENTERABLE(*;$vt_colName;False)
+					
+					  //OBJECT SET TITLE(*;$vt_hObject;$vt_header)  //Sets the header text.
+					  //OBJECT SET FONT(*;$vt_hObject;"Label")  //Sets the header text.
+					
+					  //If (Form.navItem.selectedView.detail.useFooter)
+					  //If ($vo_col.average) | ($vo_col.max) | ($vo_col.total) | ($vo_col.min)
+					  //LISTBOX SET FOOTER CALCULATION(*;$vt_colName;lk footer custom)
+					
+					  //OBJECT SET HORIZONTAL ALIGNMENT(*;$vt_fObject;$vl_alignment)
+					  //OBJECT SET FORMAT(*;$vt_fObject;$vt_format)
+					  //If ($vl_fontStyle=0) | ($vl_fontStyle=2) | ($vl_fontStyle=4) | ($vl_fontStyle=6)
+					  //$vl_fontStyle:=$vl_fontStyle+1  //Add bold if missing
+					  //End if 
+					  //OBJECT SET FONT STYLE(*;$vt_fObject;$vl_fontStyle)
+					  //OBJECT SET RGB COLORS(*;$vt_fObject;$vl_fontColour)
+					  //End if 
+					  //End if 
+					
+					  //If (Not(Undefined($vo_col.width)))
+					  //End if 
+					  //End if 
+				End if 
 			End if 
 			
 		End for each 
+		
+		OBJECT GET COORDINATES:C663(*;"ULO_LIST";$vl_left;$vl_top;$vl_right;$vl_bottom)
+		  //If total width of columns is less than Listbox width, add blank column for auto filling remaining space
+		If ($vl_totalWidth<($vl_right-$vl_left))
+			$i:=$i+1
+			LISTBOX INSERT COLUMN FORMULA:C970(*;"ULO_LIST";$i;"fillerColumn";"This";Is text:K8:3;"header_fillerColumn";$vp_nil)
+			LISTBOX SET COLUMN WIDTH:C833(*;"fillerColumn";0;0;0)
+		End if 
 		
 		If (OB Is defined:C1231(Form:C1466.navItem.selectedView.detail;"headerHeight"))
 			LISTBOX SET HEADERS HEIGHT:C1143(*;"ULO_LIST";Form:C1466.navItem.selectedView.detail.headerHeight;lk lines:K53:23)
