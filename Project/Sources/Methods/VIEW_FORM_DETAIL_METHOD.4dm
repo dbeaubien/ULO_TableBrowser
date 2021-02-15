@@ -99,6 +99,20 @@ Case of
 						Form:C1466.alignCenter:=1
 				End case 
 				
+				If (OB Is defined:C1231(Form:C1466.col;"headerAlignment"))
+					Case of 
+						: (Form:C1466.col.headerAlignment="Left")
+							Form:C1466.hAlignLeft:=1
+						: (Form:C1466.col.headerAlignment="Right")
+							Form:C1466.hAlignRight:=1
+						: (Form:C1466.col.headerAlignment="Center")
+							Form:C1466.hAlignCenter:=1
+					End case 
+				Else 
+					Form:C1466.col.headerAlignment:="Center"
+					Form:C1466.hAlignCenter:=1
+				End if 
+				
 				EXECUTE FORMULA:C63("vl_fontColour:=0x00"+Form:C1466.col.fontColourHex)
 				
 				OBJECT SET ENTERABLE:C238(*;"input_formula";$vb_formula)
@@ -158,9 +172,13 @@ Case of
 						Form:C1466.col.alignment:="Center"
 					: ($vt_objectName="rb_right")
 						Form:C1466.col.alignment:="Right"
+					: ($vt_objectName="rb_leftH")
+						Form:C1466.col.headerAlignment:="Left"
+					: ($vt_objectName="rb_centerH")
+						Form:C1466.col.headerAlignment:="Center"
+					: ($vt_objectName="rb_rightH")
+						Form:C1466.col.headerAlignment:="Right"
 				End case 
-				
-				
 		End case 
 		
 		

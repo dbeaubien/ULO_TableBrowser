@@ -2,7 +2,7 @@
 C_OBJECT:C1216($vo_col;$vo_view;$es_return)
 C_POINTER:C301($vp_nil;$vp_table)
 C_LONGINT:C283($i;$vl_columns;$vl_type;$vl_numFields;$vl_fontStyle;$vl_alignment;\
-$vl_fontColour;$vl_totalWidth;$vl_left;$vl_top;$vl_right;$vl_bottom)
+$vl_fontColour;$vl_totalWidth;$vl_left;$vl_top;$vl_right;$vl_bottom;$vl_hAlignment)
 C_TEXT:C284($vt_colName;$vt_hObject;$vt_formula;$vt_header;$vt_fObject;$vt_format)
   //Form.tableNumber:=Form.navItem.table
 
@@ -102,6 +102,19 @@ If (Form:C1466.tableNumber>0)
 				
 				OBJECT SET TITLE:C194(*;$vt_hObject;$vo_col.header)  //Sets the header text.
 				OBJECT SET FONT:C164(*;$vt_hObject;"Label")  //Sets the header text.
+				If (OB Is defined:C1231($vo_col;"headerAlignment"))
+					Case of 
+						: ($vo_col.headerAlignment="left")
+							$vl_hAlignment:=Align left:K42:2
+						: ($vo_col.headerAlignment="right")
+							$vl_hAlignment:=Align right:K42:4
+						: ($vo_col.headerAlignment="center")
+							$vl_hAlignment:=Align center:K42:3
+						Else 
+							$vl_hAlignment:=Align default:K42:1
+					End case 
+					OBJECT SET HORIZONTAL ALIGNMENT:C706(*;$vt_hObject;$vl_hAlignment)
+				End if 
 				
 				If (Form:C1466.navItem.selectedView.detail.useFooter)
 					If ($vo_col.average) | ($vo_col.max) | ($vo_col.total) | ($vo_col.min)

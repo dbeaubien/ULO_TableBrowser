@@ -35,10 +35,10 @@
 			"objects": {
 				"BackgroundColour": {
 					"type": "rectangle",
-					"top": 20,
+					"top": 0,
 					"left": 0,
 					"width": 405,
-					"height": 505,
+					"height": 565,
 					"sizingX": "grow",
 					"sizingY": "grow",
 					"fill": "#E8E8E8",
@@ -46,7 +46,7 @@
 				},
 				"VIEW_Accept": {
 					"type": "button",
-					"top": 483,
+					"top": 523,
 					"left": 305,
 					"width": 74,
 					"height": 22,
@@ -63,7 +63,7 @@
 				},
 				"VIEW_Cancel": {
 					"type": "button",
-					"top": 483,
+					"top": 523,
 					"left": 219,
 					"width": 74,
 					"height": 22,
@@ -84,7 +84,7 @@
 			"objects": {
 				"Group Box2": {
 					"type": "groupBox",
-					"top": 381,
+					"top": 421,
 					"left": 33,
 					"width": 345,
 					"height": 87,
@@ -103,13 +103,13 @@
 					"top": 213,
 					"left": 34,
 					"width": 345,
-					"height": 158,
+					"height": 198,
 					"text": "Styling :"
 				},
 				"Variable": {
 					"type": "input",
 					"top": 55,
-					"left": 159,
+					"left": 167,
 					"width": 179,
 					"height": 16,
 					"dataSource": "Form:C1466.col.header",
@@ -122,7 +122,7 @@
 				},
 				"cb_agg_total": {
 					"type": "checkbox",
-					"top": 405,
+					"top": 445,
 					"left": 100,
 					"width": 100,
 					"height": 17,
@@ -138,7 +138,7 @@
 				},
 				"cb_agg_min": {
 					"type": "checkbox",
-					"top": 435,
+					"top": 475,
 					"left": 100,
 					"width": 100,
 					"height": 17,
@@ -154,7 +154,7 @@
 				},
 				"cb_agg_average": {
 					"type": "checkbox",
-					"top": 405,
+					"top": 445,
 					"left": 227,
 					"width": 100,
 					"height": 17,
@@ -170,7 +170,7 @@
 				},
 				"cb_agg_max": {
 					"type": "checkbox",
-					"top": 435,
+					"top": 475,
 					"left": 227,
 					"width": 100,
 					"height": 17,
@@ -204,7 +204,7 @@
 				"input_formula": {
 					"type": "input",
 					"top": 115,
-					"left": 159,
+					"left": 167,
 					"width": 179,
 					"height": 36,
 					"dataSource": "Form:C1466.col.formula",
@@ -226,7 +226,7 @@
 				"cb_sty_bold": {
 					"type": "checkbox",
 					"top": 234,
-					"left": 159,
+					"left": 167,
 					"width": 60,
 					"height": 17,
 					"sizingY": "fixed",
@@ -242,7 +242,7 @@
 				"cb_sty_italic": {
 					"type": "checkbox",
 					"top": 234,
-					"left": 219,
+					"left": 227,
 					"width": 60,
 					"height": 17,
 					"sizingY": "fixed",
@@ -258,7 +258,7 @@
 				"cb_sty_underline": {
 					"type": "checkbox",
 					"top": 234,
-					"left": 279,
+					"left": 287,
 					"width": 80,
 					"height": 17,
 					"sizingY": "fixed",
@@ -282,7 +282,7 @@
 				"input_fontColourHex": {
 					"type": "input",
 					"top": 264,
-					"left": 159,
+					"left": 167,
 					"width": 147,
 					"height": 16,
 					"dataSource": "Form:C1466.col.fontColourHex",
@@ -296,7 +296,7 @@
 				"rect_fontColour": {
 					"type": "rectangle",
 					"top": 264,
-					"left": 314,
+					"left": 322,
 					"width": 24,
 					"height": 16
 				},
@@ -304,7 +304,7 @@
 					"type": "button",
 					"text": "",
 					"top": 264,
-					"left": 314,
+					"left": 322,
 					"width": 24,
 					"height": 16,
 					"events": [
@@ -325,7 +325,7 @@
 				"Variable3": {
 					"type": "input",
 					"top": 85,
-					"left": 159,
+					"left": 167,
 					"width": 179,
 					"height": 16,
 					"dataSource": "Form:C1466.col.format",
@@ -339,15 +339,15 @@
 					"type": "text",
 					"top": 312,
 					"left": 56,
-					"width": 100,
+					"width": 105,
 					"height": 15,
-					"text": "Alignment :"
+					"text": "Data Alignment :"
 				},
 				"rb_left": {
 					"type": "radio",
 					"text": "Left",
 					"top": 310,
-					"left": 159,
+					"left": 167,
 					"width": 43,
 					"height": 20,
 					"events": [
@@ -360,7 +360,7 @@
 					"type": "radio",
 					"text": "Center",
 					"top": 310,
-					"left": 216,
+					"left": 224,
 					"width": 63,
 					"height": 20,
 					"events": [
@@ -372,8 +372,8 @@
 				"rb_right": {
 					"type": "radio",
 					"text": "Right",
-					"top": 309,
-					"left": 286,
+					"top": 310,
+					"left": 294,
 					"width": 52,
 					"height": 20,
 					"events": [
@@ -392,7 +392,7 @@
 				},
 				"dropdown_datatype": {
 					"type": "dropdown",
-					"left": 159,
+					"left": 167,
 					"top": 162,
 					"width": 179,
 					"height": 20,
@@ -412,7 +412,7 @@
 				"input_fontColourHex1": {
 					"type": "input",
 					"top": 341,
-					"left": 159,
+					"left": 167,
 					"width": 147,
 					"height": 16,
 					"dataSource": "Form:C1466.col.width",
@@ -427,7 +427,7 @@
 				"cb_override": {
 					"type": "checkbox",
 					"top": 287,
-					"left": 159,
+					"left": 167,
 					"width": 140,
 					"height": 17,
 					"sizingY": "fixed",
@@ -439,6 +439,53 @@
 						"onClick"
 					],
 					"dataSourceTypeHint": "boolean"
+				},
+				"Text8": {
+					"type": "text",
+					"top": 375,
+					"left": 56,
+					"width": 105,
+					"height": 15,
+					"text": "Header Alignment :"
+				},
+				"rb_leftH": {
+					"type": "radio",
+					"text": "Left",
+					"top": 373,
+					"left": 167,
+					"width": 43,
+					"height": 20,
+					"events": [
+						"onClick"
+					],
+					"radioGroup": "halign",
+					"dataSource": "Form:C1466.hAlignLeft"
+				},
+				"rb_centerH": {
+					"type": "radio",
+					"text": "Center",
+					"top": 373,
+					"left": 224,
+					"width": 63,
+					"height": 20,
+					"events": [
+						"onClick"
+					],
+					"radioGroup": "halign",
+					"dataSource": "Form:C1466.hAlignCenter"
+				},
+				"rb_rightH": {
+					"type": "radio",
+					"text": "Right",
+					"top": 373,
+					"left": 294,
+					"width": 52,
+					"height": 20,
+					"events": [
+						"onClick"
+					],
+					"radioGroup": "halign",
+					"dataSource": "Form:C1466.hAlignRight"
 				}
 			},
 			"entryOrder": [
@@ -459,7 +506,10 @@
 				"cb_agg_min",
 				"cb_agg_max",
 				"input_fontColourHex1",
-				"cb_override"
+				"cb_override",
+				"rb_leftH",
+				"rb_centerH",
+				"rb_rightH"
 			]
 		}
 	],
