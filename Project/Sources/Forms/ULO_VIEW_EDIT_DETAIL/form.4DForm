@@ -118,7 +118,7 @@
 					"events": [
 						"onDataChange"
 					],
-					"entryFilter": "&\"A-z;0-9; ;_;-\""
+					"entryFilter": "&\"A-z;0-9; ;_;-;/;.;,;\\;&;*;#;(;)\""
 				},
 				"cb_agg_total": {
 					"type": "checkbox",
@@ -379,7 +379,8 @@
 					"events": [
 						"onClick"
 					],
-					"radioGroup": "align"
+					"radioGroup": "align",
+					"dataSource": "Form:C1466.alignRight"
 				},
 				"Text6": {
 					"type": "text",
