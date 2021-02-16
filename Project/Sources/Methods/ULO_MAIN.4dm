@@ -64,6 +64,8 @@ If ($cp>1)
 		$vo_uloData.sidebarStart:=$2.sidebarStart
 	End if 
 	
+	UTIL_OBJ_TO_STORAGE ("windowSettings";$2)
+	
 End if 
 
 $vo_uloData.buttons:=New collection:C1472

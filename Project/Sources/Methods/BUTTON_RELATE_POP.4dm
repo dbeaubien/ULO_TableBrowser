@@ -118,15 +118,19 @@ Else
 		: ($vo_param.action="new")
 			C_OBJECT:C1216($vo_winData)
 			$vo_winData:=New object:C1471
-			$vo_winData.wLeft:=10
-			$vo_winData.wTop:=120
-			$vo_winData.wRight:=1510
-			$vo_winData.wBottom:=650
-			$vo_winData.wType:=Plain window:K34:13
-			$vo_winData.wTitle:="My Browser"
+			
+			If (OB Is defined:C1231(Storage:C1525;"windowSettings"))
+				$vo_winData:=OB Copy:C1225(Storage:C1525.windowSettings)
+			Else 
+				$vo_winData.wLeft:=10
+				$vo_winData.wTop:=120
+				$vo_winData.wRight:=1510
+				$vo_winData.wBottom:=650
+				$vo_winData.wType:=Plain window:K34:13
+				$vo_winData.wTitle:="My Browser"
+			End if 
+			
 			$vo_winData.sidebarStart:=$vo_param.fieldName
-			
-			
 			$es_records:=Form:C1466.uloRecords[$vo_param.relation]
 			$vo_info:=$es_records.getDataClass().getInfo()
 			$vt_primaryKey:=$vo_info.primaryKey
