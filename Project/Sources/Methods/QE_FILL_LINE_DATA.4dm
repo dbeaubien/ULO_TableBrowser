@@ -67,21 +67,26 @@ End if
 OBJECT SET VISIBLE:C603(*;"ql_value@"+$vt_rowExtension;False:C215)
 OBJECT SET VISIBLE:C603(*;"ql_attribute@"+$vt_rowExtension;False:C215)
 $vl_fieldType:=$vo_queryData.type
-Case of 
-	: ($vl_fieldType=Is text:K8:3) | ($vl_fieldType=Is alpha field:K8:1)
-		OBJECT SET VISIBLE:C603(*;"ql_valueText"+$vt_rowExtension;True:C214)
-		OBJECT Get pointer:C1124(Object named:K67:5;"ql_valueText"+$vt_rowExtension)->:=String:C10($vo_queryData.value)
-	: ($vl_fieldType=Is longint:K8:6) | ($vl_fieldType=Is real:K8:4)
-		OBJECT SET VISIBLE:C603(*;"ql_valueNum"+$vt_rowExtension;True:C214)
-		OBJECT Get pointer:C1124(Object named:K67:5;"ql_valueNum"+$vt_rowExtension)->:=Num:C11($vo_queryData.value)
-	: ($vl_fieldType=Is date:K8:7)
-		OBJECT SET VISIBLE:C603(*;"ql_valueDate"+$vt_rowExtension;True:C214)
-		OBJECT Get pointer:C1124(Object named:K67:5;"ql_valueDate"+$vt_rowExtension)->:=Date:C102($vo_queryData.value)
-	: ($vl_fieldType=Is object:K8:27)
-		OBJECT SET VISIBLE:C603(*;"ql_valueText"+$vt_rowExtension;True:C214)
-		OBJECT SET VISIBLE:C603(*;"ql_attribute"+$vt_rowExtension;True:C214)
-		OBJECT Get pointer:C1124(Object named:K67:5;"ql_valueText"+$vt_rowExtension)->:=String:C10($vo_queryData.value)
-	Else 
-		OBJECT SET VISIBLE:C603(*;"ql_valueText"+$vt_rowExtension;True:C214)
-		OBJECT Get pointer:C1124(Object named:K67:5;"ql_valueText"+$vt_rowExtension)->:=String:C10($vo_queryData.value)
-End case 
+If ($vo_queryData.oper="in")
+	OBJECT SET VISIBLE:C603(*;"ql_valueText"+$vt_rowExtension;True:C214)
+	OBJECT Get pointer:C1124(Object named:K67:5;"ql_valueText"+$vt_rowExtension)->:=String:C10($vo_queryData.value)
+Else 
+	Case of 
+		: ($vl_fieldType=Is text:K8:3) | ($vl_fieldType=Is alpha field:K8:1)
+			OBJECT SET VISIBLE:C603(*;"ql_valueText"+$vt_rowExtension;True:C214)
+			OBJECT Get pointer:C1124(Object named:K67:5;"ql_valueText"+$vt_rowExtension)->:=String:C10($vo_queryData.value)
+		: ($vl_fieldType=Is longint:K8:6) | ($vl_fieldType=Is real:K8:4)
+			OBJECT SET VISIBLE:C603(*;"ql_valueNum"+$vt_rowExtension;True:C214)
+			OBJECT Get pointer:C1124(Object named:K67:5;"ql_valueNum"+$vt_rowExtension)->:=Num:C11($vo_queryData.value)
+		: ($vl_fieldType=Is date:K8:7)
+			OBJECT SET VISIBLE:C603(*;"ql_valueDate"+$vt_rowExtension;True:C214)
+			OBJECT Get pointer:C1124(Object named:K67:5;"ql_valueDate"+$vt_rowExtension)->:=Date:C102($vo_queryData.value)
+		: ($vl_fieldType=Is object:K8:27)
+			OBJECT SET VISIBLE:C603(*;"ql_valueText"+$vt_rowExtension;True:C214)
+			OBJECT SET VISIBLE:C603(*;"ql_attribute"+$vt_rowExtension;True:C214)
+			OBJECT Get pointer:C1124(Object named:K67:5;"ql_valueText"+$vt_rowExtension)->:=String:C10($vo_queryData.value)
+		Else 
+			OBJECT SET VISIBLE:C603(*;"ql_valueText"+$vt_rowExtension;True:C214)
+			OBJECT Get pointer:C1124(Object named:K67:5;"ql_valueText"+$vt_rowExtension)->:=String:C10($vo_queryData.value)
+	End case 
+End if 

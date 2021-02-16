@@ -31,19 +31,23 @@ Case of
 				OBJECT SET VISIBLE:C603(*;"ql_value@"+String:C10($row;"0000");False:C215)
 				OBJECT SET VISIBLE:C603(*;"ql_attribute"+String:C10($row;"0000");False:C215)
 				
-				Case of 
-					: ($vo_field.fieldType=Is text:K8:3) | ($vo_field.fieldType=Is alpha field:K8:1)
-						OBJECT SET VISIBLE:C603(*;"ql_valueText"+String:C10($row;"0000");True:C214)
-					: ($vo_field.fieldType=Is longint:K8:6) | ($vo_field.fieldType=Is real:K8:4)
-						OBJECT SET VISIBLE:C603(*;"ql_valueNum"+String:C10($row;"0000");True:C214)
-					: ($vo_field.fieldType=Is date:K8:7)
-						OBJECT SET VISIBLE:C603(*;"ql_valueDate"+String:C10($row;"0000");True:C214)
-					: ($vo_field.fieldType=Is object:K8:27)
-						OBJECT SET VISIBLE:C603(*;"ql_valueText"+String:C10($row;"0000");True:C214)
-						OBJECT SET VISIBLE:C603(*;"ql_attribute"+String:C10($row;"0000");True:C214)
-					Else 
-						OBJECT SET VISIBLE:C603(*;"ql_valueText"+String:C10($row;"0000");True:C214)
-				End case 
+				If (Form:C1466.parent.lastQuery[$row].oper="in") | (Form:C1466.parent.lastQuery[$row].oper="not in")
+					OBJECT SET VISIBLE:C603(*;"ql_valueText"+String:C10($row;"0000");True:C214)
+				Else 
+					Case of 
+						: ($vo_field.fieldType=Is text:K8:3) | ($vo_field.fieldType=Is alpha field:K8:1)
+							OBJECT SET VISIBLE:C603(*;"ql_valueText"+String:C10($row;"0000");True:C214)
+						: ($vo_field.fieldType=Is longint:K8:6) | ($vo_field.fieldType=Is real:K8:4)
+							OBJECT SET VISIBLE:C603(*;"ql_valueNum"+String:C10($row;"0000");True:C214)
+						: ($vo_field.fieldType=Is date:K8:7)
+							OBJECT SET VISIBLE:C603(*;"ql_valueDate"+String:C10($row;"0000");True:C214)
+						: ($vo_field.fieldType=Is object:K8:27)
+							OBJECT SET VISIBLE:C603(*;"ql_valueText"+String:C10($row;"0000");True:C214)
+							OBJECT SET VISIBLE:C603(*;"ql_attribute"+String:C10($row;"0000");True:C214)
+						Else 
+							OBJECT SET VISIBLE:C603(*;"ql_valueText"+String:C10($row;"0000");True:C214)
+					End case 
+				End if 
 				
 				OBJECT GET COORDINATES:C663(*;"ql_field"+String:C10($row;"0000");$vl_left;$vl_top;$vl_right;$vl_bottom)
 				If ($vo_field.fieldType=Is object:K8:27)
