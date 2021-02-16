@@ -2,6 +2,11 @@
 C_TEXT:C284($0)
 $0:="1.3.3"
 
+  //2021-02-16 - 1.3.4
+  // QE_FILL_LINE_DATA - Added check for 'in' operator, shows text entry
+  // QE_RUN            - Added handling of 'in' and 'not in' operators
+  // CSV_PARSE_RECORD_COL - New method for parsing in list values
+
   //2021-02-16 - 1.3.3
   // ULO_MAIN          - Saves window settings to Storage
   // BUTTON_RELATE_POP - Uses saved settings when opening new window
