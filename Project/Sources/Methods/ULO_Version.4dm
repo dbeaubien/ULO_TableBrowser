@@ -1,6 +1,9 @@
 //%attributes = {"shared":true}
 C_TEXT:C284($0)
-$0:="1.3.3"
+$0:="1.3.5"
+
+  //2021-02-17 - 1.3.5
+  // ULO_EXPORT_VIEW_CSV - Reworked columns loop to first query for selected cols to prevent printing issues where not every col is selected
 
   //2021-02-16 - 1.3.4
   // QE_FILL_LINE_DATA - Added check for 'in' operator, shows text entry
