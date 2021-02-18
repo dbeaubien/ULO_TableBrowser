@@ -1,5 +1,5 @@
 //%attributes = {"shared":true}
-C_OBJECT:C1216($vo_col;$vo_view;$es_return)
+C_OBJECT:C1216($vo_col;$vo_view;$es_return;$es)
 C_POINTER:C301($vp_nil;$vp_table)
 C_LONGINT:C283($i;$vl_columns;$vl_type;$vl_numFields;$vl_fontStyle;$vl_alignment;\
 $vl_fontColour;$vl_totalWidth;$vl_left;$vl_top;$vl_right;$vl_bottom;$vl_hAlignment)
@@ -201,7 +201,7 @@ If (Form:C1466.tableNumber>0)
 					  //End if 
 					
 					  //LISTBOX INSERT COLUMN FORMULA(*;"ULO_LIST";$i;$vt_colName;$vt_formula;\
-																																																									$vl_type;$vt_hObject;$vp_nil;$vt_fObject;$vp_nil)
+																																																															$vl_type;$vt_hObject;$vp_nil;$vt_fObject;$vp_nil)
 					
 					  //OBJECT SET FORMAT(*;$vt_colName;$vt_format)
 					  //OBJECT SET FONT STYLE(*;$vt_colName;$vl_fontStyle)
