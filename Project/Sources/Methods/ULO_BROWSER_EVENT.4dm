@@ -341,6 +341,13 @@ Case of
 		Case of 
 			: ($vl_event=On Clicked:K2:4)
 				BUTTON_SEARCH_POP 
+				
+				$es:=Form:C1466.uloRecords
+				If (Storage:C1525.hostMethods.filter#"")
+					EXECUTE METHOD:C1007(Storage:C1525.hostMethods.filter;$es;Form:C1466.tableNumber;Form:C1466.navItem.handle;$es)
+				End if 
+				Form:C1466.uloRecords:=$es
+				
 				Form:C1466.refresh:=True:C214
 				Form:C1466.footerRefresh:=True:C214
 				SET TIMER:C645(-1)

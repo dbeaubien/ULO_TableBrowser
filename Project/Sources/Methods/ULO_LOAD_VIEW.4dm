@@ -34,7 +34,11 @@ If (Form:C1466.tableNumber>0)
 			Form:C1466.uloRecords:=$es_return
 		Else 
 			Form:C1466.navItem.selection:=New object:C1471
-			Form:C1466.navItem.selection:=ds:C1482[Table name:C256($vp_table)].all()
+			$es:=ds:C1482[Table name:C256($vp_table)].all()
+			If (Storage:C1525.hostMethods.filter#"")
+				EXECUTE METHOD:C1007(Storage:C1525.hostMethods.filter;$es;Form:C1466.tableNumber;Form:C1466.navItem.handle;$es)
+			End if 
+			Form:C1466.navItem.selection:=$es
 			Form:C1466.uloRecords:=Form:C1466.navItem.selection
 		End if 
 		  //Push the loaded selection to the sore of current selections???
@@ -197,7 +201,7 @@ If (Form:C1466.tableNumber>0)
 					  //End if 
 					
 					  //LISTBOX INSERT COLUMN FORMULA(*;"ULO_LIST";$i;$vt_colName;$vt_formula;\
-																																																			$vl_type;$vt_hObject;$vp_nil;$vt_fObject;$vp_nil)
+																																																									$vl_type;$vt_hObject;$vp_nil;$vt_fObject;$vp_nil)
 					
 					  //OBJECT SET FORMAT(*;$vt_colName;$vt_format)
 					  //OBJECT SET FONT STYLE(*;$vt_colName;$vl_fontStyle)
