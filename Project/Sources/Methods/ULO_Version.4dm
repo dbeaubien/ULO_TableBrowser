@@ -1,6 +1,11 @@
 //%attributes = {"shared":true}
 C_TEXT:C284($0)
-$0:="1.3.5"
+$0:="1.3.6"
+
+  //2021-02-18 - 1.3.6
+  // ULO_BROWSER_EVENT - Added missing call to Host Filter method when ULO_SEARCH clicked
+  // ULO_LOAD_VIEW - Added missing call to Host Filter method when loading initial selection of all records
+  // ULO_SET_HOST_METHOD - New method for setting/clearing host methods
 
   //2021-02-17 - 1.3.5
   // ULO_EXPORT_VIEW_CSV - Reworked columns loop to first query for selected cols to prevent printing issues where not every col is selected
