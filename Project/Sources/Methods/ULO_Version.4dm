@@ -1,6 +1,9 @@
 //%attributes = {"shared":true}
 C_TEXT:C284($0)
-$0:="1.3.6"
+$0:="1.3.7"
+
+  //2021-02-25 - 1.3.7
+  // ULO_BROWSER_EVENT - Added missing calls to ULO_DISABLE_BUTTON during initialisation of default data listing
 
   //2021-02-18 - 1.3.6
   // ULO_BROWSER_EVENT - Added missing call to Host Filter method when ULO_SEARCH clicked
