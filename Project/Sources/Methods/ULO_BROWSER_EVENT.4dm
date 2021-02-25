@@ -113,6 +113,14 @@ Case of
 										ULO_LOAD_WEB_AREA 
 								End case 
 								
+								If (OB Is defined:C1231(Form:C1466.navItem;"buttonState"))
+									For each ($vo_state;Form:C1466.navItem.buttonState)
+										If ($vo_state.disabled)
+											ULO_DISABLE_BUTTON ($vo_state.code)
+										End if 
+									End for each 
+								End if 
+								
 							: (Form:C1466.footerRefresh)
 								Form:C1466.footerRefresh:=False:C215
 								ULO_LIST_UPDATE_FOOTER 
