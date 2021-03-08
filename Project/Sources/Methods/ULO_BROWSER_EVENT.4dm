@@ -186,11 +186,8 @@ Case of
 								Form:C1466.customColumns:=New collection:C1472
 								ULO_LOAD_VIEW 
 								ULO_CREATE_SHORTCUTS 
+								SET TIMER:C645(-1)
 								
-								  //If (Storage.hostMethods.sidebarLoad#"")
-								  //EXECUTE METHOD(Storage.hostMethods.sidebarLoad;$es_return;Form.tableNumber;Form.navItem.handle)
-								  //Form.uloRecords:=$es_return
-								  //End if 
 							Else 
 								Form:C1466.forceSelectNav:=False:C215
 							End if 
