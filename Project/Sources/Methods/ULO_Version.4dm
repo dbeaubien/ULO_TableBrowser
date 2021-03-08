@@ -1,6 +1,9 @@
 //%attributes = {"shared":true}
 C_TEXT:C284($0)
-$0:="1.3.7"
+$0:="1.3.8"
+
+  //2021-03-08 - 1.3.8
+  // ULO_BROWSER_EVENT - Added 'SET TIMER(-1)' to NavBar selection change event to trigger form updates when selecting new listing.
 
   //2021-02-25 - 1.3.7
   // ULO_BROWSER_EVENT - Added missing calls to ULO_DISABLE_BUTTON during initialisation of default data listing
