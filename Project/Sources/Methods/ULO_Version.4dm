@@ -1,6 +1,10 @@
 //%attributes = {"shared":true}
 C_TEXT:C284($0)
-$0:="1.3.8"
+$0:="1.3.9"
+
+  //2021-03-09 - 1.3.9
+  // INIT_STORAGE - Added the pref 'exportViewThemeColours' which defaults to false, can be enabled via ULO_SET_PREF
+  // ULO_EXPORT_VIEW_XLSX - Added use of 'exportViewThemeColours' which ignores theme font/bg colours, font decoration and borders when false
 
   //2021-03-08 - 1.3.8
   // ULO_BROWSER_EVENT - Added 'SET TIMER(-1)' to NavBar selection change event to trigger form updates when selecting new listing.
