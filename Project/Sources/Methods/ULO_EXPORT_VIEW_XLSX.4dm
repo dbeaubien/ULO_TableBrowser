@@ -118,60 +118,60 @@ If (OK=1)  //If user has created a document ....
 		xlFontSetSize ($vl_tempFont;$vl_fontSize)
 		xlFontSetName ($vl_tempFooterFont;$vt_font)
 		xlFontSetSize ($vl_tempFooterFont;$vl_fontSize)
-		If ($vo_col.fontColourOverride)
-			xlFontSetColor ($vl_tempFont;$vo_col.fontColour)
-			xlFontSetColor ($vl_tempFooterFont;$vo_col.fontColour)
-		Else 
-			xlFontSetColor ($vl_tempFont;$vl_fontColour)
-			xlFontSetColor ($vl_tempFooterFont;$vl_fontColour)
+		
+		If (Storage:C1525.prefs.exportViewThemeColours)
+			If ($vo_col.fontColourOverride)
+				xlFontSetColor ($vl_tempFont;$vo_col.fontColour)
+				xlFontSetColor ($vl_tempFooterFont;$vo_col.fontColour)
+			Else 
+				xlFontSetColor ($vl_tempFont;$vl_fontColour)
+				xlFontSetColor ($vl_tempFooterFont;$vl_fontColour)
+			End if 
+			
+			  //Font Decoration
+			Case of 
+				: ($vo_col.fontStyle=1)
+					xlFontSetBold ($vl_tempFont;1)
+					xlFontSetBold ($vl_tempFooterFont;1)
+					
+				: ($vo_col.fontStyle=2)
+					xlFontSetItalic ($vl_tempFont;1)
+					xlFontSetItalic ($vl_tempFooterFont;1)
+					
+				: ($vo_col.fontStyle=3)
+					xlFontSetBold ($vl_tempFont;1)
+					xlFontSetItalic ($vl_tempFont;1)
+					xlFontSetBold ($vl_tempFooterFont;1)
+					xlFontSetItalic ($vl_tempFooterFont;1)
+					
+				: ($vo_col.fontStyle=4)
+					xlFontSetUnderline ($vl_tempFont;1)
+					xlFontSetUnderline ($vl_tempFooterFont;1)
+					
+				: ($vo_col.fontStyle=5)
+					xlFontSetBold ($vl_tempFont;1)
+					xlFontSetUnderline ($vl_tempFont;1)
+					xlFontSetBold ($vl_tempFooterFont;1)
+					xlFontSetUnderline ($vl_tempFooterFont;1)
+					
+				: ($vo_col.fontStyle=6)
+					xlFontSetItalic ($vl_tempFont;1)
+					xlFontSetUnderline ($vl_tempFont;1)
+					xlFontSetItalic ($vl_tempFooterFont;1)
+					xlFontSetUnderline ($vl_tempFooterFont;1)
+					
+				: ($vo_col.fontStyle=7)
+					xlFontSetBold ($vl_tempFont;1)
+					xlFontSetItalic ($vl_tempFont;1)
+					xlFontSetUnderline ($vl_tempFont;1)
+					xlFontSetBold ($vl_tempFooterFont;1)
+					xlFontSetItalic ($vl_tempFooterFont;1)
+					xlFontSetUnderline ($vl_tempFooterFont;1)
+					
+			End case 
 		End if 
 		
-		
-		  //Font Decoration
-		Case of 
-			: ($vo_col.fontStyle=1)
-				xlFontSetBold ($vl_tempFont;1)
-				xlFontSetBold ($vl_tempFooterFont;1)
-				
-			: ($vo_col.fontStyle=2)
-				xlFontSetItalic ($vl_tempFont;1)
-				xlFontSetItalic ($vl_tempFooterFont;1)
-				
-			: ($vo_col.fontStyle=3)
-				xlFontSetBold ($vl_tempFont;1)
-				xlFontSetItalic ($vl_tempFont;1)
-				xlFontSetBold ($vl_tempFooterFont;1)
-				xlFontSetItalic ($vl_tempFooterFont;1)
-				
-			: ($vo_col.fontStyle=4)
-				xlFontSetUnderline ($vl_tempFont;1)
-				xlFontSetUnderline ($vl_tempFooterFont;1)
-				
-			: ($vo_col.fontStyle=5)
-				xlFontSetBold ($vl_tempFont;1)
-				xlFontSetUnderline ($vl_tempFont;1)
-				xlFontSetBold ($vl_tempFooterFont;1)
-				xlFontSetUnderline ($vl_tempFooterFont;1)
-				
-			: ($vo_col.fontStyle=6)
-				xlFontSetItalic ($vl_tempFont;1)
-				xlFontSetUnderline ($vl_tempFont;1)
-				xlFontSetItalic ($vl_tempFooterFont;1)
-				xlFontSetUnderline ($vl_tempFooterFont;1)
-				
-			: ($vo_col.fontStyle=7)
-				xlFontSetBold ($vl_tempFont;1)
-				xlFontSetItalic ($vl_tempFont;1)
-				xlFontSetUnderline ($vl_tempFont;1)
-				xlFontSetBold ($vl_tempFooterFont;1)
-				xlFontSetItalic ($vl_tempFooterFont;1)
-				xlFontSetUnderline ($vl_tempFooterFont;1)
-				
-		End case 
-		
 		xlFontSetBold ($vl_tempFooterFont;1)  //Ensure footer is always bold
-		
-		
 		
 		$vc_colThemes[0]:=xlBookAddFormat ($vl_workbook)
 		$vc_colThemes[1]:=xlBookAddFormat ($vl_workbook)  //Alt row colour
@@ -181,36 +181,46 @@ If (OK=1)  //If user has created a document ....
 		xlFormatSetFont ($vc_colThemes[1];$vl_tempFont)
 		xlFormatSetFont ($vc_colThemes[2];$vl_tempFooterFont)
 		
-		
-		Case of 
-			: ($vb_horiLines) & ($vb_vertLines)
-				xlFormatSetBorderStyle ($vc_colThemes[0];xlBorderStyle_Thin)
-				xlFormatSetBorderStyle ($vc_colThemes[1];xlBorderStyle_Thin)
-				xlFormatSetBorderStyle ($vc_colThemes[2];xlBorderStyle_Thin)
-				
-				xlFormatSetBorderColors ($vc_colThemes[0];$vl_hLineColour;$vl_hLineColour;$vl_vLineColour;$vl_vLineColour)
-				xlFormatSetBorderColors ($vc_colThemes[1];$vl_hLineColour;$vl_hLineColour;$vl_vLineColour;$vl_vLineColour)
-				xlFormatSetBorderColors ($vc_colThemes[2];$vl_hLineColour;$vl_hLineColour;$vl_vLineColour;$vl_vLineColour)
-				
-			: ($vb_horiLines)
-				xlFormatSetBorderStyles ($vc_colThemes[0];xlBorderStyle_Thin;xlBorderStyle_Thin;0;0)
-				xlFormatSetBorderStyles ($vc_colThemes[1];xlBorderStyle_Thin;xlBorderStyle_Thin;0;0)
-				xlFormatSetBorderStyles ($vc_colThemes[2];xlBorderStyle_Thin;xlBorderStyle_Thin;0;0)
-				
-				xlFormatSetBorderColor ($vc_colThemes[0];$vl_hLineColour)
-				xlFormatSetBorderColor ($vc_colThemes[1];$vl_hLineColour)
-				xlFormatSetBorderColor ($vc_colThemes[2];$vl_hLineColour)
-				
-			: ($vb_vertLines)
-				xlFormatSetBorderStyles ($vc_colThemes[0];0;0;xlBorderStyle_Thin;xlBorderStyle_Thin)
-				xlFormatSetBorderStyles ($vc_colThemes[1];0;0;xlBorderStyle_Thin;xlBorderStyle_Thin)
-				xlFormatSetBorderStyles ($vc_colThemes[2];0;0;xlBorderStyle_Thin;xlBorderStyle_Thin)
-				
-				xlFormatSetBorderColor ($vc_colThemes[0];$vl_vLineColour)
-				xlFormatSetBorderColor ($vc_colThemes[1];$vl_vLineColour)
-				xlFormatSetBorderColor ($vc_colThemes[2];$vl_vLineColour)
-				
-		End case 
+		If (Storage:C1525.prefs.exportViewThemeColours)
+			Case of 
+				: ($vb_horiLines) & ($vb_vertLines)
+					xlFormatSetBorderStyle ($vc_colThemes[0];xlBorderStyle_Thin)
+					xlFormatSetBorderStyle ($vc_colThemes[1];xlBorderStyle_Thin)
+					xlFormatSetBorderStyle ($vc_colThemes[2];xlBorderStyle_Thin)
+					
+					xlFormatSetBorderColors ($vc_colThemes[0];$vl_hLineColour;$vl_hLineColour;$vl_vLineColour;$vl_vLineColour)
+					xlFormatSetBorderColors ($vc_colThemes[1];$vl_hLineColour;$vl_hLineColour;$vl_vLineColour;$vl_vLineColour)
+					xlFormatSetBorderColors ($vc_colThemes[2];$vl_hLineColour;$vl_hLineColour;$vl_vLineColour;$vl_vLineColour)
+					
+				: ($vb_horiLines)
+					xlFormatSetBorderStyles ($vc_colThemes[0];xlBorderStyle_Thin;xlBorderStyle_Thin;0;0)
+					xlFormatSetBorderStyles ($vc_colThemes[1];xlBorderStyle_Thin;xlBorderStyle_Thin;0;0)
+					xlFormatSetBorderStyles ($vc_colThemes[2];xlBorderStyle_Thin;xlBorderStyle_Thin;0;0)
+					
+					xlFormatSetBorderColor ($vc_colThemes[0];$vl_hLineColour)
+					xlFormatSetBorderColor ($vc_colThemes[1];$vl_hLineColour)
+					xlFormatSetBorderColor ($vc_colThemes[2];$vl_hLineColour)
+					
+				: ($vb_vertLines)
+					xlFormatSetBorderStyles ($vc_colThemes[0];0;0;xlBorderStyle_Thin;xlBorderStyle_Thin)
+					xlFormatSetBorderStyles ($vc_colThemes[1];0;0;xlBorderStyle_Thin;xlBorderStyle_Thin)
+					xlFormatSetBorderStyles ($vc_colThemes[2];0;0;xlBorderStyle_Thin;xlBorderStyle_Thin)
+					
+					xlFormatSetBorderColor ($vc_colThemes[0];$vl_vLineColour)
+					xlFormatSetBorderColor ($vc_colThemes[1];$vl_vLineColour)
+					xlFormatSetBorderColor ($vc_colThemes[2];$vl_vLineColour)
+					
+			End case 
+			
+			xlFormatSetFillPattern ($vc_colThemes[0];xlFillPattern_Solid)
+			xlFormatSetPatternColors ($vc_colThemes[0];$vl_rowBgColour)
+			
+			xlFormatSetFillPattern ($vc_colThemes[1];xlFillPattern_Solid)
+			xlFormatSetPatternColors ($vc_colThemes[1];$vl_rowBgAltColour)
+			
+			xlFormatSetFillPattern ($vc_colThemes[2];xlFillPattern_Solid)
+			xlFormatSetPatternColors ($vc_colThemes[2];$vl_rowBgColour)
+		End if 
 		
 		Case of 
 			: ($vo_col.alignment="Left")
@@ -230,16 +240,6 @@ If (OK=1)  //If user has created a document ....
 				
 		End case 
 		
-		
-		xlFormatSetFillPattern ($vc_colThemes[0];xlFillPattern_Solid)
-		xlFormatSetPatternColors ($vc_colThemes[0];$vl_rowBgColour)
-		
-		xlFormatSetFillPattern ($vc_colThemes[1];xlFillPattern_Solid)
-		xlFormatSetPatternColors ($vc_colThemes[1];$vl_rowBgAltColour)
-		
-		xlFormatSetFillPattern ($vc_colThemes[2];xlFillPattern_Solid)
-		xlFormatSetPatternColors ($vc_colThemes[2];$vl_rowBgColour)
-		
 		Case of 
 			: ($vo_col.fieldType=Is integer:K8:5) | ($vo_col.fieldType=Is longint:K8:6) | ($vo_col.fieldType=Is real:K8:4)
 				xlFormatSetNumFormat ($vc_colThemes[0];xlNumFormat_General)
@@ -255,8 +255,6 @@ If (OK=1)  //If user has created a document ....
 		
 		$vc_columnThemes.push($vc_colThemes)
 	End for each 
-	
-	
 	
 	  //****** ADD HEADERS *******
 	$fieldIndex:=1
