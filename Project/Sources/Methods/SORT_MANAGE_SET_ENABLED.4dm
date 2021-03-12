@@ -17,12 +17,14 @@ OBJECT SET ENABLED:C1123(*;"bt_deleteField";False:C215)
 OBJECT SET ENABLED:C1123(*;"bt_deleteSort";False:C215)
 OBJECT SET ENABLED:C1123(*;"bt_addField";False:C215)
 OBJECT SET ENABLED:C1123(*;"bt_addSort";False:C215)
+OBJECT SET ENABLED:C1123(*;"dropdown_table";False:C215)
 
 If (Form:C1466.sortTab="user")
 	If (Form:C1466.selectedSort#Null:C1517)
 		OBJECT SET ENABLED:C1123(*;"txt_sortName";True:C214)
 		OBJECT SET ENABLED:C1123(*;"bt_deleteSort";True:C214)
-		OBJECT SET ENABLED:C1123(*;"bt_addField";True:C214)
+		OBJECT SET ENABLED:C1123(*;"bt_addField";False:C215)  //No functions as of yet, leave disabled
+		OBJECT SET ENABLED:C1123(*;"dropdown_table";True:C214)
 		
 		If (Form:C1466.selectedField#Null:C1517)
 			OBJECT SET ENABLED:C1123(*;"bt_moveField";True:C214)
