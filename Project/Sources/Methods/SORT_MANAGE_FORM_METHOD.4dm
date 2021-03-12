@@ -83,7 +83,7 @@ Case of
 			: ($vo_formEvent.code=On Clicked:K2:4)
 				CONFIRM:C162("Are you sure you wish to delete the Sort "+Form:C1466.workingSort.name+"?")
 				If (OK=1)
-					$vo_res:=Form:C1466.workingSort.drop()
+					Form:C1466.workingSort.drop()
 					Form:C1466.workingSort:=Null:C1517
 					If (Form:C1466.sortTab="user")
 						Form:C1466.userSorts:=ds:C1482["uloData"].query("user == :1 && type == 13 && table == :2";Storage:C1525.user.id;Form:C1466.helpfulData.tableNumber)
