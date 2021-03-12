@@ -11,6 +11,10 @@
   // Parameters
   // ----------------------------------------------------
 
+  //Method duplicates the listbox current item 'selectedSort' into 'workingSort' due to issues
+  //with data changes being lost when user selects another listbox row.
+  //When another row is selected, 'selectedSort' is replaced with new entity before changes can be saved.
+
 C_OBJECT:C1216($1;$vo_formEvent;$vo_data;$vo_field;$vo_col;$e_uloData;\
 $vo_coord)
 C_COLLECTION:C1488($vc_cols)
@@ -40,7 +44,7 @@ Case of
 				
 			: ($vo_formEvent.code=On Timer:K2:25)
 				SET TIMER:C645(0)
-				LISTBOX SELECT ROW:C912(*;"lb_sort";0;lk replace selection:K53:1)
+				LISTBOX SELECT ROW:C912(*;"lb_sort";0;lk remove from selection:K53:3)
 				
 		End case 
 		
@@ -79,8 +83,18 @@ Case of
 			: ($vo_formEvent.code=On Clicked:K2:4)
 				CONFIRM:C162("Are you sure you wish to delete the Sort "+Form:C1466.workingSort.name+"?")
 				If (OK=1)
-					Form:C1466.workingSort.drop()
-					
+					$vo_res:=Form:C1466.workingSort.drop()
+					Form:C1466.workingSort:=Null:C1517
+					If (Form:C1466.sortTab="user")
+						Form:C1466.userSorts:=ds:C1482["uloData"].query("user == :1 && type == 13 && table == :2";Storage:C1525.user.id;Form:C1466.helpfulData.tableNumber)
+						Form:C1466.displaySort:=Form:C1466.userSorts
+					Else 
+						Form:C1466.systemSorts:=ds:C1482["uloData"].query("user == 0 && type == 13 && table == :1";Form:C1466.helpfulData.tableNumber)
+						Form:C1466.displaySort:=Form:C1466.systemSorts
+					End if 
+					LISTBOX SELECT ROW:C912(*;"lb_sort";0;lk remove from selection:K53:3)
+					SORT_MANAGE_SET_ENABLED 
+					Form:C1466.displayFields:=New collection:C1472
 				End if 
 				
 		End case 
@@ -214,7 +228,7 @@ Case of
 	: ($vt_objectName="bt_OK")
 		Case of 
 			: ($vo_formEvent.code=On Clicked:K2:4)
-				If (Form:C1466.sortTab="user")
+				If (Form:C1466.sortTab="user") & (Form:C1466.workingSort#Null:C1517)
 					Form:C1466.workingSort.save()
 				End if 
 				
