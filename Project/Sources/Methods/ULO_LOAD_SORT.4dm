@@ -49,4 +49,6 @@ If (Form:C1466.navItem.selectedSort#Null:C1517)
 	End for 
 	
 	Form:C1466.uloRecords:=Form:C1466.uloRecords.orderBy($vc_sort)
+Else 
+	Form:C1466.uloRecords:=Form:C1466.uloRecords.and(Form:C1466.uloRecords)  //Clears current sort
 End if 
