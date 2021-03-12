@@ -1,6 +1,11 @@
 //%attributes = {"shared":true}
 C_TEXT:C284($0)
-$0:="1.3.9"
+$0:="1.3.10"
+
+  //2021-03-12 - 1.3.10
+  // SORT_MANAGE_FORM_METHOD - Expanded Sort delete process to re-run query for user/system sorts to prevent deleted entity from being retained by selections
+  //                         - Also added the required updates to form objects, SORT_MANAGE_SET_ENABLED and Form.displayFields:=New collection
+  // ULO_LOAD_SORT           - Added Else when selectedSort=Null to clear current sort applied to listing
 
   //2021-03-09 - 1.3.9
   // INIT_STORAGE - Added the pref 'exportViewThemeColours' which defaults to false, can be enabled via ULO_SET_PREF
