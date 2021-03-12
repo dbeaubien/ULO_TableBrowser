@@ -1,6 +1,9 @@
 //%attributes = {"shared":true}
 C_TEXT:C284($0)
-$0:="1.3.10"
+$0:="1.3.11"
+
+  //2021-03-12 - 1.3.11
+  // SORT_MANAGE_SET_ENABLED - Added disable / enable of table dropdown
 
   //2021-03-12 - 1.3.10
   // SORT_MANAGE_FORM_METHOD - Expanded Sort delete process to re-run query for user/system sorts to prevent deleted entity from being retained by selections
