@@ -1,6 +1,9 @@
 //%attributes = {"shared":true}
 C_TEXT:C284($0)
-$0:="1.3.11"
+$0:="1.3.12"
+
+  //2021-03-15 - 1.3.12
+  // ULO_LIST_UPDATE_FOOTER - Added idx < collection.length test to account for 'fillerColumn' created when total column width < listbox width
 
   //2021-03-12 - 1.3.11
   // SORT_MANAGE_SET_ENABLED - Added disable / enable of table dropdown
