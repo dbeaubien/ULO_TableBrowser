@@ -15,28 +15,30 @@ C_OBJECT:C1216($vo_formData;$e_uloData)
 C_LONGINT:C283($vl_left;$vl_top;$vl_right;$vl_bottom;$vl_win;$vl_w;$vl_h)
 
 $vo_formData:=New object:C1471
-$vo_formData.theme:=OB Copy:C1225(Form:C1466.theme)
+
+$vo_formData.themes:=ds:C1482["uloData"].query("type == 3 && user == :1";Storage:C1525.user.id)
+$vo_formData.systemDefault:=ds:C1482["uloData"].query("type == 3 && user == :1";0).first()
+If (Storage:C1525.user.id=1) & ($vo_formData.systemDefault#Null:C1517)  //If designer, get system theme
+	$vo_formData.themes.add($vo_formData.systemDefault)
+End if 
+
+START TRANSACTION:C239
 
 $vl_win:=UTIL_Open_Window_Centre ("ULO_EDIT_THEME")
 DIALOG:C40("ULO_EDIT_THEME";$vo_formData)
 CLOSE WINDOW:C154($vl_win)
 
 If (OK=1)
-	If ($vo_formData.theme.id#"")
-		$e_uloData:=ds:C1482["uloData"].get($vo_formData.theme.id)
-		$e_uloData.detail.theme:=OB Copy:C1225($vo_formData.theme)
-		OB REMOVE:C1226($e_uloData.detail.theme;"id")
-		$e_uloData.save()
-	Else 
-		$e_uloData:=ds:C1482["uloData"].new()
-		$e_uloData.user:=Storage:C1525.user.id
-		$e_uloData.type:=3
-		$e_uloData.detail:=New object:C1471
-		$e_uloData.detail.theme:=OB Copy:C1225($vo_formData.theme)
-		$e_uloData.save()
+	If ($vo_formData.workingTheme#Null:C1517)
+		$vo_formData.workingTheme.save()
 	End if 
-	
-	Form:C1466.theme:=OB Copy:C1225($vo_formData.theme)
-	  //ULO_APPLY_THEME ("ULO_LIST";Form.theme)
+	VALIDATE TRANSACTION:C240
+	If ($vo_formData.workingTheme#Null:C1517)  //Load last editted theme if any
+		ULO_LOAD_THEME ($vo_formData.workingTheme.id)
+	Else 
+		ULO_LOAD_THEME 
+	End if 
 	ULO_LOAD_VIEW 
+Else 
+	CANCEL TRANSACTION:C241
 End if 

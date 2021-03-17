@@ -1,5 +1,5 @@
 //%attributes = {}
-C_OBJECT:C1216($1;$vo_formEvent;$vo_data;$vo_field;$vo_col;$vo_column)
+C_OBJECT:C1216($1;$vo_formEvent;$vo_data;$vo_field;$vo_col;$vo_column;$es_userThemes;$e_userTheme)
 C_COLLECTION:C1488($vc_cols)
 C_TEXT:C284($vt_objectName;$vt_menu;$vt_selected)
 C_LONGINT:C283($vl_dropPos;$vl_startPos;$vl_idx)
@@ -22,6 +22,20 @@ Case of
 				ULO_SET_BACKGROUND 
 				ULO_SET_LIST_COLOURS ("lb_viewFields")
 				ULO_SET_LIST_COLOURS ("lb_viewCols")
+				
+				Form:C1466.themeMenu:=Create menu:C408
+				APPEND MENU ITEM:C411(Form:C1466.themeMenu;"Default")
+				SET MENU ITEM PARAMETER:C1004(Form:C1466.themeMenu;-1;"Default:")
+				
+				$es_userThemes:=ds:C1482["uloData"].query("type == 3 && user == :1";Storage:C1525.user.id)
+				If ($es_userThemes.length>0)
+					APPEND MENU ITEM:C411(Form:C1466.themeMenu;"-")
+					
+					For each ($e_userTheme;$es_userThemes)
+						APPEND MENU ITEM:C411(Form:C1466.themeMenu;$e_userTheme.name)
+						SET MENU ITEM PARAMETER:C1004(Form:C1466.themeMenu;-1;$e_userTheme.name+":"+$e_userTheme.id)
+					End for each 
+				End if 
 				
 			: ($vo_formEvent.code=On Timer:K2:25)
 				SET TIMER:C645(0)
@@ -237,4 +251,21 @@ Case of
 				VIEW_FORM_BUILD_DISPLAY_FIELD (Form:C1466.view.detail.cols)
 				
 		End case 
+		
+	: ($vt_objectName="bt_selectTheme")
+		Case of 
+			: ($vo_formEvent.code=On Clicked:K2:4)
+				$vt_selected:=Dynamic pop up menu:C1006(Form:C1466.themeMenu)
+				If ($vt_selected#"")
+					If ($vt_selected="Default:")
+						Form:C1466.view.detail.themeName:="Default"
+						Form:C1466.view.detail.themeId:=""
+					Else 
+						$vl_pos:=Position:C15(":";$vt_selected)
+						Form:C1466.view.detail.themeName:=Substring:C12($vt_selected;1;$vl_pos-1)
+						Form:C1466.view.detail.themeId:=Substring:C12($vt_selected;$vl_pos+1)
+					End if 
+				End if 
+		End case 
+		
 End case 

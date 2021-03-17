@@ -9,8 +9,10 @@
   // Querys for theme related to current user, else creates
   // default theme and stores in Form
   // Parameters
+  // $1 - String - Optional - uloData ID of theme to load
   // ----------------------------------------------------
 
+C_TEXT:C284($1)
 C_OBJECT:C1216($es_uloData;$e_uloData;$vo_theme)
 
   //Set default vars
@@ -39,10 +41,22 @@ $vo_theme.headerFontColourHex:="000000"
 $vo_theme.headerFontSize:=11
 $vo_theme.headerFont:="Segoe UI"
 
-$es_uloData:=ds:C1482["uloData"].query("user == :1 & type == 3";Storage:C1525.user.id)
-If ($es_uloData.length=0)
-	$es_uloData:=ds:C1482["uloData"].query("user == :1 & type == 3";0)
+If (Count parameters:C259>0)
+	If ($1#"")
+		$es_uloData:=ds:C1482["uloData"].query("id == :1";$1)
+	Else 
+		$es_uloData:=ds:C1482["uloData"].newSelection()
+	End if 
+Else 
+	$es_uloData:=ds:C1482["uloData"].query("user == :1 & type == 3 && default == true";Storage:C1525.user.id)
+	If ($es_uloData.length=0)
+		$es_uloData:=ds:C1482["uloData"].query("user == :1 & type == 3";Storage:C1525.user.id)
+		If ($es_uloData.length=0)
+			$es_uloData:=ds:C1482["uloData"].query("user == :1 & type == 3";0)
+		End if 
+	End if 
 End if 
+
 If ($es_uloData.length>0)
 	$e_uloData:=$es_uloData.first()
 	
@@ -108,15 +122,6 @@ If ($es_uloData.length>0)
 	If (OB Is defined:C1231($e_uloData.detail.theme;"rowFontColourHex"))
 		$vo_theme.rowFontColourHex:=$e_uloData.detail.theme.rowFontColourHex
 	End if 
-	
 End if 
 
 Form:C1466.theme:=OB Copy:C1225($vo_theme)
-
-
-
-
-
-
-
-

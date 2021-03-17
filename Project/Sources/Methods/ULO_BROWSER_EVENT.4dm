@@ -108,7 +108,7 @@ Case of
 								Case of 
 									: (Form:C1466.navItem.type="DATA")
 										Form:C1466.tableNumber:=Form:C1466.navItem.table
-										ULO_LOAD_VIEW 
+										ULO_LOAD_VIEW (True:C214)
 									: (Form:C1466.navItem.type="WEB")
 										ULO_LOAD_WEB_AREA 
 								End case 
@@ -184,7 +184,7 @@ Case of
 								
 								Form:C1466.tableNumber:=Form:C1466.navItem.table
 								Form:C1466.customColumns:=New collection:C1472
-								ULO_LOAD_VIEW 
+								ULO_LOAD_VIEW (True:C214)
 								ULO_CREATE_SHORTCUTS 
 								SET TIMER:C645(-1)
 								

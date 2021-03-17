@@ -25,46 +25,12 @@
 					"type": "rectangle",
 					"top": 0,
 					"left": 1,
-					"width": 808,
+					"width": 1048,
 					"height": 589,
 					"sizingX": "grow",
 					"sizingY": "grow",
 					"fill": "#E8E8E8",
 					"stroke": "transparent"
-				},
-				"VIEW_Accept": {
-					"type": "button",
-					"top": 549,
-					"left": 710,
-					"width": 74,
-					"height": 22,
-					"sizingX": "fixed",
-					"sizingY": "fixed",
-					"action": "accept",
-					"shortcutKey": "[Enter]",
-					"text": "OK",
-					"class": "default",
-					"defaultButton": true,
-					"events": [
-						"onClick"
-					]
-				},
-				"VIEW_Cancel": {
-					"type": "button",
-					"top": 549,
-					"left": 624,
-					"width": 74,
-					"height": 22,
-					"sizingX": "fixed",
-					"sizingY": "fixed",
-					"action": "cancel",
-					"shortcutKey": ".",
-					"shortcutAccel": true,
-					"text": "Cancel",
-					"class": "default",
-					"events": [
-						"onClick"
-					]
 				}
 			}
 		},
@@ -73,42 +39,42 @@
 				"Group Box": {
 					"type": "groupBox",
 					"text": "Grid :",
-					"top": 23,
-					"left": 31,
+					"top": 67,
+					"left": 273,
 					"width": 345,
 					"height": 129
 				},
 				"Group Box1": {
 					"type": "groupBox",
 					"text": "Header :",
-					"top": 170,
-					"left": 31,
+					"top": 204,
+					"left": 273,
 					"width": 345,
 					"height": 160
 				},
 				"Group Box2": {
 					"type": "groupBox",
 					"text": "Row :",
-					"top": 350,
-					"left": 31,
+					"top": 370,
+					"left": 273,
 					"width": 345,
-					"height": 184
+					"height": 164
 				},
 				"Text3": {
 					"type": "text",
-					"top": 83,
-					"left": 62,
+					"top": 127,
+					"left": 304,
 					"width": 100,
 					"height": 15,
 					"text": "Hori Line Colour :"
 				},
 				"input_colour_hLineColour": {
 					"type": "input",
-					"top": 83,
-					"left": 165,
+					"top": 127,
+					"left": 407,
 					"width": 147,
 					"height": 16,
-					"dataSource": "Form:C1466.theme.hLineColourHex",
+					"dataSource": "Form:C1466.workingTheme.detail.theme.hLineColourHex",
 					"dragging": "none",
 					"dropping": "custom",
 					"events": [
@@ -118,16 +84,16 @@
 				},
 				"rect_hLineColour": {
 					"type": "rectangle",
-					"top": 83,
-					"left": 320,
+					"top": 127,
+					"left": 562,
 					"width": 24,
 					"height": 16
 				},
 				"bt_colour_hLineColour": {
 					"type": "button",
 					"text": "",
-					"top": 83,
-					"left": 320,
+					"top": 127,
+					"left": 562,
 					"width": 24,
 					"height": 16,
 					"events": [
@@ -137,24 +103,24 @@
 					"visibility": "visible",
 					"borderStyle": "solid"
 				},
-				"cb_sty_bold": {
+				"cb_hori_lines": {
 					"type": "checkbox",
-					"top": 53,
-					"left": 62,
+					"top": 97,
+					"left": 304,
 					"width": 140,
 					"height": 17,
 					"sizingY": "fixed",
-					"dataSource": "Form:C1466.theme.showHLine",
+					"dataSource": "Form:C1466.workingTheme.detail.theme.showHLine",
 					"text": "Show Horizontal Lines",
 					"class": "default",
 					"focusable": false,
 					"events": [],
 					"dataSourceTypeHint": "boolean"
 				},
-				"cb_sty_bold1": {
+				"cb_vert_lines": {
 					"type": "checkbox",
-					"top": 53,
-					"left": 208,
+					"top": 97,
+					"left": 450,
 					"width": 140,
 					"height": 17,
 					"sizingY": "fixed",
@@ -167,19 +133,19 @@
 				},
 				"Text1": {
 					"type": "text",
-					"top": 113,
-					"left": 62,
+					"top": 157,
+					"left": 304,
 					"width": 100,
 					"height": 15,
 					"text": "Vert Line Colour :"
 				},
 				"input_colour_vLineColour": {
 					"type": "input",
-					"top": 113,
-					"left": 165,
+					"top": 157,
+					"left": 407,
 					"width": 147,
 					"height": 16,
-					"dataSource": "Form:C1466.theme.vLineColourHex",
+					"dataSource": "Form:C1466.workingTheme.detail.theme.vLineColourHex",
 					"dragging": "none",
 					"dropping": "custom",
 					"events": [
@@ -189,16 +155,16 @@
 				},
 				"rect_vLineColour": {
 					"type": "rectangle",
-					"top": 113,
-					"left": 320,
+					"top": 157,
+					"left": 562,
 					"width": 24,
 					"height": 16
 				},
 				"bt_colour_vLineColour": {
 					"type": "button",
 					"text": "",
-					"top": 113,
-					"left": 320,
+					"top": 157,
+					"left": 562,
 					"width": 24,
 					"height": 16,
 					"events": [
@@ -210,19 +176,19 @@
 				},
 				"Text2": {
 					"type": "text",
-					"top": 291,
-					"left": 62,
+					"top": 325,
+					"left": 304,
 					"width": 100,
 					"height": 15,
 					"text": "BG Colour :"
 				},
 				"input_colour_headerBgColour": {
 					"type": "input",
-					"top": 291,
-					"left": 165,
+					"top": 325,
+					"left": 407,
 					"width": 147,
 					"height": 16,
-					"dataSource": "Form:C1466.theme.headerBgColourHex",
+					"dataSource": "Form:C1466.workingTheme.detail.theme.headerBgColourHex",
 					"dragging": "none",
 					"dropping": "custom",
 					"events": [
@@ -232,16 +198,16 @@
 				},
 				"rect_headerBgColour": {
 					"type": "rectangle",
-					"top": 291,
-					"left": 320,
+					"top": 325,
+					"left": 562,
 					"width": 24,
 					"height": 16
 				},
 				"bt_colour_headerBgColour": {
 					"type": "button",
 					"text": "",
-					"top": 291,
-					"left": 320,
+					"top": 325,
+					"left": 562,
 					"width": 24,
 					"height": 16,
 					"events": [
@@ -253,19 +219,19 @@
 				},
 				"Text4": {
 					"type": "text",
-					"top": 261,
-					"left": 62,
+					"top": 295,
+					"left": 304,
 					"width": 100,
 					"height": 15,
 					"text": "Font Colour :"
 				},
 				"input_colour_headerFontColour": {
 					"type": "input",
-					"top": 261,
-					"left": 165,
+					"top": 295,
+					"left": 407,
 					"width": 147,
 					"height": 16,
-					"dataSource": "Form:C1466.theme.headerFontColourHex",
+					"dataSource": "Form:C1466.workingTheme.detail.theme.headerFontColourHex",
 					"dragging": "none",
 					"dropping": "custom",
 					"events": [
@@ -275,16 +241,16 @@
 				},
 				"rect_headerFontColour": {
 					"type": "rectangle",
-					"top": 261,
-					"left": 320,
+					"top": 295,
+					"left": 562,
 					"width": 24,
 					"height": 16
 				},
 				"bt_colour_headerFontColour": {
 					"type": "button",
 					"text": "",
-					"top": 261,
-					"left": 320,
+					"top": 295,
+					"left": 562,
 					"width": 24,
 					"height": 16,
 					"events": [
@@ -296,19 +262,19 @@
 				},
 				"Text5": {
 					"type": "text",
-					"top": 201,
-					"left": 62,
+					"top": 235,
+					"left": 304,
 					"width": 100,
 					"height": 15,
 					"text": "Font :"
 				},
-				"input_fontColourHex4": {
+				"input_font": {
 					"type": "input",
-					"top": 200,
-					"left": 165,
+					"top": 234,
+					"left": 407,
 					"width": 147,
 					"height": 16,
-					"dataSource": "Form:C1466.theme.headerFont",
+					"dataSource": "Form:C1466.workingTheme.detail.theme.headerFont",
 					"dragging": "none",
 					"dropping": "custom",
 					"events": [],
@@ -316,19 +282,19 @@
 				},
 				"Text6": {
 					"type": "text",
-					"top": 231,
-					"left": 62,
+					"top": 265,
+					"left": 304,
 					"width": 100,
 					"height": 15,
 					"text": "Font Size (pt) :"
 				},
-				"input_fontColourHex5": {
+				"input_fontSize": {
 					"type": "input",
-					"top": 231,
-					"left": 165,
+					"top": 265,
+					"left": 407,
 					"width": 147,
 					"height": 16,
-					"dataSource": "Form:C1466.theme.headerFontSize",
+					"dataSource": "Form:C1466.workingTheme.detail.theme.headerFontSize",
 					"dragging": "none",
 					"dropping": "custom",
 					"events": [],
@@ -338,7 +304,7 @@
 				"Text7": {
 					"type": "text",
 					"top": 501,
-					"left": 62,
+					"left": 304,
 					"width": 100,
 					"height": 15,
 					"text": "Alt Row Colour :"
@@ -346,10 +312,10 @@
 				"input_colour_rowAltColour": {
 					"type": "input",
 					"top": 501,
-					"left": 165,
+					"left": 407,
 					"width": 147,
 					"height": 16,
-					"dataSource": "Form:C1466.theme.rowAltColourHex",
+					"dataSource": "Form:C1466.workingTheme.detail.theme.rowAltColourHex",
 					"dragging": "none",
 					"dropping": "custom",
 					"events": [
@@ -360,7 +326,7 @@
 				"rect_rowAltColour": {
 					"type": "rectangle",
 					"top": 501,
-					"left": 320,
+					"left": 562,
 					"width": 24,
 					"height": 16
 				},
@@ -368,7 +334,7 @@
 					"type": "button",
 					"text": "",
 					"top": 501,
-					"left": 320,
+					"left": 562,
 					"width": 24,
 					"height": 16,
 					"events": [
@@ -380,19 +346,19 @@
 				},
 				"Text8": {
 					"type": "text",
-					"top": 471,
-					"left": 62,
+					"top": 475,
+					"left": 304,
 					"width": 100,
 					"height": 15,
 					"text": "Row Colour :"
 				},
 				"input_colour_rowColour": {
 					"type": "input",
-					"top": 471,
-					"left": 165,
+					"top": 475,
+					"left": 407,
 					"width": 147,
 					"height": 16,
-					"dataSource": "Form:C1466.theme.rowColourHex",
+					"dataSource": "Form:C1466.workingTheme.detail.theme.rowColourHex",
 					"dragging": "none",
 					"dropping": "custom",
 					"events": [
@@ -402,16 +368,16 @@
 				},
 				"rect_rowColour": {
 					"type": "rectangle",
-					"top": 471,
-					"left": 320,
+					"top": 475,
+					"left": 562,
 					"width": 24,
 					"height": 16
 				},
 				"bt_colour_rowColour": {
 					"type": "button",
 					"text": "",
-					"top": 471,
-					"left": 320,
+					"top": 475,
+					"left": 562,
 					"width": 24,
 					"height": 16,
 					"events": [
@@ -423,19 +389,19 @@
 				},
 				"Text9": {
 					"type": "text",
-					"top": 381,
-					"left": 62,
+					"top": 397,
+					"left": 304,
 					"width": 100,
 					"height": 15,
 					"text": "Font :"
 				},
-				"input_fontColourHex8": {
+				"input_font_row": {
 					"type": "input",
-					"top": 380,
-					"left": 165,
+					"top": 396,
+					"left": 407,
 					"width": 147,
 					"height": 16,
-					"dataSource": "Form:C1466.theme.rowFont",
+					"dataSource": "Form:C1466.workingTheme.detail.theme.rowFont",
 					"dragging": "none",
 					"dropping": "custom",
 					"events": [],
@@ -443,19 +409,19 @@
 				},
 				"Text10": {
 					"type": "text",
-					"top": 411,
-					"left": 62,
+					"top": 423,
+					"left": 304,
 					"width": 100,
 					"height": 15,
 					"text": "Font Size (pt) :"
 				},
-				"input_fontColourHex9": {
+				"input_fontSize_row": {
 					"type": "input",
-					"top": 411,
-					"left": 165,
+					"top": 423,
+					"left": 407,
 					"width": 147,
 					"height": 16,
-					"dataSource": "Form:C1466.theme.rowFontSize",
+					"dataSource": "Form:C1466.workingTheme.detail.theme.rowFontSize",
 					"dragging": "none",
 					"dropping": "custom",
 					"events": [],
@@ -464,7 +430,7 @@
 				},
 				"lb_preview": {
 					"type": "listbox",
-					"left": 394,
+					"left": 636,
 					"top": 30,
 					"width": 389,
 					"height": 502,
@@ -523,7 +489,7 @@
 					"type": "button",
 					"text": "Preview Changes",
 					"top": 549,
-					"left": 394,
+					"left": 636,
 					"width": 146,
 					"height": 22,
 					"events": [
@@ -535,19 +501,19 @@
 				},
 				"Text11": {
 					"type": "text",
-					"top": 441,
-					"left": 62,
+					"top": 449,
+					"left": 304,
 					"width": 100,
 					"height": 15,
 					"text": "Font Colour :"
 				},
 				"input_colour_rowFontColour": {
 					"type": "input",
-					"top": 441,
-					"left": 165,
+					"top": 449,
+					"left": 407,
 					"width": 147,
 					"height": 16,
-					"dataSource": "Form:C1466.theme.rowFontColourHex",
+					"dataSource": "Form:C1466.workingTheme.detail.theme.rowFontColourHex",
 					"dragging": "none",
 					"dropping": "custom",
 					"events": [
@@ -557,16 +523,16 @@
 				},
 				"rect_rowFontColour": {
 					"type": "rectangle",
-					"top": 441,
-					"left": 320,
+					"top": 449,
+					"left": 562,
 					"width": 24,
 					"height": 16
 				},
 				"bt_colour_rowFontColour": {
 					"type": "button",
 					"text": "",
-					"top": 441,
-					"left": 320,
+					"top": 449,
+					"left": 562,
 					"width": 24,
 					"height": 16,
 					"events": [
@@ -575,23 +541,162 @@
 					"style": "custom",
 					"visibility": "visible",
 					"borderStyle": "solid"
+				},
+				"VIEW_Accept": {
+					"type": "button",
+					"top": 549,
+					"left": 952,
+					"width": 74,
+					"height": 22,
+					"sizingX": "fixed",
+					"sizingY": "fixed",
+					"action": "accept",
+					"shortcutKey": "[Enter]",
+					"text": "OK",
+					"class": "default",
+					"defaultButton": true,
+					"events": [
+						"onClick"
+					]
+				},
+				"VIEW_Cancel": {
+					"type": "button",
+					"top": 549,
+					"left": 866,
+					"width": 74,
+					"height": 22,
+					"sizingX": "fixed",
+					"sizingY": "fixed",
+					"action": "cancel",
+					"shortcutKey": ".",
+					"shortcutAccel": true,
+					"text": "Cancel",
+					"class": "default",
+					"events": [
+						"onClick"
+					]
+				},
+				"lb_theme": {
+					"type": "listbox",
+					"left": 20,
+					"top": 32,
+					"width": 239,
+					"height": 502,
+					"events": [
+						"onClick",
+						"onHeaderClick",
+						"onDataChange",
+						"onSelectionChange"
+					],
+					"dataSource": "Form:C1466.themes",
+					"listboxType": "collection",
+					"selectionMode": "single",
+					"resizingMode": "legacy",
+					"currentItemSource": "Form:C1466.selectedTheme",
+					"currentItemPositionSource": "Form:C1466.selectedThemeIndex",
+					"columns": [
+						{
+							"header": {
+								"text": "Your Themes",
+								"name": "Header4"
+							},
+							"name": "Column4",
+							"dataSource": "This:C1470.name",
+							"footer": {
+								"name": "Footer4"
+							},
+							"enterable": false,
+							"width": 147,
+							"resizable": false
+						},
+						{
+							"header": {
+								"name": "Header5",
+								"text": "Default"
+							},
+							"name": "col_default_theme",
+							"footer": {
+								"name": "Footer5"
+							},
+							"dataSource": "This:C1470.default",
+							"dataSourceTypeHint": "boolean",
+							"textAlign": "center",
+							"width": 10,
+							"events": [
+								"onDataChange"
+							],
+							"resizable": false
+						}
+					]
+				},
+				"Text12": {
+					"type": "text",
+					"top": 45,
+					"left": 304,
+					"width": 100,
+					"height": 15,
+					"text": "Name :"
+				},
+				"input_theme_name": {
+					"type": "input",
+					"top": 45,
+					"left": 407,
+					"width": 179,
+					"height": 16,
+					"dataSource": "Form:C1466.workingTheme.name",
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"entryFilter": ""
+				},
+				"bt_deleteTheme": {
+					"type": "button",
+					"top": 549,
+					"left": 46,
+					"width": 22,
+					"height": 22,
+					"sizingY": "move",
+					"focusable": false,
+					"text": "-",
+					"style": "roundedBevel",
+					"events": [
+						"onClick"
+					],
+					"class": "button"
+				},
+				"bt_addTheme": {
+					"type": "button",
+					"top": 549,
+					"left": 20,
+					"width": 22,
+					"height": 22,
+					"sizingY": "move",
+					"focusable": false,
+					"text": "+",
+					"style": "roundedBevel",
+					"events": [
+						"onClick"
+					],
+					"class": "button"
 				}
 			},
 			"entryOrder": [
-				"cb_sty_bold",
-				"cb_sty_bold1",
+				"cb_hori_lines",
+				"cb_vert_lines",
 				"input_colour_hLineColour",
 				"bt_colour_hLineColour",
 				"input_colour_vLineColour",
 				"bt_colour_vLineColour",
-				"input_fontColourHex4",
-				"input_fontColourHex5",
+				"input_font",
+				"input_fontSize",
 				"input_colour_headerFontColour",
 				"bt_colour_headerFontColour",
 				"input_colour_headerBgColour",
 				"bt_colour_headerBgColour",
-				"input_fontColourHex8",
-				"input_fontColourHex9",
+				"input_font_row",
+				"input_fontSize_row",
 				"input_colour_rowColour",
 				"bt_colour_rowColour",
 				"input_colour_rowAltColour",
@@ -599,10 +704,16 @@
 				"lb_preview",
 				"bt_preview",
 				"input_colour_rowFontColour",
-				"bt_colour_rowFontColour"
+				"bt_colour_rowFontColour",
+				"VIEW_Accept",
+				"VIEW_Cancel",
+				"lb_theme",
+				"input_theme_name",
+				"bt_deleteTheme",
+				"bt_addTheme"
 			]
 		}
 	],
 	"method": "method.4dm",
-	"geometryStamp": 1
+	"geometryStamp": 107
 }

@@ -50,6 +50,8 @@ Case of
 		$vo_formData.view.detail.lockedColumns:=0
 		$vo_formData.view.detail.rowHeight:=1
 		$vo_formData.view.detail.headerHeight:=1
+		$vo_formData.view.detail.themeName:="Default"
+		$vo_formData.view.detail.themeId:=""
 		
 	: ($1="Dupe")
 		$vo_formData.allowDelete:=False:C215
@@ -65,6 +67,8 @@ Case of
 			$e_uloData.favourite:=False:C215
 			$e_uloData.default:=False:C215
 			$e_uloData.detail.public:=False:C215
+			$e_uloData.detail.themeName:="Default"
+			$e_uloData.detail.themeId:=""
 			
 		Else 
 			  //Is a new view, create default $vo_formData
@@ -79,6 +83,8 @@ Case of
 			$e_uloData.default:=False:C215
 			$e_uloData.detail:=OB Copy:C1225(Form:C1466.navItem.selectedView.detail)
 			$e_uloData.detail.public:=False:C215
+			$e_uloData.detail.themeName:="Default"
+			$e_uloData.detail.themeId:=""
 			
 		End if 
 		
@@ -99,6 +105,8 @@ Case of
 			$e_uloData.default:=True:C214
 			$e_uloData.detail:=OB Copy:C1225(Form:C1466.navItem.selectedView.detail)
 			$e_uloData.detail.public:=False:C215
+			$e_uloData.detail.themeName:="Default"
+			$e_uloData.detail.themeId:=""
 			
 			$vo_formData.allowDelete:=False:C215
 			$vo_formData.view:=$e_uloData.toObject()
@@ -167,7 +175,7 @@ If (OK=1)
 			End for each 
 		End if 
 		Form:C1466.navItem.selectedView:=$e_uloData.toObject()
-		ULO_LOAD_VIEW 
+		ULO_LOAD_VIEW (True:C214)
 	Else 
 		ALERT:C41("Failed to save "+Char:C90(13)+JSON Stringify:C1217($vo_res;*))
 	End if 
@@ -177,7 +185,7 @@ Else
 			If ($vo_formData.delete)
 				$e_uloData.drop()
 				Form:C1466.navItem.selectedView:=Null:C1517
-				ULO_LOAD_VIEW 
+				ULO_LOAD_VIEW (True:C214)
 			End if 
 			
 		: ($1="Dupe")

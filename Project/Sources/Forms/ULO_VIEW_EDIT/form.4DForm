@@ -625,6 +625,47 @@
 						"onClick"
 					],
 					"dataSourceTypeHint": "boolean"
+				},
+				"PROMPT_Locked5": {
+					"type": "text",
+					"top": 329,
+					"left": 93,
+					"width": 107,
+					"height": 16,
+					"class": "default",
+					"textAlign": "right",
+					"text": "Theme"
+				},
+				"BRW_VIEW_RowHeight1": {
+					"type": "input",
+					"top": 329,
+					"left": 209,
+					"width": 172,
+					"height": 16,
+					"dataSource": "Form:C1466.view.detail.themeName",
+					"dataSourceTypeHint": "text",
+					"class": "default",
+					"contextMenu": "none",
+					"min": "",
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"enterable": false
+				},
+				"bt_selectTheme": {
+					"type": "button",
+					"text": "",
+					"top": 327,
+					"left": 389,
+					"width": 20,
+					"height": 20,
+					"events": [
+						"onClick"
+					],
+					"style": "roundedBevel",
+					"popupPlacement": "separated"
 				}
 			}
 		}
@@ -633,5 +674,5 @@
 		"version": "1",
 		"kind": "form"
 	},
-	"geometryStamp": 6
+	"geometryStamp": 64
 }

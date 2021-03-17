@@ -3,7 +3,7 @@
 C_TEXT:C284($1)
 C_TEXT:C284($vt_id;$vt_MyViews;$vt_Option;$vt_ViewMenu;$vt_defaultViewId;$vt_userDefaultId;$vt_selected)
 C_LONGINT:C283($vl_CurrentUser;$vl_NumParameters)
-C_OBJECT:C1216($vo_view;$e_view;$es_views;$vo_coord)
+C_OBJECT:C1216($vo_view;$e_view;$es_views;$vo_coord;$es_themes;$e_theme;$e_sysTheme)
 C_COLLECTION:C1488($vc_views)
 C_BOOLEAN:C305($vb_disable)
 
@@ -125,10 +125,40 @@ Case of
 		APPEND MENU ITEM:C411($vt_ViewMenu;"-")
 		DISABLE MENU ITEM:C150($vt_ViewMenu;-1)
 		
-		  //General view options - Style and font size.
-		APPEND MENU ITEM:C411($vt_ViewMenu;"Amend Theme")
-		SET MENU ITEM PARAMETER:C1004($vt_ViewMenu;-1;"VIEW:Options")
+		$e_sysTheme:=ds:C1482["uloData"].query("type == 3 && user == :1";0).first()  //Get system theme
+		APPEND MENU ITEM:C411($vt_ViewMenu;"System Theme")
+		If ($e_sysTheme#Null:C1517)
+			SET MENU ITEM PARAMETER:C1004($vt_ViewMenu;-1;"THEME:"+$e_sysTheme.id)
+			If (Form:C1466.theme.id=$e_sysTheme.id)
+				SET MENU ITEM MARK:C208($vt_ViewMenu;-1;Char:C90(18))
+			End if 
+		Else 
+			SET MENU ITEM PARAMETER:C1004($vt_ViewMenu;-1;"THEME:")
+			If (Form:C1466.theme.id="")
+				SET MENU ITEM MARK:C208($vt_ViewMenu;-1;Char:C90(18))
+			End if 
+		End if 
 		
+		$es_themes:=ds:C1482["uloData"].query("type == 3 && user == :1";Storage:C1525.user.id)
+		If ($es_themes.length>0)
+			$vt_userThemes:=Create menu:C408
+			For each ($e_theme;$es_themes)
+				APPEND MENU ITEM:C411($vt_userThemes;$e_theme.name)
+				SET MENU ITEM PARAMETER:C1004($vt_userThemes;-1;"THEME:"+$e_theme.id)
+				If (Form:C1466.theme.id=$e_theme.id)
+					SET MENU ITEM MARK:C208($vt_userThemes;-1;Char:C90(18))
+				End if 
+			End for each 
+			APPEND MENU ITEM:C411($vt_ViewMenu;"My Themes";$vt_userThemes)
+			RELEASE MENU:C978($vt_userThemes)
+		Else 
+			APPEND MENU ITEM:C411($vt_ViewMenu;"My Themes")
+			DISABLE MENU ITEM:C150($vt_ViewMenu;-1)
+		End if 
+		
+		  //General view options - Style and font size.
+		APPEND MENU ITEM:C411($vt_ViewMenu;"Amend Themes")
+		SET MENU ITEM PARAMETER:C1004($vt_ViewMenu;-1;"THEME:EDIT")
 		
 		$vo_coord:=ULO_Get_Popup_Coord ("ULO_Button_VIEW")
 		
@@ -151,8 +181,14 @@ Case of
 	: ($1="Amend")  //Amend current view
 		VIEW_EDIT ("Edit")
 		
-	: ($1="Options")  //General view options - Style and font size.
-		ULO_EDIT_THEME 
+	: ($1="THEME:@")  //General view options - Style and font size.
+		$vt_Option:=Replace string:C233($1;"THEME:";"")
+		If ($vt_Option="EDIT")
+			ULO_EDIT_THEME 
+		Else 
+			ULO_LOAD_THEME ($vt_Option)
+			ULO_LOAD_VIEW 
+		End if 
 		
 	: ($1="LOAD@")  //load a passed view
 		$vt_id:=Replace string:C233($1;"LOAD:";"")
@@ -162,7 +198,7 @@ Case of
 		Else 
 			Form:C1466.navItem.selectedView:=New object:C1471("createNew";True:C214)
 		End if 
-		ULO_LOAD_VIEW 
+		ULO_LOAD_VIEW (True:C214)
 		
 	: ($1="DUPE")
 		
