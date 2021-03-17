@@ -2,7 +2,7 @@
 C_OBJECT:C1216($1;$vo_formEvent;$vo_data;$vo_field;$vo_col;$vo_column;$es_userThemes;$e_userTheme)
 C_COLLECTION:C1488($vc_cols)
 C_TEXT:C284($vt_objectName;$vt_menu;$vt_selected)
-C_LONGINT:C283($vl_dropPos;$vl_startPos;$vl_idx)
+C_LONGINT:C283($vl_dropPos;$vl_startPos;$vl_idx;$vl_pos)
 $vo_formEvent:=$1
 If (OB Is defined:C1231($vo_formEvent;"objectName"))
 	$vt_objectName:=$vo_formEvent.objectName
