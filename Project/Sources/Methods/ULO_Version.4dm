@@ -1,6 +1,10 @@
 //%attributes = {"shared":true}
 C_TEXT:C284($0)
-$0:="1.4.0"
+$0:="1.4.1"
+
+  //2021-03-17 1.4.1
+  // ULO_EDIT_THEME [FORM] - Assigned correct variable to Verticle Lines checkbox
+  // ULO_LOAD_THEME        - Removed query for any user theme, should only search for defaults
 
   //2021-03-17 1.4.0
   // A host of changes to support multi user themes and assigning a theme to a view, see commit for more details!
