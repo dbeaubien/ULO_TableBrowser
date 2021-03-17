@@ -50,10 +50,7 @@ If (Count parameters:C259>0)
 Else 
 	$es_uloData:=ds:C1482["uloData"].query("user == :1 & type == 3 && default == true";Storage:C1525.user.id)
 	If ($es_uloData.length=0)
-		$es_uloData:=ds:C1482["uloData"].query("user == :1 & type == 3";Storage:C1525.user.id)
-		If ($es_uloData.length=0)
-			$es_uloData:=ds:C1482["uloData"].query("user == :1 & type == 3";0)
-		End if 
+		$es_uloData:=ds:C1482["uloData"].query("user == :1 & type == 3";0)
 	End if 
 End if 
 
