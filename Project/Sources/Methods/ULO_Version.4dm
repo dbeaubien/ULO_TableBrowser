@@ -1,6 +1,9 @@
 //%attributes = {"shared":true}
 C_TEXT:C284($0)
-$0:="1.4.1"
+$0:="1.4.2"
+
+  //2021-03-19 1.4.2
+  // ULO_LOAD_THEME - If passed theme ID no longer exists, now falls back to user/system default instead of using ULO's default ugly theme
 
   //2021-03-17 1.4.1
   // ULO_EDIT_THEME [FORM] - Assigned correct variable to Verticle Lines checkbox
