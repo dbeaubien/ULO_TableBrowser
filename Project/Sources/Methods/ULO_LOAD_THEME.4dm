@@ -41,13 +41,14 @@ $vo_theme.headerFontColourHex:="000000"
 $vo_theme.headerFontSize:=11
 $vo_theme.headerFont:="Segoe UI"
 
+$es_uloData:=ds:C1482["uloData"].newSelection()
 If (Count parameters:C259>0)
 	If ($1#"")
 		$es_uloData:=ds:C1482["uloData"].query("id == :1";$1)
-	Else 
-		$es_uloData:=ds:C1482["uloData"].newSelection()
 	End if 
-Else 
+End if 
+
+If ($es_uloData.length=0)  //If passed theme id not found, get default
 	$es_uloData:=ds:C1482["uloData"].query("user == :1 & type == 3 && default == true";Storage:C1525.user.id)
 	If ($es_uloData.length=0)
 		$es_uloData:=ds:C1482["uloData"].query("user == :1 & type == 3";0)
