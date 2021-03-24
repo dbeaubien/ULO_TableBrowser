@@ -1,6 +1,9 @@
 //%attributes = {"shared":true}
 C_TEXT:C284($0)
-$0:="1.4.2"
+$0:="1.4.3"
+
+  //2021-03-24 1.4.3
+  // Minor change to theme loading logic. A theme attached to a view is no longer retained when loading a new view, User must select theme from My Themes
 
   //2021-03-19 1.4.2
   // ULO_LOAD_THEME - If passed theme ID no longer exists, now falls back to user/system default instead of using ULO's default ugly theme
