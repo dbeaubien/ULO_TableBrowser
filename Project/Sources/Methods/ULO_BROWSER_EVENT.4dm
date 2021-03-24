@@ -27,6 +27,7 @@ Case of
 				Form:C1466.refresh:=False:C215
 				Form:C1466.fullRefresh:=True:C214
 				Form:C1466.forceSelectNav:=False:C215
+				Form:C1466.themeSelected:=False:C215
 				Form:C1466.customColumns:=New collection:C1472
 				Form:C1466.customSort:=New object:C1471("field";0;"dir";1)
 				If (Not:C34(OB Is defined:C1231(Form:C1466;"relate")))

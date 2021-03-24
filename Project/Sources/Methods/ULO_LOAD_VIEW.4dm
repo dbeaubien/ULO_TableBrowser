@@ -4,7 +4,7 @@ C_OBJECT:C1216($vo_col;$vo_view;$es_return;$es)
 C_POINTER:C301($vp_nil;$vp_table)
 C_LONGINT:C283($i;$vl_columns;$vl_type;$vl_numFields;$vl_fontStyle;$vl_alignment;\
 $vl_fontColour;$vl_totalWidth;$vl_left;$vl_top;$vl_right;$vl_bottom;$vl_hAlignment)
-C_TEXT:C284($vt_colName;$vt_hObject;$vt_formula;$vt_header;$vt_fObject;$vt_format)
+C_TEXT:C284($vt_colName;$vt_hObject;$vt_formula;$vt_header;$vt_fObject;$vt_format;$vt_themeId)
   //Form.tableNumber:=Form.navItem.table
 
 If (Count parameters:C259>0)
@@ -206,7 +206,7 @@ If (Form:C1466.tableNumber>0)
 					  //End if 
 					
 					  //LISTBOX INSERT COLUMN FORMULA(*;"ULO_LIST";$i;$vt_colName;$vt_formula;\
-																																																																					$vl_type;$vt_hObject;$vp_nil;$vt_fObject;$vp_nil)
+																																																																											$vl_type;$vt_hObject;$vp_nil;$vt_fObject;$vp_nil)
 					
 					  //OBJECT SET FORMAT(*;$vt_colName;$vt_format)
 					  //OBJECT SET FONT STYLE(*;$vt_colName;$vl_fontStyle)
@@ -316,8 +316,14 @@ If (Form:C1466.tableNumber>0)
 	Form:C1466.uloRecords:=Form:C1466.uloRecords
 	If ($vb_useViewTheme)
 		If (OB Is defined:C1231(Form:C1466.navItem.selectedView.detail;"themeId"))
-			If (Form:C1466.navItem.selectedView.detail.themeId#"")
-				ULO_LOAD_THEME (Form:C1466.navItem.selectedView.detail.themeId)
+			$vt_themeId:=Form:C1466.navItem.selectedView.detail.themeId
+		End if 
+		If ($vt_themeId#"")
+			Form:C1466.themeSelected:=False:C215
+			ULO_LOAD_THEME ($vt_themeId)
+		Else 
+			If (Not:C34(Form:C1466.themeSelected))
+				ULO_LOAD_THEME 
 			End if 
 		End if 
 	End if 

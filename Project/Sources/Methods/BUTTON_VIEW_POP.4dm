@@ -186,6 +186,7 @@ Case of
 		If ($vt_Option="EDIT")
 			ULO_EDIT_THEME 
 		Else 
+			Form:C1466.themeSelected:=True:C214
 			ULO_LOAD_THEME ($vt_Option)
 			ULO_LOAD_VIEW 
 		End if 
