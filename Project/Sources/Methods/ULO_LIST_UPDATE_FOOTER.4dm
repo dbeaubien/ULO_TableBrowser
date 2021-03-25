@@ -11,7 +11,7 @@
   // Parameters
   // ----------------------------------------------------
 
-C_TEXT:C284($CR;$vt_footer)
+C_TEXT:C284($CR;$vt_footer;$vt_result)
 C_LONGINT:C283($i;$idx;$vl_items;$vl_maxItems;$vl_idx)
 C_COLLECTION:C1488($vc_cols)
 C_REAL:C285($vr_result)
@@ -30,7 +30,7 @@ ARRAY BOOLEAN:C223($ab_colVisible;0)
 
 If (Form:C1466.navItem.selectedView.detail.useFooter)
 	$CR:=Char:C90(Carriage return:K15:38)
-	$vc_cols:=Form:C1466.navItem.selectedView.detail.cols
+	$vc_cols:=Form:C1466.navItem.selectedView.detail.cols.query("selected == :1";True:C214)
 	
 	LISTBOX GET ARRAYS:C832(*;"ULO_LIST";$at_colName;$at_headerName;$ap_colVar;$ap_headerVar;$ab_colVisible;$ap_style;$at_footerName;$ap_footerVar)
 	  //TRACE
@@ -69,74 +69,78 @@ If (Form:C1466.navItem.selectedView.detail.useFooter)
 				End if 
 				
 				$vr_result:=0
+				$vt_result:="0"
 				If ($vc_cols[$idx].total)
 					If ($vc_cols[$idx].table=-1)
 						$vl_idx:=UTIL_Col_Find_Index (vo_footerObj.aggregates;"name";"sum")
 						If ($vl_idx>=0)
 							If (vo_footerObj.aggregates[$vl_idx].value#Null:C1517)
-								$vr_result:=vo_footerObj.aggregates[$vl_idx].value
+								$vt_result:=String:C10(vo_footerObj.aggregates[$vl_idx].value;$vc_cols[$idx].format)
 							End if 
 						End if 
 					Else 
 						If (Form:C1466.uloRecords.length>0)
-							$vr_result:=Form:C1466.uloRecords.sum($vc_cols[$idx].fieldName)
+							$vt_result:=String:C10(Form:C1466.uloRecords.max($vc_cols[$idx].fieldName);$vc_cols[$idx].format)
 						End if 
 					End if 
-					$vt_footer:=Choose:C955(($vl_items>1);"Sum: ";"")+String:C10($vr_result)
+					$vt_footer:=Choose:C955(($vl_items>1);"Sum: ";"")+$vt_result
 				End if 
 				
 				$vr_result:=0
+				$vt_result:="0"
 				If ($vc_cols[$idx].max)
 					$vt_footer:=Choose:C955($vt_footer#"";$vt_footer+$CR;"")
 					If ($vc_cols[$idx].table=-1)
 						$vl_idx:=UTIL_Col_Find_Index (vo_footerObj.aggregates;"name";"max")
 						If ($vl_idx>=0)
 							If (vo_footerObj.aggregates[$vl_idx].value#Null:C1517)
-								$vr_result:=vo_footerObj.aggregates[$vl_idx].value
+								$vt_result:=String:C10(vo_footerObj.aggregates[$vl_idx].value;$vc_cols[$idx].format)
 							End if 
 						End if 
 					Else 
 						If (Form:C1466.uloRecords.length>0)
-							$vr_result:=Form:C1466.uloRecords.max($vc_cols[$idx].fieldName)
+							$vt_result:=String:C10(Form:C1466.uloRecords.max($vc_cols[$idx].fieldName);$vc_cols[$idx].format)
 						End if 
 					End if 
-					$vt_footer:=$vt_footer+Choose:C955(($vl_items>1);"Max: ";"")+String:C10($vr_result)
+					$vt_footer:=$vt_footer+Choose:C955(($vl_items>1);"Max: ";"")+$vt_result
 				End if 
 				
 				$vr_result:=0
+				$vt_result:="0"
 				If ($vc_cols[$idx].min)
 					$vt_footer:=Choose:C955($vt_footer#"";$vt_footer+$CR;"")
 					If ($vc_cols[$idx].table=-1)
 						$vl_idx:=UTIL_Col_Find_Index (vo_footerObj.aggregates;"name";"min")
 						If ($vl_idx>=0)
 							If (vo_footerObj.aggregates[$vl_idx].value#Null:C1517)
-								$vr_result:=vo_footerObj.aggregates[$vl_idx].value
+								$vt_result:=String:C10(vo_footerObj.aggregates[$vl_idx].value;$vc_cols[$idx].format)
 							End if 
 						End if 
 					Else 
 						If (Form:C1466.uloRecords.length>0)
-							$vr_result:=Form:C1466.uloRecords.min($vc_cols[$idx].fieldName)
+							$vt_result:=String:C10(Form:C1466.uloRecords.max($vc_cols[$idx].fieldName);$vc_cols[$idx].format)
 						End if 
 					End if 
-					$vt_footer:=$vt_footer+Choose:C955(($vl_items>1);"Min: ";"")+String:C10($vr_result)
+					$vt_footer:=$vt_footer+Choose:C955(($vl_items>1);"Min: ";"")+$vt_result
 				End if 
 				
 				$vr_result:=0
+				$vt_result:="0"
 				If ($vc_cols[$idx].average)
 					$vt_footer:=Choose:C955($vt_footer#"";$vt_footer+$CR;"")
 					If ($vc_cols[$idx].table=-1)
 						$vl_idx:=UTIL_Col_Find_Index (vo_footerObj.aggregates;"name";"average")
 						If ($vl_idx>=0)
 							If (vo_footerObj.aggregates[$vl_idx].value#Null:C1517)
-								$vr_result:=vo_footerObj.aggregates[$vl_idx].value
+								$vt_result:=String:C10(vo_footerObj.aggregates[$vl_idx].value;$vc_cols[$idx].format)
 							End if 
 						End if 
 					Else 
 						If (Form:C1466.uloRecords.length>0)
-							$vr_result:=Form:C1466.uloRecords.average($vc_cols[$idx].fieldName)
+							$vt_result:=String:C10(Form:C1466.uloRecords.max($vc_cols[$idx].fieldName);$vc_cols[$idx].format)
 						End if 
 					End if 
-					$vt_footer:=$vt_footer+Choose:C955(($vl_items>1);"Avg: ";"")+String:C10($vr_result)
+					$vt_footer:=$vt_footer+Choose:C955(($vl_items>1);"Avg: ";"")+$vt_result
 				End if 
 				
 				$ap_footerVar{$i}->:=$vt_footer
