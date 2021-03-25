@@ -1,6 +1,12 @@
 //%attributes = {"shared":true}
 C_TEXT:C284($0)
-$0:="1.4.3"
+$0:="1.4.4"
+
+  //2021-03-25 1.4.4
+  // ULO_LIST_UPDATE_FOOTER - Fixed issues where not all cols are 'selected'
+  //                        - Fixed errors around use of time/date footers
+  //                        - Now applied Column display format to footer values
+  // A manually selected theme is now retained after use of a view with a theme assigned.
 
   //2021-03-24 1.4.3
   // Minor change to theme loading logic. A theme attached to a view is no longer retained when loading a new view, User must select theme from My Themes
