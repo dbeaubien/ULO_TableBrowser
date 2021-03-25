@@ -187,6 +187,7 @@ Case of
 			ULO_EDIT_THEME 
 		Else 
 			Form:C1466.themeSelected:=True:C214
+			Form:C1466.themeSelectedId:=$vt_Option
 			ULO_LOAD_THEME ($vt_Option)
 			ULO_LOAD_VIEW 
 		End if 

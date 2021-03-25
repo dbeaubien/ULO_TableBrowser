@@ -206,7 +206,7 @@ If (Form:C1466.tableNumber>0)
 					  //End if 
 					
 					  //LISTBOX INSERT COLUMN FORMULA(*;"ULO_LIST";$i;$vt_colName;$vt_formula;\
-																																																																											$vl_type;$vt_hObject;$vp_nil;$vt_fObject;$vp_nil)
+																																																																																	$vl_type;$vt_hObject;$vp_nil;$vt_fObject;$vp_nil)
 					
 					  //OBJECT SET FORMAT(*;$vt_colName;$vt_format)
 					  //OBJECT SET FONT STYLE(*;$vt_colName;$vl_fontStyle)
@@ -322,9 +322,7 @@ If (Form:C1466.tableNumber>0)
 			Form:C1466.themeSelected:=False:C215
 			ULO_LOAD_THEME ($vt_themeId)
 		Else 
-			If (Not:C34(Form:C1466.themeSelected))
-				ULO_LOAD_THEME 
-			End if 
+			ULO_LOAD_THEME (Form:C1466.themeSelectedId)
 		End if 
 	End if 
 	
