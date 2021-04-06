@@ -1,6 +1,12 @@
 //%attributes = {"shared":true}
 C_TEXT:C284($0)
-$0:="1.4.4"
+$0:="1.4.5"
+
+  //2021-04-06 1.4.5
+  // Changed 'Your ..' menu prompts to 'My ..'
+  // BUTTON_SORT_POP
+  // BUTTON_VIEW_POP
+  // QE_BUILD_LOAD_MENU
 
   //2021-03-25 1.4.4
   // ULO_LIST_UPDATE_FOOTER - Fixed issues where not all cols are 'selected'
