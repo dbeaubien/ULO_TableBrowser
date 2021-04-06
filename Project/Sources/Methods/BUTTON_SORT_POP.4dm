@@ -58,7 +58,7 @@ Case of
 			  //SET MENU ITEM MARK($vt_userMenu;-1;Char(18))
 			  //End if 
 		End for each 
-		APPEND MENU ITEM:C411($vt_menu;"Your Sorts";$vt_userMenu)
+		APPEND MENU ITEM:C411($vt_menu;"My Sorts";$vt_userMenu)
 		If ($es_userSort.length=0)
 			DISABLE MENU ITEM:C150($vt_menu;-1)
 		End if 

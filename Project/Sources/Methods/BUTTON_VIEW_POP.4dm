@@ -35,7 +35,7 @@ Case of
 			$vt_userDefaultId:=$es_views.first().id
 		End if 
 		
-		APPEND MENU ITEM:C411($vt_ViewMenu;"Your Default View")
+		APPEND MENU ITEM:C411($vt_ViewMenu;"My Default View")
 		SET MENU ITEM PARAMETER:C1004($vt_ViewMenu;-1;"LOAD:"+$vt_userDefaultId)
 		If ($vt_userDefaultId="")
 			DISABLE MENU ITEM:C150($vt_ViewMenu;-1)

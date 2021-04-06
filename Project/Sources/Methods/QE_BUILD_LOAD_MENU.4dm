@@ -53,7 +53,7 @@ End if
 
 $vt_menu:=Create menu:C408
 
-APPEND MENU ITEM:C411($vt_menu;"Your Queries";$vt_userMenu)
+APPEND MENU ITEM:C411($vt_menu;"My Queries";$vt_userMenu)
 APPEND MENU ITEM:C411($vt_menu;"Public Queries";$vt_publicMenu)
 
 $0:=$vt_menu
