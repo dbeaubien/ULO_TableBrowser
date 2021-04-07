@@ -42,6 +42,12 @@ Else
 			Storage:C1525.sidebar[$index].sub:=New shared collection:C1527
 			Storage:C1525.sidebar[$index].expanded:=False:C215
 			
+			If ($cp>5)
+				If (OB Is defined:C1231($6;"expanded"))
+					Storage:C1525.sidebar[$index].expanded:=$6.expanded
+				End if 
+			End if 
+			
 			Case of 
 				: ($1="HEADER")
 					
