@@ -1,6 +1,9 @@
 //%attributes = {"shared":true}
 C_TEXT:C284($0)
-$0:="1.4.6"
+$0:="1.4.7"
+
+  //2021-04-14 1.4.7
+  // ULO_EXPORT_VIEW_XLSX - Fixed Execute Formula commands to fix export of Related Tables
 
   //2021-04-14 1.4.6
   // ULO_LIST_UPDATE_FOOTER - Fixed bad copy/paste where all footer values were being calculated with '.max()'
