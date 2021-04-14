@@ -291,7 +291,7 @@ If (OK=1)  //If user has created a document ....
 						If ($vo_col.field<0)
 							EXECUTE FORMULA:C63("vt_ExportValue:="+$vo_col.formula)
 						Else 
-							EXECUTE FORMULA:C63("vr_ExportValue:=Replace string(e_record."+$vo_col.formula+";Char(Double quote);Char(Quote))")
+							EXECUTE FORMULA:C63("vt_ExportValue:=Replace string(e_record."+$vo_col.formula+";Char(Double quote);Char(Quote))")
 						End if 
 						xlSheetSetCellText ($vl_worksheet;$recordIndex+1;$fieldIndex;vt_ExportValue;$vc_columnThemes[$fieldIndex-1][Num:C11($vb_alt)])
 						
