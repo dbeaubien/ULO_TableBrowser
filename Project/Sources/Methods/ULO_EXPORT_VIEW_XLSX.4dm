@@ -23,7 +23,7 @@ C_TEXT:C284(vt_ExportValue;$vt_filename;$vt_font;$vt_formula;$vt_col)
 C_REAL:C285(vr_ExportValue)
 C_PICTURE:C286(vg_ExportValue)
 C_DATE:C307(vd_ExportValue)
-C_OBJECT:C1216($vo_col;$e_record;$vo_footer;$e_theme;$vo_theme)
+C_OBJECT:C1216($vo_col;$e_record;$vo_footer;$e_theme;$vo_theme;e_record)
 C_COLLECTION:C1488($vc_footers;$vc_temp;$vc_colThemes;$vc_columnThemes)
 C_BOOLEAN:C305($vb_alt;$vb_horiLines;$vb_vertLines)
 
@@ -269,7 +269,7 @@ If (OK=1)  //If user has created a document ....
 	
 	  //Loop through the records
 	$recordIndex:=1
-	For each ($e_record;$es_records)
+	For each (e_record;$es_records)
 		  //Then loop through the columns
 		$fieldIndex:=1  //Used for excel column number
 		For each ($vo_col;Form:C1466.navItem.selectedView.detail.cols)
@@ -281,41 +281,41 @@ If (OK=1)  //If user has created a document ....
 				Case of   //Export the field/formula value according to data type ...
 					: ($vo_col.fieldType=Is integer:K8:5) | ($vo_col.fieldType=Is longint:K8:6) | ($vo_col.fieldType=Is real:K8:4)
 						If ($vo_col.field<0)
-							EXECUTE FORMULA:C63("vr_ExportValue:="+$e_record[$vo_col.formula])
+							EXECUTE FORMULA:C63("vr_ExportValue:="+$vo_col.formula)
 						Else 
-							vr_ExportValue:=$e_record[$vo_col.formula]
+							EXECUTE FORMULA:C63("vr_ExportValue:=e_record."+$vo_col.formula)
 						End if 
 						xlSheetSetCellNumber ($vl_worksheet;$recordIndex+1;$fieldIndex;vr_ExportValue;$vc_columnThemes[$fieldIndex-1][Num:C11($vb_alt)])
 						
 					: ($vo_col.fieldType=Is alpha field:K8:1) | ($vo_col.fieldType=Is text:K8:3)
 						If ($vo_col.field<0)
-							EXECUTE FORMULA:C63("vt_ExportValue:="+$e_record[$vo_col.formula])
+							EXECUTE FORMULA:C63("vt_ExportValue:="+$vo_col.formula)
 						Else 
-							vt_ExportValue:=Replace string:C233($e_record[$vo_col.formula];Char:C90(Double quote:K15:41);Char:C90(Quote:K15:44))
+							EXECUTE FORMULA:C63("vr_ExportValue:=Replace string(e_record."+$vo_col.formula+";Char(Double quote);Char(Quote))")
 						End if 
 						xlSheetSetCellText ($vl_worksheet;$recordIndex+1;$fieldIndex;vt_ExportValue;$vc_columnThemes[$fieldIndex-1][Num:C11($vb_alt)])
 						
 					: ($vo_col.fieldType=Is date:K8:7)
 						If ($vo_col.field<0)
-							EXECUTE FORMULA:C63("vd_ExportValue:="+$e_record[$vo_col.formula])
+							EXECUTE FORMULA:C63("vd_ExportValue:="+$vo_col.formula)
 						Else 
-							vd_ExportValue:=$e_record[$vo_col.formula]
+							EXECUTE FORMULA:C63("vd_ExportValue:=e_record."+$vo_col.formula)
 						End if 
 						xlSheetSetCellDateTime ($vl_worksheet;$recordIndex+1;$fieldIndex;vd_ExportValue;0;0;$vc_columnThemes[$fieldIndex-1][Num:C11($vb_alt)])
 						
 					: (($vo_col.fieldType=Is time:K8:8) | ($vo_col.fieldType=Is boolean:K8:9))
 						If ($vo_col.field<0)
-							EXECUTE FORMULA:C63("vt_ExportValue:=string("+$e_record[$vo_col.formula]+")")
+							EXECUTE FORMULA:C63("vt_ExportValue:=String("+$vo_col.formula+")")
 						Else 
-							vt_ExportValue:=String:C10($e_record[$vo_col.formula])
+							EXECUTE FORMULA:C63("vt_ExportValue:=String(e_record."+$vo_col.formula+")")
 						End if 
 						xlSheetSetCellText ($vl_worksheet;$recordIndex+1;$fieldIndex;vt_ExportValue;$vc_columnThemes[$fieldIndex-1][Num:C11($vb_alt)])
 						
 					: ($vo_col.fieldType=Is picture:K8:10)
 						If ($vo_col.field<0)
-							EXECUTE FORMULA:C63("vg_ExportValue:="+$e_record[$vo_col.formula])
+							EXECUTE FORMULA:C63("vg_ExportValue:="+$vo_col.formula)
 						Else 
-							vg_ExportValue:=$e_record[$vo_col.formula]
+							EXECUTE FORMULA:C63("vg_ExportValue:=e_record."+$vo_col.formula)
 						End if 
 						If (Picture size:C356(vg_ExportValue)>0)
 							CONVERT PICTURE:C1002(vg_ExportValue;".jpg")
