@@ -80,7 +80,7 @@ If (Form:C1466.navItem.selectedView.detail.useFooter)
 						End if 
 					Else 
 						If (Form:C1466.uloRecords.length>0)
-							$vt_result:=String:C10(Form:C1466.uloRecords.max($vc_cols[$idx].fieldName);$vc_cols[$idx].format)
+							$vt_result:=String:C10(Form:C1466.uloRecords.sum($vc_cols[$idx].fieldName);$vc_cols[$idx].format)
 						End if 
 					End if 
 					$vt_footer:=Choose:C955(($vl_items>1);"Sum: ";"")+$vt_result
@@ -118,7 +118,7 @@ If (Form:C1466.navItem.selectedView.detail.useFooter)
 						End if 
 					Else 
 						If (Form:C1466.uloRecords.length>0)
-							$vt_result:=String:C10(Form:C1466.uloRecords.max($vc_cols[$idx].fieldName);$vc_cols[$idx].format)
+							$vt_result:=String:C10(Form:C1466.uloRecords.min($vc_cols[$idx].fieldName);$vc_cols[$idx].format)
 						End if 
 					End if 
 					$vt_footer:=$vt_footer+Choose:C955(($vl_items>1);"Min: ";"")+$vt_result
@@ -137,7 +137,7 @@ If (Form:C1466.navItem.selectedView.detail.useFooter)
 						End if 
 					Else 
 						If (Form:C1466.uloRecords.length>0)
-							$vt_result:=String:C10(Form:C1466.uloRecords.max($vc_cols[$idx].fieldName);$vc_cols[$idx].format)
+							$vt_result:=String:C10(Form:C1466.uloRecords.average($vc_cols[$idx].fieldName);$vc_cols[$idx].format)
 						End if 
 					End if 
 					$vt_footer:=$vt_footer+Choose:C955(($vl_items>1);"Avg: ";"")+$vt_result
