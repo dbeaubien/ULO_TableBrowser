@@ -35,6 +35,7 @@ If (Count parameters:C259>0)
 	$vo_queryForm.queryOperators.push(New object:C1471("operand";">";"name";"is greater than"))
 	$vo_queryForm.queryOperators.push(New object:C1471("operand";"<=";"name";"less or equal to"))
 	$vo_queryForm.queryOperators.push(New object:C1471("operand";">=";"name";"greater or equal to"))
+	$vo_queryForm.queryOperators.push(New object:C1471("operand";"==";"name";"contains"))
 	$vo_queryForm.queryOperators.push(New object:C1471("operand";"in";"name";"is in list"))
 	$vo_queryForm.queryOperators.push(New object:C1471("operand";"not in";"name";"is not in list"))
 	

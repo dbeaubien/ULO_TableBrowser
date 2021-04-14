@@ -51,38 +51,55 @@ For each ($vo_queryLine;$2)
 	$vt_queryString:=$vt_queryString+$vt_conjunction
 	
 	$vl_type:=$vo_queryLine.type
-	If ($vo_queryLine.oper="in") | ($vo_queryLine.oper="not in")
-		$vc_values:=CSV_PARSE_RECORD_COL ($vo_queryLine.value;Character code:C91(";"))
-		$vc_convertValues:=New collection:C1472
-		  //Convert values
-		Case of 
-			: ($vl_type=Is longint:K8:6) | ($vl_type=Is real:K8:4) | ($vl_type=Is integer:K8:5)
-				For each ($vt_value;$vc_values)
-					$vc_convertValues.push(Num:C11($vt_value))
-				End for each 
-			: ($vl_type=Is date:K8:7)
-				For each ($vt_value;$vc_values)
-					$vc_convertValues.push(Date:C102($vt_value))
-				End for each 
-			: ($vl_type=Is boolean:K8:9)
-				For each ($vt_value;$vc_values)
-					$vc_convertValues.push(($vt_value="True"))
-				End for each 
-			Else 
-				$vc_convertValues:=$vc_values
-		End case 
-		$vo_params.parameters.push($vc_convertValues)
-	Else 
-		Case of 
-			: ($vl_type=Is text:K8:3) | ($vl_type=Is alpha field:K8:1) | ($vl_type=Is object:K8:27)
-				$vo_params.parameters.push($vo_queryLine.value)
-			: ($vl_type=Is longint:K8:6) | ($vl_type=Is real:K8:4) | ($vl_type=Is integer:K8:5)
-				$vo_params.parameters.push(Num:C11($vo_queryLine.value))
-			: ($vl_type=Is date:K8:7)
-				$vo_params.parameters.push(Date:C102($vo_queryLine.value))
-			: ($vl_type=Is boolean:K8:9)
-				$vo_params.parameters.push(($vo_queryLine.value="True"))
-		End case 
-	End if 
+	
+	
+	Case of 
+		: ($vo_queryLine.oper="in") | ($vo_queryLine.oper="not in")
+			$vc_values:=CSV_PARSE_RECORD_COL ($vo_queryLine.value;Character code:C91(";"))
+			$vc_convertValues:=New collection:C1472
+			  //Convert values
+			Case of 
+				: ($vl_type=Is longint:K8:6) | ($vl_type=Is real:K8:4) | ($vl_type=Is integer:K8:5)
+					For each ($vt_value;$vc_values)
+						$vc_convertValues.push(Num:C11($vt_value))
+					End for each 
+				: ($vl_type=Is date:K8:7)
+					For each ($vt_value;$vc_values)
+						$vc_convertValues.push(Date:C102($vt_value))
+					End for each 
+				: ($vl_type=Is boolean:K8:9)
+					For each ($vt_value;$vc_values)
+						$vc_convertValues.push(($vt_value="True"))
+					End for each 
+				Else 
+					$vc_convertValues:=$vc_values
+			End case 
+			$vo_params.parameters.push($vc_convertValues)
+			
+		: ($vo_queryLine.oper="==")
+			Case of 
+				: ($vl_type=Is text:K8:3) | ($vl_type=Is alpha field:K8:1) | ($vl_type=Is object:K8:27)
+					$vo_params.parameters.push("@"+$vo_queryLine.value+"@")
+				: ($vl_type=Is longint:K8:6) | ($vl_type=Is real:K8:4) | ($vl_type=Is integer:K8:5)
+					$vo_params.parameters.push(Num:C11($vo_queryLine.value))
+				: ($vl_type=Is date:K8:7)
+					$vo_params.parameters.push(Date:C102($vo_queryLine.value))
+				: ($vl_type=Is boolean:K8:9)
+					$vo_params.parameters.push(($vo_queryLine.value="True"))
+			End case 
+			
+		Else 
+			Case of 
+				: ($vl_type=Is text:K8:3) | ($vl_type=Is alpha field:K8:1) | ($vl_type=Is object:K8:27)
+					$vo_params.parameters.push($vo_queryLine.value)
+				: ($vl_type=Is longint:K8:6) | ($vl_type=Is real:K8:4) | ($vl_type=Is integer:K8:5)
+					$vo_params.parameters.push(Num:C11($vo_queryLine.value))
+				: ($vl_type=Is date:K8:7)
+					$vo_params.parameters.push(Date:C102($vo_queryLine.value))
+				: ($vl_type=Is boolean:K8:9)
+					$vo_params.parameters.push(($vo_queryLine.value="True"))
+			End case 
+	End case 
+	
 End for each 
 $0:=ds:C1482[Table name:C256($1)].query($vt_queryString;$vo_params)
