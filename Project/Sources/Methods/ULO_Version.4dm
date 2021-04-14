@@ -1,6 +1,11 @@
 //%attributes = {"shared":true}
 C_TEXT:C284($0)
-$0:="1.4.5"
+$0:="1.4.6"
+
+  //2021-04-14 1.4.6
+  // ULO_LIST_UPDATE_FOOTER - Fixed bad copy/paste where all footer values were being calculated with '.max()'
+  // ULO_Query - New operator 'Contains'
+  // QE_Run - Support for 'contains' operator
 
   //2021-04-06 1.4.5
   // Changed 'Your ..' menu prompts to 'My ..'
