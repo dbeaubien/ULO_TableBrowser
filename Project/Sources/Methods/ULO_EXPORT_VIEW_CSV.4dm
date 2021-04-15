@@ -18,7 +18,7 @@ C_LONGINT:C283($recordIndex;$vl_headerFormat;$vl_font;$vl_workbook;$vl_worksheet
 C_LONGINT:C283($cp;$fieldIndex;$vl_fia;$width;$height)
 C_TIME:C306($vh_Doc)
 C_TEXT:C284(vt_ExportValue;$vt_filename)
-C_OBJECT:C1216($vo_col;$e_record;e_record)
+C_OBJECT:C1216($vo_col;$e_record;e_record;$vo_formula;vo_colObj)
 C_COLLECTION:C1488($vc_selectedCols)
 $cp:=Count parameters:C259
 
@@ -47,6 +47,7 @@ If (OK=1)  //If user has created a document ....
 		End if 
 		$fieldIndex:=$fieldIndex+1
 	End for each   //END field loop for header
+	vo_colObj:=New object:C1471("case";"data")
 	
 	  //Loop through the records
 	$recordIndex:=1
@@ -57,43 +58,51 @@ If (OK=1)  //If user has created a document ....
 		For each ($vo_col;$vc_selectedCols)
 			vt_ExportValue:=""
 			
-			Case of   //Export the field/formula value according to data type ...
-				: ($vo_col.fieldType=Is integer:K8:5) | ($vo_col.fieldType=Is longint:K8:6) | ($vo_col.fieldType=Is real:K8:4)
-					If ($vo_col.field<0)
-						EXECUTE FORMULA:C63("vt_ExportValue:=String("+$vo_col.formula+")")
-					Else 
-						EXECUTE FORMULA:C63("vt_ExportValue:=String(e_record."+$vo_col.formula+")")
-					End if 
-					
-				: ($vo_col.fieldType=Is alpha field:K8:1) | ($vo_col.fieldType=Is text:K8:3)
-					If ($vo_col.field<0)
-						EXECUTE FORMULA:C63("vt_ExportValue:="+$vo_col.formula)
-					Else 
-						EXECUTE FORMULA:C63("vt_ExportValue:=Replace string(e_record."+$vo_col.formula+";Char(Double quote);Char(Quote))")
-					End if 
-					
-				: ($vo_col.fieldType=Is date:K8:7)
-					If ($vo_col.field<0)
-						EXECUTE FORMULA:C63("vt_ExportValue:=String("+$vo_col.formula+")")
-					Else 
-						EXECUTE FORMULA:C63("vt_ExportValue:=String(e_record."+$vo_col.formula+")")
-					End if 
-					
-				: ($vo_col.fieldType=Is time:K8:8)
-					If ($vo_col.field<0)
-						EXECUTE FORMULA:C63("vt_ExportValue:=String("+$vo_col.formula+")")
-					Else 
-						EXECUTE FORMULA:C63("vt_ExportValue:=String(e_record."+$vo_col.formula+")")
-					End if 
-					
-				: ($vo_col.fieldType=Is boolean:K8:9)
-					If ($vo_col.field<0)
-						EXECUTE FORMULA:C63("vt_ExportValue:=String("+$vo_col.formula+")")
-					Else 
-						EXECUTE FORMULA:C63("vt_ExportValue:=String(e_record."+$vo_col.formula+")")
-					End if 
-					
-			End case   //END field type case
+			If ($vo_col.formula#"")  //To prevent errors in Execute Formula
+				Case of   //Export the field/formula value according to data type ...
+					: ($vo_col.fieldType=Is integer:K8:5) | ($vo_col.fieldType=Is longint:K8:6) | ($vo_col.fieldType=Is real:K8:4)
+						If ($vo_col.table<0)  //Table less than 0 is a custom formula
+							$vo_formula:=Formula from string:C1601($vo_col.formula)
+							vt_ExportValue:=String:C10($vo_formula.call(e_record))
+						Else 
+							EXECUTE FORMULA:C63("vt_ExportValue:=String(e_record."+$vo_col.formula+")")
+						End if 
+						
+					: ($vo_col.fieldType=Is alpha field:K8:1) | ($vo_col.fieldType=Is text:K8:3)
+						If ($vo_col.table<0)
+							$vo_formula:=Formula from string:C1601($vo_col.formula)
+							vt_ExportValue:=$vo_formula.call(e_record)
+						Else 
+							EXECUTE FORMULA:C63("vt_ExportValue:=e_record."+$vo_col.formula)
+						End if 
+						vt_ExportValue:=Replace string:C233(vt_ExportValue;Char:C90(Double quote:K15:41);Char:C90(Quote:K15:44))
+						
+					: ($vo_col.fieldType=Is date:K8:7)
+						If ($vo_col.table<0)
+							$vo_formula:=Formula from string:C1601($vo_col.formula)
+							vt_ExportValue:=String:C10($vo_formula.call(e_record))
+						Else 
+							EXECUTE FORMULA:C63("vt_ExportValue:=String(e_record."+$vo_col.formula+")")
+						End if 
+						
+					: ($vo_col.fieldType=Is time:K8:8)
+						If ($vo_col.table<0)
+							$vo_formula:=Formula from string:C1601($vo_col.formula)
+							vt_ExportValue:=String:C10($vo_formula.call(e_record))
+						Else 
+							EXECUTE FORMULA:C63("vt_ExportValue:=String(e_record."+$vo_col.formula+")")
+						End if 
+						
+					: ($vo_col.fieldType=Is boolean:K8:9)
+						If ($vo_col.table<0)
+							$vo_formula:=Formula from string:C1601($vo_col.formula)
+							vt_ExportValue:=String:C10($vo_formula.call(e_record))
+						Else 
+							EXECUTE FORMULA:C63("vt_ExportValue:=String(e_record."+$vo_col.formula+")")
+						End if 
+						
+				End case   //END field type case
+			End if 
 			
 			SEND PACKET:C103($vh_Doc;vt_ExportValue)
 			  //Tag the column or record end
