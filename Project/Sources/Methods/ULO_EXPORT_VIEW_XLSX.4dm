@@ -18,8 +18,8 @@ $width;$height;$vl_footerRow;$vl_fontSize;$vl_rowBgAltColour;$vl_rowBgColour;\
 $vl_headerFormat;$vl_font;$vl_dateFormat;$vl_dateNr;$vl_PictureID;\
 $vl_customHeaderFormat;$vl_fontColour;$vl_hLineColour;$vl_vLineColour;$vl_tempFont)
 C_OBJECT:C1216($1;$es_records)
-C_TIME:C306($vh_Doc;vh_ExportValue)
-C_TEXT:C284(vt_ExportValue;$vt_filename;$vt_font;$vt_formula;$vt_col)
+C_TIME:C306($vh_Doc;vh_ExportValue;$vh_logDoc)
+C_TEXT:C284(vt_ExportValue;$vt_filename;$vt_font;$vt_formula;$vt_col;$vt_logFile;$CRLF)
 C_REAL:C285(vr_ExportValue)
 C_PICTURE:C286(vg_ExportValue)
 C_DATE:C307(vd_ExportValue)
@@ -35,6 +35,7 @@ $vc_columnThemes:=New collection:C1472
   //Ask the user to create and name a document
 $vh_Doc:=Create document:C266("";"xlsx")
 
+
 If (OK=1)  //If user has created a document ....
 	$es_records:=$1
 	$vl_Progress:=Progress New 
@@ -43,6 +44,14 @@ If (OK=1)  //If user has created a document ....
 	Progress SET PROGRESS ($vl_Progress;-1;"Exporting view please wait ...")
 	
 	Progress SET PROGRESS ($vl_Progress;-1;"Exporting headers...")
+	
+	  //$vt_logFile:=Get 4D folder(Database folder;*)+"exportLog.txt"
+	  //If (Not(Test path name($vt_logFile)=Is a document))
+	  //$vh_logDoc:=Create document($vt_logFile)
+	  //Else 
+	  //$vh_logDoc:=Append document($vt_logFile)
+	  //End if 
+	  //$CRLF:=Char(Carriage return)+Char(Line feed)
 	
 	  //****** CREATE WORKBOOK*****
 	$vl_workbook:=xlBookCreateXML 
@@ -259,7 +268,7 @@ If (OK=1)  //If user has created a document ....
 	  //****** ADD HEADERS *******
 	$fieldIndex:=1
 	For each ($vo_col;Form:C1466.navItem.selectedView.detail.cols)
-		If ($vo_col.selected)
+		If ($vo_col.selected) & ($vo_col.fieldType#Is picture:K8:10)
 			  //Tom can the header format be determined by the customisation?
 			xlSheetSetCellText ($vl_worksheet;1;$fieldIndex;$vo_col.header;$vl_headerFormat)
 			xlSheetSetColumnWidth ($vl_worksheet;$fieldIndex;($vo_col.width/6))
@@ -274,7 +283,7 @@ If (OK=1)  //If user has created a document ....
 		  //Then loop through the columns
 		$fieldIndex:=1  //Used for excel column number
 		For each ($vo_col;Form:C1466.navItem.selectedView.detail.cols)
-			If ($vo_col.selected)
+			If ($vo_col.selected) & ($vo_col.fieldType#Is picture:K8:10)
 				vt_ExportValue:=""
 				vr_ExportValue:=0
 				CLEAR VARIABLE:C89(vg_ExportValue)
@@ -330,27 +339,40 @@ If (OK=1)  //If user has created a document ....
 							xlSheetSetCellText ($vl_worksheet;$recordIndex+1;$fieldIndex;vt_ExportValue;$vc_columnThemes[$fieldIndex-1][Num:C11($vb_alt)])
 							
 						: ($vo_col.fieldType=Is picture:K8:10)
+							  //SEND PACKET($vh_logDoc;"IMAGE CASE"+$CRLF)
 							If ($vo_col.table<0)
+								  //SEND PACKET($vh_logDoc;"FORMULA IMAGE"+$CRLF)
 								$vo_formula:=Formula from string:C1601($vo_col.formula)
 								vg_ExportValue:=$vo_formula.call(e_record)
 							Else 
+								  //SEND PACKET($vh_logDoc;"FIELD IMAGE"+$CRLF)
 								EXECUTE FORMULA:C63("vg_ExportValue:=e_record."+$vo_col.formula)
 							End if 
 							If (Picture size:C356(vg_ExportValue)>0)
+								  //SEND PACKET($vh_logDoc;"IMAGE SIZE > 0"+$CRLF)
 								CONVERT PICTURE:C1002(vg_ExportValue;".jpg")
+								  //SEND PACKET($vh_logDoc;"IMAGE CONVERTED"+$CRLF)
 								PICTURE PROPERTIES:C457(vg_ExportValue;$width;$height)
+								  //SEND PACKET($vh_logDoc;"IMAGE PROPERTIES"+$CRLF)
 								$vl_fia:=Find in array:C230($al_picColumns;$fieldIndex)
+								  //SEND PACKET($vh_logDoc;"FIND IN ARRAY"+$CRLF)
 								If ($vl_fia=-1)
 									APPEND TO ARRAY:C911($al_picColumns;$fieldIndex)
 									APPEND TO ARRAY:C911($al_colWidths;$width)
+									  //SEND PACKET($vh_logDoc;"NOT FOUND APPEND"+$CRLF)
 								Else 
 									If ($width>$vo_col.width)
 										$vo_col.width:=$width
 									End if 
+									  //SEND PACKET($vh_logDoc;"FOUND WIDTH TEST"+$CRLF)
 								End if 
 								xlSheetSetRowHeight ($vl_worksheet;$recordIndex+1;$height)
+								  //SEND PACKET($vh_logDoc;"SET ROW HEIGHT"+$CRLF)
 								$vl_PictureID:=xlBookAddPicture ($vl_workbook;vg_ExportValue)
+								  //SEND PACKET($vh_logDoc;"ADD PICTURE "+String($vl_PictureID)+$CRLF)
+								  //SEND PACKET($vh_logDoc;"SET PIC PARAMS: WORKSHEET: "+String($vl_worksheet)+"  RECORD INDEX: "+String($recordIndex)+" FIELD INDEX: "+String($fieldIndex)+" PIC ID: "+String($vl_PictureID)+" WIDTH: "+String($width)+" HEIGHT: "+String($height)+$CRLF)
 								xlSheetSetPicture ($vl_worksheet;$recordIndex+1;$fieldIndex;$vl_PictureID;($width-2);($height-2))
+								  //SEND PACKET($vh_logDoc;"SHEET SET PICTURE"+$CRLF)
 							End if 
 					End case   //END field type case
 				End if 
@@ -364,6 +386,7 @@ If (OK=1)  //If user has created a document ....
 		$vb_alt:=Not:C34($vb_alt)
 	End for each   //END record loop
 	
+	  //CLOSE DOCUMENT($vh_logDoc)
 	
 	  // ********* FOOTERS ********
 	$vl_footerRow:=$recordIndex+1
