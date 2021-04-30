@@ -1,6 +1,9 @@
 //%attributes = {"shared":true}
 C_TEXT:C284($0)
-$0:="1.4.8"
+$0:="1.4.9"
+
+  //2021-04-30 1.4.9
+  // ULO_LOAD_VIEW - Reordered to Get the View before calling 'hostMethods.sidebarLoad' as view is required for certain cases where data is loaded into memory according to selected view
 
   //2021-04-15 1.4.8
   // ULO_EXPORT_VIEW_XLSX - Implemented use of 'Formula from string' to handle custom formulas
