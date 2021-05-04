@@ -1,6 +1,12 @@
 //%attributes = {"shared":true}
 C_TEXT:C284($0)
-$0:="1.4.9"
+$0:="1.4.11"
+
+  //2021-05-04 1.4.11
+  // ULO_EXPORT_VIEW_XLSX - Reinstating Picture printing, and removal of process logging
+
+  //2021-04-30 1.4.10
+  // ULO_EXPORT_VIEW_XLSX - Patch to prevent export of picture fields until crash is resovled.
 
   //2021-04-30 1.4.9
   // ULO_LOAD_VIEW - Reordered to Get the View before calling 'hostMethods.sidebarLoad' as view is required for certain cases where data is loaded into memory according to selected view
