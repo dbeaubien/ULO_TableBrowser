@@ -114,6 +114,10 @@ Case of
 			$e_uloData.detail.public:=False:C215
 			$e_uloData.detail.themeName:="Default"
 			$e_uloData.detail.themeId:=""
+			$e_uloData.detail.useFooter:=False:C215
+			$e_uloData.detail.lockedColumns:=0
+			$e_uloData.detail.rowHeight:=1
+			$e_uloData.detail.headerHeight:=1
 			
 			$vo_formData.allowDelete:=False:C215
 			$vo_formData.view:=$e_uloData.toObject()
