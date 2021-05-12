@@ -83,8 +83,15 @@ Case of
 			$e_uloData.default:=False:C215
 			$e_uloData.detail:=OB Copy:C1225(Form:C1466.navItem.selectedView.detail)
 			$e_uloData.detail.public:=False:C215
+			  //JDC - Added below to prevent issue with null values
+			$e_uloData.detail.useFooter:=False:C215
+			$e_uloData.detail.lockedColumns:=0
+			$e_uloData.detail.rowHeight:=1
+			$e_uloData.detail.headerHeight:=1
+			  //END Add
 			$e_uloData.detail.themeName:="Default"
 			$e_uloData.detail.themeId:=""
+			
 			
 		End if 
 		

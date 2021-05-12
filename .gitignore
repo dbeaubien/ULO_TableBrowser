@@ -3,6 +3,7 @@
 /userPreferences*
 /Logs
 /Settings
+/Components
 /Plugins
 *.4DB
 /Project/DerivedData/*

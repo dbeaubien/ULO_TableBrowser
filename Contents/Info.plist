@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleGetInfoString</key>
+	<string>Component for 4D v18</string>
+	<key>CFBundleShortVersionString</key>
+	<string>1.4.12</string>
+	<key>CFBundleLongVersionString</key>
+	<string>version 1.4.12</string>
+	<key>NSHumanReadableCopyright</key>
+	<string>© Telekinetix 2021</string>
+	<key>CFBundleIconFile</key>
+	<string>bundleicon</string>
+	<key>CFBundleVersion</key>
+	<string>1.4.12</string>
+	<key>CFBundleName</key>
+	<string>ULO_TableBrowser Component</string>
+</dict>
+</plist>

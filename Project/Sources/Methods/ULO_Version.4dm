@@ -1,6 +1,9 @@
 //%attributes = {"shared":true}
 C_TEXT:C284($0)
-$0:="1.4.11"
+$0:="1.4.12"
+
+  //2021-05-12 1.4.12
+  // Modified VIEW_EDIT to ensure default values for some properties were not set to null
 
   //2021-05-04 1.4.11
   // ULO_EXPORT_VIEW_XLSX - Reinstating Picture printing, and removal of process logging
