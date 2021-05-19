@@ -1,6 +1,9 @@
 //%attributes = {"shared":true}
 C_TEXT:C284($0)
-$0:="1.4.12"
+$0:="1.5.0"
+
+  //2021-05-19 - 1.5.0
+  // QE_Run, ULO_Query, ULO_Query_Editor_New - Added 'Query in Selection' checkbox to form
 
   //2021-05-12 1.4.12
   // Modified VIEW_EDIT to ensure default values for some properties were not set to null
