@@ -13,9 +13,10 @@
 C_OBJECT:C1216($0;$vo_queryLine;$vo_params)
 C_COLLECTION:C1488($2;$vc_convertValues;$vc_values)
 C_TEXT:C284($vt_queryString;$vt_conjunction;$vt_field;$vt_value)
-C_LONGINT:C283($1;$vl_queryIndex;$vl_type)
+C_LONGINT:C283($1;$vl_queryIndex;$vl_type;$3;$vl_queryType)
 $vo_params:=New object:C1471
 $vo_params.parameters:=New collection:C1472
+$vl_queryType:=$3
 For each ($vo_queryLine;$2)
 	$vl_queryIndex:=$vl_queryIndex+1
 	$vt_conjunction:=" "
@@ -102,4 +103,8 @@ For each ($vo_queryLine;$2)
 	End case 
 	
 End for each 
-$0:=ds:C1482[Table name:C256($1)].query($vt_queryString;$vo_params)
+If ($vl_queryType=1)  //Query in selection
+	$0:=Form:C1466.uloRecords.query($vt_queryString;$vo_params)
+Else 
+	$0:=ds:C1482[Table name:C256($1)].query($vt_queryString;$vo_params)
+End if 

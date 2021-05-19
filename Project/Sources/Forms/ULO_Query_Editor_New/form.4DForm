@@ -194,11 +194,23 @@
 					"borderStyle": "none",
 					"dataSource": "Form:C1466.selectedQuery.name",
 					"textAlign": "right"
+				},
+				"ch_querySelection": {
+					"type": "checkbox",
+					"text": "Query in selection",
+					"top": 318,
+					"left": 510,
+					"width": 121,
+					"height": 21,
+					"events": [
+						"onClick"
+					],
+					"dataSource": "Form:C1466.querySelection"
 				}
 			}
 		}
 	],
 	"formSizeAnchor": "bt_runQuery",
 	"method": "method.4dm",
-	"geometryStamp": 6
+	"geometryStamp": 27
 }

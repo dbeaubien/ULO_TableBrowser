@@ -11,6 +11,7 @@ If (Count parameters:C259>0)
 	ARRAY TEXT:C222($at_fields;0)
 	$vo_queryForm:=New object:C1471
 	$vo_queryForm.tableNumber:=$vl_table
+	$vo_queryForm.querySelection:=0
 	$vt_tableName:=Table name:C256($vl_table)
 	$vc_fields:=ULO_Get_Table_Fields ($vt_tableName)
 	$vc_fields:=$vc_fields.query("kind == 'storage'")
@@ -80,6 +81,6 @@ If (Count parameters:C259>0)
 	
 	If (OK=1)
 		Form:C1466.navItem.lastQuery:=$vo_queryForm.lastQuery
-		Form:C1466.uloRecords:=QE_Run ($1;$vo_queryForm.lastQuery)
+		Form:C1466.uloRecords:=QE_Run ($1;$vo_queryForm.lastQuery;$vo_queryForm.querySelection)
 	End if 
 End if 
