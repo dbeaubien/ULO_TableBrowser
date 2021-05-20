@@ -1,6 +1,12 @@
 //%attributes = {"shared":true}
 C_TEXT:C284($0)
-$0:="1.5.0"
+$0:="1.5.1"
+
+  //2021-05-20 - 1.5.1
+  // ULO_BROWSER_EVENT - Added handling of 'findHistory' used by search bar
+  // UTIL_SUBFORM_GOTO - New method to allow focusing a subform element
+  // ULO_LOAD_BUTTONS - Setup 'SearchPop' button
+  // UTIL_FIND_SEARCH_BUTTON - Returns coordinates of search button for moving pop button
 
   //2021-05-19 - 1.5.0
   // QE_Run, ULO_Query, ULO_Query_Editor_New - Added 'Query in Selection' checkbox to form
