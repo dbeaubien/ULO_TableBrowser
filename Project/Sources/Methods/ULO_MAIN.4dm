@@ -3,6 +3,10 @@ C_LONGINT:C283($1;$cp;$tableNumber;$vl_window)
 C_LONGINT:C283($vl_wLeft;$vl_wRight;$vl_wTop;$vl_wBottom;$vl_wType)
 C_TEXT:C284($vt_wTitle)
 C_OBJECT:C1216($2;$vo_uloData;$3)
+
+C_BOOLEAN:C305(vb_disableButton)
+C_TEXT:C284(vt_buttonName)
+
 $cp:=Count parameters:C259
 If ($cp>0)
 	$tableNumber:=$1

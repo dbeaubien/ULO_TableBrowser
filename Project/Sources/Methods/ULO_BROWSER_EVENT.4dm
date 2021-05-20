@@ -1,7 +1,7 @@
 //%attributes = {"shared":true}
 C_OBJECT:C1216($1;$vo_sub;$es;$es_return;$vo_sort;$vo_sidebar)
 
-C_TEXT:C284($vt_eventObject;$vt_value;$vt_method;$vt_head;$vt_case)
+C_TEXT:C284($vt_eventObject;$vt_value;$vt_method;$vt_head;$vt_case;$vt_selected;$m_menu)
 C_LONGINT:C283($vl_event;$vl_table;$vl_selected;$index;\
 $vl_buttonNumber;$vl_idx;$vl_field;$vl_fieldIdx;\
 $vl_sortIdx)
@@ -151,6 +151,13 @@ Case of
 						SET TIMER:C645(0)
 				End case 
 				
+			: ($vl_event=On Outside Call:K2:11)
+				TRACE:C157
+				
+				If (vt_buttonName#"")
+					OBJECT SET ENABLED:C1123(*;"ULO_Button_"+vt_buttonName;Not:C34(vb_disableButton))
+				End if 
+				
 		End case 
 		
 		
@@ -247,7 +254,6 @@ Case of
 				SET TIMER:C645(-1)
 		End case 
 		
-	: ($vt_eventObject="SearchPop@")
 		
 	: ($vt_eventObject="ULO_SelectAll")
 		LISTBOX SELECT ROW:C912(*;"ULO_LIST";0;lk replace selection:K53:1)
@@ -269,6 +275,13 @@ Case of
 			: ($vl_event=On Losing Focus:K2:8)
 				
 				$vt_value:=OBJECT Get pointer:C1124(Object named:K67:5;"ULO_DEFAULT_FIND")->  //Get the value from the find object
+				If (Not:C34(OB Is defined:C1231(Form:C1466.navItem;"findHistory")))
+					Form:C1466.navItem.findHistory:=New collection:C1472
+				End if 
+				If (Form:C1466.navItem.findHistory.indexOf($vt_value)=-1)
+					Form:C1466.navItem.findHistory.push($vt_value)
+				End if 
+				
 				$es_return:=Form:C1466.uloRecords
 				$index:=UTIL_Col_Find_Index (Storage:C1525.buttons;"action";"FIND")
 				If ($index>=0)
@@ -281,9 +294,51 @@ Case of
 				End if 
 				Form:C1466.uloRecords:=$es_return
 				OBJECT Get pointer:C1124(Object named:K67:5;"ULO_DEFAULT_FIND")->:=""  //Clear search field value
+				If (Not:C34(Is macOS:C1572))
+					OBJECT SET VISIBLE:C603(*;"SearchPopWin";True:C214)
+				End if 
+				Form:C1466.refresh:=True:C214
 				Form:C1466.footerRefresh:=True:C214
 				SET TIMER:C645(-1)
 		End case 
+		
+		
+	: ($vt_eventObject="SearchText_Win")
+		$vt_value:=OBJECT Get pointer:C1124(Object named:K67:5;"ULO_DEFAULT_FIND")->  //Get the value from the find object
+		If ($vl_event=On Selection Change:K2:29)
+			OBJECT SET VISIBLE:C603(*;"SearchPopWin";($vt_value=""))
+		End if 
+		
+		
+	: ($vt_eventObject="SearchPopWin") | ($vt_eventObject="SearchPopMac")
+		If ($vl_event=On Clicked:K2:4)
+			  //Show menu for selection of value from search history
+			If (OB Is defined:C1231(Form:C1466.navItem;"findHistory"))
+				If (Form:C1466.navItem.findHistory.length>0)
+					$m_menu:=Create menu:C408
+					For each ($vt_value;Form:C1466.navItem.findHistory)
+						APPEND MENU ITEM:C411($m_menu;$vt_value)
+						SET MENU ITEM PARAMETER:C1004($m_menu;-1;$vt_value)
+					End for each 
+					
+					$vt_selected:=Dynamic pop up menu:C1006($m_menu)
+					
+					If ($vt_selected#"")
+						OBJECT Get pointer:C1124(Object named:K67:5;"ULO_DEFAULT_FIND")->:=$vt_selected
+						If (Not:C34(Is macOS:C1572))
+							OBJECT SET VISIBLE:C603(*;"SearchPopWin";($vt_value=""))
+						End if 
+						
+						If (Is macOS:C1572)
+							EXECUTE METHOD IN SUBFORM:C1085("ULO_DEFAULT_FIND";"UTIL_SUBFORM_GOTO";*;"SearchText_Mac")
+						Else 
+							EXECUTE METHOD IN SUBFORM:C1085("ULO_DEFAULT_FIND";"UTIL_SUBFORM_GOTO";*;"SearchText_Win")
+						End if 
+					End if 
+				End if 
+			End if 
+		End if 
+		
 		
 	: ($vt_eventObject="ULO_Button_VIEW") | ($vt_eventObject="ULO_ButtonBG_VIEW")
 		

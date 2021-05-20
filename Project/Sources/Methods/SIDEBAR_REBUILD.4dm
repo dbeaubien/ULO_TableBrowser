@@ -26,6 +26,9 @@ If (Form:C1466.navItem#Null:C1517)
 		If (OB Is defined:C1231(Form:C1466.navItem;"selectedView"))
 			Form:C1466.sidebarSource[$vl_idx].selectedView:=Form:C1466.navItem.selectedView
 		End if 
+		If (OB Is defined:C1231(Form:C1466.navItem;"findHistory"))
+			Form:C1466.sidebarSource[$vl_idx].findHistory:=Form:C1466.navItem.findHistory
+		End if 
 	End if 
 End if 
 

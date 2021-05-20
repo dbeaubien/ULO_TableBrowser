@@ -9,6 +9,7 @@
 	"events": [
 		"onLoad",
 		"onClick",
+		"onOutsideCall",
 		"onDoubleClick",
 		"onLosingFocus",
 		"onTimer",
@@ -293,7 +294,7 @@
 				"SearchPopWin": {
 					"type": "button",
 					"top": 19,
-					"left": 705,
+					"left": 707,
 					"width": 18,
 					"height": 20,
 					"visibility": "hidden",
@@ -382,5 +383,6 @@
 		"kind": "form"
 	},
 	"formSizeAnchor": "BackgroundColour",
-	"menuBar": "Menu Bar #1"
+	"menuBar": "Menu Bar #1",
+	"geometryStamp": 1
 }
