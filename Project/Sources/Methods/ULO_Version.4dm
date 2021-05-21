@@ -1,6 +1,9 @@
 //%attributes = {"shared":true}
 C_TEXT:C284($0)
-$0:="1.5.1"
+$0:="1.5.2"
+
+  //2021-05-21 - 1.5.2
+  // ULO_LOAD_BUTTONS - Mac button positioning
 
   //2021-05-20 - 1.5.1
   // ULO_BROWSER_EVENT - Added handling of 'findHistory' used by search bar
