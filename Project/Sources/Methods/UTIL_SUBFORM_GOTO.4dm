@@ -11,5 +11,5 @@
   // Parameters
   // ----------------------------------------------------
 
-C_TEXT:C284($1)
+C_TEXT:C284($1)  //Object to go to
 GOTO OBJECT:C206(*;$1)

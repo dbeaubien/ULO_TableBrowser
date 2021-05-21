@@ -278,8 +278,8 @@
 				},
 				"SearchPopMac": {
 					"type": "button",
-					"top": 19,
-					"left": 608,
+					"top": 20,
+					"left": 569,
 					"width": 18,
 					"height": 20,
 					"visibility": "hidden",
@@ -384,5 +384,5 @@
 	},
 	"formSizeAnchor": "BackgroundColour",
 	"menuBar": "Menu Bar #1",
-	"geometryStamp": 1
+	"geometryStamp": 3
 }

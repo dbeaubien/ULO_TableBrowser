@@ -15,7 +15,7 @@ For each ($vo_button;$1)
 			EXECUTE METHOD IN SUBFORM:C1085("ULO_DEFAULT_FIND";"UTIL_FIND_SEARCH_BUTTON";*;->$lx;->$tx;->$rx;->$bx)
 			
 			If (Is macOS:C1572)
-				OBJECT MOVE:C664(*;"SearchPopMac";$l+$lx;$t+$tx;$l+$rx;$t+$bx;*)
+				OBJECT MOVE:C664(*;"SearchPopMac";$l+11;$t+6;*)
 				OBJECT SET VISIBLE:C603(*;"SearchPopMac";True:C214)
 			Else 
 				OBJECT MOVE:C664(*;"SearchPopWin";$r-29;$t+5;$r-29+18;$t+25;*)
@@ -93,7 +93,7 @@ For each ($vo_button;$1)
 			  //OBJECT SET VISIBLE(*;$vt_buttonBG;True)
 			
 			  //Format: title;picture;background;titlePos(4=bottom);titleVisible(1=display);\
-																																iconVisible(1=display);style(3=toolbarButton);horMargin;vertMargin;iconOffset;popupMenu;hyperlink;numStates
+																																				iconVisible(1=display);style(3=toolbarButton);horMargin;vertMargin;iconOffset;popupMenu;hyperlink;numStates
 			
 			If (OB Is defined:C1231($vo_button;"icon"))
 				$vt_format:=$vo_button.title+";"+"#images/buttons/"+Storage:C1525.prefs.theme+"/"+$vo_button.icon+";;4;1;1;4;0;0;0;0;;4"
