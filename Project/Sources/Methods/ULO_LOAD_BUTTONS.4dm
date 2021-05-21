@@ -15,7 +15,7 @@ For each ($vo_button;$1)
 			EXECUTE METHOD IN SUBFORM:C1085("ULO_DEFAULT_FIND";"UTIL_FIND_SEARCH_BUTTON";*;->$lx;->$tx;->$rx;->$bx)
 			
 			If (Is macOS:C1572)
-				OBJECT MOVE:C664(*;"SearchPopMac";$l+11;$t+6;*)
+				OBJECT MOVE:C664(*;"SearchPopMac";$l+$lx;$t+$tx;$l+$lx+23;$t+$tx+22;*)
 				OBJECT SET VISIBLE:C603(*;"SearchPopMac";True:C214)
 			Else 
 				OBJECT MOVE:C664(*;"SearchPopWin";$r-29;$t+5;$r-29+18;$t+25;*)
