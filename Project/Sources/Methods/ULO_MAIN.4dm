@@ -4,9 +4,6 @@ C_LONGINT:C283($vl_wLeft;$vl_wRight;$vl_wTop;$vl_wBottom;$vl_wType)
 C_TEXT:C284($vt_wTitle)
 C_OBJECT:C1216($2;$vo_uloData;$3)
 
-C_BOOLEAN:C305(vb_disableButton)
-C_TEXT:C284(vt_buttonName)
-
 $cp:=Count parameters:C259
 If ($cp>0)
 	$tableNumber:=$1
@@ -98,6 +95,11 @@ Else
 End if 
 
 $vl_window:=Open form window:C675("ULO_Browser";$vl_wType;$vo_uloData.wLeft;$vo_uloData.wTop)
-  //$vl_window:=Open window($vl_wLeft;$vl_wTop;$vl_wRight;$vl_wBottom;$vl_wType;"ULO_Browser";"ULO_CLOSE")
+If (Storage:C1525.hostMethods.setWindowRef#"")
+	EXECUTE METHOD:C1007(Storage:C1525.hostMethods.setWindowRef;*;"add";$vl_window)
+End if 
 DIALOG:C40("ULO_Browser";$vo_uloData)
 CLOSE WINDOW:C154($vl_window)
+If (Storage:C1525.hostMethods.setWindowRef#"")
+	EXECUTE METHOD:C1007(Storage:C1525.hostMethods.setWindowRef;*;"remove";$vl_window)
+End if 

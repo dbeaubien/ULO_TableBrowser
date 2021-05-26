@@ -3,8 +3,10 @@ C_BOOLEAN:C305($1;$vb_useViewTheme)
 C_OBJECT:C1216($vo_col;$vo_view;$es_return;$es)
 C_POINTER:C301($vp_nil;$vp_table)
 C_LONGINT:C283($i;$vl_columns;$vl_type;$vl_numFields;$vl_fontStyle;$vl_alignment;\
-$vl_fontColour;$vl_totalWidth;$vl_left;$vl_top;$vl_right;$vl_bottom;$vl_hAlignment)
+$vl_fontColour;$vl_totalWidth;$vl_left;$vl_top;$vl_right;$vl_bottom;$vl_hAlignment;$vl_toDoIndex)
 C_TEXT:C284($vt_colName;$vt_hObject;$vt_formula;$vt_header;$vt_fObject;$vt_format;$vt_themeId)
+C_COLLECTION:C1488($vc_hostOptions)
+
   //Form.tableNumber:=Form.navItem.table
 
 If (Count parameters:C259>0)
@@ -17,6 +19,14 @@ If (Form:C1466.tableNumber>0)
 	OBJECT SET ENABLED:C1123(*;"ULO_Button_SHOWSUBSET";(Form:C1466.selectedRecords.length>0))
 	OBJECT SET ENABLED:C1123(*;"ULO_Button_OMITSUBSET";(Form:C1466.selectedRecords.length>0))
 	
+	  //Check if todo button is returning available actions, if not, disable the button
+	$vl_toDoIndex:=Storage:C1525.buttons.findIndex("UTIL_Find_Collection";"action";"TODO")
+	If ($vl_toDoIndex>=0)
+		If (Storage:C1525.buttons[$vl_toDoIndex].method#"")
+			EXECUTE METHOD:C1007(Storage:C1525.buttons[$vl_toDoIndex].method;$vc_hostOptions;Form:C1466.tableNumber;Form:C1466.navItem.handle)  //Return a collection
+			OBJECT SET ENABLED:C1123(*;"ULO_Button_TODO";($vc_hostOptions.length>0))
+		End if 
+	End if 
 	
 	  //Form.lastNavItemIndex:=Form.navItem.index
 	Form:C1466.lastNavItemIndex:=UTIL_Col_Find_Index (Form:C1466.navItems;"index";Form:C1466.navItem.index)+1
@@ -205,7 +215,7 @@ If (Form:C1466.tableNumber>0)
 					  //End if 
 					
 					  //LISTBOX INSERT COLUMN FORMULA(*;"ULO_LIST";$i;$vt_colName;$vt_formula;\
-																																																																																							$vl_type;$vt_hObject;$vp_nil;$vt_fObject;$vp_nil)
+																																																																																													$vl_type;$vt_hObject;$vp_nil;$vt_fObject;$vp_nil)
 					
 					  //OBJECT SET FORMAT(*;$vt_colName;$vt_format)
 					  //OBJECT SET FONT STYLE(*;$vt_colName;$vl_fontStyle)
