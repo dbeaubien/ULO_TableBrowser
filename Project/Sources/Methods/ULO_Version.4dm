@@ -1,6 +1,11 @@
 //%attributes = {"shared":true}
 C_TEXT:C284($0)
-$0:="1.5.2"
+$0:="1.6.0"
+
+  //2021-05-26
+  // ULO_UPDATE_BUTTON_STATE - New method allowing HOST to set button state on the fly
+  // ULO_MAIN - Now attempts to call host method 'setWindowRef' to pass newly opened window ref to host
+  // ULO_LOAD_VIEW - Checks todo items and disables button if none available 
 
   //2021-05-21 - 1.5.2
   // ULO_LOAD_BUTTONS - Mac button positioning
