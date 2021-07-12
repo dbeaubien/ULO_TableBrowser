@@ -127,6 +127,11 @@ Else
 							Storage:C1525.sidebar[$index].windowTitle:=$2
 						End if 
 						
+						Storage:C1525.sidebar[$index].allowedAccess:=True:C214
+						If (OB Is defined:C1231($6;"access"))
+							Storage:C1525.sidebar[$index].allowedAccess:=$6.access
+						End if 
+						
 					End if 
 					
 				Else 

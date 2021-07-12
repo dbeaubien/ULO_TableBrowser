@@ -376,6 +376,29 @@
 					"webEngine": "system"
 				}
 			}
+		},
+		{
+			"objects": {
+				"ulo_noAccessImage": {
+					"type": "input",
+					"left": 214,
+					"top": 68,
+					"width": 1044,
+					"height": 550,
+					"dataSourceTypeHint": "picture",
+					"right": 1258,
+					"bottom": 618,
+					"dataSource": "Form:C1466.noAccessImage",
+					"pictureFormat": "proportionalCenter",
+					"sizingX": "grow",
+					"sizingY": "grow",
+					"enterable": false,
+					"focusable": false,
+					"contextMenu": "none",
+					"fill": "transparent",
+					"borderStyle": "none"
+				}
+			}
 		}
 	],
 	"$4d": {
@@ -384,5 +407,5 @@
 	},
 	"formSizeAnchor": "BackgroundColour",
 	"menuBar": "Menu Bar #1",
-	"geometryStamp": 3
+	"geometryStamp": 13
 }

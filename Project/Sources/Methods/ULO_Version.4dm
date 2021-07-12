@@ -1,6 +1,12 @@
 //%attributes = {"shared":true}
 C_TEXT:C284($0)
-$0:="1.6.0"
+$0:="1.7.0"
+
+  //2021-07-12
+  // ULO_SET_SIDEBAR_ITEM - Now checks for 'access' property in passed object and sets 'allowedAccess' against storage sidebar items
+  // ULO_BROWSER_EVENT - When selecting a sidebar item the 'allowedAccess' property is checked
+  // ULO_DISABLE_ACCESS - If access is not allowed on selected sidebar item, this method changes form to new page 3, and displays an image set via PREFS
+  // ULO_Browser - Added new page for displaying no access image 
 
   //2021-05-26
   // ULO_UPDATE_BUTTON_STATE - New method allowing HOST to set button state on the fly

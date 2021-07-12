@@ -109,8 +109,15 @@ Case of
 								Form:C1466.fullRefresh:=False:C215
 								Case of 
 									: (Form:C1466.navItem.type="DATA")
-										Form:C1466.tableNumber:=Form:C1466.navItem.table
-										ULO_LOAD_VIEW (True:C214)
+										  //Check if table access is disabled and image to display is defined
+										If (Not:C34(Form:C1466.navItem.allowedAccess)) & (OB Is defined:C1231(Storage:C1525.prefs;"noAccessImage"))
+											  //Access disabled, display image assigned by SET_PREF
+											ULO_DISABLE_ACCESS 
+										Else 
+											Form:C1466.tableNumber:=Form:C1466.navItem.table
+											ULO_LOAD_VIEW (True:C214)
+										End if 
+										
 									: (Form:C1466.navItem.type="WEB")
 										ULO_LOAD_WEB_AREA 
 								End case 
@@ -193,10 +200,15 @@ Case of
 								
 								Form:C1466.tableNumber:=Form:C1466.navItem.table
 								Form:C1466.customColumns:=New collection:C1472
-								ULO_LOAD_VIEW (True:C214)
-								ULO_CREATE_SHORTCUTS 
-								SET TIMER:C645(-1)
 								
+								If (Not:C34(Form:C1466.navItem.allowedAccess)) & (OB Is defined:C1231(Storage:C1525.prefs;"noAccessImage"))
+									  //Access disabled, display image assigned by SET_PREF
+									ULO_DISABLE_ACCESS 
+								Else 
+									ULO_LOAD_VIEW (True:C214)
+									ULO_CREATE_SHORTCUTS 
+									SET TIMER:C645(-1)
+								End if 
 							Else 
 								Form:C1466.forceSelectNav:=False:C215
 							End if 
