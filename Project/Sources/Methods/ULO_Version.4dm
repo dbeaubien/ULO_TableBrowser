@@ -1,6 +1,9 @@
 //%attributes = {"shared":true}
 C_TEXT:C284($0)
-$0:="1.7.0"
+$0:="1.7.1"
+
+  //2021-10-05
+  // ULO_Query_Lines_New Delete Button - Fixed error when deleting first row in query editor
 
   //2021-07-12
   // ULO_SET_SIDEBAR_ITEM - Now checks for 'access' property in passed object and sets 'allowedAccess' against storage sidebar items

@@ -11,6 +11,9 @@ If (FORM Event:C1606.code=On Clicked:K2:4)
 		
 		Form:C1466.parent.lastQuery.remove($vl_row)
 		Form:C1466.parent.lastQuery[Form:C1466.parent.lastQuery.length-1].conjunction:=""  //clear conjunction on 'new' last row
+		If ($vl_row=0)
+			$vl_row:=1
+		End if 
 		For ($i;$vl_row-1;Form:C1466.parent.lastQuery.length-1)
 			QE_FILL_LINE_DATA (Form:C1466.parent.lastQuery[$i];String:C10($i;"0000"))
 		End for 
