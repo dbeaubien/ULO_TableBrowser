@@ -1,11 +1,17 @@
 //%attributes = {"shared":true}
 C_TEXT:C284($0)
-$0:="1.7.1"
+$0:="1.8.0"
 
-  //2021-10-05
+  //2021-10-08 - 1.8.0
+  // SORT_MANAGE_SET_ENABLED - Added checks for System Tab and user is designer
+  //                         - Added management of new form object 'cb_default'
+  // ULO_GET_SORT - New method, returns default sort for given table/user, or system default if none found for user
+  // ULO_LOAD_VIEW - Added use of ULO_GET_SORT where no sort has already been applied
+
+  //2021-10-05 - 1.7.1
   // ULO_Query_Lines_New Delete Button - Fixed error when deleting first row in query editor
 
-  //2021-07-12
+  //2021-07-12 - 1.7.0
   // ULO_SET_SIDEBAR_ITEM - Now checks for 'access' property in passed object and sets 'allowedAccess' against storage sidebar items
   // ULO_BROWSER_EVENT - When selecting a sidebar item the 'allowedAccess' property is checked
   // ULO_DISABLE_ACCESS - If access is not allowed on selected sidebar item, this method changes form to new page 3, and displays an image set via PREFS

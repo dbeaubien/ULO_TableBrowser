@@ -16,7 +16,7 @@
   //When another row is selected, 'selectedSort' is replaced with new entity before changes can be saved.
 
 C_OBJECT:C1216($1;$vo_formEvent;$vo_data;$vo_field;$vo_col;$e_uloData;\
-$vo_coord)
+$vo_coord;$e_sort)
 C_COLLECTION:C1488($vc_cols)
 C_TEXT:C284($vt_objectName;$vt_menu;$vt_selected)
 C_LONGINT:C283($vl_dropPos;$vl_startPos;$vl_idx;$vl_row;$vl_col)
@@ -117,8 +117,16 @@ Case of
 		
 		If ($vt_selected="NEW") | ($vt_selected="DUPE")
 			
-			If (Form:C1466.workingSort#Null:C1517) & (Form:C1466.sortTab="user")
+			If (Form:C1466.workingSort#Null:C1517)  //& (Form.sortTab="user")
 				Form:C1466.workingSort.save()
+				If (Form:C1466.workingSort.default)
+					For each ($e_sort;Form:C1466.displaySort)
+						If ($e_sort.id#Form:C1466.workingSort.id)
+							$e_sort.default:=False:C215
+							$e_sort.save()
+						End if 
+					End for each 
+				End if 
 			End if 
 			
 			$e_uloData:=ds:C1482["uloData"].new()
@@ -126,7 +134,11 @@ Case of
 			$e_uloData.type:=13
 			$e_uloData.name:="New Sort for "+Form:C1466.helpfulData.tableHandle
 			$e_uloData.handle:=Form:C1466.helpfulData.tableHandle
-			$e_uloData.user:=Storage:C1525.user.id
+			If (Form:C1466.sortTab="user")
+				$e_uloData.user:=Storage:C1525.user.id
+			Else 
+				$e_uloData.user:=0
+			End if 
 			$e_uloData.table:=Form:C1466.helpfulData.tableNumber
 			If ($vt_selected="NEW")
 				$e_uloData.detail.sortData:=New collection:C1472
@@ -134,9 +146,14 @@ Case of
 				$e_uloData.detail:=OB Copy:C1225(Form:C1466.workingSort.detail)
 			End if 
 			$e_uloData.save()
-			Form:C1466.userSorts.add($e_uloData)
 			
-			Form:C1466.displaySort:=Form:C1466.userSorts
+			If (Form:C1466.sortTab="user")
+				Form:C1466.userSorts.add($e_uloData)
+				Form:C1466.displaySort:=Form:C1466.userSorts
+			Else 
+				Form:C1466.systemSorts.add($e_uloData)
+				Form:C1466.displaySort:=Form:C1466.systemSorts
+			End if 
 			SET TIMER:C645(-1)
 		End if 
 		
@@ -176,10 +193,9 @@ Case of
 				SORT_MANAGE_SET_ENABLED 
 				
 			: ($vo_formEvent.code=On Double Clicked:K2:5)
-				If (Form:C1466.sortTab="user")
-					If (Form:C1466.selectedField#Null:C1517)
-						SORT_FORM_MOVE_SELECTED_FIELD (Form:C1466.workingSort.detail.sortData)
-					End if 
+				
+				If (Form:C1466.selectedField#Null:C1517)
+					SORT_FORM_MOVE_SELECTED_FIELD (Form:C1466.workingSort.detail.sortData)
 				End if 
 		End case 
 		
@@ -187,8 +203,18 @@ Case of
 	: ($vt_objectName="tab_sortSelect")
 		Case of 
 			: ($vo_formEvent.code=On Clicked:K2:4)
-				If (Form:C1466.workingSort#Null:C1517) & (Form:C1466.sortTab="user")
+				If (Form:C1466.workingSort#Null:C1517)  //& (Form.sortTab="user")
 					Form:C1466.workingSort.save()
+					
+					  //If assigned as default, ensure other sorts are not default
+					If (Form:C1466.workingSort.default)
+						For each ($e_sort;Form:C1466.displaySort)
+							If ($e_sort.id#Form:C1466.workingSort.id)
+								$e_sort.default:=False:C215
+								$e_sort.save()
+							End if 
+						End for each 
+					End if 
 				End if 
 				
 				If (at_sortTab=1)
@@ -207,8 +233,21 @@ Case of
 	: ($vt_objectName="lb_sort")
 		Case of 
 			: ($vo_formEvent.code=On Selection Change:K2:29) | ($vo_formEvent.code=On Clicked:K2:4)
-				If (Form:C1466.workingSort#Null:C1517) & (Form:C1466.sortTab="user")
+				If (Form:C1466.workingSort#Null:C1517)  // & (Form.sortTab="user")
 					Form:C1466.workingSort.save()
+					
+					  //If assigned as default, ensure other sorts are not default
+					If (Form:C1466.workingSort.default)
+						For each ($e_sort;Form:C1466.displaySort)
+							If ($e_sort.id#Form:C1466.workingSort.id)
+								$e_sort.default:=False:C215
+								$e_sort.save()
+							End if 
+						End for each 
+						If (Form:C1466.selectedSort#Null:C1517)
+							Form:C1466.selectedSort.reload()
+						End if 
+					End if 
 				End if 
 				
 				If (Form:C1466.selectedSort#Null:C1517)
@@ -228,8 +267,18 @@ Case of
 	: ($vt_objectName="bt_OK")
 		Case of 
 			: ($vo_formEvent.code=On Clicked:K2:4)
-				If (Form:C1466.sortTab="user") & (Form:C1466.workingSort#Null:C1517)
+				If (Form:C1466.workingSort#Null:C1517)  //& (Form.sortTab="user")
 					Form:C1466.workingSort.save()
+					
+					  //If assigned as default, ensure other sorts are not default
+					If (Form:C1466.workingSort.default)
+						For each ($e_sort;Form:C1466.displaySort)
+							If ($e_sort.id#Form:C1466.workingSort.id)
+								$e_sort.default:=False:C215
+								$e_sort.save()
+							End if 
+						End for each 
+					End if 
 				End if 
 				
 				ACCEPT:C269

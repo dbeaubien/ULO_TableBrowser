@@ -548,11 +548,26 @@
 					"events": [
 						"onDataChange"
 					]
+				},
+				"cb_default": {
+					"type": "checkbox",
+					"top": 46,
+					"left": 511,
+					"width": 120,
+					"height": 17,
+					"dataSource": "Form:C1466.workingSort.default",
+					"text": "Default Sort",
+					"class": "default",
+					"focusable": false,
+					"events": [
+						"onClick"
+					],
+					"dataSourceTypeHint": "boolean"
 				}
 			}
 		}
 	],
 	"formSizeAnchor": "BackgroundColour",
 	"method": "method.4dm",
-	"geometryStamp": 6
+	"geometryStamp": 9
 }
