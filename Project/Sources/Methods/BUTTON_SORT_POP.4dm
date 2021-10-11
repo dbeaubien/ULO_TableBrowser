@@ -23,13 +23,13 @@ Case of
 		
 		APPEND MENU ITEM:C411($vt_menu;"No Sort")
 		SET MENU ITEM PARAMETER:C1004($vt_menu;-1;"LOAD:")
-		  //If (Form.navItem.selectedSort=Null)
-		  //SET MENU ITEM MARK($vt_systemMenu;-1;Char(18))
-		  //Else 
-		  //If (Form.navItem.selectedSort.id="")
-		  //SET MENU ITEM MARK($vt_systemMenu;-1;Char(18))
-		  //End if 
-		  //End if 
+		If (Form:C1466.navItem.selectedSort=Null:C1517)
+			SET MENU ITEM MARK:C208($vt_systemMenu;-1;Char:C90(18))
+		Else 
+			If (Form:C1466.navItem.selectedSort.id="")
+				SET MENU ITEM MARK:C208($vt_systemMenu;-1;Char:C90(18))
+			End if 
+		End if 
 		
 		$es_systemSort:=ds:C1482["uloData"].query("user == 0 && type == 13 && table == :1";Form:C1466.tableNumber)
 		
@@ -37,11 +37,11 @@ Case of
 		For each ($e_systemSort;$es_systemSort)
 			APPEND MENU ITEM:C411($vt_systemMenu;$e_systemSort.name)
 			SET MENU ITEM PARAMETER:C1004($vt_systemMenu;-1;"LOAD:"+$e_systemSort.id)
-			  //If (Form.navItem.selectedSort#Null)
-			  //If ($e_systemSort.id=Form.navItem.selectedSort.id)
-			  //SET MENU ITEM MARK($vt_systemMenu;-1;Char(18))
-			  //End if 
-			  //End if 
+			If (Form:C1466.navItem.selectedSort#Null:C1517)
+				If ($e_systemSort.id=Form:C1466.navItem.selectedSort.id)
+					SET MENU ITEM MARK:C208($vt_systemMenu;-1;Char:C90(18))
+				End if 
+			End if 
 		End for each 
 		APPEND MENU ITEM:C411($vt_menu;"System Sorts";$vt_systemMenu)
 		If ($es_systemSort.length=0)
@@ -54,9 +54,9 @@ Case of
 		For each ($e_userSort;$es_userSort)
 			APPEND MENU ITEM:C411($vt_userMenu;$e_userSort.name)
 			SET MENU ITEM PARAMETER:C1004($vt_userMenu;-1;"LOAD:"+$e_userSort.id)
-			  //If ($e_userSort.id=Form.navItem.selectedSort.id)
-			  //SET MENU ITEM MARK($vt_userMenu;-1;Char(18))
-			  //End if 
+			If ($e_userSort.id=Form:C1466.navItem.selectedSort.id)
+				SET MENU ITEM MARK:C208($vt_userMenu;-1;Char:C90(18))
+			End if 
 		End for each 
 		APPEND MENU ITEM:C411($vt_menu;"My Sorts";$vt_userMenu)
 		If ($es_userSort.length=0)

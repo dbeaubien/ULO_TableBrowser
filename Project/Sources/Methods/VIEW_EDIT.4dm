@@ -52,6 +52,9 @@ Case of
 		$vo_formData.view.detail.headerHeight:=1
 		$vo_formData.view.detail.themeName:="Default"
 		$vo_formData.view.detail.themeId:=""
+		$vo_formData.view.detail.sortName:="Default"
+		$vo_formData.view.detail.sortId:=""
+		
 		
 	: ($1="Dupe")
 		$vo_formData.allowDelete:=False:C215

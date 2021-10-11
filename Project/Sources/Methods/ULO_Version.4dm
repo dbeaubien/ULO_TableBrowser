@@ -1,6 +1,11 @@
 //%attributes = {"shared":true}
 C_TEXT:C284($0)
-$0:="1.8.0"
+$0:="1.8.1"
+
+  //2021-11-08 - 1.8.1
+  // BUTTON_SORT_POP - Added checks for the currently selected sort
+  // SORT_MANAGE_FORM_METHOD - Added check to prevent general users from adding fields to system sorts
+  // VIEW_EDIT_FORM - Added dropdown menu for assigning a sort to a view
 
   //2021-10-08 - 1.8.0
   // SORT_MANAGE_SET_ENABLED - Added checks for System Tab and user is designer

@@ -193,9 +193,10 @@ Case of
 				SORT_MANAGE_SET_ENABLED 
 				
 			: ($vo_formEvent.code=On Double Clicked:K2:5)
-				
-				If (Form:C1466.selectedField#Null:C1517)
-					SORT_FORM_MOVE_SELECTED_FIELD (Form:C1466.workingSort.detail.sortData)
+				If (Form:C1466.sortTab="user") | (Storage:C1525.user.id=1)
+					If (Form:C1466.selectedField#Null:C1517)
+						SORT_FORM_MOVE_SELECTED_FIELD (Form:C1466.workingSort.detail.sortData)
+					End if 
 				End if 
 		End case 
 		

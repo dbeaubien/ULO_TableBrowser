@@ -1,5 +1,6 @@
 //%attributes = {}
-C_OBJECT:C1216($1;$vo_formEvent;$vo_data;$vo_field;$vo_col;$vo_column;$es_userThemes;$e_userTheme)
+C_OBJECT:C1216($1;$vo_formEvent;$vo_data;$vo_field;$vo_col;$vo_column;$es_userThemes;\
+$e_userTheme;$e_userSort;$es_userSorts)
 C_COLLECTION:C1488($vc_cols)
 C_TEXT:C284($vt_objectName;$vt_menu;$vt_selected)
 C_LONGINT:C283($vl_dropPos;$vl_startPos;$vl_idx;$vl_pos)
@@ -34,6 +35,20 @@ Case of
 					For each ($e_userTheme;$es_userThemes)
 						APPEND MENU ITEM:C411(Form:C1466.themeMenu;$e_userTheme.name)
 						SET MENU ITEM PARAMETER:C1004(Form:C1466.themeMenu;-1;$e_userTheme.name+":"+$e_userTheme.id)
+					End for each 
+				End if 
+				
+				Form:C1466.sortMenu:=Create menu:C408
+				APPEND MENU ITEM:C411(Form:C1466.sortMenu;"Default")
+				SET MENU ITEM PARAMETER:C1004(Form:C1466.sortMenu;-1;"Default:")
+				
+				$es_userSorts:=ds:C1482["uloData"].query("type == 13 && user == :1 && table == :2";Storage:C1525.user.id;Form:C1466.view.table)
+				If ($es_userSorts.length>0)
+					APPEND MENU ITEM:C411(Form:C1466.sortMenu;"-")
+					
+					For each ($e_userSort;$es_userSorts)
+						APPEND MENU ITEM:C411(Form:C1466.sortMenu;$e_userSort.name)
+						SET MENU ITEM PARAMETER:C1004(Form:C1466.sortMenu;-1;$e_userSort.name+":"+$e_userSort.id)
 					End for each 
 				End if 
 				
@@ -264,6 +279,22 @@ Case of
 						$vl_pos:=Position:C15(":";$vt_selected)
 						Form:C1466.view.detail.themeName:=Substring:C12($vt_selected;1;$vl_pos-1)
 						Form:C1466.view.detail.themeId:=Substring:C12($vt_selected;$vl_pos+1)
+					End if 
+				End if 
+		End case 
+		
+	: ($vt_objectName="bt_selectSort")
+		Case of 
+			: ($vo_formEvent.code=On Clicked:K2:4)
+				$vt_selected:=Dynamic pop up menu:C1006(Form:C1466.sortMenu)
+				If ($vt_selected#"")
+					If ($vt_selected="Default:")
+						Form:C1466.view.detail.sortName:="Default"
+						Form:C1466.view.detail.sortId:=""
+					Else 
+						$vl_pos:=Position:C15(":";$vt_selected)
+						Form:C1466.view.detail.sortName:=Substring:C12($vt_selected;1;$vl_pos-1)
+						Form:C1466.view.detail.sortId:=Substring:C12($vt_selected;$vl_pos+1)
 					End if 
 				End if 
 		End case 

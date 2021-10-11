@@ -601,7 +601,7 @@
 				"bt_deleteView": {
 					"type": "button",
 					"text": "Delete this View",
-					"top": 376,
+					"top": 396,
 					"left": 209,
 					"width": 177,
 					"height": 26,
@@ -666,6 +666,47 @@
 					],
 					"style": "roundedBevel",
 					"popupPlacement": "separated"
+				},
+				"PROMPT_Locked6": {
+					"type": "text",
+					"top": 355,
+					"left": 93,
+					"width": 107,
+					"height": 16,
+					"class": "default",
+					"textAlign": "right",
+					"text": "Sort"
+				},
+				"BRW_VIEW_RowHeight2": {
+					"type": "input",
+					"top": 355,
+					"left": 209,
+					"width": 172,
+					"height": 16,
+					"dataSource": "Form:C1466.view.detail.sortName",
+					"dataSourceTypeHint": "text",
+					"class": "default",
+					"contextMenu": "none",
+					"min": "",
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"enterable": false
+				},
+				"bt_selectSort": {
+					"type": "button",
+					"text": "",
+					"top": 353,
+					"left": 389,
+					"width": 20,
+					"height": 20,
+					"events": [
+						"onClick"
+					],
+					"style": "roundedBevel",
+					"popupPlacement": "separated"
 				}
 			}
 		}
@@ -674,5 +715,5 @@
 		"version": "1",
 		"kind": "form"
 	},
-	"geometryStamp": 64
+	"geometryStamp": 74
 }
