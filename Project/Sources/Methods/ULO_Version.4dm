@@ -1,8 +1,13 @@
 //%attributes = {"shared":true}
 C_TEXT:C284($0)
-$0:="1.8.1"
+$0:="1.8.2"
 
-  //2021-11-08 - 1.8.1
+  //2021-10-14 - 1.8.2
+  // ULO_BROWSER_EVENT - When changing sidebar selection, current uloRecords is always saved to sidebarSource and navItems
+  // ULO_MAIN - added default allocation to sidebarSourceIndex
+  // ULO_LOAD_VIEW - Added allocation to sidebarSourceIndex
+
+  //2021-10-11 - 1.8.1
   // BUTTON_SORT_POP - Added checks for the currently selected sort
   // SORT_MANAGE_FORM_METHOD - Added check to prevent general users from adding fields to system sorts
   // VIEW_EDIT_FORM - Added dropdown menu for assigning a sort to a view
