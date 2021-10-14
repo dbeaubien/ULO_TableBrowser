@@ -187,6 +187,15 @@ Case of
 				
 			: ($vl_event=On Selection Change:K2:29)  // | ($vl_event=On Clicked)
 				If (Form:C1466.navItem#Null:C1517)
+					
+					  //Store current selection in navItem
+					If (Form:C1466.lastNavItemIndex>0)
+						Form:C1466.navItems[Form:C1466.lastNavItemIndex-1].selection:=Form:C1466.uloRecords
+					End if 
+					If (Form:C1466.lastSourceIndex>=0)
+						Form:C1466.sidebarSource[Form:C1466.lastSourceIndex].selection:=Form:C1466.uloRecords
+					End if 
+					
 					Case of 
 						: (Form:C1466.navItem.type="HEADER")
 							If (Form:C1466.lastNavItemIndex#Form:C1466.selectedNavItem)

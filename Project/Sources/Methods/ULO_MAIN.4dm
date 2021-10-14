@@ -26,6 +26,7 @@ $vo_uloData.navItems:=New collection:C1472
 $vo_uloData.sidebarSource:=Storage:C1525.sidebar.copy()
 $vo_uloData.navItems:=Storage:C1525.sidebar.copy()  //SIDEBAR_Flatten (Storage.sidebar.copy())
 $vo_uloData.lastNavItemIndex:=1
+$vo_uloData.lastSourceIndex:=1
 $vo_uloData.selectedRecord:=New object:C1471  //Selected record object
 $vo_uloData.selectedRecord:=1  //Currently selected record
 $vo_uloData.selectionMessage:=""  //Currently selected record
