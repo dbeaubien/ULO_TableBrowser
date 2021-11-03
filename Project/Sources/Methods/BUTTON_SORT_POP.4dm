@@ -54,8 +54,10 @@ Case of
 		For each ($e_userSort;$es_userSort)
 			APPEND MENU ITEM:C411($vt_userMenu;$e_userSort.name)
 			SET MENU ITEM PARAMETER:C1004($vt_userMenu;-1;"LOAD:"+$e_userSort.id)
-			If ($e_userSort.id=Form:C1466.navItem.selectedSort.id)
-				SET MENU ITEM MARK:C208($vt_userMenu;-1;Char:C90(18))
+			If (Form:C1466.navItem.selectedSort#Null:C1517)
+				If ($e_userSort.id=Form:C1466.navItem.selectedSort.id)
+					SET MENU ITEM MARK:C208($vt_userMenu;-1;Char:C90(18))
+				End if 
 			End if 
 		End for each 
 		APPEND MENU ITEM:C411($vt_menu;"My Sorts";$vt_userMenu)
