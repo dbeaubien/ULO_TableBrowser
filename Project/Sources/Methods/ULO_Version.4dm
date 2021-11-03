@@ -1,6 +1,9 @@
 //%attributes = {"shared":true}
 C_TEXT:C284($0)
-$0:="1.8.2"
+$0:="1.8.3"
+
+  //2021-11-03 - 1.8.3
+  // BUTTON_SORT_POP - Added check for selectSort=null to prevent errors
 
   //2021-10-14 - 1.8.2
   // ULO_BROWSER_EVENT - When changing sidebar selection, current uloRecords is always saved to sidebarSource and navItems
