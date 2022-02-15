@@ -528,7 +528,7 @@
 					"type": "text",
 					"top": 99,
 					"left": 236,
-					"width": 35,
+					"width": 39,
 					"height": 16,
 					"class": "tester",
 					"textAlign": "left",
@@ -569,5 +569,5 @@
 	],
 	"formSizeAnchor": "BackgroundColour",
 	"method": "method.4dm",
-	"geometryStamp": 9
+	"geometryStamp": 13
 }

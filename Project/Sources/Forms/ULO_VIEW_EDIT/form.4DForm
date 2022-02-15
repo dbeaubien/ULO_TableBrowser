@@ -441,7 +441,7 @@
 					"type": "text",
 					"top": 152,
 					"left": 36,
-					"width": 35,
+					"width": 39,
 					"height": 16,
 					"class": "tester",
 					"textAlign": "left",
@@ -715,5 +715,5 @@
 		"version": "1",
 		"kind": "form"
 	},
-	"geometryStamp": 74
+	"geometryStamp": 78
 }
