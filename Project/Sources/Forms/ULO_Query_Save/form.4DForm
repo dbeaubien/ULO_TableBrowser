@@ -110,20 +110,12 @@
 					"width": 105,
 					"height": 15
 				},
-				"Text1": {
-					"type": "text",
-					"text": "Is Public :",
-					"top": 61,
-					"left": 75,
-					"width": 105,
-					"height": 15
-				},
 				"Check Box": {
 					"type": "checkbox",
-					"text": "",
+					"text": "Is Public",
 					"top": 58,
 					"left": 192,
-					"width": 55,
+					"width": 155,
 					"height": 20,
 					"events": [
 						"onClick"
@@ -136,5 +128,5 @@
 	],
 	"formSizeAnchor": "bt_runQuery",
 	"method": "method.4dm",
-	"geometryStamp": 2
+	"geometryStamp": 8
 }

@@ -74,7 +74,7 @@ If (Count parameters:C259>0)
 			"oper";$vo_queryForm.queryOperators[0].operand;\
 			"value";"";"rBracket";False:C215;"conjunction";"-";"fieldName";$vo_queryForm.queryFields[0].fieldName))
 	End if 
-	$vl_wind:=UTIL_Open_Window_Centre ("ULO_Query_Editor_New";Sheet form window:K39:12;"Query Editor")
+	$vl_wind:=UTIL_Open_Window_Centre ("ULO_Query_Editor_New";Movable dialog box:K34:7;"Query Editor")
 	DIALOG:C40("ULO_Query_Editor_New";$vo_queryForm)
 	CLOSE WINDOW:C154($vl_wind)
 	

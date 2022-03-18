@@ -135,7 +135,7 @@
 					"left": 25,
 					"width": 87,
 					"height": 16,
-					"class": "tester",
+					"class": "default",
 					"textAlign": "automatic",
 					"text": "View name"
 				},
@@ -458,7 +458,7 @@
 					"left": 36,
 					"width": 39,
 					"height": 16,
-					"class": "tester",
+					"class": "default",
 					"textAlign": "left",
 					"text": "Filter :"
 				},
@@ -717,6 +717,6 @@
 		"version": "1",
 		"kind": "form"
 	},
-	"geometryStamp": 184,
+	"geometryStamp": 188,
 	"formSizeAnchor": "BackgroundColour"
 }

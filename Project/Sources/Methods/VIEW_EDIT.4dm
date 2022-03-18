@@ -165,7 +165,7 @@ For each ($vo_field;$vo_formData.view.detail.cols)
 	End if 
 End for each 
 
-$vl_win:=UTIL_Open_Window_Centre ("ULO_VIEW_EDIT";Sheet form window:K39:12;"View Editor")
+$vl_win:=UTIL_Open_Window_Centre ("ULO_VIEW_EDIT";Movable dialog box:K34:7;"View Editor")
 DIALOG:C40("ULO_VIEW_EDIT";$vo_formData)
 CLOSE WINDOW:C154($vl_win)
 

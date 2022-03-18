@@ -34,6 +34,6 @@ $vo_formData.operations:=New collection:C1472
 $vo_formData.operations.push("Union";"Difference";"Intersection")
 $vo_formData.subform.operations:=$vo_formData.operations
 
-$vl_win:=UTIL_Open_Window_Centre ("ULO_SET_MANAGE";Sheet form window:K39:12;"Manage Sets")
+$vl_win:=UTIL_Open_Window_Centre ("ULO_SET_MANAGE";Movable dialog box:K34:7;"Manage Sets")
 DIALOG:C40("ULO_SET_MANAGE";$vo_formData)
 CLOSE WINDOW:C154($vl_win)

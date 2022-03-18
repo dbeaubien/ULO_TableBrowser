@@ -530,7 +530,7 @@
 					"left": 236,
 					"width": 39,
 					"height": 16,
-					"class": "tester",
+					"class": "",
 					"textAlign": "left",
 					"text": "Filter :"
 				},
@@ -569,5 +569,5 @@
 	],
 	"formSizeAnchor": "BackgroundColour",
 	"method": "method.4dm",
-	"geometryStamp": 13
+	"geometryStamp": 14
 }

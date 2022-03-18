@@ -55,7 +55,7 @@ End for each
 
 START TRANSACTION:C239
 
-$vl_win:=UTIL_Open_Window_Centre ("ULO_SORT_MANAGE";Sheet form window:K39:12;"Manage Sorts")
+$vl_win:=UTIL_Open_Window_Centre ("ULO_SORT_MANAGE";Movable dialog box:K34:7;"Manage Sorts")
 DIALOG:C40("ULO_SORT_MANAGE";$vo_formData)
 CLOSE WINDOW:C154($vl_win)
 

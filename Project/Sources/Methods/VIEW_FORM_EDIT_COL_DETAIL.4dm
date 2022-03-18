@@ -25,7 +25,7 @@ $vo_formData:=New object:C1471
 $vo_formData.col:=OB Copy:C1225(Form:C1466.selectedCol)
 $vo_formData.table:=Form:C1466.view.table
 
-$vl_win:=UTIL_Open_Window_Centre ("ULO_VIEW_EDIT_DETAIL";Sheet form window:K39:12;"View Detail Editor")
+$vl_win:=UTIL_Open_Window_Centre ("ULO_VIEW_EDIT_DETAIL";Movable dialog box:K34:7;"View Detail Editor")
 DIALOG:C40("ULO_VIEW_EDIT_DETAIL";$vo_formData)
 CLOSE WINDOW:C154($vl_win)
 
