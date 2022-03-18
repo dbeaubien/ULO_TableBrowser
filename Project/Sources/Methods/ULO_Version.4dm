@@ -1,6 +1,13 @@
 //%attributes = {"shared":true}
 C_TEXT:C284($0)
-$0:="1.8.3"
+$0:="1.8.4"
+
+  //2022-03-18 - 1.8.4
+  // Updated default buttons and forms
+  // - Added Enter and esc for Save and Cancel
+  // - Fixed view edit window sizing issue
+  // - Changed window type and title for all forms to be consistent
+
 
   //2021-11-03 - 1.8.3
   // BUTTON_SORT_POP - Added check for selectSort=null to prevent errors

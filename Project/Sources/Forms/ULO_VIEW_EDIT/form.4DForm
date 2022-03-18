@@ -1,8 +1,7 @@
 ﻿{
 	"destination": "detailScreen",
 	"windowMinWidth": 650,
-	"windowMinHeight": 550,
-	"formSizeAnchor": "BackgroundColour",
+	"windowMinHeight": 543,
 	"rightMargin": 0,
 	"bottomMargin": 0,
 	"markerHeader": 15,
@@ -50,10 +49,10 @@
 				},
 				"ViewTab": {
 					"type": "tab",
-					"top": 94,
+					"top": 74,
 					"left": 21,
 					"width": 794,
-					"height": 394,
+					"height": 414,
 					"sizingX": "grow",
 					"sizingY": "grow",
 					"dataSourceTypeHint": "arrayText",
@@ -109,38 +108,41 @@
 					"sizingX": "move",
 					"sizingY": "move",
 					"action": "cancel",
-					"shortcutKey": ".",
-					"shortcutAccel": true,
+					"shortcutKey": "[Esc]",
+					"shortcutAccel": false,
 					"text": "Cancel",
 					"class": "button",
 					"events": [
 						"onClick"
-					]
+					],
+					"shortcutControl": false,
+					"shortcutShift": false,
+					"shortcutAlt": false
 				},
 				"IntroText2": {
 					"type": "text",
-					"top": 20,
-					"left": 20,
+					"top": 19,
+					"left": 25,
 					"width": 590,
-					"height": 32,
+					"height": 15,
 					"class": "default",
 					"textAlign": "left",
 					"text": "Select the fields you wish to see in the view.  You may adjust their order and widths in the Browser window."
 				},
 				"PROMPT_ViewName": {
 					"type": "text",
-					"top": 67,
+					"top": 47,
 					"left": 25,
-					"width": 107,
+					"width": 87,
 					"height": 16,
 					"class": "tester",
-					"textAlign": "right",
+					"textAlign": "automatic",
 					"text": "View name"
 				},
 				"ULO_VIEW_Name": {
 					"type": "input",
-					"top": 67,
-					"left": 141,
+					"top": 47,
+					"left": 121,
 					"width": 252,
 					"height": 16,
 					"dataSource": "Form:C1466.view.name",
@@ -154,6 +156,19 @@
 					],
 					"textFormat": "",
 					"entryFilter": "&\"A-z;0-9; ;_;-\""
+				},
+				"bt_deleteView": {
+					"type": "button",
+					"text": "Delete this View",
+					"top": 507,
+					"left": 307,
+					"width": 157,
+					"height": 22,
+					"events": [
+						"onClick"
+					],
+					"stroke": "#ff0000",
+					"class": "button"
 				}
 			}
 		},
@@ -177,10 +192,10 @@
 				},
 				"lb_viewCols": {
 					"type": "listbox",
-					"top": 125,
+					"top": 115,
 					"left": 236,
 					"width": 562,
-					"height": 318,
+					"height": 328,
 					"sizingX": "grow",
 					"sizingY": "grow",
 					"resizingMode": "legacy",
@@ -314,10 +329,10 @@
 				},
 				"lb_viewFields": {
 					"type": "listbox",
-					"top": 175,
+					"top": 165,
 					"left": 36,
 					"width": 157,
-					"height": 268,
+					"height": 278,
 					"sizingX": "grow",
 					"sizingY": "grow",
 					"resizingMode": "legacy",
@@ -381,7 +396,7 @@
 				},
 				"dropdown_table": {
 					"type": "dropdown",
-					"top": 125,
+					"top": 115,
 					"left": 36,
 					"width": 157,
 					"height": 21,
@@ -395,7 +410,7 @@
 				},
 				"bt_moveField": {
 					"type": "button",
-					"top": 255,
+					"top": 245,
 					"left": 200,
 					"width": 29,
 					"height": 29,
@@ -439,7 +454,7 @@
 				},
 				"PROMPT_ViewName1": {
 					"type": "text",
-					"top": 152,
+					"top": 142,
 					"left": 36,
 					"width": 39,
 					"height": 16,
@@ -449,7 +464,7 @@
 				},
 				"txt_fieldFilter": {
 					"type": "input",
-					"top": 152,
+					"top": 142,
 					"left": 79,
 					"width": 114,
 					"height": 16,
@@ -468,7 +483,7 @@
 			"objects": {
 				"isPublic": {
 					"type": "checkbox",
-					"top": 188,
+					"top": 168,
 					"left": 209,
 					"width": 120,
 					"height": 17,
@@ -483,7 +498,7 @@
 				},
 				"PROMPT_Locked": {
 					"type": "text",
-					"top": 248,
+					"top": 228,
 					"left": 93,
 					"width": 107,
 					"height": 16,
@@ -493,7 +508,7 @@
 				},
 				"BRW_VIEW_LockedCols": {
 					"type": "input",
-					"top": 248,
+					"top": 228,
 					"left": 209,
 					"width": 52,
 					"height": 16,
@@ -509,7 +524,7 @@
 				},
 				"PROMPT_Locked1": {
 					"type": "text",
-					"top": 276,
+					"top": 256,
 					"left": 93,
 					"width": 107,
 					"height": 16,
@@ -519,7 +534,7 @@
 				},
 				"BRW_VIEW_HeadHeight": {
 					"type": "input",
-					"top": 276,
+					"top": 256,
 					"left": 209,
 					"width": 52,
 					"height": 16,
@@ -536,7 +551,7 @@
 				},
 				"PROMPT_Locked2": {
 					"type": "text",
-					"top": 278,
+					"top": 258,
 					"left": 269,
 					"width": 187,
 					"height": 12,
@@ -546,7 +561,7 @@
 				},
 				"PROMPT_Locked3": {
 					"type": "text",
-					"top": 302,
+					"top": 282,
 					"left": 93,
 					"width": 107,
 					"height": 16,
@@ -556,7 +571,7 @@
 				},
 				"BRW_VIEW_RowHeight": {
 					"type": "input",
-					"top": 302,
+					"top": 282,
 					"left": 209,
 					"width": 52,
 					"height": 16,
@@ -573,7 +588,7 @@
 				},
 				"PROMPT_Locked4": {
 					"type": "text",
-					"top": 304,
+					"top": 284,
 					"left": 269,
 					"width": 187,
 					"height": 12,
@@ -583,7 +598,7 @@
 				},
 				"View_UseFooter": {
 					"type": "checkbox",
-					"top": 158,
+					"top": 138,
 					"left": 209,
 					"width": 100,
 					"height": 17,
@@ -598,22 +613,9 @@
 					],
 					"dataSourceTypeHint": "boolean"
 				},
-				"bt_deleteView": {
-					"type": "button",
-					"text": "Delete this View",
-					"top": 396,
-					"left": 209,
-					"width": 177,
-					"height": 26,
-					"events": [
-						"onClick"
-					],
-					"stroke": "#ff0000",
-					"class": "button"
-				},
 				"isDefault": {
 					"type": "checkbox",
-					"top": 218,
+					"top": 198,
 					"left": 209,
 					"width": 120,
 					"height": 17,
@@ -628,7 +630,7 @@
 				},
 				"PROMPT_Locked5": {
 					"type": "text",
-					"top": 329,
+					"top": 309,
 					"left": 93,
 					"width": 107,
 					"height": 16,
@@ -638,7 +640,7 @@
 				},
 				"BRW_VIEW_RowHeight1": {
 					"type": "input",
-					"top": 329,
+					"top": 309,
 					"left": 209,
 					"width": 172,
 					"height": 16,
@@ -657,7 +659,7 @@
 				"bt_selectTheme": {
 					"type": "button",
 					"text": "",
-					"top": 327,
+					"top": 307,
 					"left": 389,
 					"width": 20,
 					"height": 20,
@@ -669,7 +671,7 @@
 				},
 				"PROMPT_Locked6": {
 					"type": "text",
-					"top": 355,
+					"top": 335,
 					"left": 93,
 					"width": 107,
 					"height": 16,
@@ -679,7 +681,7 @@
 				},
 				"BRW_VIEW_RowHeight2": {
 					"type": "input",
-					"top": 355,
+					"top": 335,
 					"left": 209,
 					"width": 172,
 					"height": 16,
@@ -698,7 +700,7 @@
 				"bt_selectSort": {
 					"type": "button",
 					"text": "",
-					"top": 353,
+					"top": 333,
 					"left": 389,
 					"width": 20,
 					"height": 20,
@@ -715,5 +717,6 @@
 		"version": "1",
 		"kind": "form"
 	},
-	"geometryStamp": 78
+	"geometryStamp": 184,
+	"formSizeAnchor": "BackgroundColour"
 }

@@ -187,6 +187,7 @@ C_OBJECT:C1216(UTIL_OBJ_TO_STORAGE_R ;$2)
 C_LONGINT:C283(UTIL_Open_Window_Centre ;$0)
 C_TEXT:C284(UTIL_Open_Window_Centre ;$1)
 C_LONGINT:C283(UTIL_Open_Window_Centre ;$2)
+C_TEXT:C284(UTIL_Open_Window_Centre ;$3)
 
   //UTIL_Recursive_Find_Col
 C_OBJECT:C1216(UTIL_Recursive_Find_Col ;$0)
@@ -264,7 +265,7 @@ C_COLLECTION:C1488(ULO_IMPORT_DATA ;$0)
 C_TEXT:C284(ULO_CHANGE_SIDEBAR_SELECTION ;$1)
 
   //ULO_Header_Click
-C_LONGINT:C283(ULO_Header_Click ;$0)
+C_LONGINT:C283(ULO_HEADER_CLICK ;$0)
 
   //ULO_Version
 C_TEXT:C284(ULO_Version ;$0)

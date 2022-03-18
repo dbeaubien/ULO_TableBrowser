@@ -24,7 +24,7 @@ End if
 
 START TRANSACTION:C239
 
-$vl_win:=UTIL_Open_Window_Centre ("ULO_EDIT_THEME")
+$vl_win:=UTIL_Open_Window_Centre ("ULO_EDIT_THEME";Sheet form window:K39:12;"Theme Editor")
 DIALOG:C40("ULO_EDIT_THEME";$vo_formData)
 CLOSE WINDOW:C154($vl_win)
 

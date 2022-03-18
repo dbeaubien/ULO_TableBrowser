@@ -63,7 +63,13 @@
 					],
 					"action": "accept",
 					"stroke": "#008000",
-					"class": "button"
+					"class": "button",
+					"shortcutAccel": false,
+					"shortcutControl": false,
+					"shortcutShift": false,
+					"shortcutAlt": false,
+					"shortcutKey": "[Enter]",
+					"defaultButton": true
 				},
 				"bt_cancel": {
 					"type": "button",
@@ -81,7 +87,12 @@
 					"class": "button",
 					"dataSource": "",
 					"action": "cancel",
-					"stroke": "#ff0000"
+					"stroke": "#ff0000",
+					"shortcutAccel": false,
+					"shortcutControl": false,
+					"shortcutShift": false,
+					"shortcutAlt": false,
+					"shortcutKey": "[Esc]"
 				},
 				"Input": {
 					"type": "input",

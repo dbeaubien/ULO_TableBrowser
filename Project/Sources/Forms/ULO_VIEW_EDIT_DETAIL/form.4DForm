@@ -70,13 +70,16 @@
 					"sizingX": "fixed",
 					"sizingY": "fixed",
 					"action": "cancel",
-					"shortcutKey": ".",
-					"shortcutAccel": true,
+					"shortcutKey": "[Esc]",
+					"shortcutAccel": false,
 					"text": "Cancel",
 					"class": "button",
 					"events": [
 						"onClick"
-					]
+					],
+					"shortcutControl": false,
+					"shortcutShift": false,
+					"shortcutAlt": false
 				}
 			}
 		},
