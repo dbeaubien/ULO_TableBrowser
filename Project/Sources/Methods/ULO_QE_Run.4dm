@@ -1,4 +1,4 @@
-//%attributes = {}
+//%attributes = {"shared":true}
   // ----------------------------------------------------
   // User name (OS): Dougie
   // Date and time: 06/01/20, 16:28:46

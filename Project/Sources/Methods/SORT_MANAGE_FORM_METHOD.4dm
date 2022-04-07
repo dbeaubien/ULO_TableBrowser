@@ -52,7 +52,7 @@ Case of
 		Case of 
 			: ($vo_formEvent.code=On Selection Change:K2:29) | ($vo_formEvent.code=On Clicked:K2:4)
 				SORT_MANAGE_SET_ENABLED 
-				If (Form:C1466.sortTab="user")
+				If (Form:C1466.sortTab="user") | (Storage:C1525.user.id=1)
 					LISTBOX GET CELL POSITION:C971(*;"lb_sortData";$vl_col;$vl_row)
 					If ($vl_col=2)
 						If (Form:C1466.selectedSortCol#Null:C1517)

@@ -1,6 +1,11 @@
 //%attributes = {"shared":true}
 C_TEXT:C284($0)
-$0:="1.8.4"
+$0:="1.9.0"
+
+  //2022-04-07 1.9.0
+  // Made amendments to ULO_Query and ULO_QE_Run to make both methods available to host database
+  // Fixed issue in Manage Sorts interface where sort direction could not be changed for System sorts
+
 
   //2022-03-18 - 1.8.4
   // Updated default buttons and forms

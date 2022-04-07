@@ -41,3 +41,5 @@ C_TEXT:C284(vt_buttonName)
 C_OBJECT:C1216(e_record)
 C_BOOLEAN:C305(vb_ExportValue)
 C_TIME:C306(vh_ExportValue)
+
+C_LONGINT:C283(QE_Run)

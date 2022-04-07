@@ -21,6 +21,8 @@ Case of
 			Form:C1466.tableName:=$at_tableName{$vl_fia}
 		End if 
 		
+		OBJECT SET VISIBLE:C603(*;"ch_querySelection";Not:C34(Form:C1466.externalCall))
+		
 		EXECUTE METHOD IN SUBFORM:C1085("queryLines";"QE_LINES_METHOD";*;"INIT";Form:C1466)
 		
 		vt_loadMenu:=QE_BUILD_LOAD_MENU (Form:C1466.tableNumber)

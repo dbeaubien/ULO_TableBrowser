@@ -1,5 +1,28 @@
 //%attributes = {"shared":true}
+
+
+  // ----------------------------------------------------
+  // User name (OS): Tom
+  // Date and time: 07/04/22, 15:59:14
+  // ----------------------------------------------------
+  // Method: ULO_Query
+  // Description
+  // 
+  //
+  // Parameters
+  // $0 - Entity seleciton - Result selection
+  // $1 - Longint          - Table Num
+  // $2 - Boolean          - External Call, if True, result is returned instead of being set to Form.uloRecords
+  // $3 - Object           - Query data to load into interface
+  // ----------------------------------------------------
+
+
+
+C_OBJECT:C1216($0)
 C_LONGINT:C283($1;$vl_table;$vl_fieldType;$vl_fieldLength;$vl_wind;$vl_fia)
+C_BOOLEAN:C305($2;$vb_externalCall)
+C_OBJECT:C1216($3)
+
 C_COLLECTION:C1488($vc_fields)
 C_OBJECT:C1216($vo_queryForm;$vo_field;$vo_prop)
 C_BOOLEAN:C305($vb_fieldIndexed;$vb_fieldUnique;$vb_fieldInvisible)
@@ -7,6 +30,10 @@ C_TEXT:C284($vt_tableName;$vt_prop)
 
 If (Count parameters:C259>0)
 	$vl_table:=$1
+	If (Count parameters:C259>1)
+		$vb_externalCall:=$2
+	End if 
+	
 	ARRAY LONGINT:C221($al_fields;0)
 	ARRAY TEXT:C222($at_fields;0)
 	$vo_queryForm:=New object:C1471
@@ -64,22 +91,34 @@ If (Count parameters:C259>0)
 		End if 
 	End for each 
 	
-	  //Load last query (if it exists) from sidebar navItem
-	If (OB Is defined:C1231(Form:C1466.navItem;"lastQuery"))
-		$vo_queryForm.lastQuery:=Form:C1466.navItem.lastQuery
+	$vo_queryForm.externalCall:=$vb_externalCall
+	
+	$vo_queryForm.lastQuery:=New collection:C1472
+	$vo_queryForm.lastQuery.push(New object:C1471("lBracket";False:C215;"table";$vo_queryForm.tableNumber;\
+		"field";$vo_queryForm.queryFields[0].fieldNum;"type";$vo_queryForm.queryFields[0].fieldType;\
+		"oper";$vo_queryForm.queryOperators[0].operand;\
+		"value";"";"rBracket";False:C215;"conjunction";"-";"fieldName";$vo_queryForm.queryFields[0].fieldName))
+	
+	If (Count parameters:C259>2)
+		$vo_queryForm.lastQuery:=$3.query
 	Else 
-		$vo_queryForm.lastQuery:=New collection:C1472
-		$vo_queryForm.lastQuery.push(New object:C1471("lBracket";False:C215;"table";$vo_queryForm.tableNumber;\
-			"field";$vo_queryForm.queryFields[0].fieldNum;"type";$vo_queryForm.queryFields[0].fieldType;\
-			"oper";$vo_queryForm.queryOperators[0].operand;\
-			"value";"";"rBracket";False:C215;"conjunction";"-";"fieldName";$vo_queryForm.queryFields[0].fieldName))
+		If (Not:C34($vb_externalCall))
+			  //Load last query (if it exists) from sidebar navItem
+			$vo_queryForm.lastQuery:=Form:C1466.navItem.lastQuery
+		End if 
 	End if 
+	
 	$vl_wind:=UTIL_Open_Window_Centre ("ULO_Query_Editor_New";Movable dialog box:K34:7;"Query Editor")
 	DIALOG:C40("ULO_Query_Editor_New";$vo_queryForm)
 	CLOSE WINDOW:C154($vl_wind)
 	
 	If (OK=1)
-		Form:C1466.navItem.lastQuery:=$vo_queryForm.lastQuery
-		Form:C1466.uloRecords:=QE_Run ($1;$vo_queryForm.lastQuery;$vo_queryForm.querySelection)
+		  //If called from host database, return query result as $0
+		If ($vb_externalCall)
+			$0:=ULO_QE_Run ($1;$vo_queryForm.lastQuery;0)
+		Else 
+			Form:C1466.navItem.lastQuery:=$vo_queryForm.lastQuery
+			Form:C1466.uloRecords:=ULO_QE_Run ($1;$vo_queryForm.lastQuery;$vo_queryForm.querySelection)
+		End if 
 	End if 
 End if 
