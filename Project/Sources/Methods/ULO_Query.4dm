@@ -104,7 +104,9 @@ If (Count parameters:C259>0)
 	Else 
 		If (Not:C34($vb_externalCall))
 			  //Load last query (if it exists) from sidebar navItem
-			$vo_queryForm.lastQuery:=Form:C1466.navItem.lastQuery
+			If (OB Is defined:C1231(Form:C1466.navItem;"lastQuery"))
+				$vo_queryForm.lastQuery:=Form:C1466.navItem.lastQuery
+			End if 
 		End if 
 	End if 
 	
