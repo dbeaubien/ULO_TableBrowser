@@ -5,15 +5,15 @@
 	<key>CFBundleGetInfoString</key>
 	<string>Component for 4D v18</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.9.1</string>
+	<string>1.9.2</string>
 	<key>CFBundleLongVersionString</key>
-	<string>version 1.9.1</string>
+	<string>version 1.9.2</string>
 	<key>NSHumanReadableCopyright</key>
 	<string>© Telekinetix 2022</string>
 	<key>CFBundleIconFile</key>
 	<string>bundleicon</string>
 	<key>CFBundleVersion</key>
-	<string>1.9.1</string>
+	<string>1.9.2</string>
 	<key>CFBundleName</key>
 	<string>ULO_TableBrowser Component</string>
 </dict>

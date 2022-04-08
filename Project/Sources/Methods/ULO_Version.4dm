@@ -1,6 +1,9 @@
 //%attributes = {"shared":true}
 C_TEXT:C284($0)
-$0:="1.9.1"
+$0:="1.9.2"
+
+  //2022-04-08 - 1.9.2
+  // Changed ULO Query to return object containing entity selection and query data collection
 
   //2022-04-08 1.9.1
   // Added ob is defined check in ULO_Query which was incorrectly removed

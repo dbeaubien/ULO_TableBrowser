@@ -13,15 +13,15 @@
   // $0 - Entity seleciton - Result selection
   // $1 - Longint          - Table Num
   // $2 - Boolean          - External Call, if True, result is returned instead of being set to Form.uloRecords
-  // $3 - Object           - Query data to load into interface
+  // $3 - Collection       - Query data to load into interface
   // ----------------------------------------------------
 
 
 
-C_OBJECT:C1216($0)
+C_OBJECT:C1216($0;$vo_response)
 C_LONGINT:C283($1;$vl_table;$vl_fieldType;$vl_fieldLength;$vl_wind;$vl_fia)
 C_BOOLEAN:C305($2;$vb_externalCall)
-C_OBJECT:C1216($3)
+C_COLLECTION:C1488($3)
 
 C_COLLECTION:C1488($vc_fields)
 C_OBJECT:C1216($vo_queryForm;$vo_field;$vo_prop)
@@ -100,7 +100,9 @@ If (Count parameters:C259>0)
 		"value";"";"rBracket";False:C215;"conjunction";"-";"fieldName";$vo_queryForm.queryFields[0].fieldName))
 	
 	If (Count parameters:C259>2)
-		$vo_queryForm.lastQuery:=$3.query
+		If ($3.length>0)
+			$vo_queryForm.lastQuery:=$3
+		End if 
 	Else 
 		If (Not:C34($vb_externalCall))
 			  //Load last query (if it exists) from sidebar navItem
@@ -117,10 +119,19 @@ If (Count parameters:C259>0)
 	If (OK=1)
 		  //If called from host database, return query result as $0
 		If ($vb_externalCall)
-			$0:=ULO_QE_Run ($1;$vo_queryForm.lastQuery;0)
+			$vo_response:=New object:C1471
+			$vo_response.accepted:=True:C214
+			$vo_response.lastQuery:=$vo_queryForm.lastQuery
+			$vo_response.records:=ULO_QE_Run ($1;$vo_queryForm.lastQuery;0)
+			$0:=$vo_response
 		Else 
 			Form:C1466.navItem.lastQuery:=$vo_queryForm.lastQuery
 			Form:C1466.uloRecords:=ULO_QE_Run ($1;$vo_queryForm.lastQuery;$vo_queryForm.querySelection)
+		End if 
+	Else 
+		If ($vb_externalCall)
+			$vo_response:=New object:C1471
+			$vo_response.accepted:=False:C215
 		End if 
 	End if 
 End if 
