@@ -1,6 +1,9 @@
 //%attributes = {"shared":true}
 C_TEXT:C284($0)
-$0:="1.9.0"
+$0:="1.9.1"
+
+  //2022-04-08 1.9.1
+  // Added ob is defined check in ULO_Query which was incorrectly removed
 
   //2022-04-07 1.9.0
   // Made amendments to ULO_Query and ULO_QE_Run to make both methods available to host database
