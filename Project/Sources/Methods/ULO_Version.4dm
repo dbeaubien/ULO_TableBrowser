@@ -1,6 +1,14 @@
 //%attributes = {"shared":true}
 C_TEXT:C284($0)
-$0:="1.9.2"
+$0:="1.9.3"
+
+  //2022-05-20 - 1.9.3
+  // Added ability to have public sets
+  // - Checkbox on new set creation to make public
+  // - Checkbox on manage sets for creating new sets as public
+  // - New menu option to show public sets to users
+  // - Made public sets available for set manage operations.
+  // - Added public checkbox to set manage window for resulting sets
 
   //2022-04-08 - 1.9.2
   // Changed ULO Query to return object containing entity selection and query data collection

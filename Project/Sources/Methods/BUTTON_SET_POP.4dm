@@ -14,9 +14,9 @@
 C_TEXT:C284($1)
 
 C_TEXT:C284($vt_addMenu;$vt_case;$vt_deleteMenu;$vt_id;$vt_menu;\
-$vt_newMenu;$vt_pk;$vt_removeMenu;$vt_table;$vt_userMenu;$vt_selected;$vt_name)
-C_OBJECT:C1216($es_resultRecords;$es_setRecords;$es_sets;$e_set;$vo_coord)
-C_LONGINT:C283($vl_NumParameters)
+$vt_newMenu;$vt_pk;$vt_removeMenu;$vt_table;$vt_userMenu;$vt_pubMenu;$vt_selected;$vt_name)
+C_OBJECT:C1216($es_resultRecords;$es_setRecords;$es_sets;$e_set;$vo_coord;$vo_saveForm)
+C_LONGINT:C283($vl_NumParameters;$vl_wind)
 
 $vl_NumParameters:=Count parameters:C259
 
@@ -24,17 +24,31 @@ $vl_NumParameters:=Count parameters:C259
 Case of 
 	: ($vl_NumParameters=0)
 		$vt_menu:=Create menu:C408
-		$es_sets:=ds:C1482["uloData"].query("table == :1 && user == :2 && type == 1";Form:C1466.tableNumber;Storage:C1525.user.id)
+		
+		  // ~~~~~ System Sets ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+		$es_sets:=ds:C1482["uloData"].query("table == :1 && type == 1 && user # :2 && detail.public = :3";\
+			Form:C1466.tableNumber;Storage:C1525.user.id;True:C214)
+		$vt_pubMenu:=Create menu:C408
+		For each ($e_set;$es_sets)
+			APPEND MENU ITEM:C411($vt_pubMenu;$e_set.name+" ["+String:C10($e_set.detail.recordIds.length)+"]")
+			SET MENU ITEM PARAMETER:C1004($vt_pubMenu;-1;"LOAD:"+$e_set.id)
+		End for each 
+		
+		APPEND MENU ITEM:C411($vt_menu;"Public Sets";$vt_pubMenu)
+		If ($es_sets.length=0)
+			DISABLE MENU ITEM:C150($vt_menu;-1)
+		End if 
+		RELEASE MENU:C978($vt_pubMenu)
 		
 		  // ~~~~~ User Sets ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-		
+		$es_sets:=ds:C1482["uloData"].query("table == :1 && user == :2 && type == 1";Form:C1466.tableNumber;Storage:C1525.user.id)
 		$vt_userMenu:=Create menu:C408
 		For each ($e_set;$es_sets)
 			APPEND MENU ITEM:C411($vt_userMenu;$e_set.name+" ["+String:C10($e_set.detail.recordIds.length)+"]")
 			SET MENU ITEM PARAMETER:C1004($vt_userMenu;-1;"LOAD:"+$e_set.id)
 		End for each 
 		
-		APPEND MENU ITEM:C411($vt_menu;"Load Set";$vt_userMenu)
+		APPEND MENU ITEM:C411($vt_menu;"My Sets";$vt_userMenu)
 		If ($es_sets.length=0)
 			DISABLE MENU ITEM:C150($vt_menu;-1)
 		End if 
@@ -139,7 +153,19 @@ Case of
 		$e_set.user:=Storage:C1525.user.id
 		$e_set.table:=Form:C1466.tableNumber
 		
-		$vt_name:=Request:C163("Please enter a name for your new Set")
+		  //$vt_name:=Request("Please enter a name for your new Set")
+		$vo_saveForm:=New object:C1471
+		$vo_saveForm.name:="New Set - "+Form:C1466.tableName
+		$vo_saveForm.public:=False:C215
+		
+		  //open save form
+		$vl_wind:=Open form window:C675("ULO_Set_Save";Sheet form window:K39:12)
+		SET WINDOW TITLE:C213("Set Save";$vl_wind)
+		DIALOG:C40("ULO_Set_Save";$vo_saveForm)
+		CLOSE WINDOW:C154($vl_wind)
+		If (OK=1)
+			$vt_name:=$vo_saveForm.name
+		End if 
 		
 		If ($vt_name>"")
 			If (ds:C1482["uloData"].query("table == :1 && user == :2 && type == 1 && name == :3";Form:C1466.tableNumber;Storage:C1525.user.id;$vt_name).length>0)
@@ -149,6 +175,7 @@ Case of
 				$e_set.type:=1
 				$e_set.handle:=Form:C1466.navItem.handle
 				$e_set.group:=1
+				$e_set.detail.public:=$vo_saveForm.public
 				$e_set.detail.recordIds:=New collection:C1472
 				
 				If ($vt_case="SELECTION")

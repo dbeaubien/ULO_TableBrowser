@@ -116,6 +116,7 @@ If ($vb_continue)
 	$e_newSet.type:=1
 	$e_newSet.handle:=Form:C1466.handle
 	$e_newSet.group:=1
+	$e_newSet.detail.public:=Form:C1466.public
 	$e_newSet.detail.recordIds:=New collection:C1472
 	$e_newSet.detail.recordIds:=$es_runningSet[$vt_pk]
 	$vo_res:=$e_newSet.save()

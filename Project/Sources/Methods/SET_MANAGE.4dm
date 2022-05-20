@@ -25,7 +25,8 @@ $vo_formData.subform.actualLineCount:=0
 $vo_formData.subform.objectTracker:=New collection:C1472
 
 
-$es_userSets:=ds:C1482["uloData"].query("table == :1 && user == :2 && type == 1";Form:C1466.tableNumber;Storage:C1525.user.id)
+$es_userSets:=ds:C1482["uloData"].query("table == :1 && type == 1 && (user == :2 || detail.public == :3";\
+Form:C1466.tableNumber;Storage:C1525.user.id;True:C214)
 
 $vo_formData.userSets:=$es_userSets.toCollection("id, table, name, detail")
 $vo_formData.subform.userSets:=$vo_formData.userSets

@@ -104,7 +104,7 @@
 				},
 				"Text": {
 					"type": "text",
-					"text": "Query Name :",
+					"text": "Set Name :",
 					"top": 34,
 					"left": 55,
 					"width": 105,
