@@ -5,7 +5,7 @@ Case of
 		
 		Form:C1466.displayed:=True:C214
 		Form:C1466.message:="Export "+String:C10(Form:C1466.ris)+" record"+("s"*Num:C11(Form:C1466.ris#1))+" in selection..."
-		OBJECT SET ENABLED:C1123(*;"ExportExcel";($vo_formData.excelInstalled))
+		OBJECT SET ENABLED:C1123(*;"ExportExcel";(Form:C1466.excelInstalled))
 		
 	: (FORM Event:C1606.code=On Clicked:K2:4)
 		
