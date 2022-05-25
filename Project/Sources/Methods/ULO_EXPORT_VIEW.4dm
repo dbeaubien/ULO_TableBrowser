@@ -28,6 +28,10 @@ $vo_formData.selectedRecords:=$vl_sel
 $vo_formData.displayed:=True:C214
 $vo_formData.highlighted:=False:C215
 $vo_formData.message:=""
+ARRAY LONGINT:C221($al_pluginId;0)
+ARRAY TEXT:C222($at_pluginName;0)
+PLUGIN LIST:C847($al_pluginId;$at_pluginName)
+$vo_formData.excelInstalled:=(Find in array:C230($at_pluginName;"XL Plugin")>0)
   //Open the selection window
   //FORM GET PROPERTIES("ULO_EXPORT_VIEW";$vl_W;$vl_H)
 $vl_win:=Open form window:C675("ULO_EXPORT_VIEW";Modal form dialog box:K39:7)
