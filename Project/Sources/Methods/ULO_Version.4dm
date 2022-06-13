@@ -1,6 +1,9 @@
 //%attributes = {"shared":true}
 C_TEXT:C284($0)
-$0:="1.9.3"
+$0:="1.9.4"
+
+  //2022-06-13 - 1.9.4
+  // ULO_BROWSER_EVENT - Removed sidebarSource selection assignment in 'relate' case
 
   //2022-05-20 - 1.9.3
   // Added ability to have public sets
