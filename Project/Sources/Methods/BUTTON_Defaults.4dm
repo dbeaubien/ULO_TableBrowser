@@ -1,5 +1,5 @@
 //%attributes = {}
-C_TEXT:C284($1;$2)
+C_TEXT:C284($1; $2)
 C_VARIANT:C1683($0)
 Case of 
 	: ($1="ICON")

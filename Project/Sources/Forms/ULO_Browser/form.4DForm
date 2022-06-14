@@ -1,4 +1,4 @@
-﻿{
+{
 	"destination": "detailScreen",
 	"rightMargin": 0,
 	"bottomMargin": 0,
@@ -156,16 +156,6 @@
 					"dropping": "custom",
 					"events": []
 				},
-				"Logo": {
-					"type": "picture",
-					"top": 534,
-					"left": 13,
-					"width": 193,
-					"height": 61,
-					"pictureFormat": "scaled",
-					"picture": "/RESOURCES/images/library/logo.png",
-					"sizingY": "move"
-				},
 				"ULO_Shortcut": {
 					"type": "button",
 					"text": "Shortcut",
@@ -208,11 +198,48 @@
 					"shortcutShift": false,
 					"shortcutAlt": false,
 					"shortcutKey": "e"
+				},
+				"ulo_logo": {
+					"type": "input",
+					"left": 13,
+					"top": 534,
+					"width": 193,
+					"height": 61,
+					"dataSourceTypeHint": "picture",
+					"right": 206,
+					"bottom": 595,
+					"dataSource": "Form:C1466.logo",
+					"pictureFormat": "proportionalCenter",
+					"sizingX": "grow",
+					"sizingY": "move",
+					"enterable": false,
+					"focusable": false,
+					"contextMenu": "none",
+					"fill": "transparent",
+					"borderStyle": "none"
 				}
 			}
 		},
 		{
 			"objects": {
+				"ULO_DEFAULT_FIND": {
+					"type": "subform",
+					"top": 14,
+					"left": 558,
+					"width": 201,
+					"height": 29,
+					"dataSourceTypeHint": "text",
+					"detailForm": "SearchPicker",
+					"doubleClickInRowAction": "editSubrecord",
+					"selectionMode": "multiple",
+					"printFrame": "variable",
+					"events": [
+						"onLoad",
+						"onLosingFocus",
+						"onGettingFocus",
+						"onDataChange"
+					]
+				},
 				"ULO_LIST": {
 					"type": "listbox",
 					"top": 68,
@@ -248,7 +275,6 @@
 					"sizingX": "grow",
 					"sizingY": "grow",
 					"dataSourceTypeHint": "picture",
-					"fontFamily": ".SF NS Text",
 					"fontSize": 18,
 					"focusable": false,
 					"fill": "transparent",
@@ -256,30 +282,13 @@
 					"enterable": false,
 					"contextMenu": "none",
 					"pictureFormat": "truncatedCenter",
-					"dragging": "none"
-				},
-				"ULO_DEFAULT_FIND": {
-					"type": "subform",
-					"top": 14,
-					"left": 558,
-					"width": 201,
-					"height": 29,
-					"dataSourceTypeHint": "text",
-					"detailForm": "SearchPicker",
-					"doubleClickInRowAction": "editSubrecord",
-					"selectionMode": "multiple",
-					"printFrame": "variable",
-					"events": [
-						"onLoad",
-						"onLosingFocus",
-						"onGettingFocus",
-						"onDataChange"
-					]
+					"dragging": "none",
+					"fontTheme": "normal"
 				},
 				"SearchPopMac": {
 					"type": "button",
 					"top": 20,
-					"left": 569,
+					"left": 570,
 					"width": 18,
 					"height": 20,
 					"visibility": "hidden",
@@ -289,7 +298,8 @@
 					"customBackgroundPicture": "var:100",
 					"events": [
 						"onClick"
-					]
+					],
+					"display": true
 				},
 				"SearchPopWin": {
 					"type": "button",
@@ -304,7 +314,8 @@
 					"customBackgroundPicture": "var:100",
 					"events": [
 						"onClick"
-					]
+					],
+					"display": true
 				},
 				"SelectionMessage": {
 					"type": "input",
@@ -407,5 +418,12 @@
 	},
 	"formSizeAnchor": "BackgroundColour",
 	"menuBar": "Menu Bar #1",
-	"geometryStamp": 21
+	"geometryStamp": 205,
+	"editor": {
+		"activeView": "View 1",
+		"defaultView": "View 1",
+		"views": {
+			"View 1": {}
+		}
+	}
 }
