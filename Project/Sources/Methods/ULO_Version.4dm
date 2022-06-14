@@ -2,6 +2,7 @@
 C_TEXT:C284($0)
 $0:="2.0.0"
 
+
 //2022-05-27 - 2.0.0
 // Code base converted to v19r4
 // Added ability set the logo image via ULO_SET_PREF("logo";imageFilePath)
@@ -12,6 +13,8 @@ $0:="2.0.0"
 // in the event that ULO_SET_USER is not called from the host
 // Fixed error when editing system default views for the first time.
 
+//2022-06-13 - 1.9.4
+// ULO_BROWSER_EVENT - Removed sidebarSource selection assignment in 'relate' case
 
 //2022-05-20 - 1.9.3
 // Added ability to have public sets

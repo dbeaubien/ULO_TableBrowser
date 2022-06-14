@@ -104,7 +104,7 @@ Case of
 						SET TIMER:C645(0)
 						If (Form:C1466.relate)
 							Form:C1466.navItem.selection:=Form:C1466.uloRecords
-							Form:C1466.sidebarSource[$index].selection:=Form:C1466.navItem.selection
+							//Form:C1466.sidebarSource[$index].selection:=Form.navItem.selection
 							Form:C1466.relate:=False:C215
 						End if 
 						
