@@ -1,6 +1,11 @@
 //%attributes = {"shared":true}
 C_TEXT:C284($0)
-$0:="2.0.0"
+$0:="2.0.1"
+
+//2022-06-20 - 2.0.1
+// Error handler installed for view export - ON ERR CALL("DATA_EXPORT_ERR_TRAP")
+// To handle errors caused by null and undefined values.
+// Set for both XLS and CSV export formats.
 
 
 //2022-05-27 - 2.0.0

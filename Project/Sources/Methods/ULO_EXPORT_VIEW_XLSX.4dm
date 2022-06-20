@@ -268,6 +268,7 @@ If (OK=1)  //If user has created a document ....
 	End for each   //END field loop for header
 	vo_colObj:=New object:C1471("case"; "data")
 	
+	ON ERR CALL:C155("DATA_EXPORT_ERR_TRAP")
 	//Loop through the records
 	$recordIndex:=1
 	For each (e_record; $es_records)
@@ -363,6 +364,7 @@ If (OK=1)  //If user has created a document ....
 		$recordIndex:=$recordIndex+1
 		$vb_alt:=Not:C34($vb_alt)
 	End for each   //END record loop
+	ON ERR CALL:C155("")
 	
 	// ********* FOOTERS ********
 	$vl_footerRow:=$recordIndex+1
