@@ -288,67 +288,78 @@ Case of
 		
 		
 	: ($vt_eventObject="ULO_SelectAll")
-		LISTBOX SELECT ROW:C912(*; "ULO_LIST"; 0; lk replace selection:K53:1)
-		GOTO OBJECT:C206(*; "ULO_LIST")
-		Form:C1466.refresh:=True:C214
-		SET TIMER:C645(-1)
+		If ($vl_event=On Clicked:K2:4)
+			LISTBOX SELECT ROW:C912(*; "ULO_LIST"; 0; lk replace selection:K53:1)
+			GOTO OBJECT:C206(*; "ULO_LIST")
+			Form:C1466.refresh:=True:C214
+			SET TIMER:C645(-1)
+		End if 
 		
 	: ($vt_eventObject="ULO_ExportView")
-		//If ($vl_event=On Clicked)
-		If (Form:C1466.navItem.type="DATA")
-			ULO_EXPORT_VIEW
-			
-			GOTO OBJECT:C206(*; "ULO_LIST")
-			//End if 
+		If ($vl_event=On Clicked:K2:4)
+			If (Form:C1466.navItem.type="DATA")
+				ULO_EXPORT_VIEW
+				
+				GOTO OBJECT:C206(*; "ULO_LIST")
+			End if 
 		End if 
+		
 	: ($vt_eventObject="ULO_DEFAULT_FIND")
 		
 		Case of 
+			: ($vl_event=On Getting Focus:K2:7)
+				//Tom - Gets value to check value has changed before searching
+				//This prevents the search from ruinning on listing load, as this field is automatically focused
+				Form:C1466.tempDefaultFindValue:=OBJECT Get pointer:C1124(Object named:K67:5; "ULO_DEFAULT_FIND")->
+				
 			: ($vl_event=On Losing Focus:K2:8)
 				
 				$vt_value:=OBJECT Get pointer:C1124(Object named:K67:5; "ULO_DEFAULT_FIND")->  //Get the value from the find object
-				If (Not:C34(OB Is defined:C1231(Form:C1466.navItem; "findHistory")))
-					Form:C1466.navItem.findHistory:=New collection:C1472
-				End if 
-				If (Form:C1466.navItem.findHistory.indexOf($vt_value)=-1)
-					Form:C1466.navItem.findHistory.push($vt_value)
-				End if 
-				
-				$es_return:=Form:C1466.uloRecords
-				$index:=UTIL_Col_Find_Index(Storage:C1525.buttons; "action"; "FIND")
-				If ($index>=0)
-					If (Form:C1466.navItem.findFields.length>0)  //If there are auto find fields set up
-						$vt_tableName:=Table name:C256(Form:C1466.tableNumber)
-						$vt_findString:=""
-						For ($i; 0; Form:C1466.navItem.findFields.length-1)
-							$vt_findString:=$vt_findString+Form:C1466.navItem.findFields[$i]+" == :1"
-							If ($i<(Form:C1466.navItem.findFields.length-1))
-								$vt_findString:=$vt_findString+" || "
-							End if 
-						End for 
-						$es_return:=ds:C1482[$vt_tableName].query($vt_findString; ($vt_value+"@"))
-					End if   //END - Check for auto find fields
-					If (Storage:C1525.buttons[$index].method#"")  //If there is a host search method specified
-						EXECUTE METHOD:C1007(Storage:C1525.buttons[$index].method; $es_return; Form:C1466.tableNumber; Form:C1466.navItem.handle; $vt_value; $es_return)  //Return an entity selection
+				If ($vt_value#Form:C1466.tempDefaultFindValue)
+					
+					If (Not:C34(OB Is defined:C1231(Form:C1466.navItem; "findHistory")))
+						Form:C1466.navItem.findHistory:=New collection:C1472
 					End if 
+					If (Form:C1466.navItem.findHistory.indexOf($vt_value)=-1)
+						Form:C1466.navItem.findHistory.push($vt_value)
+					End if 
+					
+					$es_return:=Form:C1466.uloRecords
+					$index:=UTIL_Col_Find_Index(Storage:C1525.buttons; "action"; "FIND")
+					If ($index>=0)
+						If (Form:C1466.navItem.findFields.length>0)  //If there are auto find fields set up
+							$vt_tableName:=Table name:C256(Form:C1466.tableNumber)
+							$vt_findString:=""
+							For ($i; 0; Form:C1466.navItem.findFields.length-1)
+								$vt_findString:=$vt_findString+Form:C1466.navItem.findFields[$i]+" == :1"
+								If ($i<(Form:C1466.navItem.findFields.length-1))
+									$vt_findString:=$vt_findString+" || "
+								End if 
+							End for 
+							$es_return:=ds:C1482[$vt_tableName].query($vt_findString; ($vt_value+"@"))
+						End if   //END - Check for auto find fields
+						If (Storage:C1525.buttons[$index].method#"")  //If there is a host search method specified
+							EXECUTE METHOD:C1007(Storage:C1525.buttons[$index].method; $es_return; Form:C1466.tableNumber; Form:C1466.navItem.handle; $vt_value; $es_return)  //Return an entity selection
+						End if 
+					End if 
+					If (Storage:C1525.hostMethods.filter#"")
+						EXECUTE METHOD:C1007(Storage:C1525.hostMethods.filter; $es_return; Form:C1466.tableNumber; Form:C1466.navItem.handle; $es_return)
+					End if 
+					Form:C1466.uloRecords:=$es_return
+					OBJECT Get pointer:C1124(Object named:K67:5; "ULO_DEFAULT_FIND")->:=""  //Clear search field value
+					If (Not:C34(Is macOS:C1572))
+						OBJECT SET VISIBLE:C603(*; "SearchPopWin"; True:C214)
+					End if 
+					Form:C1466.refresh:=True:C214
+					Form:C1466.footerRefresh:=True:C214
+					SET TIMER:C645(-1)
 				End if 
-				If (Storage:C1525.hostMethods.filter#"")
-					EXECUTE METHOD:C1007(Storage:C1525.hostMethods.filter; $es_return; Form:C1466.tableNumber; Form:C1466.navItem.handle; $es_return)
-				End if 
-				Form:C1466.uloRecords:=$es_return
-				OBJECT Get pointer:C1124(Object named:K67:5; "ULO_DEFAULT_FIND")->:=""  //Clear search field value
-				If (Not:C34(Is macOS:C1572))
-					OBJECT SET VISIBLE:C603(*; "SearchPopWin"; True:C214)
-				End if 
-				Form:C1466.refresh:=True:C214
-				Form:C1466.footerRefresh:=True:C214
-				SET TIMER:C645(-1)
 		End case 
 		
 		
 	: ($vt_eventObject="SearchText_Win")
-		$vt_value:=OBJECT Get pointer:C1124(Object named:K67:5; "ULO_DEFAULT_FIND")->  //Get the value from the find object
 		If ($vl_event=On Selection Change:K2:29)
+			$vt_value:=OBJECT Get pointer:C1124(Object named:K67:5; "ULO_DEFAULT_FIND")->  //Get the value from the find object
 			OBJECT SET VISIBLE:C603(*; "SearchPopWin"; ($vt_value=""))
 		End if 
 		

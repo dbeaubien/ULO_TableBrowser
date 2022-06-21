@@ -12,6 +12,7 @@
 		"onOutsideCall",
 		"onDoubleClick",
 		"onLosingFocus",
+		"onGettingFocus",
 		"onTimer",
 		"onSelectionChange"
 	],
