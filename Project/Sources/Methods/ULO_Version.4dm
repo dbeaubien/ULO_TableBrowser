@@ -1,6 +1,10 @@
 //%attributes = {"shared":true}
 C_TEXT:C284($0)
-$0:="2.0.1"
+$0:="2.0.2"
+
+//2022-06-21 - 2.0.2
+// Fixed CTRL+E shortcut opening the 'Export View' window multiple times
+// Fixed Simple Search field in toolbar triggering the search when not required, this was due to the field being auto focused when loading the browser / navigating the sidebar
 
 //2022-06-20 - 2.0.1
 // Error handler installed for view export - ON ERR CALL("DATA_EXPORT_ERR_TRAP")
